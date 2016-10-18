@@ -1,0 +1,5 @@
+<gameConfig>
+    <item id='RoleInfo_xml' mngerType='roleInfo'/>
+    <item id='WeaponInfo_xml' mngerType='weaponInfo'/>
+    <item id='SkillInfo_xml' mngerType='skillInfo'/>
+</gameConfig>

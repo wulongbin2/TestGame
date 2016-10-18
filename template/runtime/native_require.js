@@ -10,6 +10,8 @@ var game_file_list = [
 	"libs/modules/eui/eui.js",
 	"libs/modules/tween/tween.js",
 	"bin-debug/AssetAdapter.js",
+	"bin-debug/game/baseMngers/BaseMnger.js",
+	"bin-debug/game/vo/gameVO.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",

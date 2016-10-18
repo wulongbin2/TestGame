@@ -47,6 +47,7 @@ class Main extends eui.UILayer {
         // initialize the Resource loading library
         //初始化Resource资源加载库
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+        RES.registerAnalyzer('xml',XMLAnalyzer);
         RES.loadConfig("resource/default.res.json", "resource/");
     }
     /**
@@ -93,6 +94,8 @@ class Main extends eui.UILayer {
     }
     private createScene(){
         if(this.isThemeLoadEnd && this.isResourceLoadEnd){
+            var data:ArrayBuffer  = RES.getRes('GameConfig_xml');
+            baseMngers.analysisByxml( egret.XML.parse(data.toString()));
             this.startCreateScene();
         }
     }
@@ -251,4 +254,17 @@ class Main extends eui.UILayer {
         panel.verticalCenter = 0;
         this.addChild(panel);
     }
+}
+class XMLAnalyzer extends RES.BinAnalyzer{
+     constructor(){
+         super();
+         this._dataFormat = egret.HttpResponseType.TEXT;
+    }
+
+    public analyzeData(resItem:RES.ResourceItem,data)
+    {
+        super.analyzeData(resItem,egret.XML.parse(data))
+    }
+
+    
 }

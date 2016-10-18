@@ -1,0 +1,10 @@
+<WeaponInfo>
+    <!--
+    武器配置
+    @id:唯一id
+    @name:名称
+    @buff:加成buff
+    @des：描述
+    -->
+    <item id='lvfengxian' name='方天画戟' buff='5,0,3,0' des='很厉害了哥！'/>
+</WeaponInfo>
