@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="StartGameSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="157e1792b06" ></w:Config>
+	<e:Image id="cankaotu" source="开始界面_png" left="0" top="0" right="0" bottom="0" locked="true"/>
+	<ns1:StartGameBtn id="startgameBtn" label="按钮" y="886" horizontalCenter="0"/>
+</e:Skin>

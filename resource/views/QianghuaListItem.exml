@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="QianghuaListItemSkin" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+    <e:Image width="626" height="112"  horizontalCenter="0" verticalCenter="0" source="paper_bg1_png" scale9Grid="77,24,137,17" locked="true"/>
+	<e:Image source="weaponbox_infobg_d_png" x="83" y="23" scaleX="1" scaleY="1" width="488"/>
+	<e:Image source="item_bg_png" x="21" verticalCenter="-2"/>
+	<ns1:GreenBtn id="levelBtn" label="" x="437" y="17" width="180" bgSource="buttonbg_10_png" height="74">
+	</ns1:GreenBtn>
+	<e:Label text="升级" x="455" y="42" textColor="0x40372b" bold="true" fontFamily="黑体" size="24" touchEnabled="false"/>
+	<e:Image id="roleIcon" source="golem_dark_png" x="28" y="25"/>
+	<e:Image source="ladder_bp_png" x="503" y="26" scaleX="1" scaleY="1" touchEnabled="false"/>
+	<e:Image source="ladder_bp_png" x="183" y="59" scaleX="0.6" scaleY="0.6"/>
+	<e:Label id="addZdlTf" text="+d10" x="535" y="35" size="18" fontFamily="黑体" textAlign="left" touchEnabled="false"/>
+	<e:Label id="subExpTf" text="Exp - 1000" x="509" y="61" size="16" textColor="0x40372b" fontFamily="黑体" bold="true" italic="true" touchEnabled="false"/>
+	<e:Label id="nameTf" text="绿毛虫" x="110" y="27" textColor="0xc3ac71" bold="true" size="20" fontFamily="黑体"/>
+	<e:Label id="levelTf" text="lv.8" x="110" y="61" textColor="0x40372b" bold="true" fontFamily="黑体" size="16"/>
+	<e:Label id="zdlTf" text="212" x="203" y="61" textColor="0x40372B" bold="true" fontFamily="黑体" size="16"/>
+	<e:Label id="juexingTf" text="d2/8" x="395" y="61" textColor="0x40372B" bold="true" fontFamily="黑体" size="16"/>
+	<e:Image source="wakeup_small_png" x="371" y="61"/>
+	<w:Config id="157f5acc1c9" ></w:Config>
+</e:Skin>

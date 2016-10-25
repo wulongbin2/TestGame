@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="BagPanelSkin"  width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="157f4681733" ></w:Config>
+	<e:Rect left="0" top="0" bottom="0" right="0" alpha="0.5" locked="true"/>
+	<e:Image id="cankaotu" source="背包界面_png" left="0" top="0" bottom="0" right="0" locked="true"/>
+	<ns1:TabBtn2 id="tab2" label="资源背包" x="305" y="148" width="269" scaleX="1" scaleY="1" groupName="tabgroup"/>
+	<ns1:TabBtn id="tab1" label="道具背包" x="66" y="148" width="266"  groupName="tabgroup"/>
+	<e:Image id="bg" source="box_bg2_png" x="14" y="197" width="615" height="756" scale9Grid="52,48,19,20"/>
+	<e:Image source="paper_bg12_png" x="52" y="240" scale9Grid="68,30,148,10" width="536" height="157"/>
+	<e:Button id="closeBtn" label="" x="554.0000000000001" y="196.00000000000003" scaleX="1" scaleY="1">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="close1_normal2_png" source.down="close1_press2_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image source="floating_layerbg2_png" x="47" y="399" scale9Grid="22,23,25,26" width="547" height="520"/>
+	<e:Label id="desTf" text="标签" x="80" y="266" bold="true" fontFamily="黑体" width="473" height="100" textAlign="center" textColor="0x40372b"/>
+	<e:List id="bagList" width="520" height="486" x="68" y="418" itemRendererSkinName="BagItemRendererSkin">
+		<e:ArrayCollection>
+			<e:Array>
+				<e:Object bagListData="2"/>
+				<e:Object bagListData="3"/>
+				<e:Object bagListData="4"/>
+				<e:Object bagListData="5"/>
+				<e:Object bagListData="6"/>
+				<e:Object bagListData="1"/>
+				<e:Object bagListData="7"/>
+				<e:Object bagListData="8"/>
+				<e:Object bagListData="11"/>
+			</e:Array>
+		</e:ArrayCollection>
+		<e:layout>
+			<e:TileLayout horizontalGap="12"/>
+		</e:layout>
+	</e:List>
+</e:Skin>

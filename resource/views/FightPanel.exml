@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="FightPanelSkin"  width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="157e1946d5c" ></w:Config>
+	<e:Image source="冒险界面_png" left="0" top="0" right="0" bottom="0" locked="true" visible="false"/>
+	<e:Group x="5" y="125" locked="true">
+		<e:Image source="maze_map_d_png" y="0" width="631" height="365" x="0"/>
+		<e:Image source="maze_map_path_d_png" x="569" y="304" width="478" height="229" scaleX="-1" scaleY="-1"/>
+		<ns1:MapItem id="mapItem1" label="1-1" x="50" y="159" groupName="mapItemGroup"/>
+		<ns1:MapItem id="mapItem2" label="1-1" x="191" y="46" groupName="mapItemGroup"/>
+		<ns1:MapItem id="mapItem3" label="1-1" x="268" y="177" groupName="mapItemGroup"/>
+		<ns1:MapItem id="mapItem4" label="1-1" x="355" y="35" groupName="mapItemGroup"/>
+		<ns1:MapItem id="mapItem5" label="1-1" x="488" y="92" groupName="mapItemGroup"/>
+	</e:Group>
+	<e:Image source="red_bg_png" x="-1" y="62" width="635" height="66" scaleX="1" scaleY="1" locked="true"/>
+	<ns1:MapLevelBtn id="mapLevelBtn" label="按钮" x="-26" y="58" width="155" scaleX="1" scaleY="1"/>
+	<ns1:MapIndexBtn id="mapIndexBtn" x="509" y="58" width="158" scaleX="1" scaleY="1"/>
+	<ns1:FightWaitBar id="waitBar" x="6" y="493" width="629" height="59" value="50" locked="true"/>
+	<e:Image id="mapBg" source="deep3_png" y="549" width="625" height="339" scaleX="1" scaleY="1" horizontalCenter="0.5"/>
+	<ns1:GreenBtn id="dropListBtn" label="最佳掉落" x="460" y="409" icon="herobag_bg_png" width="152" height="54" bgSource="buttonbg_3_png"/>
+	<ns1:BagBtn id="bagBtn" label="按钮" x="2" y="892"/>
+	<ns1:TeamBtn id="teamBtn" label="按钮" x="410" y="893"/>
+	<ns1:FightBtn id="fightBtn" label="按钮" y="864" horizontalCenter="0" locked="true"/>
+</e:Skin>

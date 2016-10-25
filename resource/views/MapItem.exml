@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MapItemSkin" states="up,down,disabled,upAndSelected,downAndSelected,disabledAndSelected" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="aircity_big_png" x="0" y="0" scaleX="1.8" scaleY="1.8"/>
+	<e:Image source="maze_role_shadow_d_png" y="113" width="99" height="32" scale9Grid="13,4,4,4" x="8"/>
+	<e:Image id="iconDisplay" source="ultimate_tool2_png" x="11" y="110" scaleX="0.6" scaleY="0.6"/>
+	<e:Label id="labelDisplay" text="1-2" x="46" y="117" bold="true" size="20" italic="true" width="62"/>
+
+	<w:Config id="157e5701b1a" ></w:Config>
+</e:Skin>

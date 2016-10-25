@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MainMenuBtnSkin" states="up,down,disabled,upAndSelected,downAndSelected,disabledAndSelected"  width="105" currentState="up" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" height="105">
+    <e:Image source="spec_roundbg_png" x="0" y="0" width="93" height="85" scaleX="1.12" scaleY="1.24" locked="true"/>
+	<e:Image id="iconDisplay" source="listicon_2_png" y="12" scaleX="1.1" scaleY="1.1" y.upAndSelected="1" y.downAndSelected="1" y.up="12" y.disabledAndSelected="1" y.down="12" horizontalCenter="0" scaleX.upAndSelected="1.1" scaleY.upAndSelected="1.1" locked="true"/>
+	<e:Image id="lockIcon" source="lock_png" scaleX="1" scaleY="1" horizontalCenter="0" verticalCenter="0"/>
+	<e:Label id="labelDisplay" size="14" textAlign="center" height="32" y="68" text="主界面" scaleX="1" scaleY="1" width="68" bold="true" horizontalCenter="1" x="29" textColor="0xe9e9e9" locked="true"/>
+
+	<w:Config id="157e10f54d4" ></w:Config>
+</e:Skin>

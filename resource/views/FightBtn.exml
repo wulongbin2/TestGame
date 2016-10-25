@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="FightBtnSkin" states="up,down,disabled" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing"  width="284" height="133">
+ 
+	<w:Config id="157e64c34fd" ></w:Config>
+	<e:Image source="maze_eventbtn_bg_d_png" width="284" height="133" scaleX.down="1.1" scaleY.down="1.1" horizontalCenter="0" bottom="0"/>
+	<e:Image source="maze_eventbtn_fight_d_png" width="191" height="132" scaleX="1.1" scaleY="1.1" horizontalCenter="0" scaleX.down="1.1" scaleY.down="1.1" y.down="-13" bottom="-1"/>
+	<e:Image source="maze_eventbtntxt_fight_png" horizontalCenter="0" bottom="0"/>
+</e:Skin>

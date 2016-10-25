@@ -26,16 +26,16 @@
      -->
      <item id='auto' skillAnima='' isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
         <effect>
-            <item effectType='attack' targetPro='enemy.curZDL'  operatorType='sub' operatorValue='self.fightZDL'>
-        <effect/>
+            <item effectType='attack' targetPro='enemy.curZDL'  operatorType='sub' operatorValue='self.fightZDL'/>
+        </effect>
     </item>
 
     <item id='lvfengxian' skillAnima='' isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
         <trigger>
-            <item compareValue1='self.curZDL/self.totalZDL' compareType='less' compareValue2='200'>
+            <item compareValue1='self.curZDL/self.totalZDL' compareType='less' compareValue2='200'/>
         </trigger>
         <effect>
-            <item effectType='' targetPro='enemy.totalZDL'  operatorType='add' operatorValue='self.fightZDL*1.3'>
-        <effect/>
+            <item effectType='' targetPro='enemy.totalZDL'  operatorType='add' operatorValue='self.fightZDL*1.3'/>
+        </effect>
     </item>
 </skillBaseInfo>

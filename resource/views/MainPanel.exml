@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MainPanelSkin"  width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="157e1106e95" ></w:Config>
+	<e:Image id="bg" source="bottom_bg_png" left="0" top="0" bottom="0" right="0" x="0" y="0" scaleX="1" scaleY="1"/>
+	<e:Image source="main_bg_f_png" left="0" top="0" bottom="98" right="0" x="0" y="0" scaleX="1" scaleY="1"/>
+	<e:Image id="cankaotu" source="开始界面_png" left="0" top="0" bottom="0" right="0" x="0" y="0" scaleX="1" scaleY="1" locked="true" visible="false"/>
+	<e:Group id="tabContainer" left="0" top="0" bottom="0" right="0" x="0" y="0" scaleX="1" scaleY="1" locked="true">
+	</e:Group>
+	<e:Image id="topBg" source="headerbg_d_png" y="0" height="63" scaleX="1" scaleY="1" left="0" right="0" locked="true"/>
+	<e:Image id="bottomBg" source="headerbg_d_png" y="1060" height="63" scaleX="1" scaleY="-1" right="0" left="0" locked="true"/>
+	<e:Label id="messageTf" text="欢迎欢迎欢迎欢迎欢迎！" x="23" y="1018" height="29" width="405" scaleX="1" scaleY="1" size="20"/>
+	<e:Group y="1038" right="0" left="0">
+		<ns1:MainMenuBtn id="mainMenu1" label="主界面" x="0" icon="listicon_7_png" y="0" groupName="mainMenu"/>
+		<ns1:MainMenuBtn id="mainMenu2" label="冒  险" x="107.5" y="0" icon="oasis_big_png" groupName="mainMenu"/>
+		<ns1:MainMenuBtn id="mainMenu3" label="挖  矿" x="214.5" y="0" enabled="false" icon="listicon_1_png" groupName="mainMenu"/>
+		<ns1:MainMenuBtn id="mainMenu4" label="竞  技" x="321.5" y="0" enabled="false" icon="listicon_4_png" groupName="mainMenu"/>
+		<ns1:MainMenuBtn id="mainMenu5" label="召  唤" x="428.5" y="0" icon="listicon_5_png" groupName="mainMenu" enabled="false"/>
+		<ns1:MainMenuBtn id="mainMenu6" label="佣  兵" x="535" y="0" icon="listicon_3_png" groupName="mainMenu"/>
+	</e:Group>
+	<ns1:IconLabel id="zdlTf" x="20" y="13" icon="bp_header_png" text="0"/>
+	<ns1:IconLabel id="expTf" x="158" y="13" icon="exp_header_png" text="0"/>
+	<ns1:IconLabel id="goldTf" x="310" y="13" icon="coin_header_png" text="0"/>
+	<ns1:IconLabel id="moneyTf" x="461" y="12" icon="blood_diamond_header_png" text="0"/>
+	<e:Image source="time_png" x="455" y="1011" scaleX="1" scaleY="1"/>
+	<e:Label id="timeTf" text="10/24   08:00" x="499" y="1018" scaleX="1" scaleY="1" size="20"/>
+</e:Skin>

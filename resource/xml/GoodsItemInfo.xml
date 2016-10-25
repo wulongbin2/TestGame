@@ -1,0 +1,18 @@
+<GoodsItemInfo>
+    <!-- 物品配置
+     @id: 物品id
+     @name：物品名称
+     @merge:是否自动合并
+     @mergeMax:合并最大数量;
+     @tag：物品标签[ziyuan,daoju]
+     @des：描述
+     @useEffect 使用效果
+     @useEffect.item.type 效果类型
+     @useEffect.item.param 使用参数
+    -->
+    <item id='randBlueHero' name='宝箱' tag='daoju' merge='true' mergeMax='999' des='随机开启蓝色英雄'>
+        <useEffect>
+            <item type='randHero' param='blue'/>
+        </useEffect>
+    </item>
+</GoodsItemInfo>

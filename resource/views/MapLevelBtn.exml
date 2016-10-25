@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="MapLevelBtnSkin" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="buttonbg_5_png" scale9Grid="56,26,33,23" left="0" top="0" bottom="0" right="0" source.down="buttonbg_6_png"/>
+	<e:Label id="labelDisplay" size="26" verticalAlign="middle" textAlign="center" scaleX="1" scaleY="1" textColor="0x000000" text="简单" bold="true" height="26" verticalCenter="0" right="45" width="69"/>
+	<e:Image source="detailbtn_icon_png" y="34" rotation="90" right="25"/>
+
+	<w:Config id="157e552f9e4" ></w:Config>
+</e:Skin>

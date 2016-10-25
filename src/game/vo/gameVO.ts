@@ -1,8 +1,57 @@
 module gamevo {
 	/**配置信息基础接口 */
-	export interface BaseVO{
+	export interface IbaseVO{
 		analysis(config:any):void;
 		id:string;
+	}
+
+	export class BaseVO implements IbaseVO{
+		public id:string;
+		public analysis(config:any):void{
+
+		}
+	}
+
+	/**物品使用效果配置 */
+	export class GoodsUseEffect{
+		public type:string;
+		public param:string[];
+		public analysis(config:any):void{
+			var xml:egret.XML = config as egret.XML;
+
+		}
+	}
+
+	/**物品配置 */
+	export class GoodsItemVO extends BaseVO{
+		/**物品名称 */
+		public name:string;
+		/**物品标签[ziyuan,daoju] */
+		public tag:string;
+		/**是否自动合并 */
+		public merge:boolean;
+		/**合并最大数量; */
+		public mergeMax:number;
+		/**描述 */
+		public des:string;
+		/**使用效果 */
+		public useEffects:GoodsUseEffect[] = [];
+		public analysis(config:any):void{
+			var xml:egret.XML = config as egret.XML;
+			this.id = xml.attributes.id;
+			this.name = xml.attributes.name;
+			this.merge = xml.attributes.merge==='true';
+			this.mergeMax =parseFloat(xml.attributes.mergeMax);
+
+			this.tag = xml.attributes.tag;
+			this.des = xml.attributes.des;
+
+		gameutils.XMLUtil.foreachChild(xml, 'effect',(item)=>{
+				var effectVo:GoodsUseEffect = new GoodsUseEffect;
+					effectVo.analysis(item);
+					this.useEffects.push(effectVo);
+				});
+		}
 	}
 
 	/**加成属性 */
@@ -26,17 +75,15 @@ module gamevo {
 	}
 
 	/**角色信息 */
-	export class RoleBaseVO implements BaseVO{
-		/**唯一id */
-		public id:string;
+	export class RoleBaseVO  extends BaseVO{
 		/**名称 */
 		public name:string;
 		/**初始战斗力 */
 		public initZDL:number;
 		/**成长系数 */
 		public potential:number;
-		/**品质[1,2,3,4,5,6][白，绿，蓝，紫,金，闪金] */
-		public quality:number;
+		/**品质[white,green,blue,zi,yellow,light][白，绿，蓝，紫,金，闪金] */
+		public quality:string;
 		/**行走图资源id */
 		public source:string;
 		/**技能id */
@@ -55,20 +102,18 @@ module gamevo {
 			this.name = xml.attributes.name;
 			this.initZDL = parseFloat(xml.attributes.initZDL);
 			this.potential =  parseFloat(xml.attributes.potential);
-			this.quality =  parseFloat(xml.attributes.potential);
+			this.quality =  xml.attributes.potential;
 			this.source = xml.attributes.source;
-			this.skills = (<string>xml.attributes.skills).split(',');
+			this.skills =gameutils.XMLUtil.toStringArray(xml,'skills');
 			this.weapon = xml.attributes.weapon;
 			this.buff.analysis(xml.attributes.buff);
-			this.tag = (<string>xml.attributes.tag).split(',');
+			this.tag = gameutils.XMLUtil.toStringArray(xml,'tag');
 			this.des = xml.attributes.des;
 		}
 	}
 
 	/**武器信息 */
-	export class WeaponVO implements BaseVO{
-		/**唯一id */
-		public id:string;
+	export class WeaponVO extends BaseVO{
 		/**名称 */
 		public name:string;
 		/**武器加成 */
@@ -83,9 +128,7 @@ module gamevo {
 		}
 	}
 
-	export class SkillBaseVO implements BaseVO{
-		/**唯一id */
-		public id:string;
+	export class SkillBaseVO extends BaseVO{
 		/**名称 */
 		public name:string;
 		/**技能动画 */
@@ -118,25 +161,16 @@ module gamevo {
 			this.canAvoid = xml.attributes.canAvoid==='true';
 			this.tag =  (<string>xml.attributes.tag).split(',');
 			this.des = xml.attributes.des;
-			xml.children.forEach((item:egret.XML)=>{
-				if(item.name ==='trigger')
-				{
-					item.children.forEach((item)=>{
+			gameutils.XMLUtil.foreachChild(xml, 'trigger',(item)=>{
 						var trigVO:SkillTriggerVO = new SkillTriggerVO;
 						trigVO.analysis(item);
 						this.triggers.push(trigVO);
 					});
-				}
-				else if(item.name==='effect')
-				{
-					item.children.forEach((item)=>{
-						var effectVo:SkillEffectVO = new SkillEffectVO;
+			gameutils.XMLUtil.foreachChild(xml, 'effect',(item)=>{
+					var effectVo:SkillEffectVO = new SkillEffectVO;
 						effectVo.analysis(item);
 						this.effects.push(effectVo);
 					});
-				}
-			});
-
 		}
 	}
 

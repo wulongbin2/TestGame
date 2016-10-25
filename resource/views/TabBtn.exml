@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="TabBtnSkin" states="up,down,disabled,upAndSelected,downAndSelected,disabledAndSelected" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+
+	<w:Config id="157f4775249" ></w:Config>
+	<e:Image source="top_tab2_png" visible.up="false" visible.down="false" visible.disabled="false" scale9Grid="24,18,125,30" left="0" top="0" bottom="0" right="0"/>
+	<e:Image source="top_tab22_png" visible.upAndSelected="false" visible.downAndSelected="false" visible.disabledAndSelected="false" scale9Grid="24,12,109,36" left="0" top="0" bottom="0" right="0"/>
+	<e:Label id="labelDisplay" text="道具背包" textColor="0xc3ac71" bold="true" fontFamily="黑体" left="25" top="14" bottom="10" right="44" textAlign="center"/>
+	<e:Image id="iconDisplay" source="maze_team_png" x="18" y="-13" width="81" height="71"/>
+</e:Skin>

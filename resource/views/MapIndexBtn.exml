@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MapIndexBtnSkin" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<w:Config id="157e55d283a" ></w:Config>
+		<e:Image source="buttonbg_5_png" scale9Grid="56,26,33,23" left="0" top="0" bottom="0" right="0" source.down="buttonbg_6_png"/>
+	<e:Image source="maze_maplist_png" verticalCenter="0" horizontalCenter="0" scaleX.down="1.1" scaleY.down="1.1"/>
+</e:Skin>

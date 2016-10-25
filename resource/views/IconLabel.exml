@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="IconLabelSkin" width="123" height="33" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="157e15ef0de" ></w:Config>
+	<e:Image id="iconDisplay" source="blood_diamond_header_png" x="0" y="0"/>
+	<e:Label id="labelTf" text="123123" x="46" y="6" textColor="0xc3ac71" size="20" bold="true" width="76"/>
+</e:Skin>

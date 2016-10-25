@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="StartGameBtnSkin" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="540">
+ 
+	<w:Config id="157e17c68be" ></w:Config>
+	<e:Image source="buttonbg_1_png" scale9Grid="66,32,113,7" height="100" width.disabled="540" width.up="540" height.down="110" scaleX.down="1" scaleY.down="1" width="540" x="0" y="0" width.down="550" y.down="-5" x.down="-5"/>
+	<e:Image source="maze_btn_png" horizontalCenter="0" verticalCenter="0" locked="true"/>
+</e:Skin>

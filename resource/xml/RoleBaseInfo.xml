@@ -6,13 +6,14 @@
     @name：名称
     @initZDL:初始战斗力
     @potential:成长系数
-    @quality:品质[1,2,3,4,5,6][白，绿，蓝，紫,金，闪金]
+    @quality:品质[white,green,blue,zi,yellow,light][白，绿，蓝，紫,金，闪金]
     @source:行走图资源id
     @skills:技能id【skill1,skill2】
     @weapon:宝具id
+    @awakenTime：允许觉醒的次数
     @buff：基础加成[先攻值，防御值，闪避值，王者值]
     @tag：标签[物种，性别，职业]
     @des：描述
     -->
-    <item id='lvfengxian' name='吕奉先' initZDL='100' potential='0.7' quality='4' source='' skills='lvfengxian'  weapon='lvfengxian'  buff='2,2,0,2' tag='人类,男,狂战士' des='武器是方天画戟，特长势战斗，弱点是天真'/>
+    <item id='lvfengxian' name='吕奉先' initZDL='100' potential='0.7' quality='zi' source='' skills='lvfengxian'  weapon='lvfengxian'  buff='2,2,0,2' awakenTime='3' tag='人类,男,狂战士' des='武器是方天画戟，特长势战斗，弱点是天真'/>
 </RoleBaseInfo>
