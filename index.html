@@ -12,7 +12,7 @@
     <style>
         html, body {
             -ms-touch-action: none;
-            background: #888888;
+            background: #000000;
             padding: 0;
             border: 0;
             margin: 0;
@@ -47,7 +47,9 @@
 	<script egret="game" src="bin-debug/game/utils/XMLAnalyszer.js"></script>
 	<script egret="game" src="bin-debug/game/utils/XMLUtil.js"></script>
 	<script egret="game" src="bin-debug/game/views/BagBtn.js"></script>
+	<script egret="game" src="bin-debug/game/views/BagItemRenderer.js"></script>
 	<script egret="game" src="bin-debug/game/views/BagPanel.js"></script>
+	<script egret="game" src="bin-debug/game/views/BaseBtn.js"></script>
 	<script egret="game" src="bin-debug/game/views/FightBtn.js"></script>
 	<script egret="game" src="bin-debug/game/views/FightPanel.js"></script>
 	<script egret="game" src="bin-debug/game/views/FightWaitBar.js"></script>
@@ -55,17 +57,24 @@
 	<script egret="game" src="bin-debug/game/views/IconLabel.js"></script>
 	<script egret="game" src="bin-debug/game/views/MainMenuBtn.js"></script>
 	<script egret="game" src="bin-debug/game/views/MainPanel.js"></script>
+	<script egret="game" src="bin-debug/game/views/MapChoosePanel.js"></script>
 	<script egret="game" src="bin-debug/game/views/MapIndexBtn.js"></script>
 	<script egret="game" src="bin-debug/game/views/MapItem.js"></script>
 	<script egret="game" src="bin-debug/game/views/MapLevelBtn.js"></script>
 	<script egret="game" src="bin-debug/game/views/QianghuaListItem.js"></script>
 	<script egret="game" src="bin-debug/game/views/QianghuaPanel.js"></script>
+	<script egret="game" src="bin-debug/game/views/SkillISlottem.js"></script>
 	<script egret="game" src="bin-debug/game/views/StartGame.js"></script>
 	<script egret="game" src="bin-debug/game/views/StartGameBtn.js"></script>
 	<script egret="game" src="bin-debug/game/views/TabBtn.js"></script>
 	<script egret="game" src="bin-debug/game/views/TabBtn2.js"></script>
 	<script egret="game" src="bin-debug/game/views/TeamBtn.js"></script>
+	<script egret="game" src="bin-debug/game/views/TeamListItem.js"></script>
+	<script egret="game" src="bin-debug/game/views/TeamMemberPanel.js"></script>
+	<script egret="game" src="bin-debug/game/views/TeamPanel.js"></script>
+	<script egret="game" src="bin-debug/game/views/TujianPanel.js"></script>
 	<script egret="game" src="bin-debug/game/views/ViewManager.js"></script>
+	<script egret="game" src="bin-debug/game/views/YellowLeftBtn.js"></script>
 	<script egret="game" src="bin-debug/game/views/YongbinMenuItem.js"></script>
 	<script egret="game" src="bin-debug/game/views/YongbinPanel.js"></script>
 	<script egret="game" src="bin-debug/LoadingUI.js"></script>
@@ -79,7 +88,7 @@
          data-entry-class="Main"
          data-orientation="portrait"
          data-scale-mode="exactFit"
-         data-frame-rate="30"
+         data-frame-rate="60"
          data-content-width="640"
          data-content-height="1136"
          data-show-paint-rect="false"

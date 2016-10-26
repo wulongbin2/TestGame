@@ -1,4 +1,4 @@
-class MapIndexBtn extends eui.Button implements  eui.UIComponent {
+class TeamListItem extends eui.ItemRenderer implements  eui.UIComponent {
 	public constructor() {
 		super();
 	}

@@ -35,12 +35,12 @@ class BagPanel extends eui.Component implements  eui.UIComponent {
 	private updateView():void{
 		if(this.tab1.selected)
 		{
-			this.addChild(this.tab1);
+			this.addChildAt(this.tab1,3);
 			this.desTf.text = '道具背包是空的！'
 		}
 		else if(this.tab2.selected)
 		{
-			this.addChild(this.tab2);
+			this.addChildAt(this.tab2,3);
 			this.desTf.text = '资源背包是空的！'
 		}
 	}

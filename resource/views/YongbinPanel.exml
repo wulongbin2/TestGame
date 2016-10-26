@@ -9,6 +9,6 @@
 	<ns1:YongbinMenuItem id="abilityBtn" label="能力转换" y="360" width="626" height="100" icon="listicon_3_png" x="7" enabled="false"/>
 	<ns1:YongbinMenuItem id="abilityBtn0" label="我的宿命武器" y="472" width="626" height="100" icon="listicon_4_png" x="7" enabled="false"/>
 	<ns1:YongbinMenuItem id="abilityBtn1" label="批量解雇" y="583" width="626" height="100" icon="listicon_5_png" x="7" enabled="false"/>
-	<ns1:YongbinMenuItem id="abilityBtn2" label="图鉴" y="695" width="626" height="100" icon="listicon_6_png" x="7"/>
+	<ns1:YongbinMenuItem id="tujianBtn" label="图鉴" y="695" width="626" height="100" icon="listicon_6_png" x="7"/>
 	<ns1:YongbinMenuItem id="abilityBtn3" label="契约进化" y="806" width="626" height="100" icon="listicon_7_png" horizontalCenter="0" enabled="false"/>
 </e:Skin>

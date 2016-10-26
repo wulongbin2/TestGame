@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<e:Skin class="YongbinMenuItemSkin" states="up,down,disabled" width='626' height='100' xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="YongbinMenuItemSkin" states="up,down,disabled"  width='626' height='100' xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<w:Config id="157f56c5aaf" ></w:Config>
 	<e:Image width="626" height="100" scaleX.down="0.95" scaleY.down="0.95" horizontalCenter.down="0" verticalCenter.down="0" horizontalCenter="0" verticalCenter="0" source="paper_bg1_png" scale9Grid="77,24,137,17"/>
 	<e:Image id="iconDisplay" source="specialreward_array_png" verticalCenter="0" left="12" left.down="30" />

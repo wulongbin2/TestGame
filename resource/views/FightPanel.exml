@@ -12,8 +12,8 @@
 		<ns1:MapItem id="mapItem5" label="1-1" x="488" y="92" groupName="mapItemGroup"/>
 	</e:Group>
 	<e:Image source="red_bg_png" x="-1" y="62" width="635" height="66" scaleX="1" scaleY="1" locked="true"/>
-	<ns1:MapLevelBtn id="mapLevelBtn" label="按钮" x="-26" y="58" width="155" scaleX="1" scaleY="1"/>
-	<ns1:MapIndexBtn id="mapIndexBtn" x="509" y="58" width="158" scaleX="1" scaleY="1"/>
+	<ns1:MapLevelBtn id="mapLevelBtn" label="简单" x="-26" y="58" width="155" scaleX="1" scaleY="1"/>
+	<ns1:MapIndexBtn id="mapIndexBtn" x="509" y="58" width="158" scaleX="1" scaleY="1" enabled="true"/>
 	<ns1:FightWaitBar id="waitBar" x="6" y="493" width="629" height="59" value="50" locked="true"/>
 	<e:Image id="mapBg" source="deep3_png" y="549" width="625" height="339" scaleX="1" scaleY="1" horizontalCenter="0.5"/>
 	<ns1:GreenBtn id="dropListBtn" label="最佳掉落" x="460" y="409" icon="herobag_bg_png" width="152" height="54" bgSource="buttonbg_3_png"/>

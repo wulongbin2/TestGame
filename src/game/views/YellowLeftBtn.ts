@@ -1,4 +1,4 @@
-class MapIndexBtn extends eui.Button implements  eui.UIComponent {
+class YellowLeftBtn extends eui.Button implements  eui.UIComponent {
 	public constructor() {
 		super();
 	}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="TeamPanelSkin"  width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="157f9c1610a" ></w:Config>
+	<e:Image source="队伍选择界面_png" left="0" top="0" bottom="0" right="0" locked="true" visible="false"/>
+	<e:Image y="96" scaleX="1" scaleY="1" height="210" left="0" right="0" source="bottom_bg_png" locked="true"/>
+	<e:Group y="73" right="0" left="0">
+		<e:Image source="floating_layerbg2_png" x="-4" y="0" scale9Grid="22,23,25,26" width="649" height="156" scaleX="1" scaleY="1" alpha="0.5"/>
+		<e:Image source="rolling_container_border_png" y="142" height="11" left="0" right="0"/>
+		<e:Image source="box_n_detail_bg_png" x="198" y="155" width="247" height="70" scaleX="1" scaleY="1"/>
+		<e:Image source="rolling_container_border_png" y="231" height="11" scaleY="-1" right="0" left="0"/>
+		<e:Image source="herodetail_border_d_png" y="279" scale9Grid="40,27,240,28" scaleY="-1" left="0" right="0"/>
+		<e:Image source="skill_19_png" x="431" y="155" scaleX="1" scaleY="1"/>
+		<e:List id="skillList" width="284" height="65" y="155" itemRendererSkinName="SkillISlottemSkin" x="143" scaleX="1" scaleY="1">
+			<e:ArrayCollection>
+			<e:Array>
+				<e:Object/>
+				<e:Object a="null"/>
+				<e:Object a="null"/>
+				<e:Object a="null"/>
+			</e:Array>
+			</e:ArrayCollection>
+			<e:layout>
+			<e:HorizontalLayout gap="4"/>
+			</e:layout>
+		</e:List>
+		<e:Label id="skillDesTf" text="难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！" x="18" y="45" size="24" fontFamily="黑体" textColor="0xdddddd" width="616" height="65" scaleX="1" scaleY="1"/>
+		<e:Label id="skillEnabledTf" text="未发动" x="18" y="112" size="18" fontFamily="黑体" width="66" height="24" textColor="0xd56620" bold="true" scaleX="1" scaleY="1"/>
+		<e:Label id="skillRolesTf" text="查看合作名单" x="515" y="112" size="18" fontFamily="黑体" width="115" height="24" bold="true" textColor="0xc3ac71" scaleX="1" scaleY="1"/>
+		<e:List id="roleList" width="613" height="503" x="19" y="265" itemRendererSkinName="TeamListItemSkin">
+			<e:ArrayCollection>
+				<e:Array>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+					<e:Object aa="null"/>
+				</e:Array>
+			</e:ArrayCollection>
+			<e:layout>
+				<e:TileLayout horizontalGap="11" verticalGap="11"/>
+			</e:layout>
+		</e:List>
+	</e:Group>
+	<e:Image source="red_bg_png" y="42" height="66" scaleX="1" scaleY="1" left="0" right="0" x="0" locked="true"/>
+	<e:Label id="nameTf" text="绿毛虫" x="13" y="69" size="20" fontFamily="黑体" scaleX="1" scaleY="1"/>
+	<e:Label id="skillNameTf" text="个人技能：恩赐圣剑" x="394" y="69" size="20" fontFamily="黑体" scaleX="1" scaleY="1" textAlign="right" width="231" textColor="0xc3ac71"/>
+	<e:Image y="890" scaleX="1" scaleY="1" height="108" left="1" right="-1" source="bottom_bg_png" x="1"/>
+	<e:Image source="spec_roundbg_png" y="857" scale9Grid="22,9,10,35" height="56" width="428" x="-2" scaleX="1.5" scaleY="1.5"/>
+	<e:Label text="属性" x="21" y="886" textColor="0xc3ac71" bold="true" size="22" fontFamily="黑体"/>
+	<e:Label text="技能覆盖率" x="356" y="886" textColor="0xC3AC71" bold="true" size="22" fontFamily="黑体"/>
+	<e:Image source="weaponbox_infobg2_d_png" x="473" y="884" width="130" height="26"/>
+	<e:Image source="floating_layerbg2_png" x="69" y="875" scale9Grid="22,23,25,26" width="278" height="46"/>
+	<e:Label id="skillPerTf" text="15%" x="486" y="888" size="18" bold="true" fontFamily="黑体" width="103" textAlign="center"/>
+	<e:Image source="fightnumber_4_png" x="81" y="882" scaleX="0.8" scaleY="0.8"/>
+	<e:Image source="fightnumber_3_png" x="142" y="882" scaleX="0.8" scaleY="0.8"/>
+	<e:Image source="fightnumber_2_png" x="206" y="882" scaleX="0.8" scaleY="0.8"/>
+	<e:Image source="fightnumber_1_png" x="271" y="882" scaleX="0.8" scaleY="0.8"/>
+	<e:Label id="attTf" text="23" x="111" y="890" size="16" textColor="0xfffdfb" width="27"/>
+	<e:Label id="defTf" text="23" x="175" y="890" size="16" textColor="0xFFFDFB" width="27"/>
+	<e:Label id="avoidTf" text="23" x="239" y="890" size="16" textColor="0xFFFDFB" width="27"/>
+	<e:Label id="wangzheTf" text="23" x="303" y="890" size="16" textColor="0xFFFDFB" width="27"/>
+	<ns1:GreenBtn id="closeBtn" label="" x="-28" y="936" bgSource="buttonbg_12_png" height="66"/>
+	<e:Image source="backbtn_icon2_png" x="4" y="956" touchEnabled="false"/>
+	<ns1:BaseBtn id="tuijianBtn" label="推荐上阵" y="934" height="66" horizontalCenter="-1.5"/>
+	<ns1:YellowLeftBtn id="diaozhengBtn" label="手动调整    " x="512" y="934" height="66" width="178"/>
+</e:Skin>

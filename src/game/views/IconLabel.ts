@@ -7,17 +7,6 @@ class IconLabel extends eui.Component implements  eui.UIComponent {
 		 this.addEventListener( eui.UIEvent.COMPLETE, this.updateView, this );
 	}
 
-	protected partAdded(partName:string,instance:any):void
-	{
-		super.partAdded(partName,instance);
-	}
-
-
-	protected childrenCreated():void
-	{
-		super.childrenCreated();
-	}
-
 	private _text:string = '';
 	public set text(value:string){
 		this._text = value;
@@ -26,6 +15,21 @@ class IconLabel extends eui.Component implements  eui.UIComponent {
 
 	public get text():string{
 		return this._text;
+	}
+
+	private _textColor:number;
+	public set textColor(value:number){
+		this._textColor = value;
+		this.updateView();
+	}
+
+	public get textColor():number{
+		return this._textColor;
+	}
+
+	public get label():eui.Label
+	{
+		return this.labelTf;
 	}
 
 	private _icon:any;

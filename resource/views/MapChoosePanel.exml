@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MapChoosePanelSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="157ff9d964d" ></w:Config>
+	<e:Image source="关卡界面_png" left="0" top="0" bottom="0" right="0" locked="true" visible="false"/>
+	<e:Image y="-1" scaleX="1" scaleY="1" height="100" left="0" right="0" source="bottom_bg_png" x="8"/>
+	<e:Image source="herodetail_border_d_png" y="164" scale9Grid="40,27,240,28" scaleY="-1.5" width="427" x="0" scaleX="1.5"/>
+	<e:Image source="herodetail_border_d_png" y="851" scale9Grid="40,27,240,28" scaleY="1.5" width="427" x="0" scaleX="1.5"/>
+	<e:Image y="927" scaleX="1" scaleY="1" height="75" left="1" right="-1" source="bottom_bg_png" x="1"/>
+	<ns1:GreenBtn id="closeBtn" label="" x="-28" y="928" bgSource="buttonbg_12_png" height="73" width="176"/>
+	<e:Image source="maintitle_bg_png" x="45" y="11" scale9Grid="180,15,42,90" width="547"/>
+	<e:Label text="冒险地图" y="72" width="156" height="54" bold="true" size="34" fontFamily="黑体" textAlign="center" horizontalCenter="0"/>
+	<e:Image source="backbtn_icon2_png" x="16" y="953" touchEnabled="false"/>
+	<e:Scroller width="632" height="769" x="5" y="128">
+		<e:viewport>
+			<e:List id="mapList" width="632" height="743" x="0" y="0" itemRendererSkinName="MapChooseItemSkin">
+				<e:ArrayCollection>
+					<e:Array>
+						<e:Object aaa="null"/>
+						<e:Object aaa="null"/>
+						<e:Object aaa="null"/>
+						<e:Object aaa="null"/>
+						<e:Object aaa="null"/>
+						<e:Object aaa="null"/>
+						<e:Object aaa="null"/>
+						<e:Object aaa="null"/>
+						<e:Object aaa="null"/>
+					</e:Array>
+				</e:ArrayCollection>
+				<e:layout>
+					<e:VerticalLayout gap="12"/>
+				</e:layout>
+			</e:List>
+		</e:viewport>
+			<e:Skin>
+				<e:VScrollBar id="verticalScrollBar" width="8" minHeight="100%" height="100%" right="0">
+				<e:Skin>
+					<e:Image id="thumb" width="8" source="maze_timebar_bg"  scale9Grid="1,1,4,4"/>
+				</e:Skin>
+				</e:VScrollBar>
+			</e:Skin>
+	</e:Scroller>
+	<e:Image source="weaponbox_infobg2_d_png" x="163" y="942" width="468" height="50"/>
+	<e:Label text="当前地图" x="186" y="952" textColor="0xd56620" bold="true" fontFamily="黑体" width="244"/>
+	<e:Label id="mapNameTf" text="当前地图" x="375" y="952" bold="true" fontFamily="黑体" width="244" textAlign="right" textColor="0x6a6a6a"/>
+</e:Skin>

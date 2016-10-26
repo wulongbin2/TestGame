@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="TujianPanelSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="157fb090923" ></w:Config>
+	<e:Image source="图鉴界面_png" scaleX="1" scaleY="1" left="0" top="0" bottom="0" right="0" visible="false"/>
+	<e:Image y="-1" scaleX="1" scaleY="1" height="100" left="0" right="0" source="bottom_bg_png" x="8"/>
+	<e:Image source="herodetail_border_d_png" y="164" scale9Grid="40,27,240,28" scaleY="-1.5" width="427" x="0" scaleX="1.5"/>
+	<e:Image source="herodetail_border_d_png" y="851" scale9Grid="40,27,240,28" scaleY="1.5" width="427" x="0" scaleX="1.5"/>
+	<e:Image y="927" scaleX="1" scaleY="1" height="75" left="1" right="-1" source="bottom_bg_png" x="1"/>
+	<ns1:GreenBtn id="closeBtn" label="" x="-28" y="928" bgSource="buttonbg_12_png" height="73" width="176"/>
+	<ns1:GreenBtn id="saixuanBtn" label="品质筛选    " x="489" y="928" bgSource="buttonbg_12_png" height="73" width="176"/>
+<e:Image source="backbtn_icon2_png" x="16" y="953" touchEnabled="false"/>
+	<e:Image source="weaponbox_infobg2_d_png" x="161" y="937" width="320" height="52"/>
+	<e:Label text="收集进度" x="172" y="951" size="26" textColor="0xc3ac71" bold="true" fontFamily="黑体"/>
+	<e:Label id="jinduTf" text="1/100" x="371" y="954" size="20" bold="true" fontFamily="黑体" textColor="0xfff7e6" textAlign="right" width="85"/>
+	<e:Scroller width="610" height="797" x="15" y="116" locked="true">
+		<e:viewport>
+			<e:List id="heroList" width="610" height="797" x="0" y="0" itemRendererSkinName="TeamListItemSkin">
+				<e:ArrayCollection>
+					<e:Array>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+						<e:Object aa="null"/>
+					</e:Array>
+				</e:ArrayCollection>
+				<e:layout>
+					<e:TileLayout horizontalGap="12" verticalGap="12"/>
+				</e:layout>
+			</e:List>
+		</e:viewport>
+			<e:Skin>
+				<e:Image id="thumb" width="8" source="maze_timebar_bg"  scale9Grid="1,1,4,4"/>
+			</e:Skin>
+	</e:Scroller>
+	<e:Image source="maintitle_bg_png" x="45" y="11" scale9Grid="180,15,42,90" width="547" scaleX="1" scaleY="1" locked="true"/>
+	<e:Label text="佣兵图鉴" y="72" width="156" height="83" bold="true" size="34" fontFamily="黑体" textAlign="center" horizontalCenter="0" x="242" scaleX="1" scaleY="1" locked="true"/>
+</e:Skin>

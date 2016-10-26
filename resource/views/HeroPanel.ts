@@ -1,4 +1,4 @@
-class MapIndexBtn extends eui.Button implements  eui.UIComponent {
+class HeroPanel extends eui.Component implements  eui.UIComponent {
 	public constructor() {
 		super();
 	}

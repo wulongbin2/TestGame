@@ -10,11 +10,11 @@
 	<e:Label text="当前阵容总战力" x="108" y="76" textColor="0xc3ac71" bold="true" fontFamily="黑体" size="24"/>
 	<e:Label id="zdlTf" text="240" x="373" y="77" bold="true" fontFamily="黑体" size="24" textColor="0xffffff" textAlign="right" width="145"/>
 	<ns1:TabBtn id="tab1" label="佣兵升级" x="18" y="133" width="313"  icon="maze_team_png"/>
-	<e:Image source="herodetail_border_d_png" y="944" scale9Grid="40,27,240,28" left="0" right="0"/>
+	<e:Image source="herodetail_border_d_png" y="946" scale9Grid="40,27,240,28" left="0" right="0"/>
 	<e:Image source="herodetail_border_d_png" y="243" scale9Grid="40,27,240,28" left="0" right="0" x="10" scaleY="-1"/>
-	<e:Scroller width="633" height="782" x="4" y="203">
+	<e:Scroller width="633" height="782" x="6" y="208">
 		<e:viewport>
-				<e:List id="menmberlist" width="632" height="771" y="4" itemRendererSkinName="QianghuaListItemSkin" horizontalCenter="3" x="3" scaleX="1" scaleY="1">
+				<e:List id="menmberlist" width="632" height="771" y="4" itemRendererSkinName="QianghuaListItemSkin" x="4" scaleX="1" scaleY="1">
 				<e:ArrayCollection>
 				<e:Array>
 					<e:Object/>
@@ -40,9 +40,11 @@
 			<e:Skin>
 			<e:VScrollBar id="verticalScrollBar" width="8" minHeight="100%" height="100%" right="0">
 			<e:Skin>
-				<e:Image id="thumb" width="8" source="hScrollBar01_png"  scale9Grid="1,1,4,4"/>
+				<e:Image id="thumb" width="8" source="maze_timebar_bg"  scale9Grid="1,1,4,4"/>
 			</e:Skin>
 			</e:VScrollBar>
 		</e:Skin>
 	</e:Scroller>
+	<ns1:GreenBtn id="closeBtn" label="" x="-28" y="937" bgSource="buttonbg_12_png" height="63"/>
+	<e:Image source="backbtn_icon2_png" x="4" y="957" touchEnabled="false"/>
 </e:Skin>

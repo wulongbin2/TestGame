@@ -3,6 +3,10 @@ module gameviews {
 		private mainPanel:MainPanel;
 		private bagPanel:BagPanel;
 		private qianghuaPanel:QianghuaPanel;
+		private teamPanel:TeamPanel;
+		private tujianPanel:TujianPanel;
+		private teamMemberPanel:TeamMemberPanel;
+		public mapChoosePanel:MapChoosePanel;
 		private viewContain:egret.DisplayObjectContainer;
 		public constructor() {
 		}
@@ -11,7 +15,11 @@ module gameviews {
 			this.viewContain = viewContain;
 			this.mainPanel = new MainPanel();
 			this.bagPanel = new BagPanel();
+			this.teamPanel = new TeamPanel();
+			this.tujianPanel = new TujianPanel();
 			this.qianghuaPanel = new QianghuaPanel();
+			this.mapChoosePanel = new MapChoosePanel();
+			this.teamMemberPanel = new TeamMemberPanel();
 		}
 		
 
@@ -35,9 +43,26 @@ module gameviews {
 			this.mainPanel.currentTab = this.qianghuaPanel;
 		}
 
-		public hideQianghuaPanel():void{
+		public showTeamPanel():void{
+			this.mainPanel.currentTab = this.teamPanel;
+		}
+
+		public showTujianPanel():void{
+			this.mainPanel.currentTab = this.tujianPanel;
+		}
+
+		public showMemberPanel():void{
+			this.mainPanel.currentTab = this.teamMemberPanel;
+		}
+
+		public showMapChoosePanel():void{
+			this.mainPanel.currentTab = this.mapChoosePanel;
+		}
+
+		public hideCurrentPanel():void{
 			this.mainPanel.updateTabSelected();
 		}
+
 	}
 
 	export var viewManager:ViewManager = new ViewManager;
