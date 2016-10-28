@@ -1,12 +1,23 @@
 module gameCore {
 	/**物品数据对象 */
-	export class GoodsItemMO extends BagItemMO{
+	export class GoodsItemMO extends  gamevo.WithConfigVO{
 		public goodsId:string='';
 		public goodsNum:number = 0;
+
+		public getConfigId():string{
+			return this.goodsId;
+		}
+
+		public analysis(config:any):void{
+				var xml:egret.XML = config as egret.XML;
+			this.id = xml.attributes.id;
+			this.goodsId = xml.attributes.goodsId;
+			this.goodsNum = xml.attributes.goodsNum;
+		}
 	}
 
 	/**英雄数据对象 */
-	export class HeroMO  extends gamevo.BaseVO{
+	export class HeroMO  extends gamevo.WithConfigVO{
 		/**英雄配置 */
 		public roleId:string;
 		/**角色等级 */
@@ -25,31 +36,26 @@ module gameCore {
 			this.roleLevel = parseFloat(xml.attributes.roleLevel);
 			this.awakenLevel = parseFloat(xml.attributes.awakenLevel);
 		}
+
+		public getConfigId():string{
+			return this.roleId;
+		}
 	}
 
 	/**英雄列表 */
 	export class HeroBag extends BagProxyMO<HeroMO>{
-		public getHeroArr():HeroMO[]
-		{
-			var arr:HeroMO[] = [];
-			for(var i:number =0;i < this._availgridsNum;i++)
-			{
-				var grid = this.grids[i];
-				if(grid.isUsed)
-				{
-					arr.push(grid.item.data);
-				}
-			}
-			return arr;
-		}
 	} 
+
+	export class GoodsBag extends BagProxyMO<GoodsItemMO>{
+	}
+
 
 	/**玩家背包管理中心 */
 	export class PlayerBagMnger extends gameCore.BagManager{
 		/**道具背包 */
-		public daojuBag:BagMO<GoodsItemMO>;
+		public daojuBag:GoodsBag;
 		/**资源背包 */
-		public ziyuanBag:BagMO<GoodsItemMO>;
+		public ziyuanBag:GoodsBag;
 		/**英雄列表 */
 		public heroBag:HeroBag;
 		/**出战列表 */
@@ -58,10 +64,10 @@ module gameCore {
 		private allHeroBags:HeroBag[] = [];
 		public constructor(){
 			super();
-			this.daojuBag = new BagMO<GoodsItemMO>();
+			this.daojuBag = new GoodsBag();
 			this.daojuBag.initBag('daojuBag',10,40,this)
 
-			this.ziyuanBag = new BagMO<GoodsItemMO>();
+			this.ziyuanBag = new GoodsBag();
 			this.ziyuanBag.initBag('ziyuanBag',10,40,this)
 
 			this.heroBag = new HeroBag();
@@ -69,7 +75,7 @@ module gameCore {
 			this.allHeroBags.push(this.heroBag);
 
 			this.teamHeroBag = new HeroBag();
-			this.teamHeroBag.initBag('heroBag',10,20,this);
+			this.teamHeroBag.initBag('teamHeroBag',10,20,this);
 			this.allHeroBags.push(this.heroBag);
 		}
 
@@ -83,6 +89,44 @@ module gameCore {
 				bag.removeItemByData(mo);
 			})
 		}
+
+		public addGoods(item:GoodsItemMO):void{
+			this.getBagByGoodsId(item.goodsId).pushItemByData(item);
+		}
+
+		public hasGoodsByGoodsId(GoodsId:string):boolean{
+			return this.getBagByGoodsId(GoodsId).hasItemByConfigId(GoodsId);
+		}
+
+		public getGoodsByGoodsId(goodsId:string):GoodsItemMO[]
+		{
+			return this.getBagByGoodsId(goodsId).getItemByConfigId(goodsId);
+		}
+
+		public removeGoods(item:GoodsItemMO):void{
+			this.getBagByGoodsId(item.goodsId).removeItemByData(item);
+		}
+
+		public getBagByGoodsId(goodsId:string):GoodsBag{
+			var goodsInfo:gamevo.GoodsItemVO = gameMngers.goodsInfoMnger.getVO(goodsId);
+			if(goodsInfo.tag === gamevo.GoodsItemVO.Tag_DAOJU)
+			{
+				return this.daojuBag;
+			}
+			else{
+				return this.ziyuanBag;
+			}
+		}
+
+		public getBagByTag(bagTag:string):GoodsBag{
+			if(bagTag === gamevo.GoodsItemVO.Tag_DAOJU)
+			{
+				return this.daojuBag;
+			}
+			else{
+				return this.ziyuanBag;
+			}
+		}
 	}
 
 	/**玩家数据对象 */
@@ -91,7 +135,6 @@ module gameCore {
 		public gold:number = 0;
 		public exp:number = 0;
 		public money:number = 0;
-		public heros:HeroMO[] = [];
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
@@ -103,17 +146,31 @@ module gameCore {
 				heroMO.analysis(item);
 				this.addHero(heroMO);
 			});
+
+			gameutils.XMLUtil.foreachChild(xml,'daoju',(item)=>{
+				var goodsItem:GoodsItemMO = new GoodsItemMO;
+				goodsItem.analysis(item);
+				this.playerBagMnger.addGoods(goodsItem);
+			});
+			gameutils.XMLUtil.foreachChild(xml,'ziyuan',(item)=>{
+				var goodsItem:GoodsItemMO = new GoodsItemMO;
+				goodsItem.analysis(item);
+				this.playerBagMnger.addGoods(goodsItem);
+			});
 		}
 
+		/**添加英雄 */
 		public addHero(mo:HeroMO){
-			this.heros.push(mo);
 			this.playerBagMnger.heroBag.pushItemByData(mo);
 		}
 
+		/**移除英雄 */
 		public removeHero(mo:HeroMO)
 		{
-			this.heros.splice(this.heros.indexOf(mo),1);
 			this.playerBagMnger.removeHeroFromAllBag(mo);
 		}
+
 	}
+
+	export var currentUserInfo:PlayerMO;
 }

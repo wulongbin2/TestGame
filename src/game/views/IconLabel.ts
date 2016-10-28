@@ -1,3 +1,4 @@
+/**显示icon与label的简单组件*/
 class IconLabel extends eui.Component implements  eui.UIComponent {
 
 	private iconDisplay:eui.Image;

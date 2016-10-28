@@ -1,3 +1,4 @@
+/**开始冒险大按钮 */
 class StartGameBtn extends eui.Button implements  eui.UIComponent {
 	public constructor() {
 		super();

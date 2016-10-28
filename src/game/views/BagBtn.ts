@@ -1,3 +1,4 @@
+/**弹出背包的按钮 */
 class BagBtn extends eui.Button implements  eui.UIComponent {
 	public constructor() {
 		super();

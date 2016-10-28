@@ -35,6 +35,8 @@ class Main extends eui.UILayer {
     private loadingView: LoadingUI;
     protected createChildren(): void {
         super.createChildren();
+        gamesystem.version = '0.1';
+        RES.registerVersionController(new gameutils.VersionCtrl);
         //inject the custom material parser
         //注入自定义的素材解析器
         var assetAdapter = new AssetAdapter();
@@ -98,10 +100,6 @@ class Main extends eui.UILayer {
     }
     private createScene(){
         if(this.isThemeLoadEnd && this.isResourceLoadEnd){
-            var data:egret.XML  = RES.getRes('GameConfig_xml');
-            gameMngers.analysisByxml(data);
-            var vo = gameMngers.roleInfoMnger.getVO('lvfengxian');
-            console.log(vo);
             this.startCreateScene();
         }
     }
@@ -138,7 +136,14 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected startCreateScene(): void {
+        //初始化配置
+         var data:egret.XML  = RES.getRes('GameConfig_xml');
+        gameMngers.analysisByxml(data);
+        gameCore.currentUserInfo = gameMngers.playerInfoMnger.getVO('user');
+        //显示视图
+        gameutils.asynMnger.running = true;
         gameviews.viewManager.init(this);
         gameviews.viewManager.showMainPanel();
+
     }
 }

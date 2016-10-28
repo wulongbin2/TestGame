@@ -1,3 +1,4 @@
+/**小关卡显示对象 */
 class MapItem extends eui.RadioButton implements  eui.UIComponent {
 	public constructor() {
 		super();

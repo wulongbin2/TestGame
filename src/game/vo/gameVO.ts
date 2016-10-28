@@ -12,6 +12,12 @@ module gamevo {
 		}
 	}
 
+	export class WithConfigVO extends BaseVO{
+		public getConfigId():string{
+			return '';
+		}
+	}
+
 	/**物品使用效果配置 */
 	export class GoodsUseEffect{
 		public type:string;
@@ -24,6 +30,10 @@ module gamevo {
 
 	/**物品配置 */
 	export class GoodsItemVO extends BaseVO{
+		/**资源 */
+		public static Tag_ZIYUAN:string = 'ziyuan';
+		/**道具 */
+		public static Tag_DAOJU:string = 'daoju';
 		/**物品名称 */
 		public name:string;
 		/**物品标签[ziyuan,daoju] */
@@ -34,23 +44,31 @@ module gamevo {
 		public mergeMax:number;
 		/**描述 */
 		public des:string;
+		/**物品资源图标 */
+		public source:string;
 		/**使用效果 */
 		public useEffects:GoodsUseEffect[] = [];
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
 			this.name = xml.attributes.name;
+			this.source = xml.attributes.source;
 			this.merge = xml.attributes.merge==='true';
 			this.mergeMax =parseFloat(xml.attributes.mergeMax);
 
 			this.tag = xml.attributes.tag;
 			this.des = xml.attributes.des;
 
-		gameutils.XMLUtil.foreachChild(xml, 'effect',(item)=>{
+			gameutils.XMLUtil.foreachChild(xml, 'useEffect',(item)=>{
 				var effectVo:GoodsUseEffect = new GoodsUseEffect;
 					effectVo.analysis(item);
 					this.useEffects.push(effectVo);
-				});
+			});
+		}
+
+		public get canUse():boolean
+		{
+			return this.useEffects.length>0;
 		}
 	}
 

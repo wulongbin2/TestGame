@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="MapChoosePanelSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
 	<w:Config id="157ff9d964d" ></w:Config>
-	<e:Image source="关卡界面_png" left="0" top="0" bottom="0" right="0" locked="true" visible="false"/>
 	<e:Image y="-1" scaleX="1" scaleY="1" height="100" left="0" right="0" source="bottom_bg_png" x="8"/>
 	<e:Image source="herodetail_border_d_png" y="164" scale9Grid="40,27,240,28" scaleY="-1.5" width="427" x="0" scaleX="1.5"/>
 	<e:Image source="herodetail_border_d_png" y="851" scale9Grid="40,27,240,28" scaleY="1.5" width="427" x="0" scaleX="1.5"/>

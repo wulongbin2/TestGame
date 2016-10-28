@@ -7,4 +7,5 @@ module gameutils {
 		public static  Blue_Filter:any[]=[new egret.GlowFilter(0x0000ff,1)];
 		public static  Light_filter:any[]=[new egret.GlowFilter(0xffff00,1,10,10,2,1,true)];
 	}
+
 }

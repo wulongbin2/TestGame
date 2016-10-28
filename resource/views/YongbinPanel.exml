@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="YongbinPanelSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
 	<w:Config id="157f55829f2" ></w:Config>
-	<e:Image source="佣兵菜单界面_png" left="0" top="0" bottom="0" right="0" locked="true" visible="false"/>
+	<e:Image y="-1" scaleX="1" scaleY="1" height="100" left="0" right="0" source="bottom_bg_png" x="0"/>
+	<e:Image source="herodetail_border_d_png" y="919" scale9Grid="40,27,240,28" scaleY="1.5" width="427" x="0" scaleX="1.5"/>
+	<e:Image source="herodetail_border_d_png" y="164" scale9Grid="40,27,240,28" scaleY="-1.5" width="427" x="0" scaleX="1.5"/>
 	<e:Image source="maintitle_bg_png" x="45" y="11" scale9Grid="180,15,42,90" width="547"/>
 	<e:Label text="佣兵功能" y="72" width="156" height="83" bold="true" size="34" fontFamily="黑体" textAlign="center" horizontalCenter="0"/>
 	<ns1:YongbinMenuItem id="teamBtn" label="出场阵容" y="137" width="626" height="100" icon="listicon_1_png" horizontalCenter="0"/>

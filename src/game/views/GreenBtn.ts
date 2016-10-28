@@ -1,3 +1,4 @@
+/**一个绿色按钮 */
 class GreenBtn extends eui.Button implements  eui.UIComponent {
 	private bg:eui.Image;
 	private _bgSource:string;

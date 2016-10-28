@@ -1,3 +1,4 @@
+/**主界面菜单按钮 */
 class MainMenuBtn extends eui.RadioButton implements  eui.UIComponent {
 	private lockIcon:eui.Image;
 	public constructor() {
@@ -38,13 +39,6 @@ class MainMenuBtn extends eui.RadioButton implements  eui.UIComponent {
 		if(!this.enabled)
 		{
 			this.filters =gameutils.FilterUtls.BW_Fiter;
-		}
-		else if(this.selected)
-		{
-			this.filters  = gameutils.FilterUtls.Light_filter;
-		}
-		else{
-			this.filters = null;
 		}
 	}
 }

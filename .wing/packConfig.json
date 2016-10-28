@@ -3,6 +3,7 @@
     "maxImageHeight": 2014,
     "defaultResPath": "c:\\Users\\wulongbin\\Documents\\TestGame\\trunk\\resource\\default.res.json",
     "packGroups": {
-        "preload": true
+        "preload": true,
+        "login": false
     }
 }

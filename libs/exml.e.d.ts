@@ -86,6 +86,8 @@ declare class MapItemSkin extends eui.Skin{
 }
 declare class MapLevelBtnSkin extends eui.Skin{
 }
+declare class MapLevelItemSkin extends eui.Skin{
+}
 declare class QianghuaListItemSkin extends eui.Skin{
 }
 declare class QianghuaPanelSkin extends eui.Skin{

@@ -172,5 +172,10 @@
         "path": "..\\resource\\views\\MapChooseItem.ts",
         "class": "MapChooseItem",
         "parentPath": "resource/eui_skins/ItemRendererSkin.exml"
+    },
+    "15804176c6c": {
+        "path": "..\\resource\\views\\MapLevelItem.ts",
+        "class": "MapLevelItem",
+        "parentPath": "resource/eui_skins/ItemRendererSkin.exml"
     }
 }

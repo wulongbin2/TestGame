@@ -1,3 +1,4 @@
+/**很黄的按钮 */
 class YellowLeftBtn extends eui.Button implements  eui.UIComponent {
 	public constructor() {
 		super();

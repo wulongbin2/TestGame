@@ -70,6 +70,20 @@ module gameMngers {
 		}
 	}
 
+	class PlayerInfoMnger extends BaseMnger<gameCore.PlayerMO>{
+		protected createVO():gameCore.PlayerMO
+		{
+			return new gameCore.PlayerMO;
+		}
+	}
+
+	class HeroAnimaInfoMnger extends BaseMnger<gamevo.HeroAnimaVO>{
+		protected createVO():gamevo.HeroAnimaVO
+		{
+			return new gamevo.HeroAnimaVO;
+		}
+	}
+
 	var lib:{[name:string]:BaseMnger<any>} = {};
 	/**注册管理器 */
 	export function registerMnger(vo:BaseMnger<any>):void{
@@ -81,13 +95,6 @@ module gameMngers {
 		return lib[id];
 	}
 
-	/**根据xml批量解析管理器配置*/
-	export function analysisByxml(xml:egret.XML):void{
-		xml.children.forEach((item:egret.XML)=>{
-			getMnger(item.attributes.mngerType).analysis(RES.getRes(item.attributes.id));
-		})
-	}
-
 	/**角色配置管理器 */
 	export var roleInfoMnger:RoleInfoMnger = new RoleInfoMnger('roleInfo');
 	/**武器配置管理器 */
@@ -95,5 +102,17 @@ module gameMngers {
 	/**技能配置管理器 */
 	export var skillInfoMnger:SkillInfoMnger = new SkillInfoMnger('skillInfo');  
 	/**物品配置管理器 */
-	export var goodsInfoMnger:GoodsInfoMnger = new GoodsInfoMnger('goodsInfo');  
+	export var goodsInfoMnger:GoodsInfoMnger = new GoodsInfoMnger('goodsInfo');
+	/**玩具信息管理器 */
+	export var playerInfoMnger:PlayerInfoMnger = new PlayerInfoMnger('playerInfo');
+	/**英雄动画管理器 */
+	export var heroAnimaInfoMnger:HeroAnimaInfoMnger = new HeroAnimaInfoMnger('heroAnimaInfo');      
+
+
+	/**根据xml批量解析管理器配置*/
+	export function analysisByxml(xml:egret.XML):void{
+		xml.children.forEach((item:egret.XML)=>{
+			getMnger(item.attributes.mngerType).analysis(RES.getRes(item.attributes.id));
+		})
+	}
 }

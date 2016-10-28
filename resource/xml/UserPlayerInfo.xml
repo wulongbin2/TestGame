@@ -1,2 +1,17 @@
 <UserPalyerInfo>
+    <item id='user' gold='100' exp='200' money='300' lastTime=''>
+        <heros>
+            <item id='1' roleId='lvfengxian' roleLevel='3' awakenLevel='1'/>
+            <item id='2' roleId='lvfengxian' roleLevel='7' awakenLevel='2'/>
+        </heros>
+        <daoju>
+            <item id='1' goodsId='randBlueHero' goodsNum='1'/>
+            <item id='2' goodsId='randBlueHero' goodsNum='1'/>
+            <item id='3' goodsId='randBlueHero' goodsNum='1'/>
+        </daoju>
+        <ziyuan>
+            <item id='4' goodsId='bluebaoshi' goodsNum='10'/>
+        </ziyuan>
+
+    </item>
 </UserPalyerInfo>

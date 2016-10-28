@@ -1,3 +1,4 @@
+/**成员列表子项 */
 class TeamListItem extends eui.ItemRenderer implements  eui.UIComponent {
 	public constructor() {
 		super();

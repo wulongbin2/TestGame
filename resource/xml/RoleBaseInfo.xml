@@ -16,4 +16,5 @@
     @des：描述
     -->
     <item id='lvfengxian' name='吕奉先' initZDL='100' potential='0.7' quality='zi' source='' skills='lvfengxian'  weapon='lvfengxian'  buff='2,2,0,2' awakenTime='3' tag='人类,男,狂战士' des='武器是方天画戟，特长势战斗，弱点是天真'/>
+    <item id='tunvlang' name='兔女郎' initZDL='100' potential='0.7' quality='zi' source='' skills='lvfengxian'  weapon='lvfengxian'  buff='2,2,0,2' awakenTime='3' tag='人类,女,舞女' des='武器是方天画戟，特长势战斗，弱点是天真'/>
 </RoleBaseInfo>

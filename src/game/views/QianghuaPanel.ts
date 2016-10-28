@@ -1,3 +1,4 @@
+/**强化升级面板 */
 class QianghuaPanel extends eui.Component implements  eui.UIComponent {
 	public tab1:eui.RadioButton;
 	private closeBtn:eui.Button;

@@ -1,3 +1,4 @@
+/**佣兵菜单子项 */
 class YongbinMenuItem extends eui.Button implements  eui.UIComponent {
 	private lockIcon:eui.Image;
 	public constructor() {

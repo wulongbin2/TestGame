@@ -1,3 +1,4 @@
+/**关卡选择面板 */
 class MapChoosePanel extends eui.Component implements  eui.UIComponent {
 	private closeBtn:eui.Button;
 	public constructor() {

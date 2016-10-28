@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <e:Skin class="BagBtnSkin" states="up,down,disabled" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="226" height='103'>
-    <e:Image alpha.disabled="0.5" source="buttonbg_5_png" scale9Grid="55,30,41,11" scaleX.down="0.9" scaleY.down="0.9" width="226" height="103" horizontalCenter="0" verticalCenter="0"/>
+    <e:Image source="buttonbg_5_png" scale9Grid="55,30,41,11" scaleX.down="0.9" scaleY.down="0.9" width="226" height="103" horizontalCenter="0" verticalCenter="0"/>
 	<e:Image horizontalCenter="-17" verticalCenter="-6" x="73" y="9" scaleX="1.5" scaleY="1.5" source="10000003_png"/>
     <e:Label top="30" bottom="-14" left="54" right="51"
              size="30"

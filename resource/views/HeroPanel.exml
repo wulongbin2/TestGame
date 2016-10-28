@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="HeroPanelSkin" width="400" height="300" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+<e:Skin class="HeroPanelSkin"  width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
 	<w:Config id="157fb0607ff" ></w:Config>
+	<e:Image source="aircity_png" left="0" top="0" bottom="0" right="0" x="0" y="0" scaleX="1" scaleY="1" locked="true"/>
+	<e:Rect left="0" top="0" bottom="0" right="0" alpha="0.4" x="0" y="0" scaleX="1" scaleY="1"/>
+	<e:Image source="mining_floating_layer_bg_png" x="123" y="146" scale9Grid="30,7,182,44" width="398" scaleX="1" scaleY="1" alpha="0.6" locked="true"/>
+	<e:Image source="maintitle_bg_png" x="45" y="11" scale9Grid="180,15,42,90" width="547" locked="true"/>
+	<e:Label id="nameTf" text="兔女郎" y="72" width="156" height="49" bold="true" size="34" fontFamily="黑体" textAlign="center" horizontalCenter="0" locked="true"/>
+	<e:Image source="contract1_png" x="18" y="138"/>
+	<e:Image id="newIcon" source="new_png" x="55" y="125" width="61" height="35"/>
+	<e:Label id="roleTagTf" text="蓝将/人类/女" x="142" y="159" bold="true" fontFamily="黑体" width="354" textAlign="center"/>
+	<e:Image source="round_bg_png" x="261" y="496" width="117" alpha="0.5"/>
+	<ns1:GreenBtn id="closeBtn" label="" x="-23" y="1063" bgSource="buttonbg_12_png" height="73" width="176"/>
+<e:Image source="backbtn_icon2_png" x="21" y="1086" touchEnabled="false"/>
+	<e:Image source="paper_bg12_png" y="599" scale9Grid="76,20,148,26" width="614" height="448" horizontalCenter="0"/>
+	<e:Image source="weaponbox_infobg_d_png" x="31" y="615" width="578" height="43"/>
+	<e:Label text="人物背景" x="236" y="628" bold="true" fontFamily="黑体" size="22" width="160" textAlign="center"/>
+	<e:Image source="biography_icon2_png" x="358" y="931" width="238" height="86"/>
+	<e:Label id="desTf" text="哇啊啊啊啊" x="40" y="668" width="555" height="265" textColor="0x40372b" bold="true" fontFamily="黑体"/>
 </e:Skin>

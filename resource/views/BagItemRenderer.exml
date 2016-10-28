@@ -2,5 +2,8 @@
 <e:Skin class="BagItemRendererSkin" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="74">
 	<w:Config id="157f4c96b1a" ></w:Config>
 	<e:Image source="bag_emtpybg_png" x="0" y="0"/>
+	<e:Image id="selectedIcon" source="skill_choose2_png" x="-8" y="-10"/>
+	<e:Image id="iconDisplay" source="intermediate_tool_png" horizontalCenter="0" verticalCenter="-4"/>
+	<e:Label id="numTf" text="x321" y="49" textColor="0xff863d" bold="true" fontFamily="黑体" size="18" right="3"/>
     
 </e:Skin>

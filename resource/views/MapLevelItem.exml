@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="MapLevelItemSkin" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="151" height="59">
+	<w:Config id="15804176c6c" ></w:Config>
+	<e:Image source="paper_bg12_png" scale9Grid="51,24,173,24" left="0" top="0" bottom="0" right="0"/>
+	<e:Label id="labelTf" text="简单" x="24" y="15" textColor="0x000000" width="103" height="24" size="24" textAlign="center"/>
+</e:Skin>

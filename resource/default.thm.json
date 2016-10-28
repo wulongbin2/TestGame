@@ -45,7 +45,8 @@
     "AllMemberPanel": "resource/eui_skins/AllMemberPanel.exml",
     "TeamMemberPanel": "resource/views/TeamMemberPanel.exml",
     "MapChoosePanel": "resource/views/MapChoosePanel.exml",
-    "MapChooseItem": "resource/views/MapChooseItem.exml"
+    "MapChooseItem": "resource/views/MapChooseItem.exml",
+    "MapLevelItem": "resource/views/MapLevelItem.exml"
   },
   "autoGenerateExmlsList": true,
   "exmls": [
@@ -80,6 +81,7 @@
     "resource/views/MapIndexBtn.exml",
     "resource/views/MapItem.exml",
     "resource/views/MapLevelBtn.exml",
+    "resource/views/MapLevelItem.exml",
     "resource/views/QianghuaListItem.exml",
     "resource/views/QianghuaPanel.exml",
     "resource/views/SkillISlottem.exml",

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="FightPanelSkin"  width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
 	<w:Config id="157e1946d5c" ></w:Config>
-	<e:Image source="冒险界面_png" left="0" top="0" right="0" bottom="0" locked="true" visible="false"/>
 	<e:Group x="5" y="125" locked="true">
 		<e:Image source="maze_map_d_png" y="0" width="631" height="365" x="0"/>
 		<e:Image source="maze_map_path_d_png" x="569" y="304" width="478" height="229" scaleX="-1" scaleY="-1"/>
@@ -19,5 +18,5 @@
 	<ns1:GreenBtn id="dropListBtn" label="最佳掉落" x="460" y="409" icon="herobag_bg_png" width="152" height="54" bgSource="buttonbg_3_png"/>
 	<ns1:BagBtn id="bagBtn" label="按钮" x="2" y="892"/>
 	<ns1:TeamBtn id="teamBtn" label="按钮" x="410" y="893"/>
-	<ns1:FightBtn id="fightBtn" label="按钮" y="864" horizontalCenter="0" locked="true"/>
+	<ns1:FightBtn id="fightBtn" label="按钮" y="864" horizontalCenter="0"/>
 </e:Skin>

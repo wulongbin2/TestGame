@@ -3,4 +3,6 @@
     <item id='WeaponInfo_xml' mngerType='weaponInfo'/>
     <item id='SkillBaseInfo_xml' mngerType='skillInfo'/>
     <item id='GoodsItemInfo_xml' mngerType='goodsInfo'/>
+    <item id='HeroAnimaInfo_xml' mngerType='heroAnimaInfo'/>
+    <item id='UserPlayerInfo_xml' mngerType='playerInfo'/>
 </gameConfig>

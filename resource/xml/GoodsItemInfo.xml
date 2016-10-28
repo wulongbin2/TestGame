@@ -5,14 +5,17 @@
      @merge:是否自动合并
      @mergeMax:合并最大数量;
      @tag：物品标签[ziyuan,daoju]
+     @source:资源图标
      @des：描述
      @useEffect 使用效果
      @useEffect.item.type 效果类型
      @useEffect.item.param 使用参数
     -->
-    <item id='randBlueHero' name='宝箱' tag='daoju' merge='true' mergeMax='999' des='随机开启蓝色英雄'>
+    <item id='randBlueHero' name='宝箱' merge='false' mergeMax='1' tag='daoju' source='herobag_bg_png' des='随机开启蓝色英雄'>
         <useEffect>
             <item type='randHero' param='blue'/>
         </useEffect>
     </item>
+
+    <item id='bluebaoshi' name='蓝宝石'  merge='true' mergeMax='999' tag='ziyuan'  source='diamond_png' des='觉醒材料'/>
 </GoodsItemInfo>

@@ -1,3 +1,4 @@
+/**关卡难度按钮 */
 class MapLevelBtn extends eui.Button implements  eui.UIComponent {
 	public constructor() {
 		super();

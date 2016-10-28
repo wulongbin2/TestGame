@@ -1,3 +1,4 @@
+/**出场阵容面板 */
 class TeamPanel extends eui.Component implements  eui.UIComponent {
 	private closeBtn:eui.Button;
 	public constructor() {

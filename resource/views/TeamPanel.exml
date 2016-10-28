@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="TeamPanelSkin"  width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
 	<w:Config id="157f9c1610a" ></w:Config>
-	<e:Image source="队伍选择界面_png" left="0" top="0" bottom="0" right="0" locked="true" visible="false"/>
 	<e:Image y="96" scaleX="1" scaleY="1" height="210" left="0" right="0" source="bottom_bg_png" locked="true"/>
 	<e:Group y="73" right="0" left="0">
 		<e:Image source="floating_layerbg2_png" x="-4" y="0" scale9Grid="22,23,25,26" width="649" height="156" scaleX="1" scaleY="1" alpha="0.5"/>

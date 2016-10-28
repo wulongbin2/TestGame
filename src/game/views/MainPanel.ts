@@ -1,3 +1,4 @@
+/**主界面 */
 class MainPanel extends eui.Component implements  eui.UIComponent {
 	public tabContainer:eui.Group;
 	public startGame:StartGame;
@@ -33,7 +34,7 @@ class MainPanel extends eui.Component implements  eui.UIComponent {
 		this.mainMenu1.selected = true;
 		this.mainMenu1.group.addEventListener( egret.Event.CHANGE,this.updateView,this);
 
-		this.startGame.addEventListener(egret.TouchEvent.TOUCH_TAP,this.startGameHd,this);
+		this.startGame.addEventListener('startGame',this.startGameHd,this);
 		this.updateView();
 	}
 
@@ -43,6 +44,7 @@ class MainPanel extends eui.Component implements  eui.UIComponent {
 	}
 
 	private _currentTab:egret.DisplayObject;
+	/**当前面板 */
 	public set currentTab(value:egret.DisplayObject){
 		if(this._currentTab ===value) return;
 		if(this._currentTab)
@@ -66,11 +68,12 @@ class MainPanel extends eui.Component implements  eui.UIComponent {
 		{
 			this.currentTab = this.startGame;
 		}
+		else
 		if(this.mainMenu2.selected)
 		{
 			this.currentTab = this.fightPanel;
 		}
-
+		else
 		if(this.mainMenu6.selected)
 		{
 			this.currentTab = this.yongbinPanel;

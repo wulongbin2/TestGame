@@ -1,3 +1,4 @@
+/**所有成员队伍面板*/
 class TeamMemberPanel extends eui.Component implements  eui.UIComponent {
 	private closeBtn:eui.Button;
 	public constructor() {

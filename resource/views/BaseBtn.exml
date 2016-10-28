@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <e:Skin class="BaseBtnSkin" states="up,down,disabled"  xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-    <e:Image id="bg" alpha.disabled="0.5"
+    <e:Image id="bg" 
             
              scale9Grid="53,26,148,16"  left.down="5"  right.down="5" bottom.down="5" top.down="5" top="0" bottom="0" right="0" left="0" source="buttonbg_3_png"/>
     <e:Label id="labelDisplay" bottom="8" right="11"

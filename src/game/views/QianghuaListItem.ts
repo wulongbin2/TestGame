@@ -1,3 +1,4 @@
+/**升级列表子项 */
 class QianghuaListItem extends eui.ItemRenderer implements  eui.UIComponent {
 	public constructor() {
 		super();

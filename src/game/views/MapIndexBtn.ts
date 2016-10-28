@@ -1,3 +1,4 @@
+/**弹出关卡选择的按钮 */
 class MapIndexBtn extends eui.Button implements  eui.UIComponent {
 	public constructor() {
 		super();

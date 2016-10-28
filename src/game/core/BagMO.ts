@@ -124,10 +124,7 @@ module gameCore {
 		public removeItem(item:T){
 			if(item.bagName === this.name)
 			{
-				this.grids[item.pos].item = null;
-				item.pos = -1;
-				item.bagName = '';
-				this._usedgridNum--;
+				this._removeItem(item);
 			}
 		}
 
@@ -146,18 +143,58 @@ module gameCore {
 		}
 	}
 
-	/**背包 子项数据为代理对象BagItemProxy */
-	export class BagProxyMO<G extends gamevo.BaseVO> extends BagMO<BagItemProxy<G>>{
 
-		protected _lib:{[name:string]:BagItemProxy<G>}={};
+	/**背包 子项数据为代理对象BagItemProxy */
+	export class BagProxyMO<G extends gamevo.WithConfigVO> extends BagMO<BagItemProxy<G>>{
+		/**根据对象唯一id存放 */
+		protected _lib:{[id:string]:BagItemProxy<G>}={};
+		/**根据对象引用的配置id存放*/
+		protected _libByConfigId:{[configId:string]:G[]}={};
+		/**存放所有的对象 */
+		protected _allItems:G[] = [];
 		public pushItemByData(data:G):void{
 			this.pushItem(this.createProxy(data));
 		}
 
+		/**移除对象 */
 		public removeItemByData(data:G):void{
 			if(this._lib[data.id])
 			{
 				this.removeItem(this._lib[data.id]);
+			}
+		}
+
+		/**根据唯一id判定是否存在对象 */
+		public hasItemById(id:string):boolean
+		{
+			return this._lib[id]?true:false;
+		}
+
+		/**根据唯一id判定获取对象 */
+		public getItemById(id:string):G{
+			return this._lib[id]?this._lib[id].data:null;
+		}
+		/**根据配置id判定获取对象组 */
+		public getItemByConfigId(configId:string):G[]
+		{
+			if(this._libByConfigId[configId])
+			{
+				return this._libByConfigId[configId];
+			}
+			else{
+				return [];
+			}
+		}
+		/**根据配置id判定对象是否存在 */
+		public hasItemByConfigId(configId:string):boolean
+		{
+			if(this._libByConfigId[configId])
+			{
+				return this._libByConfigId[configId].length>0;
+			}
+			else
+			{
+				return false;
 			}
 		}
 
@@ -171,11 +208,30 @@ module gameCore {
 		protected _addItemAt(item:BagItemProxy<G>, pos:number){
 			super._addItemAt(item,pos);
 			this._lib[item.data.id] = item;
+
+			if(this._libByConfigId[item.data.getConfigId()])
+			{
+				var arr:G[] = this._libByConfigId[item.data.getConfigId()];
+				arr.push(item.data);
+			}
+			else
+			{
+				 this._libByConfigId[item.data.getConfigId()]= [item.data];
+			}
+			this._allItems.push(item.data);
+		}
+
+		public get allItems():G[]
+		{
+			return this._allItems;
 		}
 
 		protected _removeItem(item:BagItemProxy<G>){
 			super._removeItem(item);
 			this._lib[item.data.id] = null;
+			var arr:any[] = this._libByConfigId[item.data.getConfigId()];
+			arr.splice(arr.indexOf(item),1);
+			this._allItems.splice(this._allItems.indexOf(item.data),1);
 		}
 	}
 

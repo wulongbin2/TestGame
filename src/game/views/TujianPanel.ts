@@ -1,3 +1,4 @@
+/**图鉴面板 */
 class TujianPanel extends eui.Component implements  eui.UIComponent {
 	private closeBtn:eui.Button;
 	public constructor() {

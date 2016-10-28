@@ -1,3 +1,4 @@
+/**冒险进度条 */
 class FightWaitBar extends eui.ProgressBar implements  eui.UIComponent {
 	public constructor() {
 		super();

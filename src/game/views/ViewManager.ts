@@ -1,4 +1,5 @@
 module gameviews {
+	/**视图管理 */
 	class ViewManager {
 		private mainPanel:MainPanel;
 		private bagPanel:BagPanel;
@@ -6,6 +7,7 @@ module gameviews {
 		private teamPanel:TeamPanel;
 		private tujianPanel:TujianPanel;
 		private teamMemberPanel:TeamMemberPanel;
+		private heroPanel:HeroPanel;
 		public mapChoosePanel:MapChoosePanel;
 		private viewContain:egret.DisplayObjectContainer;
 		public constructor() {
@@ -20,6 +22,7 @@ module gameviews {
 			this.qianghuaPanel = new QianghuaPanel();
 			this.mapChoosePanel = new MapChoosePanel();
 			this.teamMemberPanel = new TeamMemberPanel();
+			this.heroPanel = new HeroPanel();
 		}
 		
 
@@ -33,6 +36,10 @@ module gameviews {
 
 		public showBagPanel():void{
 			this.viewContain.addChild(this.bagPanel);
+		}
+
+		public showHeroPanel():void{
+			this.mainPanel.currentTab = this.heroPanel;
 		}
 
 		public hideBagPanel():void{

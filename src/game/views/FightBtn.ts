@@ -1,3 +1,4 @@
+/**开始战斗按钮 */
 class FightBtn extends eui.Button implements  eui.UIComponent {
 	public constructor() {
 		super();

@@ -1,3 +1,4 @@
+/**佣兵面板 */
 class YongbinPanel extends eui.Component implements  eui.UIComponent {
 
 	private teamBtn:eui.Button;

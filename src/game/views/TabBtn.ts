@@ -1,3 +1,4 @@
+/**背包tab组件 */
 class TabBtn extends eui.RadioButton implements  eui.UIComponent {
 	public constructor() {
 		super();
