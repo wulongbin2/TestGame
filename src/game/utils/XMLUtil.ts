@@ -20,5 +20,20 @@ module gameutils {
 					}
 				});
 		}
+
+		/**
+		 * 将xml指定名称的字节点遍历一遍
+		 */
+		public static childXML(xml:egret.XML,childName:string):egret.XML
+		{
+			var result:egret.XML;
+			xml.children.forEach((item:egret.XML)=>{
+				if(item.name ===childName)
+				{
+					result = item;
+				}
+			});
+			return result;
+		}
 	}
 }

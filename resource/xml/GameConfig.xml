@@ -4,5 +4,7 @@
     <item id='SkillBaseInfo_xml' mngerType='skillInfo'/>
     <item id='GoodsItemInfo_xml' mngerType='goodsInfo'/>
     <item id='HeroAnimaInfo_xml' mngerType='heroAnimaInfo'/>
+    <item id='MapGuajiAnima_xml' mngerType='mapGuajiAnima'/>
+    <item id='MapInfo_xml' mngerType='mapInfo'/>
     <item id='UserPlayerInfo_xml' mngerType='playerInfo'/>
 </gameConfig>

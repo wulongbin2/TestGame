@@ -142,6 +142,7 @@ class Main extends eui.UILayer {
         gameCore.currentUserInfo = gameMngers.playerInfoMnger.getVO('user');
         //显示视图
         gameutils.asynMnger.running = true;
+        egret.Bitmap.defaultSmoothing = false;
         gameviews.viewManager.init(this);
          gameviews.viewManager.showMainPanel();
 

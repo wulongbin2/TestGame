@@ -86,6 +86,21 @@ module gameMngers {
 		}
 	}
 
+
+	class MapInfoMnger extends BaseMnger<gamevo.MapVO>{
+		protected createVO():gamevo.MapVO
+		{
+			return new gamevo.MapVO;
+		}
+	}
+
+	class MapGuajiAnimaMnger extends BaseMnger<gamevo.MapGuajiAnimaVO>{
+		protected createVO():gamevo.MapGuajiAnimaVO
+		{
+			return new gamevo.MapGuajiAnimaVO;
+		}
+	}
+
 	var lib:{[name:string]:BaseMnger<any>} = {};
 	/**注册管理器 */
 	export function registerMnger(vo:BaseMnger<any>):void{
@@ -108,7 +123,11 @@ module gameMngers {
 	/**玩具信息管理器 */
 	export var playerInfoMnger:PlayerInfoMnger = new PlayerInfoMnger('playerInfo');
 	/**英雄动画管理器 */
-	export var heroAnimaInfoMnger:HeroAnimaInfoMnger = new HeroAnimaInfoMnger('heroAnimaInfo');      
+	export var heroAnimaInfoMnger:HeroAnimaInfoMnger = new HeroAnimaInfoMnger('heroAnimaInfo');
+	/**地图配置管理 */
+	export var mapInfoMnger:MapInfoMnger = new MapInfoMnger('mapInfo');      
+	/**地图背景动画配置管理 */
+	export var mapGuajiAnimaMnger:MapGuajiAnimaMnger = new MapGuajiAnimaMnger('mapGuajiAnima');        
 
 
 	/**根据xml批量解析管理器配置*/

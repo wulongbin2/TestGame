@@ -1,0 +1,7 @@
+<MapGuajiAnima>
+    <item id='test'>
+        <item bg='layer5_sky_png' type='staticBg'/>
+        <item bg='layer4_grass_png' type='moveBg'/>
+        <item bg='layer3_tree_png' type='moveBg'/>
+    </item>
+</MapGuajiAnima>

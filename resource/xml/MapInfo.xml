@@ -1,0 +1,39 @@
+<mapInfo>
+    <item id='1' name='三国世界' listBg='mapbg_aircity_png' guajiAnima='test' kaiqiZdl='0' useRoleIds='0,1,2,3,4,5,6,7,8,9'>
+        <map1 gold='100' exp='200' money='300'>
+            <heros>
+                <item id='1' roleId='101' roleLevel='3' awakenLevel='1'/>
+                <item id='2' roleId='102' roleLevel='7' awakenLevel='2'/>
+            </heros>
+            <daoju>
+                <item id='1' goodsId='randBlueHero' goodsNum='1'/>
+                <item id='2' goodsId='randBlueHero' goodsNum='1'/>
+                <item id='3' goodsId='randBlueHero' goodsNum='1'/>
+            </daoju>
+        </map1>
+
+        <map2 gold='100' exp='200' money='300'>
+            <heros>
+                <item id='1' roleId='101' roleLevel='3' awakenLevel='1'/>
+                <item id='2' roleId='102' roleLevel='7' awakenLevel='2'/>
+            </heros>
+            <daoju>
+                <item id='1' goodsId='randBlueHero' goodsNum='1'/>
+                <item id='2' goodsId='randBlueHero' goodsNum='1'/>
+                <item id='3' goodsId='randBlueHero' goodsNum='1'/>
+            </daoju>
+        </map2>
+
+        <map3 gold='100' exp='200' money='300'>
+            <heros>
+                <item id='1' roleId='101' roleLevel='3' awakenLevel='1'/>
+                <item id='2' roleId='102' roleLevel='7' awakenLevel='2'/>
+            </heros>
+            <daoju>
+                <item id='1' goodsId='randBlueHero' goodsNum='1'/>
+                <item id='2' goodsId='randBlueHero' goodsNum='1'/>
+                <item id='3' goodsId='randBlueHero' goodsNum='1'/>
+            </daoju>
+        </map3>
+    </item>
+</mapInfo>

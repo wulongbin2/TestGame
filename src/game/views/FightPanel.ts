@@ -5,8 +5,10 @@ class FightPanel extends eui.Component implements  eui.UIComponent {
 	public mapIndexBtn:eui.Button;
 	public mapLevelBtn:eui.Button;
 	public mapLevelList:eui.List;
+	public mapGuajiAnimaPlayer:gameAnima.MapGuajiAnimaPlayer;
 	public constructor() {
 		super();
+		this.mapGuajiAnimaPlayer = new gameAnima.MapGuajiAnimaPlayer;
 		this.addEventListener( eui.UIEvent.COMPLETE, this.oncomplate, this );
 	}
 
@@ -22,6 +24,11 @@ class FightPanel extends eui.Component implements  eui.UIComponent {
 		this.mapLevelList.y = this.mapLevelBtn.y+this.mapLevelBtn.height;
 
 		this.addEventListener(egret.Event.REMOVED_FROM_STAGE,this.onRemoveFromStage, this);
+		this.mapGuajiAnimaPlayer.y = 549;
+		this.mapGuajiAnimaPlayer.x = 7;
+		this.mapGuajiAnimaPlayer.scaleY = this.mapGuajiAnimaPlayer.scaleX = 2.45;
+		this.addChildAt(this.mapGuajiAnimaPlayer,0);
+		this.mapGuajiAnimaPlayer.resetGuajiAnima('test');
 	}
 
 	private onRemoveFromStage():void{
