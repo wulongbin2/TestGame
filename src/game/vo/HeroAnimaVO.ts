@@ -1,14 +1,23 @@
 module gamevo {
 	export class HeroAnimaVO extends BaseVO{
 		private _heroAnimas:gameAnima.AnimaInfo[] = [];
-		public source:string;
+		public width:number;
+		public height:number;
+		public cellWidth:number;
+		public cellHeight:number;
+		public sourceUrl:string;
+		public weaponUrl:string;
 		private spritesheet:egret.SpriteSheet;
 		private _isLoad:number = 0;
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
-			this.source = xml.attributes.source;
-
+			this.width = parseInt(xml.attributes.width);
+			this.height = parseInt(xml.attributes.height);
+			this.cellWidth = this.width/HeroAnimaVO.WN;
+			this.cellHeight = this.height/HeroAnimaVO.HN;
+			this.sourceUrl =gamesystem.Url_AnimaHero+this.id+'.png'
+			this.weaponUrl = gamesystem.Url_WeaponIcon+this.id+'.png'
 			this.createAnimaInfo(gamesystem.AnimaDownStand,1);
 			this.createAnimaInfo(gamesystem.AnimaLeftStand,1);
 			this.createAnimaInfo(gamesystem.AnimaRightStand,1);
@@ -20,6 +29,7 @@ module gamevo {
 			this.createAnimaInfo(gamesystem.AnimaUpWalk,2);
 		}
 
+
 		public get heroAnimas():gameAnima.AnimaInfo[]{
 			if(this._isLoad ===0)
 			{
@@ -30,21 +40,23 @@ module gamevo {
 
 		private load():void{
 			this._isLoad =1;
-			RES.getResByUrl(gamesystem.Url_AnimaHero+this.source,this.onComplete,this);
+			RES.getResByUrl(this.sourceUrl,this.onComplete,this);
 		}
 
+		public sourceBit:egret.Texture;
+		public static  WN:number = 3;
+		public static  HN:number = 4;
 		private onComplete(bit:egret.Texture):void{
+			this.sourceBit = bit;
 			this.spritesheet = new egret.SpriteSheet(bit);
 			var bits:egret.Texture [] = [];
 			var w:number = bit.bitmapData.width;
 			var h:number = bit.bitmapData.height;
-			const WN:number = 3;
-			const HN:number = 4;
-			var wu:number = w/WN;
-			var hu:number = h/HN;
-			for(var i:number = 0;i < HN;i++)
+			var wu:number = w/HeroAnimaVO.WN;
+			var hu:number = h/HeroAnimaVO.HN;
+			for(var i:number = 0;i < HeroAnimaVO.HN;i++)
 			{
-				for(var j:number = 0;j < WN;j++)
+				for(var j:number = 0;j < HeroAnimaVO.WN;j++)
 				{
 					bits.push(this.spritesheet.createTexture(j+"_"+i,j*wu,i*hu,wu,hu,0,0));
 				}

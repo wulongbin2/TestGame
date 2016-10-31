@@ -46,7 +46,8 @@
     "TeamMemberPanel": "resource/views/TeamMemberPanel.exml",
     "MapChoosePanel": "resource/views/MapChoosePanel.exml",
     "MapChooseItem": "resource/views/MapChooseItem.exml",
-    "MapLevelItem": "resource/views/MapLevelItem.exml"
+    "MapLevelItem": "resource/views/MapLevelItem.exml",
+    "TujianListItem": "resource/views/TujianListItem.exml"
   },
   "autoGenerateExmlsList": true,
   "exmls": [
@@ -94,6 +95,7 @@
     "resource/views/TeamMemberPanel.exml",
     "resource/views/TeamPanel.exml",
     "resource/views/Test.exml",
+    "resource/views/TujianListItem.exml",
     "resource/views/TujianPanel.exml",
     "resource/views/YellowLeftBtn.exml",
     "resource/views/YongbinMenuItem.exml",

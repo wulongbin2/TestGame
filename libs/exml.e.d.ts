@@ -110,6 +110,8 @@ declare class TeamMemberPanelSkin extends eui.Skin{
 }
 declare class TeamPanelSkin extends eui.Skin{
 }
+declare class TujianListItemSkin extends eui.Skin{
+}
 declare class TujianPanelSkin extends eui.Skin{
 }
 declare class YellowLeftBtnSkin extends eui.Skin{

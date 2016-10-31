@@ -21,7 +21,7 @@ module gameAnima {
 	/**动画播放器 */
 	export class AnimaPlayer extends egret.Sprite
 	{
-		private bitmap:eui.Image;
+		protected bitmap:eui.Image;
 		private _animaInfo:AnimaInfo;
 		private _currentFrame:number =0 ;
 		private _totalFrame:number =0;
@@ -39,6 +39,12 @@ module gameAnima {
 			this._tickTime = 1000/info.frameRate;
 			this.currentFrame = 0;
 			this.isRun = true;
+		}
+
+		public clear():void{
+			this.isRun = false;
+			this._animaInfo = null;
+			this.bitmap.source = null;
 		}
 
 		public get isRun():boolean
@@ -99,7 +105,13 @@ module gameAnima {
 
 		public constructor(){
 			super();
-			this.scaleY =	this.scaleX = 2.5;
+			this.scale = 2.2;
+			this.bitmap.smoothing = false;
+			this.addEventListener(egret.Event.REMOVED_FROM_STAGE,this.onRemoveFromStage,this)
+		}
+
+		private onRemoveFromStage():void{
+			this.isRun = false;
 		}
 
 		public addAnimaInfo(info:AnimaInfo):void{
@@ -109,11 +121,24 @@ module gameAnima {
 		public setHeroId(value:string){
 			this._animaInfos={};
 			this._heroAnimaInfo = gameMngers.heroAnimaInfoMnger.getVO(value);
-			this._heroAnimaInfo.heroAnimas.forEach(item=>this.addAnimaInfo(item));
+			if(this._heroAnimaInfo)
+			{
+				this.bitmap.x = -this._heroAnimaInfo.cellWidth*0.5;
+				this.bitmap.y = -this._heroAnimaInfo.cellHeight;
+				this._heroAnimaInfo.heroAnimas.forEach(item=>this.addAnimaInfo(item));
+				this.playAnimaById(gamesystem.AnimaDownStand);
+			}
+			else{
+				this.clear();
+			}
 		}
 
 		public playAnimaById(id:string):void{
 			this.play(this._animaInfos[id]);
+		}
+
+		public set scale(value:number){
+			this.scaleX = this.scaleY = value;
 		}
 	}
 }

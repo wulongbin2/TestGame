@@ -38,7 +38,8 @@ module gameviews {
 			this.viewContain.addChild(this.bagPanel);
 		}
 
-		public showHeroPanel():void{
+		public showHeroPanel(roleId:string,checkNew:boolean = false):void{
+			this.heroPanel.showHero(roleId,checkNew);
 			this.mainPanel.currentTab = this.heroPanel;
 		}
 

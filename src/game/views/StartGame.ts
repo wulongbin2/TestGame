@@ -9,12 +9,12 @@ class StartGame extends eui.Component implements  eui.UIComponent {
 
 	private oncomplate():void{
 		this.startgameBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onStartGame,this);
-		var test:gameAnima.HeroAnimaPlayer = new gameAnima.HeroAnimaPlayer();
-		test.x = 100;
-		test.y = 400;
-		test.setHeroId('testHero');
-		test.playAnimaById(gamesystem.AnimaRightWalk);
-		this.addChild(test);
+		// var test:gameAnima.HeroAnimaPlayer = new gameAnima.HeroAnimaPlayer();
+		// test.x = 100;
+		// test.y = 400;
+		// test.setHeroId('testHero');
+		// test.playAnimaById(gamesystem.AnimaRightWalk);
+		// this.addChild(test);
 	}
 
 	private onStartGame():void{

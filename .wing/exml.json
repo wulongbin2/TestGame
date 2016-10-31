@@ -177,5 +177,10 @@
         "path": "..\\resource\\views\\MapLevelItem.ts",
         "class": "MapLevelItem",
         "parentPath": "resource/eui_skins/ItemRendererSkin.exml"
+    },
+    "15818c1c96a": {
+        "path": "..\\resource\\views\\TujianListItem.ts",
+        "class": "TujianListItem",
+        "parentPath": "resource/eui_skins/ItemRendererSkin.exml"
     }
 }

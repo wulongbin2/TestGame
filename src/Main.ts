@@ -143,7 +143,9 @@ class Main extends eui.UILayer {
         //显示视图
         gameutils.asynMnger.running = true;
         gameviews.viewManager.init(this);
-        gameviews.viewManager.showMainPanel();
+         gameviews.viewManager.showMainPanel();
+
+
 
     }
 }

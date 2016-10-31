@@ -6,6 +6,7 @@ module gameMngers {
 	export class BaseMnger<T extends gamevo.IbaseVO> {
 		protected lib:{[name:string]:T} = {};
 		public id:string;
+		public all:T[] = [];
 		public constructor(id?:string) {
 			this.id =id;
 			registerMnger(this);
@@ -34,6 +35,7 @@ module gameMngers {
 		/**注册资源 */
 		public registerVO(vo:T):void{
 			this.lib[vo.id] = vo;
+			this.all.push(vo);
 		}
 
 		/**获取资源 */

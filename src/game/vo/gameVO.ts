@@ -103,7 +103,7 @@ module gamevo {
 		/**品质[white,green,blue,zi,yellow,light][白，绿，蓝，紫,金，闪金] */
 		public quality:string;
 		/**行走图资源id */
-		public source:string;
+		public animaSource:string;
 		/**技能id */
 		public skills:string[];
 		/** 宝具id*/
@@ -120,13 +120,17 @@ module gamevo {
 			this.name = xml.attributes.name;
 			this.initZDL = parseFloat(xml.attributes.initZDL);
 			this.potential =  parseFloat(xml.attributes.potential);
-			this.quality =  xml.attributes.potential;
-			this.source = xml.attributes.source;
+			this.quality =  xml.attributes.quality;
+			this.animaSource = xml.attributes.animaSource;
 			this.skills =gameutils.XMLUtil.toStringArray(xml,'skills');
 			this.weapon = xml.attributes.weapon;
 			this.buff.analysis(xml.attributes.buff);
 			this.tag = gameutils.XMLUtil.toStringArray(xml,'tag');
 			this.des = xml.attributes.des;
+		}
+
+		public get qualityNum():number{
+			return gamesystem.RoleQuality2Number[this.quality];
 		}
 	}
 

@@ -1,4 +1,4 @@
-﻿<e:Skin class="TeamListItemSkin" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="112" height="112">
+﻿<e:Skin class="TeamListItemSkin" states="up,down,disabled" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="112" height="112">
 	<w:Config id="157faac124a" ></w:Config>
 	<e:Image source="heroformation_bgempty_d_png" left="0" top="0" right="0" bottom="0" width="112" height="112"/>
 	<e:Label id="stateTf" text="可上阵" size="20" bold="true" fontFamily="黑体" textColor="0xc3ac71" horizontalCenter="0" bottom="10"/>

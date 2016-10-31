@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="TujianListItemSkin" states="up,down,disabled" width="112" height="112" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    	<e:Image source="heroformation_bgempty_d_png" left="0" top="0" right="0" bottom="0" width="112" height="112"/>
+	<w:Config id="15818c1c96a" ></w:Config>
+</e:Skin>

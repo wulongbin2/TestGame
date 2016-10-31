@@ -11,9 +11,9 @@
 	<e:Image source="weaponbox_infobg2_d_png" x="161" y="937" width="320" height="52"/>
 	<e:Label text="收集进度" x="172" y="951" size="26" textColor="0xc3ac71" bold="true" fontFamily="黑体"/>
 	<e:Label id="jinduTf" text="1/100" x="371" y="954" size="20" bold="true" fontFamily="黑体" textColor="0xfff7e6" textAlign="right" width="85"/>
-	<e:Scroller width="610" height="797" x="15" y="116" locked="true">
+	<e:Scroller width="610" height="797" x="15" y="116">
 		<e:viewport>
-			<e:List id="heroList" width="610" height="797" x="0" y="0" itemRendererSkinName="TeamListItemSkin">
+			<e:List id="roleList" width="610" height="797" x="0" y="0" itemRendererSkinName="TujianListItemSkin">
 				<e:ArrayCollection>
 					<e:Array>
 						<e:Object aa="null"/>
