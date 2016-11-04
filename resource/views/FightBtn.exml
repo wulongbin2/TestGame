@@ -2,7 +2,11 @@
 <e:Skin class="FightBtnSkin" states="up,down,disabled" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing"  width="284" height="133">
  
 	<w:Config id="157e64c34fd" ></w:Config>
-	<e:Image source="maze_eventbtn_bg_d_png" width="284" height="133" scaleX.down="1.1" scaleY.down="1.1" horizontalCenter="0" bottom="0"/>
-	<e:Image source="maze_eventbtn_fight_d_png" width="191" height="132" scaleX="1.1" scaleY="1.1" horizontalCenter="0" scaleX.down="1.1" scaleY.down="1.1" y.down="-13" bottom="-1"/>
-	<e:Image source="maze_eventbtntxt_fight_png" horizontalCenter="0" bottom="0"/>
+	<e:Image id="fightBg" source="maze_eventbtn_bg_d_png" width="284" height="133" scaleX.down="1.1" scaleY.down="1.1" horizontalCenter="0" bottom="0"/>
+	<e:Image id="waitBg" source="maze_eventbtn_waitbg_png" x="0" y="0" width="284" height="133" scaleX="1" scaleY="1"/>
+	<e:Image id="fightIcon" source="maze_eventbtn_fight_d_png" width="191" height="132" scaleX="1.1" scaleY="1.1" horizontalCenter="0" scaleX.down="1.1" scaleY.down="1.1" y.down="-13" bottom="-1"/>
+	<e:Image id="labelIcon" source="maze_eventbtntxt_fight_png" horizontalCenter="0" bottom="0"/>
+	<e:Group id="zhen" width="23" height="18" x="142" y="135" anchorOffsetX="0" anchorOffsetY="0" locked="true">
+		<e:Image source="maze_eventbtn_decorate_d_png" x="-59" y="-52" anchorOffsetX="0" width="125" anchorOffsetY="0" height="80" scaleX="1.13" scaleY="1.11"/>
+	</e:Group>
 </e:Skin>

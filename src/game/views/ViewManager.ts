@@ -1,6 +1,6 @@
 module gameviews {
 	/**视图管理 */
-	class ViewManager {
+	class ViewManager extends egret.Sprite{
 		private mainPanel:MainPanel;
 		private bagPanel:BagPanel;
 		private qianghuaPanel:QianghuaPanel;
@@ -9,12 +9,8 @@ module gameviews {
 		private teamMemberPanel:TeamMemberPanel;
 		private heroPanel:HeroPanel;
 		public mapChoosePanel:MapChoosePanel;
-		private viewContain:egret.DisplayObjectContainer;
-		public constructor() {
-		}
 
-		public init(viewContain:egret.DisplayObjectContainer):void{
-			this.viewContain = viewContain;
+		public init():void{
 			this.mainPanel = new MainPanel();
 			this.bagPanel = new BagPanel();
 			this.teamPanel = new TeamPanel();
@@ -23,28 +19,38 @@ module gameviews {
 			this.mapChoosePanel = new MapChoosePanel();
 			this.teamMemberPanel = new TeamMemberPanel();
 			this.heroPanel = new HeroPanel();
+
+			gameCore.eventDispatch.addEventListener(gameCore.Event_GetHero,this.onGetHero,this);
+		}
+
+		private onGetHero(e:egret.Event):void{
+			this.showHeroPanel((e.data as gameCore.HeroMO).roleId,true);
 		}
 		
 
 		public showMainPanel():void{
-			this.viewContain.addChild(this.mainPanel);
+			this.addChild(this.mainPanel);
 		}
 
 		public hideMainPanel():void{
-			this.viewContain.removeChild(this.mainPanel);
+			this.removeChild(this.mainPanel);
 		}
 
 		public showBagPanel():void{
-			this.viewContain.addChild(this.bagPanel);
+			this.addChild(this.bagPanel);
 		}
 
 		public showHeroPanel(roleId:string,checkNew:boolean = false):void{
 			this.heroPanel.showHero(roleId,checkNew);
-			this.mainPanel.currentTab = this.heroPanel;
+			this.addChild(this.heroPanel);
+		}
+
+		public hideHeroPanel():void{
+			this.removeChild(this.heroPanel);
 		}
 
 		public hideBagPanel():void{
-			this.viewContain.removeChild(this.bagPanel);
+			this.removeChild(this.bagPanel);
 		}
 
 		public showQianghuaPanel():void{

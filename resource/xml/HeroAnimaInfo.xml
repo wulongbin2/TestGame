@@ -1,4 +1,9 @@
 <item>
+  <!--
+  @id：资源文件名称
+  @width:资源图片宽度
+  @height:资源图片高度
+  -->
   <item id="17000013" width="102" height="136"/>
   <item id="19000032" width="102" height="136"/>
   <item id="25000005" width="102" height="136"/>

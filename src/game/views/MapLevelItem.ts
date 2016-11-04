@@ -16,7 +16,7 @@ class MapLevelItem extends eui.ItemRenderer implements  eui.UIComponent {
 		super.childrenCreated();
 	}
 	protected dataChanged():void{
-		this.labelTf.text = ['简单','适中','困难'][this.data];
+		this.labelTf.text =gamesystem.MapLevelLabel[this.data];
 	}
 	
 }

@@ -24,7 +24,8 @@ module gamevo {
 		public param:string[];
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
-
+			this.type = xml.attributes.type;
+			this.param = gameutils.XMLUtil.toStringArray(xml,'param');
 		}
 	}
 
@@ -106,6 +107,8 @@ module gamevo {
 		public animaSource:string;
 		/**技能id */
 		public skills:string[];
+		/**最大觉醒次数 */
+		public awakenTime:number;
 		/** 宝具id*/
 		public weapon:string;
 		/**基础加成 */
@@ -120,6 +123,7 @@ module gamevo {
 			this.name = xml.attributes.name;
 			this.initZDL = parseFloat(xml.attributes.initZDL);
 			this.potential =  parseFloat(xml.attributes.potential);
+			this.awakenTime =  parseFloat(xml.attributes.awakenTime);
 			this.quality =  xml.attributes.quality;
 			this.animaSource = xml.attributes.animaSource;
 			this.skills =gameutils.XMLUtil.toStringArray(xml,'skills');

@@ -26,45 +26,45 @@
 		<e:Label id="skillDesTf" text="难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！" x="18" y="45" size="24" fontFamily="黑体" textColor="0xdddddd" width="616" height="65" scaleX="1" scaleY="1"/>
 		<e:Label id="skillEnabledTf" text="未发动" x="18" y="112" size="18" fontFamily="黑体" width="66" height="24" textColor="0xd56620" bold="true" scaleX="1" scaleY="1"/>
 		<e:Label id="skillRolesTf" text="查看合作名单" x="515" y="112" size="18" fontFamily="黑体" width="115" height="24" bold="true" textColor="0xc3ac71" scaleX="1" scaleY="1"/>
-		<e:Scroller width="610" height="608" x="19" y="243">
-		<e:viewport>
-			<e:List id="roleList" width="613" height="608" x="0" y="0" itemRendererSkinName="TeamListItemSkin">
-				<e:ArrayCollection>
-					<e:Array>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-						<e:Object aa="null"/>
-					</e:Array>
-				</e:ArrayCollection>
-				<e:layout>
-					<e:TileLayout horizontalGap="11" verticalGap="11"/>
-				</e:layout>
-			</e:List>
-		</e:viewport>
-			<e:Skin>
-				<e:Image id="thumb" width="8" source="maze_timebar_bg"  scale9Grid="1,1,4,4"/>
-			</e:Skin>
-	</e:Scroller>
 	</e:Group>
+	<e:Scroller width="642" height="630" x="4" y="309" scaleX="1" scaleY="1" anchorOffsetX="0" anchorOffsetY="0">
+		<e:viewport x="10" y="10">
+		<e:List id="roleList" width="617" height="608" x="-12" y="-5" itemRendererSkinName="TeamListItemSkin" anchorOffsetX="0" locked="true">
+			<e:ArrayCollection>
+			<e:Array>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+				<e:Object aa="null"/>
+			</e:Array>
+			</e:ArrayCollection>
+			<e:layout>
+			<e:TileLayout horizontalGap="11" verticalGap="11" paddingLeft="15" paddingRight="15" paddingBottom="15" paddingTop="15"/>
+			</e:layout>
+		</e:List>
+		</e:viewport>
+		<e:Skin>
+		<e:Image id="thumb" width="8" source="" scale9Grid="1,1,4,4"/>
+		</e:Skin>
+	</e:Scroller>
 	<e:Image source="red_bg_png" y="42" height="66" scaleX="1" scaleY="1" left="0" right="0" x="0" locked="true"/>
 	<e:Image source="herodetail_border_d_png" y="889" scale9Grid="40,27,240,28" scaleY="1" left="0" right="0" x="0" scaleX="1"/>
 	<e:Label id="nameTf" text="绿毛虫" x="13" y="69" size="20" fontFamily="黑体" scaleX="1" scaleY="1"/>

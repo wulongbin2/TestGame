@@ -92,6 +92,8 @@ module gameCore {
 			return this.notusedGridNum>0;
 		}
 
+
+
 		/**添加新物品至空位 */
 		public pushItem(item:T){
 			if(this.hasUsedGrid)
@@ -114,6 +116,7 @@ module gameCore {
 			}
 		}
 
+
 		protected _addItemAt(item:T, pos:number){
 			this.grids[pos].item = item;
 				item.pos = pos;
@@ -128,11 +131,39 @@ module gameCore {
 			}
 		}
 
+		public autoSort():void{
+			var i:number = 0;
+			this.grids.forEach(grid=>{
+				if(grid.isUsed)
+				{
+					this.grids[i].item = grid.item;
+					grid.item.pos = i;
+					i++;
+				}
+			});
+			for(;i < this.grids.length; i ++){
+				this.grids[i].item = null;
+			}
+		}
+
+
 		protected _removeItem(item:T){
 			this.grids[item.pos].item = null;
 			item.pos = -1;
 			item.bagName = '';
 			this._usedgridNum--;
+		}
+
+		public clearItem():void{
+			this.grids.forEach(grid=>{
+				if(grid.item)
+				{
+					grid.item.pos = -1;
+					grid.item.bagName ='';
+					grid.item = null;
+				}
+			})
+			this._usedgridNum =0;
 		}
 
 
@@ -232,6 +263,14 @@ module gameCore {
 			var arr:any[] = this._libByConfigId[item.data.getConfigId()];
 			arr.splice(arr.indexOf(item),1);
 			this._allItems.splice(this._allItems.indexOf(item.data),1);
+		}
+
+
+		public clearItem():void{
+			super.clearItem();
+			this._lib = {};
+			this._libByConfigId={};
+			this._allItems = [];
 		}
 	}
 

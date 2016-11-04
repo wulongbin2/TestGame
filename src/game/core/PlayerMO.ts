@@ -23,23 +23,50 @@ module gameCore {
 		/**角色等级 */
 		public roleLevel:number=1
 		/**觉醒等级 */
-		public awakenLevel:number = 1;
+		public awakenLevel:number =0;
+		
+		public roleVo:gamevo.RoleBaseVO
+		
+		private _zdlChagneTag:boolean = true;
+		private _zdl:number;
+
+		public initHero(roleId:string):void{
+			this.roleId = roleId;
+			this.roleLevel = 1;
+			this.awakenLevel = 0;
+			this._zdlChagneTag = true;
+			this.roleVo = gameMngers.roleInfoMnger.getVO(this.roleId);
+		}
 
 		public get zdl():number
 		{
-			return 0;
+			if(this._zdlChagneTag){
+				this.resetZdl();
+			}
+			return this._zdl;
 		} 
+
+		public zdlChange():void{
+			this._zdlChagneTag = true;
+		}
+
+		public resetZdl():void{
+			this._zdlChagneTag = false;
+			this._zdl = calculHeroZDL(this);
+		}
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
 			this.roleId = xml.attributes.roleId;
 			this.roleLevel = parseFloat(xml.attributes.roleLevel);
 			this.awakenLevel = parseFloat(xml.attributes.awakenLevel);
+			this.roleVo = gameMngers.roleInfoMnger.getVO(this.roleId);
 		}
 
 		public getConfigId():string{
 			return this.roleId;
 		}
+
 	}
 
 	/**英雄列表 */
@@ -47,6 +74,9 @@ module gameCore {
 	} 
 
 	export class GoodsBag extends BagProxyMO<GoodsItemMO>{
+		public constructor(){
+			super();
+		}
 	}
 
 
@@ -129,18 +159,70 @@ module gameCore {
 		}
 	}
 
+	export class MapMO extends gamevo.BaseVO{
+
+		public mapId:number = 0;
+		/**当前地图通关最大关卡 */
+		public maxMapChild:number = 0;
+		/**当前地图通关最大难度 */
+		public maxMapLevel:number = 0;
+		public analysis(config:any):void{
+			var xml:egret.XML = config as egret.XML;
+			this.id = xml.attributes.id;
+			this.mapId = parseFloat(this.id);
+			this.maxMapChild = parseFloat(xml.attributes.maxMapChild);
+			this.maxMapLevel = parseFloat(xml.attributes.maxMapLevel);
+
+		}
+
+		public init(mapId:number):void{
+			this.id = mapId+'';
+			this.mapId = mapId;
+			this.maxMapChild = 0;
+			this.maxMapLevel = 0;
+		}
+	}
+
 	/**玩家数据对象 */
-	export class PlayerMO extends gamevo.BaseVO{
+	export class PlayerMO  implements gamevo.IbaseVO{
 		public playerBagMnger:PlayerBagMnger = new PlayerBagMnger();
+		/**用户唯一id */
+		public id:string='';
+		/**金币 */
 		public gold:number = 0;
+		/**经验 */
 		public exp:number = 0;
+		/**人民币 */
 		public money:number = 0;
+		/** 当前地图id*/
+		public curMap:number = 1;
+		/**当前地图难度 */
+		public curMapLevel:number = 1;
+		/**当前地图子关卡 */
+		public curMapChild:number = 1;
+		/**当前地图状态[0:1:挂机完成，准备战斗，2：战斗结束] */
+		public curMapStatus:number = 0;
+		/**挂机地图开始的时间戳 */
+		public curMapGuajiTime:number = 0;
+		/**下线的时间点//用于计算上线后经验值增长 */
+		public offlineTime:number = 0;
+		/**队伍列表 */
+		public teamHeros:string[];
+		private mapMOs:MapMO[] = [];
+		private _zdlChagneTag:boolean = true;
+		private _zdl:number = 0;
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
 			this.gold = parseFloat(xml.attributes.gold);
 			this.exp = parseFloat(xml.attributes.exp);
 			this.money = parseFloat(xml.attributes.money);
+			this.curMap = parseFloat(xml.attributes.curMap);
+			this.curMapLevel = parseFloat(xml.attributes.curMapLevel);
+			this.curMapChild = parseFloat(xml.attributes.curMapChild);
+			this.curMapStatus = parseFloat(xml.attributes.curMapStatus);
+			this.curMapGuajiTime = parseFloat(xml.attributes.curMapGuajiTime);
+			this.offlineTime = parseFloat(xml.attributes.offlineTime);
 			gameutils.XMLUtil.foreachChild(xml,'heros',(item)=>{
 				var heroMO:HeroMO = new HeroMO;
 				heroMO.analysis(item);
@@ -157,7 +239,32 @@ module gameCore {
 				goodsItem.analysis(item);
 				this.playerBagMnger.addGoods(goodsItem);
 			});
+
+			gameutils.XMLUtil.foreachChild(xml,'map',(item)=>{
+				var mapmo:MapMO = new MapMO;
+				mapmo.analysis(item);
+				this.mapMOs[mapmo.mapId] = mapmo;
+			});
+
+			this.resetTeamHeros( gameutils.XMLUtil.toStringArray(xml,'teamHeros'));
 		}
+
+		public resetTeamHeros(ids:string[]):void{
+			this.teamHeros = ids;
+			this.playerBagMnger.teamHeroBag.clearItem();
+			this.teamHeros.forEach(id=>{
+				this.playerBagMnger.teamHeroBag.pushItemByData(this.playerBagMnger.heroBag.getItemById(id));
+			});
+		}
+
+		public getAllHero(isConcat:boolean = true):HeroMO[]{
+			return isConcat?this.playerBagMnger.heroBag.allItems.concat():this.playerBagMnger.heroBag.allItems;
+		}
+
+		public getAllTeamHero(isConcat:boolean = true):HeroMO[]{
+			return isConcat?this.playerBagMnger.teamHeroBag.allItems.concat():this.playerBagMnger.teamHeroBag.allItems;
+		}
+
 
 		/**添加英雄 */
 		public addHero(mo:HeroMO){
@@ -169,8 +276,45 @@ module gameCore {
 		{
 			this.playerBagMnger.removeHeroFromAllBag(mo);
 		}
+		/**总战力 */
+		public get totalZDL():number{
+			if(this._zdlChagneTag)
+			{
+				this.resetZdl();
+			}
+			return this._zdl;
+		}
 
+		private resetZdl():void{
+			this._zdlChagneTag = false;
+			this._zdl =0 ;
+			this.getAllTeamHero().forEach(item=>{
+				this._zdl+=item.zdl;
+			});
+		}
+
+		public zdlChange():void{
+			this._zdlChagneTag = true;
+		}
+
+		public getMapMO(id:number):MapMO{
+			return this.mapMOs[id];
+		}
+
+		public pushMapMo(mo:MapMO):void{
+			this.mapMOs[mo.mapId] = mo;
+		}
+
+		public get currentMO():MapMO{
+			return this.getMapMO(this.curMap);
+		}
+
+
+		/**通关的至最大的地图 */
+		public get maxMapId():number{
+			var mapMo:MapMO = this.mapMOs[this.mapMOs.length -1];
+			//如果通过难度大于0，表示该地图已经通关一遍了。
+			return mapMo.maxMapLevel >0?mapMo.mapId+1:mapMo.mapId;
+		}
 	}
-
-	export var currentUserInfo:PlayerMO;
 }

@@ -11,11 +11,16 @@
      @useEffect.item.type 效果类型
      @useEffect.item.param 使用参数
     -->
-    <item id='randBlueHero' name='宝箱' merge='false' mergeMax='1' tag='daoju' source='herobag_bg_png' des='随机开启蓝色英雄'>
+    <item id='randHero' name='宝箱' merge='false' mergeMax='1' tag='daoju' source='herobag_bg_png' des='随机开启英雄'>
         <useEffect>
-            <item type='randHero' param='blue'/>
+            <item type='randHero' param=''/>
+        </useEffect>
+    </item>
+    <item id='randGold' name='钱袋' merge='false' mergeMax='1' tag='daoju' source='3000004_png' des='随机给一定数量的金币'>
+        <useEffect>
+            <item type='randGold' param=''/>
         </useEffect>
     </item>
 
-    <item id='bluebaoshi' name='蓝宝石'  merge='true' mergeMax='999' tag='ziyuan'  source='diamond_png' des='觉醒材料'/>
+    <item id='golem' name='巨像'  merge='true' mergeMax='999' tag='ziyuan'  source='golem_png' des='巨像，觉醒材料'/>
 </GoodsItemInfo>

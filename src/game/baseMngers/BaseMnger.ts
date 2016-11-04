@@ -79,6 +79,21 @@ module gameMngers {
 		}
 	}
 
+	class EffectAnimaMnger extends BaseMnger<gameAnima.EffectAnimaInfo>{
+		protected createVO():gameAnima.EffectAnimaInfo
+		{
+			return new gameAnima.EffectAnimaInfo;
+		}
+
+		public getVO(id:string):gameAnima.EffectAnimaInfo{
+			var vo:gameAnima.EffectAnimaInfo = super.getVO(id);
+			if(vo){
+				vo.checkload();
+			}
+			return vo;
+		}
+	}
+
 	class HeroAnimaInfoMnger extends BaseMnger<gamevo.HeroAnimaVO>{
 		protected createVO():gamevo.HeroAnimaVO
 		{
@@ -127,7 +142,9 @@ module gameMngers {
 	/**地图配置管理 */
 	export var mapInfoMnger:MapInfoMnger = new MapInfoMnger('mapInfo');      
 	/**地图背景动画配置管理 */
-	export var mapGuajiAnimaMnger:MapGuajiAnimaMnger = new MapGuajiAnimaMnger('mapGuajiAnima');        
+	export var mapGuajiAnimaMnger:MapGuajiAnimaMnger = new MapGuajiAnimaMnger('mapGuajiAnima');
+	/**特性资源配置 */
+	export var effectAnimaMnger:EffectAnimaMnger = new EffectAnimaMnger('effectAnima');        
 
 
 	/**根据xml批量解析管理器配置*/

@@ -61,9 +61,9 @@
 			</e:List>
 		</e:viewport>
 			<e:Skin>
-				<e:Image id="thumb" width="8" source="maze_timebar_bg"  scale9Grid="1,1,4,4"/>
+				<e:Image id="thumb" width="8" source=""  scale9Grid="1,1,4,4"/>
 			</e:Skin>
 	</e:Scroller>
 	<e:Image source="maintitle_bg_png" x="45" y="11" scale9Grid="180,15,42,90" width="547" scaleX="1" scaleY="1" locked="true"/>
-	<e:Label text="佣兵图鉴" y="72" width="156" height="83" bold="true" size="34" fontFamily="黑体" textAlign="center" horizontalCenter="0" x="242" scaleX="1" scaleY="1" locked="true"/>
+	<e:Label text="佣兵图鉴" y="72" width="156" height="83" bold="true" size="34" fontFamily="黑体" textAlign="center" horizontalCenter="0" x="242" scaleX="1" scaleY="1"/>
 </e:Skin>

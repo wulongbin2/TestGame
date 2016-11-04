@@ -57,6 +57,9 @@ class LoadingUI extends egret.Sprite {
         this.time = 0;
         this.addEventListener(egret.Event.ENTER_FRAME,this.render, this)
         this.render();
+         this.textField.text = '0%'
+         this.textField.x = this.stage.stageWidth - this.textField.textWidth>>1;
+        this.textField.y = this.stage.stageHeight - this.textField.textHeight>>1;
     }
 
     private onRemoveFromStage():void{

@@ -1,8 +1,13 @@
 <gameConfig>
+    <!--
+    @id：xml配置在res中关键码
+    @mngerType:解析xml的管理器id
+    -->
     <item id='RoleBaseInfo_xml' mngerType='roleInfo'/>
     <item id='WeaponInfo_xml' mngerType='weaponInfo'/>
     <item id='SkillBaseInfo_xml' mngerType='skillInfo'/>
     <item id='GoodsItemInfo_xml' mngerType='goodsInfo'/>
+    <item id='EffectAnima_xml' mngerType='effectAnima'/>
     <item id='HeroAnimaInfo_xml' mngerType='heroAnimaInfo'/>
     <item id='MapGuajiAnima_xml' mngerType='mapGuajiAnima'/>
     <item id='MapInfo_xml' mngerType='mapInfo'/>

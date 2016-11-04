@@ -1,6 +1,7 @@
 module gamevo {
 	/**地图配置 */
 	export class MapVO extends BaseVO {
+		public mapId:number;
 		/**地图名称 */
 		public name:string;
 		/**地图列表缩略图 */
@@ -11,18 +12,32 @@ module gamevo {
 		public kaiqiZdl:number;
 		/**地图出现的人物列表 */
 		public useRoleIds:string[];
+		/**地图关卡图标 */
+		public cityIcon:string;
+		/**金币增长速度 */
+		public goldSpeed:number;
+		/**经验增长速度 */
+		public expSpeed:number;
+		/**挂机需要多少时间（毫秒） */
+		public waitTime:number;
+
 		public mapChilds:MapChildVO[] = [];
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
+			this.mapId = parseInt(this.id);
 			this.name = xml.attributes.name;
+			this.cityIcon = xml.attributes.cityIcon;
 			this.listBg = xml.attributes.listBg;
 			this.guajiAnima = xml.attributes.guajiAnima;
 			this.kaiqiZdl = parseInt(xml.attributes.kaiqiZdl);
+			this.goldSpeed = parseInt(xml.attributes.goldSpeed);
+			this.expSpeed = parseInt(xml.attributes.expSpeed);
+			this.waitTime = parseFloat(xml.attributes.waitTime);
 			this.useRoleIds = gameutils.XMLUtil.toStringArray(xml,'useRoleIds');
-			this.pushChildMap(gameutils.XMLUtil.childXML(xml,'map1'));
-			this.pushChildMap(gameutils.XMLUtil.childXML(xml,'map2'));
-			this.pushChildMap(gameutils.XMLUtil.childXML(xml,'map3'));
+			gameutils.XMLUtil.foreachChild(xml,'mapChild',(item)=>{
+				this.pushChildMap(item);
+			})
 		}
 
 		public pushChildMap(xml:egret.XML){
@@ -34,6 +49,7 @@ module gamevo {
 
 	/**地图子关卡 */
 	export class MapChildVO extends BaseVO{
+		public mapChildId:number;
 		public heros:gameCore.HeroMO[] = [];
 		public daojus:gameCore.GoodsItemMO[] = [];
 		public gold:number = 0;
@@ -41,6 +57,8 @@ module gamevo {
 		public money:number = 0;
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
+			this.id = xml.attributes.id;
+			this.mapChildId =  parseFloat(this.id);
 			this.gold = parseFloat(xml.attributes.gold);
 			this.exp = parseFloat(xml.attributes.exp);
 			this.money = parseFloat(xml.attributes.money);

@@ -18,15 +18,18 @@ module gamevo {
 			this.cellHeight = this.height/HeroAnimaVO.HN;
 			this.sourceUrl =gamesystem.Url_AnimaHero+this.id+'.png'
 			this.weaponUrl = gamesystem.Url_WeaponIcon+this.id+'.png'
-			this.createAnimaInfo(gamesystem.AnimaDownStand,1);
-			this.createAnimaInfo(gamesystem.AnimaLeftStand,1);
-			this.createAnimaInfo(gamesystem.AnimaRightStand,1);
-			this.createAnimaInfo(gamesystem.AnimaUpStand,1);
+			this.createAnimaInfo(gamesystem.AnimaDownStand,1,false);
+			this.createAnimaInfo(gamesystem.AnimaLeftStand,1,false);
+			this.createAnimaInfo(gamesystem.AnimaRightStand,1,false);
+			this.createAnimaInfo(gamesystem.AnimaUpStand,1,false);
 
 			this.createAnimaInfo(gamesystem.AnimaDownWalk,2);
 			this.createAnimaInfo(gamesystem.AnimaLeftWalk,2);
 			this.createAnimaInfo(gamesystem.AnimaRightWalk,2);
 			this.createAnimaInfo(gamesystem.AnimaUpWalk,2);
+
+			this.createAnimaInfo(gamesystem.AnimaLeftTurn,4,true,4);
+			this.createAnimaInfo(gamesystem.AnimaRightTurn,4,true,4);
 		}
 
 
@@ -70,13 +73,17 @@ module gamevo {
 			this.resetAnimaInfo(bits,5,3,true);
 			this.resetAnimaInfo(bits,6,6,true);
 			this.resetAnimaInfo(bits,7,9,true);
+
+			this.resetTurnAnimaInfo(bits,8,true);
+			this.resetTurnAnimaInfo(bits,9,false);
 		}
 
-		private createAnimaInfo( name:string,length:number):void
+		private createAnimaInfo( name:string,length:number,isLoop:boolean = true,frameRate:number = 2):void
 		{
 			var info:gameAnima.AnimaInfo = new gameAnima.AnimaInfo();
-			info.frameRate = 2;
+			info.frameRate = frameRate;
 			info.totalFrame = length;
+			info.isLoop = isLoop;
 			info.id = name;
 			var bits:egret.Texture[] = [];
 			for(var i:number =0;i < length;i++)
@@ -84,7 +91,26 @@ module gamevo {
 				bits.push(null);
 			}
 			info.bitmapDatas = bits;
-			this.heroAnimas.push(info);
+			this._heroAnimas.push(info);
+		}
+
+		private resetTurnAnimaInfo(sourceBits:egret.Texture[],index:number,isLeft:boolean = false):void
+		{
+			var info:gameAnima.AnimaInfo =this._heroAnimas[index];
+			var bits:egret.Texture[] = info.bitmapDatas;
+			if(isLeft)
+			{
+				bits[0]=sourceBits[4];
+				bits[1]=sourceBits[10];
+				bits[2]=sourceBits[7];
+			}
+			else{
+				bits[0]=sourceBits[7];
+				bits[1]=sourceBits[10];
+				bits[2]=sourceBits[4];
+			}
+				bits[3]=sourceBits[1];
+
 		}
 
 		private resetAnimaInfo(sourceBits:egret.Texture[],index:number, fromIndex:number,isWalk:boolean = false):void

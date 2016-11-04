@@ -1,4 +1,9 @@
 <MapGuajiAnima>
+    <!--
+    @id：'动画名称'
+    item.@bg： 动画背景图片
+    item.@type:背景图标类型[staticBg：静态图片，moveBg:移动图片，roleBg：角色图层容器] 
+    -->
     <item id='test'>
         <item bg='layer5_sky_png' type='staticBg'/>
         <item bg='layer4_grass_png' type='moveBg'/>

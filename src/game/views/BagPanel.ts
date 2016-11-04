@@ -18,11 +18,11 @@ class BagPanel extends eui.Component implements  eui.UIComponent {
 	}
 
 	protected addedToStage():void{
-
+		gameCore.eventDispatch.addEventListener(gameCore.Event_BagChange,this.updateView,this);
 	}
 
 	protected removeFromStage():void{
-		
+		gameCore.eventDispatch.removeEventListener(gameCore.Event_BagChange,this.updateView,this);
 	}
 
 	private onCompelate():void{
@@ -33,7 +33,15 @@ class BagPanel extends eui.Component implements  eui.UIComponent {
 		this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.closeHd,this)
 		this.tab1.group.addEventListener( egret.Event.CHANGE,this.onTabChange,this);
 		this.tab1.selected = true;
+		this.useBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onUseItem,this);
 		this.onTabChange();
+	}
+
+	private onUseItem():void{
+		var data:gameCore.BagGridMO<gameCore.BagItemProxy<gameCore.GoodsItemMO>> = this.bagList.selectedItem;
+		if(data && data.isUsed){
+			gameCore.useGoodsItem(data.item.data);
+		}
 	}
 
 	private onTabChange():void{
@@ -57,6 +65,7 @@ class BagPanel extends eui.Component implements  eui.UIComponent {
 			this.addChildAt(this.tab2,3);
 			bag = gameCore.currentUserInfo.playerBagMnger.getBagByTag(gamevo.GoodsItemVO.Tag_ZIYUAN);
 		}
+		bag.autoSort();
 		var oldSelected:number = this.bagList.selectedIndex;
 		var datas:any[] = [];
 		var len:number = bag.availgridsNum;

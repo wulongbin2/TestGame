@@ -35,4 +35,10 @@ class GreenBtn extends eui.Button implements  eui.UIComponent {
 		}
 	}
 	
+	public $setEnabled(value:boolean):boolean
+	{
+		var b:boolean= super.$setEnabled(value);
+		this.filters = this.enabled?null:gameutils.FilterUtls.BW_Fiter;
+		return b;
+	}
 }

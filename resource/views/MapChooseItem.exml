@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <e:Skin class="MapChooseItemSkin" states="up,down,disabled"  width='626' height='100' xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image width="626" height="100" source="paper_bg1_png" scale9Grid="77,24,137,17" locked="true"/>
-	<e:Image source="mapbg_cave_png" x="50" y="11" width="411" height="74" scaleX="1" scaleY="1"/>
+	<e:Image id="bg" source="mapbg_cave_png" x="50" y="11" width="411" height="74" scaleX="1" scaleY="1"/>
 	<e:Label id="numTf" text="1" x="48" y="32" textColor="0x615656" bold="true" size="34" fontFamily="黑体"/>
 	<e:Label id="nameTf" text="三国时代" x="99" y="32" bold="true" size="34" textColor="0x000000" fontFamily="黑体"/>
 	<e:Group id="zdlContainer" x="382" y="23">
-		<e:Label id="zdlTF" text="123123" x="58" bold="true" size="30" textColor="0x000000" fontFamily="黑体" y="10" italic="true"/>
+		<e:Label id="zdlTf" text="123123" x="58" bold="true" size="30" textColor="0x000000" fontFamily="黑体" y="10" italic="true"/>
 		<e:Image source="round_bg_png" x="0" y="0" alpha="0.5"/>
 		<e:Image source="fighting_capacity_png" x="10" y="9"/>
 	</e:Group>
+	<e:Image id="lock" source="lock_png" x="552" y="27"/>
 	<w:Config id="157ffa93c14" ></w:Config>
 </e:Skin>

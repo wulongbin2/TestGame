@@ -38,6 +38,11 @@ module gameutils {
 				else{
 					if(this._time>=cbInfo.nextTime)
 					{
+						if(cbInfo.isOnce)
+						{
+							this._cbs.splice(i,1);
+							i--;
+						}
 						cbInfo.nextTime+=cbInfo.tickTime;
 						cbInfo.cb.apply(cbInfo.thisObj);
 					}
@@ -51,7 +56,12 @@ module gameutils {
 			return this._runing;
 		}
 
-		public addCB(tickTime:number,cb:()=>void,thisObj:any):void{
+		public addOnceCB(tickTime:number,cb:()=>void,thisObj:any):void{
+			var info:CallBackInfo = this.addCB(tickTime,cb,thisObj);
+			info.isOnce = true;
+		}
+
+		public addCB(tickTime:number,cb:()=>void,thisObj:any):CallBackInfo{
 			var oldInfo:CallBackInfo;
 			this._cbs.forEach(item=>{
 				if(item.cb === cb &&item.thisObj===thisObj)
@@ -66,7 +76,9 @@ module gameutils {
 				this._cbs.push(oldInfo);
 			}
 			oldInfo.dispose = false;
+			oldInfo.tickTime = tickTime;
 			oldInfo.nextTime = this._time+oldInfo.tickTime;
+			return oldInfo;
 		}
 
 		public removeCB(cb:()=>void,thisObj:any){
@@ -90,6 +102,7 @@ module gameutils {
 		public tickTime:number;
 		public nextTime:number;
 		public dispose:boolean = false;
+		public isOnce:boolean = false;
 		public init(tickTime:number,cb:()=>void,thisObj:any):void{
 			this.cb = cb;
 			this.thisObj = thisObj;

@@ -6,6 +6,11 @@ module gameutils {
 		public static  Yellow_Filter:any[]=[new egret.GlowFilter(0xffff00,1)];
 		public static  Blue_Filter:any[]=[new egret.GlowFilter(0x0000ff,1)];
 		public static  Light_filter:any[]=[new egret.GlowFilter(0xffff00,1,10,10,2,1,true)];
+		public static  Dark_Fiter:any[]=[new egret.ColorMatrixFilter(
+			[0.7,0,0,0,0, 
+			 0,0.7,0,0,0,
+			 0,0,0.7,0,0,
+			 0,0,0,1,0])];
 	}
 
 }

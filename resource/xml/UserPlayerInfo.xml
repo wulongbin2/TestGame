@@ -1,17 +1,48 @@
 <UserPalyerInfo>
-    <item id='user' gold='100' exp='200' money='300' lastTime=''>
+    <!--
+    @id:玩家唯一id
+    @gold:金币
+    @exp:经验
+    @money:人民币
+    @curMap:当前地图id
+    @curMapLevel:当前地图难度
+    @curMapChild:当前地图子关卡
+    @curMapStatus:当前地图状态[0:1:挂机完成，准备战斗，2：战斗结束]
+    @curMapGuajiTime:挂机地图开始的时间戳
+    @offlineTime:下线的时间点//用于计算上线后经验值增长
+    heros:拥有的英雄数据
+    daoju：拥有的道具数据
+    ziyuan：拥有的资源数据
+    map:地图通关数据
+
+    -->
+    <item id='user' gold='100' exp='200' money='300' teamHeros='1,2,3,4,5,6,7,8,9,10' curMap='1' curMapLevel='0' curMapChild='2' curMapStatus='0' curMapGuajiTime='0' offlineTime='1478238884459'>
         <heros>
-            <item id='1' roleId='lvfengxian' roleLevel='3' awakenLevel='1'/>
-            <item id='2' roleId='lvfengxian' roleLevel='7' awakenLevel='2'/>
+            <item id='1' roleId='0' roleLevel='3' awakenLevel='1'/>
+            <item id='2' roleId='1' roleLevel='7' awakenLevel='2'/>
+            <item id='3' roleId='100' roleLevel='7' awakenLevel='2'/>
+            <item id='4' roleId='101' roleLevel='7' awakenLevel='2'/>
+            <item id='5' roleId='102' roleLevel='7' awakenLevel='2'/>
+            <item id='6' roleId='103' roleLevel='7' awakenLevel='2'/>
+            <item id='7' roleId='104' roleLevel='7' awakenLevel='2'/>
+            <item id='8' roleId='105' roleLevel='7' awakenLevel='2'/>
+            <item id='9' roleId='106' roleLevel='7' awakenLevel='2'/>
+            <item id='10' roleId='107' roleLevel='7' awakenLevel='2'/>
         </heros>
         <daoju>
-            <item id='1' goodsId='randBlueHero' goodsNum='1'/>
-            <item id='2' goodsId='randBlueHero' goodsNum='1'/>
-            <item id='3' goodsId='randBlueHero' goodsNum='1'/>
+            <item id='1' goodsId='randHero' goodsNum='1'/>
+            <item id='2' goodsId='randHero' goodsNum='1'/>
+            <item id='3' goodsId='randGold' goodsNum='1'/>
+            <item id='11' goodsId='randGold' goodsNum='1'/>
+            <item id='12' goodsId='randGold' goodsNum='1'/>
+            <item id='13' goodsId='randGold' goodsNum='1'/>
         </daoju>
         <ziyuan>
-            <item id='4' goodsId='bluebaoshi' goodsNum='10'/>
+            <item id='4' goodsId='golem' goodsNum='10'/>
         </ziyuan>
-
+        <map>
+            <item id='0' maxMapLevel='1' maxMapChild='3'/>
+            <item id='1' maxMapLevel='0' maxMapChild='2'/>
+        </map>
     </item>
 </UserPalyerInfo>

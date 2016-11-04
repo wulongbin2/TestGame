@@ -1,0 +1,27 @@
+<EffectAnima>
+    <item id='baoji001' totalFrame='16'/>
+    <item id='baozha001' totalFrame='15'/>
+    <item id='blue001' totalFrame='15'/>
+    <item id='circle001' totalFrame='8'/>
+    <item id='circle002' totalFrame='22'/>
+    <item id='daoguang001' totalFrame='25'/>
+    <item id='daoguang002' frameWidth='120' frameHeight='120' totalFrame='11'/>
+    <item id='dian001' totalFrame='9'/>
+    <item id='duqi001' totalFrame='14'/>
+    <item id='fire001' totalFrame='8'/>
+    <item id='fire002' totalFrame='25'/>
+    <item id='fire003' totalFrame='24'/>
+    <item id='ice001' totalFrame='8'/>
+    <item id='light001' totalFrame='11'/>
+    <item id='light002' totalFrame='30'/>
+    <item id='mofazhen001' totalFrame='14'/>
+    <item id='music001' totalFrame='6'/>
+    <item id='red001' totalFrame='10'/>
+    <item id='star001' totalFrame='8'/>
+    <item id='v001' totalFrame='16'/>
+    <item id='while001' totalFrame='15'/>
+    <item id='yanhua001' totalFrame='30'/>
+    <item id='yanhua002' totalFrame='20'/>
+    <item id='zhua001' totalFrame='7'/>
+    <item id='zi001' totalFrame='15'/>
+</EffectAnima>

@@ -22,7 +22,7 @@ class HeroPanel extends eui.Component implements  eui.UIComponent {
 	}
 
 	private onClose():void{
-		gameviews.viewManager.hideCurrentPanel();
+		gameviews.viewManager.hideHeroPanel();
 	}
 
 	private _roleId:string;
@@ -46,7 +46,7 @@ class HeroPanel extends eui.Component implements  eui.UIComponent {
 			this.newIcon.visible = false;
 		}
 		var info:gamevo.RoleBaseVO = gameMngers.roleInfoMnger.getVO(this._roleId);
-		this.heroAnimaPlayer.setHeroId(this._roleId);
+		this.heroAnimaPlayer.setHeroAnimaId(info.animaSource);
 		this.heroAnimaPlayer.playAnimaById(gamesystem.AnimaDownWalk)
 		this.nameTf.text = info.name;
 		this.desTf.text = info.des;
