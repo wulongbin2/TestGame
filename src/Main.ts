@@ -35,8 +35,8 @@ class Main extends eui.UILayer {
     private loadingView: LoadingUI;
     protected createChildren(): void {
         super.createChildren();
-        gamesystem.version = '2016.11.4-15:44';
-        RES.registerVersionController(new gameutils.VersionCtrl);
+        gamesystem.version = '2016.11.10-11:44';
+        RES.registerVersionController(new gameutils.VersionCtrl());
         //inject the custom material parser
         //注入自定义的素材解析器
         var assetAdapter = new AssetAdapter();
@@ -140,8 +140,8 @@ class Main extends eui.UILayer {
          var data:egret.XML  = RES.getRes('GameConfig_xml');
         gameMngers.analysisByxml(data);
         gameCore.resetUserInfo(gameMngers.playerInfoMnger.getVO('user'));
+        gamesystem.initSystem();
         //显示视图
-        gameutils.asynMnger.running = true;
         egret.Bitmap.defaultSmoothing = false;
         this.addChild( gameviews.viewManager);
         this.addChild(gameviews.goodsMessage);

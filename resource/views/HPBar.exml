@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="HPBarSkin" minWidth="30" minHeight="18" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image scale9Grid="1,1,4,4" width="100%"
+			 height="100%" verticalCenter="0" source="battle_hpbar1_png" alpha="0.3"/>
+	<e:Image id="thumb" height="100%" width="100%" source="battle_hpbar1_png"/>
+
+	<w:Config id="1583d985df0" ></w:Config>
+</e:Skin>

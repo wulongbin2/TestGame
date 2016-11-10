@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="AlertPanelSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="15846f8cfb2" ></w:Config>
+	<e:Rect left="0" top="0" bottom="0" right="0" alpha="0.5" locked="true"/>
+	<e:Image id="bg" source="box_bg2_png" x="14" y="263" width="615" height="270" scale9Grid="52,48,19,20"/>
+	<e:Image source="floating_layerbg2_png" x="49" y="294" scale9Grid="22,23,25,26" width="547" height="202" scaleX="1" scaleY="1"/>
+	<e:Button id="closeBtn" label="" x="554.0000000000001" y="262" scaleX="1" scaleY="1">
+		<e:skinName>
+		<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="close1_normal2_png" source.down="close1_press2_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+		</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<ns1:BaseBtn id="okBtn" label="确 定" y="476" anchorOffsetX="0" width="137" anchorOffsetY="0" height="56" horizontalCenter="0"/>
+	<e:Label id="titleTf" text="标签" x="65.12" y="325.4" anchorOffsetX="1.12" width="517" anchorOffsetY="-0.6" height="31" size="30" textAlign="center" textColor="0xffffff"/>
+	<e:Label id="desTf" text="标签" x="67.12" y="362" anchorOffsetX="1.12" width="517" anchorOffsetY="-2" height="103" size="24" textAlign="center" textColor="0xc3ac71"/>
+</e:Skin>

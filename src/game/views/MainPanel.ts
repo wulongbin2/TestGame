@@ -49,7 +49,7 @@ class MainPanel extends eui.Component implements  eui.UIComponent {
 		this.isMoveMessage = true;
 		this.messageTf.visible = true;
 		this.messageTf.text = mes;
-		this.messageTf.width = this.messageTf.textWidth;
+		this.messageTf.width = mes.length*22;
 		this.messageTf.x = 405;
 	}
 
@@ -65,7 +65,8 @@ class MainPanel extends eui.Component implements  eui.UIComponent {
 
 	private oncomplate():void{
 		this.messageTf = new egret.TextField();
-		this.messageTf.size = 20;
+		this.messageTf.size = 22;
+		this.messageTf.multiline =false;
 		this.messageTf.fontFamily ='黑体';
 		this.messageGroup.addChild(this.messageTf);
 		this.messageTf.visible  = false;
@@ -78,8 +79,6 @@ class MainPanel extends eui.Component implements  eui.UIComponent {
 
 		this.startGame.addEventListener('startGame',this.startGameHd,this);
 		this.updateView();
-
-		this.startMessage('哈哈哈哈哈哈哈，欢迎来到山寨游戏世界！本山寨游戏乃大神（鬼月雨路）鬼斧神工之作，超强地展现了大神的奇怪思维能力，预知后事发展，请联系大神QQ：742057152 ╮(╯▽╰)╭ ')
 	}
 
 	private startGameHd():void{
@@ -94,6 +93,9 @@ class MainPanel extends eui.Component implements  eui.UIComponent {
 		if(this._currentTab)
 		{
 			this.tabContainer.removeChild(this._currentTab);
+			if(this._currentTab['hide']){
+				this._currentTab['hide']();
+			}
 		}
 		this._currentTab = value;
 		if(this._currentTab)

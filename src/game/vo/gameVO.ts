@@ -31,10 +31,6 @@ module gamevo {
 
 	/**物品配置 */
 	export class GoodsItemVO extends BaseVO{
-		/**资源 */
-		public static Tag_ZIYUAN:string = 'ziyuan';
-		/**道具 */
-		public static Tag_DAOJU:string = 'daoju';
 		/**物品名称 */
 		public name:string;
 		/**物品标签[ziyuan,daoju] */
@@ -76,13 +72,13 @@ module gamevo {
 	/**加成属性 */
 	export class BuffVO{
 		/** 先攻值*/
-		public attckSpeed:number;
+		public attckSpeed:number =0 ;
 		/**防御值 */
-		public defend:number;
+		public defend:number = 0;
 		/**闪避值 */
-		public dodge:number;
+		public dodge:number =0;
 		/*王者值 */
-		public king:number;
+		public king:number = 0;
 
 		public analysis(config:any):void{
 			var arr:string[] = (<string>config).split(',');
@@ -90,6 +86,29 @@ module gamevo {
 			this.defend = parseFloat(arr[1]);
 			this.dodge = parseFloat(arr[2]);
 			this.king = parseFloat(arr[3]);
+		}
+
+		public addBuff(vo:BuffVO){
+			this.attckSpeed+=vo.attckSpeed;
+			this.defend+=vo.defend;
+			this.dodge+=vo.dodge;
+			this.king+=vo.king;
+		}
+
+		public clear():void{
+			this.attckSpeed = 0;
+			this.defend =0 ;
+			this.dodge = 0;
+			this.king = 0;
+		}
+
+		public clone():BuffVO{
+			var info:BuffVO = new BuffVO();
+			info.attckSpeed = this.attckSpeed;
+			info.defend = this.defend;
+			info.dodge = this.dodge;
+			info.king= this.king;
+			return info;
 		}
 	}
 
@@ -173,12 +192,20 @@ module gamevo {
 		public tag:string[];
 		/**技能描述 */
 		public des:string;
+		/**图标 */
+		public icon:string;
+
+			/**是否是主动型技能 */
+		public isActivie:Boolean;
+		/**技能类型，attack，shanbi,huixue, */
+		public skillType:string;
 
 		public triggers:SkillTriggerVO[] = [];
 		public effects:SkillEffectVO[] = [];
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
+			this.icon = xml.attributes.icon;
 			this.name = xml.attributes.name;
 			this.skillAnima = xml.attributes.skillAnima;
 			this.isGroupSkill = xml.attributes.isGroupSkill==='true';
@@ -198,6 +225,8 @@ module gamevo {
 						this.effects.push(effectVo);
 					});
 		}
+
+
 	}
 
 	/**技能触发条件配置 */
@@ -218,20 +247,12 @@ module gamevo {
 
 	/**技能触发效果配置 */
 	export class SkillEffectVO{
-		/**[attack,passive,other]; */
-		public effectType:string;
-		/**属性对象 */
-		public targetPro:string;
-		/**运算数值方式[add,sub] */
-		public operatorType:string;
-		/**运算数值 [值可以是数值，也可以是简单的表达式] */
-		public operatorValue:string;
+		public type:string;
+		public param:string[];
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
-			this.effectType = xml.attributes.effectType;
-			this.targetPro = xml.attributes.targetPro;
-			this.operatorType = xml.attributes.operatorType;
-			this.operatorValue = xml.attributes.operatorValue;
+			this.type = xml.attributes.type;
+			this.param = gameutils.XMLUtil.toStringArray(xml,'param');
 		}
 	}
 }

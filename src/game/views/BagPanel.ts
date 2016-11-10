@@ -19,10 +19,11 @@ class BagPanel extends eui.Component implements  eui.UIComponent {
 
 	protected addedToStage():void{
 		gameCore.eventDispatch.addEventListener(gameCore.Event_BagChange,this.updateView,this);
+		
 	}
 
 	protected removeFromStage():void{
-		gameCore.eventDispatch.removeEventListener(gameCore.Event_BagChange,this.updateView,this);
+		// gameCore.eventDispatch.removeEventListener(gameCore.Event_BagChange,this.updateView,this);
 	}
 
 	private onCompelate():void{
@@ -53,17 +54,21 @@ class BagPanel extends eui.Component implements  eui.UIComponent {
 		gameviews.viewManager.hideBagPanel();
 	}
 
+	public show():void{
+		this.updateView();
+	}
+
 	private updateView():void{
 		var bag:gameCore.GoodsBag;
 		if(this.tab1.selected)
 		{
 			this.addChildAt(this.tab1,3);
-			bag = gameCore.currentUserInfo.playerBagMnger.getBagByTag(gamevo.GoodsItemVO.Tag_DAOJU);
+			bag = gameCore.currentUserInfo.playerBagMnger.getBagByTag(gamesystem.GoodsTag_DAOJU);
 		}
 		else if(this.tab2.selected)
 		{
 			this.addChildAt(this.tab2,3);
-			bag = gameCore.currentUserInfo.playerBagMnger.getBagByTag(gamevo.GoodsItemVO.Tag_ZIYUAN);
+			bag = gameCore.currentUserInfo.playerBagMnger.getBagByTag(gamesystem.GoodsTag_ZIYUAN);
 		}
 		bag.autoSort();
 		var oldSelected:number = this.bagList.selectedIndex;

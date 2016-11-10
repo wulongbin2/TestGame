@@ -642,31 +642,23 @@ var egret;
          * @private
          *
          */
-        p.$renderFrame = function () {
-            this.$bitmapData = this.$movieClipData.getTextureByFrame(this.$currentFrameNum);
-            this.$invalidateContentBounds();
-        };
-        /**
-         * @private
-         *
-         */
         p.handlePendingEvent = function () {
             if (this.$eventPool.length != 0) {
                 this.$eventPool.reverse();
                 var eventPool = this.$eventPool;
-                var length_1 = eventPool.length;
+                var length = eventPool.length;
                 var isComplete = false;
                 var isLoopComplete = false;
-                for (var i = 0; i < length_1; i++) {
-                    var event_1 = eventPool.pop();
-                    if (event_1 == egret.Event.LOOP_COMPLETE) {
+                for (var i = 0; i < length; i++) {
+                    var event = eventPool.pop();
+                    if (event == egret.Event.LOOP_COMPLETE) {
                         isLoopComplete = true;
                     }
-                    else if (event_1 == egret.Event.COMPLETE) {
+                    else if (event == egret.Event.COMPLETE) {
                         isComplete = true;
                     }
                     else {
-                        this.dispatchEventWith(event_1);
+                        this.dispatchEventWith(event);
                     }
                 }
                 if (isLoopComplete) {
@@ -957,9 +949,6 @@ var egret;
          * @returns
          */
         p.getTextureByResName = function (resName) {
-            if (this.spriteSheet == null) {
-                return null;
-            }
             var texture = this.spriteSheet.getTexture(resName);
             if (!texture) {
                 var textureData = this.textureData[resName];
@@ -1025,10 +1014,10 @@ var egret;
          */
         p.fillFrameLabelsData = function (frameLabelsData) {
             if (frameLabelsData) {
-                var length_2 = frameLabelsData.length;
-                if (length_2 > 0) {
+                var length = frameLabelsData.length;
+                if (length > 0) {
                     this.labels = [];
-                    for (var i = 0; i < length_2; i++) {
+                    for (var i = 0; i < length; i++) {
                         var label = frameLabelsData[i];
                         this.labels.push(new egret.FrameLabel(label.name, label.frame, label.end));
                     }
@@ -1042,10 +1031,10 @@ var egret;
          */
         p.fillFrameEventsData = function (frameEventsData) {
             if (frameEventsData) {
-                var length_3 = frameEventsData.length;
-                if (length_3 > 0) {
+                var length = frameEventsData.length;
+                if (length > 0) {
                     this.events = [];
-                    for (var i = 0; i < length_3; i++) {
+                    for (var i = 0; i < length; i++) {
                         var events = frameEventsData[i];
                         this.events[events.frame] = events.name;
                     }
@@ -1728,9 +1717,7 @@ var egret;
                 }
                 else if (this._steps.length > 0) {
                     // 找到新的tween
-                    var i = void 0;
-                    var l = this._steps.length;
-                    for (i = 0; i < l; i++) {
+                    for (var i = 0, l = this._steps.length; i < l; i++) {
                         if (this._steps[i].t > t) {
                             break;
                         }
@@ -1975,7 +1962,7 @@ var egret;
          * Execute callback function
          * @param callback {Function} Callback method
          * @param thisObj {any} this action scope of the callback method
-         * @param params {any[]} Parameter of the callback method
+         * @param params {Array<any>} Parameter of the callback method
          * @returns {egret.ScrollTween} ScrollTween object itself
          * @version Egret 2.4
          * @platform Web,Native
@@ -1985,7 +1972,7 @@ var egret;
          * 执行回调函数
          * @param callback {Function} 回调方法
          * @param thisObj {any} 回调方法this作用域
-         * @param params {any[]} 回调方法参数
+         * @param params {Array<any>} 回调方法参数
          * @returns {egret.ScrollTween} Tween对象本身
          * @version Egret 2.4
          * @platform Web,Native
@@ -4203,7 +4190,7 @@ var egret;
              * @platform Web,Native
              */
             ,function () {
-                egret.$warn(1041, "egret.MainContext.runtimeType", "egret.Capabilities.runtimeType");
+                egret.$warn(1041);
                 return MainContext._runtimeType;
             }
         );
@@ -4259,9 +4246,6 @@ var egret;
     egret.MainContext = MainContext;
     egret.registerClass(MainContext,'egret.MainContext');
 })(egret || (egret = {}));
-/**
- * @private
- */
 var testDeviceType1 = function () {
     if (!this["navigator"]) {
         return true;
@@ -4269,9 +4253,6 @@ var testDeviceType1 = function () {
     var ua = navigator.userAgent.toLowerCase();
     return (ua.indexOf('mobile') != -1 || ua.indexOf('android') != -1);
 };
-/**
- * @private
- */
 var testRuntimeType1 = function () {
     if (this["navigator"]) {
         return true;

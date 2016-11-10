@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="BattleSceneSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
+	<w:Config id="1583d91ca9d" ></w:Config>
+	<e:Rect anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" left="0" top="0" bottom="0" right="0"/>
+	<e:Rect id="maskRect" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" left="0" top="0" bottom="0" right="0" x="0" y="0"/>
+	<e:Group id="roleGroup" height="512" y="401" anchorOffsetX="0" anchorOffsetY="0" left="0" right="0" x="0" scaleX="1" scaleY="1"/>
+	<e:Image id="maskBg" anchorOffsetX="0" anchorOffsetY="0" scaleX="1" scaleY="1" left="0" top="0" right="0" bottom="0" source="secondbox_shade_f_png"/>
+	<e:Image source="mining_floating_layer_bg_png" x="-13" y="160" anchorOffsetX="0" width="261" anchorOffsetY="0" height="99" scale9Grid="30,7,182,44" alpha="0.5" scaleX="1" scaleY="1"/>
+	<e:Image source="mining_floating_layer_bg_png" x="395" y="160" anchorOffsetX="0" width="261" anchorOffsetY="0" height="99" scale9Grid="30,7,182,44" alpha="0.5" scaleX="1" scaleY="1"/>
+	<ns1:HPBar id="pro1" x="0" y="170" anchorOffsetX="0" width="216" anchorOffsetY="0" height="31"/>
+	<ns1:HPBar id="pro2" y="170" anchorOffsetX="0" width="216" anchorOffsetY="0" height="31" scaleX="-1" right="0"/>
+	<e:Image source="paper_bg12_png" x="-23" y="78" scale9Grid="69,20,147,32" anchorOffsetX="0" width="286" anchorOffsetY="0" height="79"/>
+	<e:Image source="paper_bg12_png" x="378" y="78" scale9Grid="69,20,147,32" anchorOffsetX="0" width="286" anchorOffsetY="0" height="79"/>
+	<e:Label id="nameTf1" text="绿毛虫" x="14" y="97" textColor="0x000000" bold="true" fontFamily="黑体" anchorOffsetX="0" width="209" textAlign="center"/>
+	<e:Label id="nameTf2" text="铁甲蛹" x="422" y="97" textColor="0x000000" bold="true" fontFamily="黑体" anchorOffsetX="0" width="209" textAlign="center"/>
+	<e:Label id="roundTf" text="1" x="265" y="144" size="80" anchorOffsetX="0" width="110" textAlign="center" textColor="0xf6d91b"/>
+	<e:Group x="21" y="167" locked="true">
+		<e:Image source="battle_fightnumber_bg_png" x="154" y="67" scaleX="1" scaleY="1"/>
+		<e:Image source="battle_fightnumber_bg_png" x="103" y="67" scaleX="1" scaleY="1"/>
+		<e:Image source="battle_fightnumber_bg_png" x="51" y="67" scaleX="1" scaleY="1"/>
+		<e:Image source="battle_fightnumber_bg_png" x="0" y="67" scaleX="1" scaleY="1"/>
+		<e:Image source="battle_fightnumber_bg_png" x="551" y="67" scaleX="1" scaleY="1"/>
+		<e:Image source="battle_fightnumber_bg_png" x="500" y="67" scaleX="1" scaleY="1"/>
+		<e:Image source="battle_fightnumber_bg_png" x="448" y="67" scaleX="1" scaleY="1"/>
+		<e:Image source="battle_fightnumber_bg_png" x="397" y="67" scaleX="1" scaleY="1"/>
+		<e:Image source="fighting_capacity_png" x="366" y="0" anchorOffsetX="0" width="33" anchorOffsetY="0" height="36"/>
+		<e:Image source="fighting_capacity_png" x="236" y="0" anchorOffsetX="0" width="33" anchorOffsetY="0" height="36" scaleX="-1"/>
+		<e:Image source="fightnumber_1_png" x="161" y="45"/>
+		<e:Image source="fightnumber_2_png" x="110" y="45"/>
+		<e:Image source="fightnumber_3_png" x="58" y="45"/>
+		<e:Image source="fightnumber_4_png" x="7" y="45"/>
+		<e:Image source="fightnumber_1_png" x="558" y="45"/>
+		<e:Image source="fightnumber_2_png" x="507" y="45"/>
+		<e:Image source="fightnumber_3_png" x="455" y="45"/>
+		<e:Image source="fightnumber_4_png" x="404" y="45"/>
+	</e:Group>
+	<e:Label id="atkTf1" text="1" x="28" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
+	<e:Label id="defTf1" text="1" x="79.5" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
+	<e:Label id="avoidTf1" text="1" x="130.5" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
+	<e:Label id="kingTf1" text="1" x="181" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
+	<e:Label id="atkTf2" text="1" x="425" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
+	<e:Label id="defTf2" text="1" x="476.5" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
+	<e:Label id="avoidTf2" text="1" x="528.5" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
+	<e:Label id="kingTf2" text="1" x="580" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
+	<e:Group id="logGroup" x="4" y="943" scaleX="1">
+		<e:Image source="paper_bg6_d_png" x="0" y="0" anchorOffsetX="0" width="630" anchorOffsetY="0" height="184" scale9Grid="38,12,235,24" scaleX="1" scaleY="1"/>
+		<e:Label id="logTf" text="" x="13" y="9" anchorOffsetX="0" width="603" anchorOffsetY="0" height="164" size="20" textColor="0x40372b" bold="true" fontFamily="黑体"/>
+	</e:Group>
+	<e:Label id="exitTf" text="点击屏幕退出" y="697" size="26" textAlign="center" bold="true" fontFamily="黑体" horizontalCenter="0" textColor="0x40372b"/>
+	<e:Label id="hpTf1" text="111" x="37" y="173" anchorOffsetX="0" width="174" size="24"/>
+	<e:Label id="hpTf2" text="111" x="445" y="173" anchorOffsetX="0" width="174" textAlign="right" size="24"/>
+</e:Skin>

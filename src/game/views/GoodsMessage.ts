@@ -4,10 +4,19 @@ module gameviews {
 			super();
 		}
 
-		private  cacheMes:{iconSource:string,num:number}[] = [];
+		private  cacheMes:{iconSource?:string,num?:number,goodsMO?:gameCore.GoodsItemMO}[] = [];
 		private _isRuning:boolean = false;
 		public showGoodsMes(iconSource:string,num:number){
 			this.cacheMes.push({iconSource:iconSource,num:num});
+			if(this.isRuning === false)
+			{
+				this.onTick();
+				this.isRuning = true;
+			}
+		}
+
+		public showGoodsItem(mo:gameCore.GoodsItemMO){
+			this.cacheMes.push({goodsMO:mo});
 			if(this.isRuning === false)
 			{
 				this.onTick();
@@ -32,8 +41,14 @@ module gameviews {
 
 		private onTick():void{
 			if(this.cacheMes.length>0){
-				var obj = this.cacheMes.pop();
-				GoodsMessageItem.getInstance().show(this,this.stage.stageWidth*0.5 ,this.stage.stageHeight*0.5 -100,obj.iconSource, obj.num);
+				var obj = this.cacheMes.shift();
+				if(obj.goodsMO)
+				{
+					GoodsMessageItem.getInstance().showGoodsItem(this,this.stage.stageWidth*0.5 ,this.stage.stageHeight*0.5 , obj.goodsMO);
+				}
+				else{
+					GoodsMessageItem.getInstance().show(this,this.stage.stageWidth*0.5 ,this.stage.stageHeight*0.5 ,obj.iconSource, obj.num);
+				}
 			}
 			else{
 				this.isRuning = false;
@@ -65,16 +80,25 @@ module gameviews {
 			this.addChild(this.icon);
 
 			this.numTf =  new egret.TextField();
-			this.numTf.x = 0;
+			this.numTf.x = 10;
 			this.numTf.y = -10;
-			this.numTf.size = 24;
+			this.numTf.size = 30;
 			this.numTf.bold = true;
-			this.numTf.restrict = null;
 			this.numTf.fontFamily = '黑体';
 			this.addChild(this.numTf); 
 		}
 
 
+		public showGoodsItem(container:egret.DisplayObjectContainer,x:number,y:number,mo:gameCore.GoodsItemMO):void{
+			this.x = x;
+			this.y = y;
+			container.addChild(this);
+			var goodsInfo = gameMngers.goodsInfoMnger.getVO(mo.goodsId);
+			this.icon.source = RES.getRes(goodsInfo.source);
+			this.numTf.textColor = 0x44cc44;
+			this.numTf.text = goodsInfo.name+ 'X'+mo.goodsNum;
+			this.startTween();
+		}
 
 		public show(container:egret.DisplayObjectContainer,x:number,y:number, iconSource:string,num:number,tweenType:string ='auto'){
 			this.x = x;
@@ -89,7 +113,7 @@ module gameviews {
 				this.numTf.visible = false;
 			}
 			else if(num>0){
-				this.numTf.textColor = 0x44cc44;
+				this.numTf.textColor = 0x44ee44;
 				this.numTf.text = '+ '+gameutils.zdlToString(num);
 			}
 			else{

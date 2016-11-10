@@ -52,6 +52,8 @@ declare module skins{
 	class VSliderSkin extends eui.Skin{
 	}
 }
+declare class AlertPanelSkin extends eui.Skin{
+}
 declare class BagBtnSkin extends eui.Skin{
 }
 declare class BagItemRendererSkin extends eui.Skin{
@@ -59,6 +61,12 @@ declare class BagItemRendererSkin extends eui.Skin{
 declare class BagPanelSkin extends eui.Skin{
 }
 declare class BaseBtnSkin extends eui.Skin{
+}
+declare class BattleSceneSkin extends eui.Skin{
+}
+declare class ChooseRoleSkin extends eui.Skin{
+}
+declare class ChooseRoleSkillInfoSkin extends eui.Skin{
 }
 declare class FightBtnSkin extends eui.Skin{
 }
@@ -69,6 +77,8 @@ declare class FightWaitBarSkin extends eui.Skin{
 declare class GreenBtnSkin extends eui.Skin{
 }
 declare class HeroPanelSkin extends eui.Skin{
+}
+declare class HPBarSkin extends eui.Skin{
 }
 declare class IconLabelSkin extends eui.Skin{
 }
@@ -87,6 +97,8 @@ declare class MapItemSkin extends eui.Skin{
 declare class MapLevelBtnSkin extends eui.Skin{
 }
 declare class MapLevelItemSkin extends eui.Skin{
+}
+declare class OrangeBtnSkin extends eui.Skin{
 }
 declare class QianghuaListItemSkin extends eui.Skin{
 }

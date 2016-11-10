@@ -875,11 +875,11 @@ var egret;
             Tween._lastTime = timeStamp;
             var tweens = Tween._tweens.concat();
             for (var i = tweens.length - 1; i >= 0; i--) {
-                var tween_1 = tweens[i];
-                if ((paused && !tween_1.ignoreGlobalPause) || tween_1.paused) {
+                var tween = tweens[i];
+                if ((paused && !tween.ignoreGlobalPause) || tween.paused) {
                     continue;
                 }
-                tween_1.tick(tween_1._useTicks ? 1 : delta);
+                tween.tick(tween._useTicks ? 1 : delta);
             }
             return false;
         };
@@ -931,9 +931,9 @@ var egret;
         Tween.removeAllTweens = function () {
             var tweens = Tween._tweens;
             for (var i = 0, l = tweens.length; i < l; i++) {
-                var tween_2 = tweens[i];
-                tween_2.paused = true;
-                tween_2._target.tweenjs_count = 0;
+                var tween = tweens[i];
+                tween.paused = true;
+                tween._target.tweenjs_count = 0;
             }
             tweens.length = 0;
         };
@@ -1007,9 +1007,7 @@ var egret;
                 }
                 else if (this._steps.length > 0) {
                     // 找到新的tween
-                    var i = void 0;
-                    var l = this._steps.length;
-                    for (i = 0; i < l; i++) {
+                    for (var i = 0, l = this._steps.length; i < l; i++) {
                         if (this._steps[i].t > t) {
                             break;
                         }
@@ -1290,7 +1288,7 @@ var egret;
          * Execute callback function
          * @param callback {Function} Callback method
          * @param thisObj {any} this action scope of the callback method
-         * @param params {any[]} Parameter of the callback method
+         * @param params {Array<any>} Parameter of the callback method
          * @returns {egret.Tween} Tween object itself
          * @version Egret 2.4
          * @platform Web,Native
@@ -1307,7 +1305,7 @@ var egret;
          * 执行回调函数
          * @param callback {Function} 回调方法
          * @param thisObj {any} 回调方法this作用域
-         * @param params {any[]} 回调方法参数
+         * @param params {Array<any>} 回调方法参数
          * @returns {egret.Tween} Tween对象本身
          * @version Egret 2.4
          * @platform Web,Native

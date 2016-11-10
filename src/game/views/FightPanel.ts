@@ -115,7 +115,7 @@ class FightPanel extends eui.Component implements  eui.UIComponent {
 		gameCore.eventDispatch.addEventListener(gameCore.Event_MapChange, this.updateMap,this);
 
 		this.updateMap();
-		gameutils.asynMnger.addCB(40,this.onTick,this)
+		gameutils.asynMnger.addCB(40,this.onTick,this);
 	}
 
 
@@ -132,10 +132,22 @@ class FightPanel extends eui.Component implements  eui.UIComponent {
 		this.fightBtn.render();
 	}
 
+	private oldMap:number;
+	private oldMapLevel:number;
+	private oldMapChild:number;
 	/**更新地图相关信息 */
 	public updateMap():void{
 		var mapVo:gamevo.MapVO = gameMngers.mapInfoMnger.getVO(gameCore.currentUserInfo.curMap+'');
-		this.mapGuajiAnimaPlayer.resetGuajiAnima(mapVo.guajiAnima);
+		var mapChild:gamevo.MapChildVO = mapVo.mapChilds[gameCore.currentUserInfo.curMapChild];
+		if(this.oldMap !== gameCore.currentUserInfo.curMap || this.oldMapLevel !== gameCore.currentUserInfo.curMapLevel || this.oldMapChild !== gameCore.currentUserInfo.curMapChild)
+		{
+			this.mapGuajiAnimaPlayer.resetGuajiAnima(mapVo.guajiAnima);
+			gameviews.viewManager.showBottomMes(mapChild.mes);
+		}
+		this.oldMap = gameCore.currentUserInfo.curMap;
+		this.oldMapLevel = gameCore.currentUserInfo.curMapLevel;
+		this.oldMapChild = gameCore.currentUserInfo.curMapChild;
+
 		this.mapLevelBtn.label = gamesystem.MapLevelLabel[gameCore.currentUserInfo.curMapLevel];
 		this.mapNameTf.text = mapVo.name;
 		this.goldSpeedTf.text = mapVo.goldSpeed+'/s';

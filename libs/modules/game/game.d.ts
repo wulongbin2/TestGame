@@ -1,4 +1,4 @@
-declare namespace egret {
+declare module egret {
     /**
      * @version Egret 2.4
      * @platform Web,Native
@@ -76,7 +76,7 @@ declare namespace egret {
         clone(): FrameLabel;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
     * @language en_US
     * @version Egret 2.4
@@ -318,11 +318,6 @@ declare namespace egret {
          * @private
          *
          */
-        $renderFrame(): void;
-        /**
-         * @private
-         *
-         */
         private handlePendingEvent();
         /**
          * MovieClip 实例中帧的总数
@@ -388,7 +383,7 @@ declare namespace egret {
         private setIsStopped(value);
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @classdesc 使用 MovieClipData 类，您可以创建 MovieClip 对象和处理 MovieClip 对象的数据。MovieClipData 一般由MovieClipDataFactory生成
      * @see http://edn.egret.com/cn/docs/page/596 MovieClip序列帧动画
@@ -533,7 +528,7 @@ declare namespace egret {
         private setMCData(value);
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @classdesc 使用 MovieClipDataFactory 类，可以生成 MovieClipData 对象用于创建MovieClip
      * @see http://edn.egret.com/cn/docs/page/596 MovieClip序列帧动画
@@ -621,7 +616,7 @@ declare namespace egret {
         private setTexture(value);
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @language en_US
      * When the movieClip's current frame have a frameLabel, dispatches MovieClipEvent object. FrameLabel Event type: MovieClipEvent.FRAME_LABEL
@@ -703,7 +698,7 @@ declare namespace egret {
         static dispatchMovieClipEvent(target: IEventDispatcher, type: string, frameLabel?: string): boolean;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @private
      */
@@ -984,7 +979,7 @@ declare namespace egret {
          * Execute callback function
          * @param callback {Function} Callback method
          * @param thisObj {any} this action scope of the callback method
-         * @param params {any[]} Parameter of the callback method
+         * @param params {Array<any>} Parameter of the callback method
          * @returns {egret.ScrollTween} ScrollTween object itself
          * @version Egret 2.4
          * @platform Web,Native
@@ -994,12 +989,12 @@ declare namespace egret {
          * 执行回调函数
          * @param callback {Function} 回调方法
          * @param thisObj {any} 回调方法this作用域
-         * @param params {any[]} 回调方法参数
+         * @param params {Array<any>} 回调方法参数
          * @returns {egret.ScrollTween} Tween对象本身
          * @version Egret 2.4
          * @platform Web,Native
          */
-        call(callback: Function, thisObj?: any, params?: any[]): ScrollTween;
+        call(callback: Function, thisObj?: any, params?: Array<any>): ScrollTween;
         /**
          * @method egret.ScrollTween#tick
          * @param delta {number}
@@ -1010,7 +1005,7 @@ declare namespace egret {
         tick(delta: number): void;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @language en_US
      * ScrollView auxiliary classes for slides, you will pass a display object constructor. It can display more than the range display object within the specified size range. And can easily drag in this range.
@@ -1505,7 +1500,7 @@ declare namespace egret {
         swapChildrenAt(index1: number, index2: number): void;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @private
      * @version Egret 2.4
@@ -1585,7 +1580,7 @@ declare namespace egret {
         _bounces: boolean;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @private
      * @version Egret 2.4
@@ -1605,7 +1600,7 @@ declare namespace egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    let NetContext: {
+    var NetContext: {
         new (): NetContext;
         getNetContext(): NetContext;
     };
@@ -1617,7 +1612,7 @@ declare namespace egret {
      */
     function $getUrl(request: URLRequest): string;
 }
-declare namespace egret {
+declare module egret {
     /**
      * @language en_US
      * UThe URLLoader class downloads data from a URL as text, binary data, or URL-encoded variables.  It is useful for downloading text files, XML, or other information to be used in a dynamic, data-driven application.
@@ -1737,7 +1732,7 @@ declare namespace egret {
         __recycle(): void;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @language en_US
      * The URLLoaderDataFormat class provides values that specify how downloaded data is received.
@@ -1822,7 +1817,7 @@ declare namespace egret {
         static SOUND: string;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @language en_US
      * The URLRequest class captures all of the information in a single HTTP request.
@@ -1929,7 +1924,7 @@ declare namespace egret {
         requestHeaders: Array<URLRequestHeader>;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @language en_US
      * A URLRequestHeader object encapsulates a single HTTP request header and consists of a name/value pair.  URLRequestHeader objects are used in the requestHeaders property of the URLRequest class.
@@ -1988,7 +1983,7 @@ declare namespace egret {
         constructor(name: string, value: string);
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @language en_US
      * The URLRequestMethod class provides values that specify whether the
@@ -2036,7 +2031,7 @@ declare namespace egret {
         static POST: string;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @language en_US
      * The URLVariables class allows you to transfer variables between an application and a server.
@@ -2128,7 +2123,7 @@ declare namespace egret {
         private encodeArray(key, value);
     }
 }
-declare namespace egret {
+declare module egret {
     /**
     * @language en_US
     * @version Egret 2.4
@@ -2214,7 +2209,7 @@ declare namespace egret {
         static getInstance(): egret.Ticker;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @class egret.MainContext
      * @classdesc
@@ -2315,15 +2310,9 @@ declare namespace egret {
         static instance: egret.MainContext;
     }
 }
-/**
- * @private
- */
-declare let testDeviceType1: () => boolean;
-/**
- * @private
- */
-declare let testRuntimeType1: () => boolean;
-declare namespace egret {
+declare var testDeviceType1: () => boolean;
+declare var testRuntimeType1: () => boolean;
+declare module egret {
     /**
      * @language en_US
      * Tool class for object cache repeat use, which can be used to construct an object pool. Objects are automatically recycled after a certain duration.
@@ -2359,7 +2348,7 @@ declare namespace egret {
         /**
          * @private
          */
-        static _callBackList: any[];
+        static _callBackList: Array<any>;
         static $init(): void;
         static onUpdate(timeStamp: number): boolean;
         /**
@@ -2442,7 +2431,7 @@ declare namespace egret {
         dispose(): void;
     }
 }
-declare namespace egret {
+declare module egret {
     /**
      * @language en_US
      * To specify a delay (in milliseconds) calls the function specified interval loop.
@@ -2486,7 +2475,7 @@ declare namespace egret {
      */
     function clearInterval(key: number): void;
 }
-declare namespace egret {
+declare module egret {
     /**
      * @language en_US
      * Run the designated function in specified delay (in milliseconds).

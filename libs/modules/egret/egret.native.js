@@ -292,9 +292,7 @@ var egret;
              */
             p.arc = function (x, y, radius, startAngle, endAngle, anticlockwise) {
                 this.checkSurface();
-                native.$cmdManager.setContext(this.$nativeGraphicsContext);
-                native.$cmdManager.arc(x, y, radius, startAngle, endAngle, anticlockwise ? 1 : 0);
-                // this.$nativeGraphicsContext.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+                this.$nativeGraphicsContext.arc(x, y, radius, startAngle, endAngle, anticlockwise);
             };
             /**
              * @private
@@ -308,9 +306,7 @@ var egret;
              */
             p.quadraticCurveTo = function (cpx, cpy, x, y) {
                 this.checkSurface();
-                native.$cmdManager.setContext(this.$nativeGraphicsContext);
-                native.$cmdManager.quadraticCurveTo(cpx, cpy, x, y);
-                // this.$nativeGraphicsContext.quadraticCurveTo(cpx, cpy, x, y);
+                this.$nativeGraphicsContext.quadraticCurveTo(cpx, cpy, x, y);
             };
             /**
              * @private
@@ -393,9 +389,7 @@ var egret;
              */
             p.fillRect = function (x, y, w, h) {
                 this.checkSurface();
-                native.$cmdManager.setContext(this.$nativeGraphicsContext);
-                native.$cmdManager.fillRect(x, y, w, h);
-                // this.$nativeGraphicsContext.fillRect(x, y, w, h);
+                this.$nativeGraphicsContext.fillRect(x, y, w, h);
             };
             /**
              * @private
@@ -412,9 +406,7 @@ var egret;
              */
             p.bezierCurveTo = function (cp1x, cp1y, cp2x, cp2y, x, y) {
                 this.checkSurface();
-                native.$cmdManager.setContext(this.$nativeGraphicsContext);
-                native.$cmdManager.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
-                // this.$nativeGraphicsContext.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+                this.$nativeGraphicsContext.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
             };
             /**
              * @private
@@ -424,9 +416,7 @@ var egret;
              */
             p.stroke = function () {
                 this.checkSurface();
-                native.$cmdManager.setContext(this.$nativeGraphicsContext);
-                native.$cmdManager.stroke();
-                // this.$nativeGraphicsContext.stroke();
+                this.$nativeGraphicsContext.stroke();
             };
             /**
              * @private
@@ -441,9 +431,7 @@ var egret;
             p.strokeRect = function (x, y, w, h) {
                 //console.log("strokeRect");
                 this.checkSurface();
-                native.$cmdManager.setContext(this.$nativeGraphicsContext);
-                native.$cmdManager.strokeRect(x, y, w, h);
-                // this.$nativeGraphicsContext.strokeRect(x, y, w, h);
+                this.$nativeGraphicsContext.strokeRect(x, y, w, h);
             };
             /**
              * @private
@@ -540,9 +528,9 @@ var egret;
                     }
                     var index = this.$clipList.indexOf(this.$saveCount);
                     if (index != -1) {
-                        var length_1 = this.$clipList.length;
-                        this.$clipList.splice(index, length_1 - index);
-                        for (; index < length_1; index++) {
+                        var length = this.$clipList.length;
+                        this.$clipList.splice(index, length - index);
+                        for (; index < length; index++) {
                             this.checkSurface();
                             native.$cmdManager.setContext(this.$nativeContext);
                             native.$cmdManager.popClip();
@@ -1279,9 +1267,9 @@ var egret;
                     }
                     var index = this.$clipList.indexOf(this.$saveCount);
                     if (index != -1) {
-                        var length_2 = this.$clipList.length;
-                        this.$clipList.splice(index, length_2 - index);
-                        for (; index < length_2; index++) {
+                        var length = this.$clipList.length;
+                        this.$clipList.splice(index, length - index);
+                        for (; index < length; index++) {
                             this.checkSurface();
                             this.$nativeContext.popClip();
                         }
@@ -1847,12 +1835,10 @@ var egret;
                 this.context.restore();
             };
             /**
-             * 获取指定区域的像素
+             * 获取指定坐标的像素
              */
-            p.getPixels = function (x, y, width, height) {
-                if (width === void 0) { width = 1; }
-                if (height === void 0) { height = 1; }
-                return this.context.getImageData(x, y, width, height).data;
+            p.getPixel = function (x, y) {
+                return this.context.getImageData(x, y, 1, 1).data;
             };
             /**
              * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null
@@ -2123,9 +2109,7 @@ var egret;
              * @platform Web,Native
              */
             p.arc = function (x, y, radius, startAngle, endAngle, anticlockwise) {
-                native.$cmdManager.setContext(this.$nativeContext);
-                native.$cmdManager.arc(x, y, radius, startAngle, endAngle, anticlockwise ? 1 : 0);
-                // this.$nativeContext.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+                this.$nativeContext.arc(x, y, radius, startAngle, endAngle, anticlockwise);
             };
             /**
              * @private
@@ -2139,9 +2123,7 @@ var egret;
              */
             p.quadraticCurveTo = function (cpx, cpy, x, y) {
                 //console.log("quadraticCurveTo " + cpx + " " + cpy + " " + x + " " + y);
-                native.$cmdManager.setContext(this.$nativeContext);
-                native.$cmdManager.quadraticCurveTo(cpx, cpy, x, y);
-                // this.$nativeContext.quadraticCurveTo(cpx, cpy, x, y);
+                this.$nativeContext.quadraticCurveTo(cpx, cpy, x, y);
             };
             /**
              * @private
@@ -2222,9 +2204,7 @@ var egret;
              * @platform Web,Native
              */
             p.fillRect = function (x, y, w, h) {
-                native.$cmdManager.setContext(this.$nativeContext);
-                native.$cmdManager.fillRect(x, y, w, h);
-                // this.$nativeContext.fillRect(x, y, w, h);
+                this.$nativeContext.fillRect(x, y, w, h);
             };
             /**
              * @private
@@ -2240,9 +2220,7 @@ var egret;
              * @platform Web,Native
              */
             p.bezierCurveTo = function (cp1x, cp1y, cp2x, cp2y, x, y) {
-                native.$cmdManager.setContext(this.$nativeContext);
-                native.$cmdManager.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
-                // this.$nativeContext.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+                this.$nativeContext.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
             };
             /**
              * @private
@@ -2251,9 +2229,7 @@ var egret;
              * @platform Web,Native
              */
             p.stroke = function () {
-                native.$cmdManager.setContext(this.$nativeContext);
-                native.$cmdManager.stroke();
-                // this.$nativeContext.stroke();
+                this.$nativeContext.stroke();
             };
             /**
              * @private
@@ -2267,9 +2243,7 @@ var egret;
              */
             p.strokeRect = function (x, y, w, h) {
                 //console.log("strokeRect");
-                native.$cmdManager.setContext(this.$nativeContext);
-                native.$cmdManager.strokeRect(x, y, w, h);
-                // this.$nativeContext.strokeRect(x, y, w, h);
+                this.$nativeContext.strokeRect(x, y, w, h);
             };
             /**
              * @private
@@ -2564,74 +2538,6 @@ var egret;
                     height = image.height;
                 }
                 else {
-                    if (width == void 0) {
-                        width = image.width;
-                    }
-                    if (height == void 0) {
-                        height = image.height;
-                    }
-                    if (surfaceOffsetX == void 0) {
-                        surfaceOffsetX = 0;
-                    }
-                    if (surfaceOffsetY == void 0) {
-                        surfaceOffsetY = 0;
-                    }
-                    if (surfaceImageWidth == void 0) {
-                        surfaceImageWidth = width;
-                    }
-                    if (surfaceImageHeight == void 0) {
-                        surfaceImageHeight = height;
-                    }
-                }
-                //console.log("drawImage::" + offsetX + " " + offsetY + " " + width + " " + height + " " + surfaceOffsetX + " " + surfaceOffsetY + " " + surfaceImageWidth + " " + surfaceImageHeight);
-                //console.log("drawImage::" + bitmapData);
-                var imageAdress;
-                if (!isNative) {
-                    if (!bitmapData._native_tex_loc) {
-                        bitmapData._native_tex_loc = bitmapData.___native_texture__p;
-                    }
-                    imageAdress = bitmapData._native_tex_loc;
-                }
-                else {
-                    imageAdress = bitmapData.___native_texture__p;
-                }
-                native.$cmdManager.setContext(this.$nativeContext);
-                native.$cmdManager.drawImage(imageAdress, offsetX, offsetY, width, height, surfaceOffsetX, surfaceOffsetY, surfaceImageWidth, surfaceImageHeight);
-            };
-            /**
-             * @private
-             * draw mesh
-             */
-            p.drawMesh = function (image, offsetX, offsetY, width, height, surfaceOffsetX, surfaceOffsetY, surfaceImageWidth, surfaceImageHeight, textureSourceWidth, textureSourceHeight, meshUVs, meshVertices, meshIndices) {
-                var bitmapData;
-                if (image.$nativeCanvas) {
-                    bitmapData = image.$nativeCanvas;
-                }
-                else {
-                    bitmapData = image;
-                }
-                if (!bitmapData) {
-                    return;
-                }
-                if (arguments.length == 3) {
-                    surfaceOffsetX = offsetX;
-                    surfaceOffsetY = offsetY;
-                    offsetX = 0;
-                    offsetY = 0;
-                    width = surfaceImageWidth = image.width;
-                    height = surfaceImageHeight = image.height;
-                }
-                else if (arguments.length == 5) {
-                    surfaceOffsetX = offsetX;
-                    surfaceOffsetY = offsetY;
-                    surfaceImageWidth = width;
-                    surfaceImageHeight = height;
-                    offsetX = 0;
-                    offsetY = 0;
-                    width = image.width;
-                    height = image.height;
-                }
-                else {
                     if (!width) {
                         width = image.width;
                     }
@@ -2651,68 +2557,20 @@ var egret;
                         surfaceImageHeight = height;
                     }
                 }
-                this.vertices = new Float32Array(meshVertices.length / 2 * 5);
-                this.indicesForMesh = new Uint32Array(meshIndices.length);
-                this.cacheArrays(this.$matrix, 1, offsetX, offsetY, width, height, surfaceOffsetX, surfaceOffsetY, surfaceImageWidth, surfaceImageHeight, textureSourceWidth, textureSourceHeight, meshUVs, meshVertices, meshIndices);
-                // 打断批渲染
-                native.$cmdManager.flush();
-                this.$nativeContext.drawMesh(bitmapData, this.vertices, this.indicesForMesh, this.vertices.length, this.indicesForMesh.length);
-            };
-            p.cacheArrays = function (transform, alpha, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, textureSourceWidth, textureSourceHeight, meshUVs, meshVertices, meshIndices) {
-                //计算出绘制矩阵，之后把矩阵还原回之前的
-                var locWorldTransform = transform;
-                var originalA = locWorldTransform.a;
-                var originalB = locWorldTransform.b;
-                var originalC = locWorldTransform.c;
-                var originalD = locWorldTransform.d;
-                var originalTx = locWorldTransform.tx;
-                var originalTy = locWorldTransform.ty;
-                if (destX != 0 || destY != 0) {
-                    locWorldTransform.append(1, 0, 0, 1, destX, destY);
-                }
-                if (sourceWidth / destWidth != 1 || sourceHeight / destHeight != 1) {
-                    locWorldTransform.append(destWidth / sourceWidth, 0, 0, destHeight / sourceHeight, 0, 0);
-                }
-                var a = locWorldTransform.a;
-                var b = locWorldTransform.b;
-                var c = locWorldTransform.c;
-                var d = locWorldTransform.d;
-                var tx = locWorldTransform.tx;
-                var ty = locWorldTransform.ty;
-                locWorldTransform.a = originalA;
-                locWorldTransform.b = originalB;
-                locWorldTransform.c = originalC;
-                locWorldTransform.d = originalD;
-                locWorldTransform.tx = originalTx;
-                locWorldTransform.ty = originalTy;
-                if (meshVertices) {
-                    // 计算索引位置与赋值
-                    var vertices = this.vertices;
-                    // 缓存顶点数组
-                    var i = 0, iD = 0, l = 0;
-                    var u = 0, v = 0, x = 0, y = 0;
-                    for (i = 0, l = meshUVs.length; i < l; i += 2) {
-                        iD = i * 5 / 2;
-                        x = meshVertices[i];
-                        y = meshVertices[i + 1];
-                        u = meshUVs[i];
-                        v = meshUVs[i + 1];
-                        // xy
-                        vertices[iD + 0] = a * x + c * y + tx;
-                        vertices[iD + 1] = b * x + d * y + ty;
-                        // uv
-                        vertices[iD + 2] = (sourceX + u * sourceWidth) / textureSourceWidth;
-                        vertices[iD + 3] = (sourceY + v * sourceHeight) / textureSourceHeight;
-                        // alpha
-                        vertices[iD + 4] = alpha;
+                //console.log("drawImage::" + offsetX + " " + offsetY + " " + width + " " + height + " " + surfaceOffsetX + " " + surfaceOffsetY + " " + surfaceImageWidth + " " + surfaceImageHeight);
+                //console.log("drawImage::" + bitmapData);
+                var imageAdress;
+                if (!isNative) {
+                    if (!bitmapData._native_tex_loc) {
+                        bitmapData._native_tex_loc = bitmapData.___native_texture__p;
                     }
-                    for (i = 0; i < meshIndices.length; i++) {
-                        this.indicesForMesh[i] = meshIndices[i];
-                    }
+                    imageAdress = bitmapData._native_tex_loc;
                 }
                 else {
-                    console.log("meshVertices not exist");
+                    imageAdress = bitmapData.___native_texture__p;
                 }
+                native.$cmdManager.setContext(this.$nativeContext);
+                native.$cmdManager.drawImage(imageAdress, offsetX, offsetY, width, height, surfaceOffsetX, surfaceOffsetY, surfaceImageWidth, surfaceImageHeight);
             };
             /**
              * @private
@@ -2748,16 +2606,6 @@ var egret;
                     res.data = res.pixelData;
                 }
                 return res;
-            };
-            /**
-             * @private
-             * 设置全局shader
-             * @param filter filter属性生成的json
-             */
-            p.setGlobalShader = function (filter) {
-                native.$cmdManager.setContext(this.$nativeContext);
-                var s1 = native.$cmdManager.pushString(filter);
-                native.$cmdManager.setGlobalShader(s1);
             };
             return NativeCanvasRenderContext;
         }(egret.HashObject));
@@ -3405,63 +3253,6 @@ var egret;
                     height = image.height;
                 }
                 else {
-                    if (width == void 0) {
-                        width = image.width;
-                    }
-                    if (height == void 0) {
-                        height = image.height;
-                    }
-                    if (surfaceOffsetX == void 0) {
-                        surfaceOffsetX = 0;
-                    }
-                    if (surfaceOffsetY == void 0) {
-                        surfaceOffsetY = 0;
-                    }
-                    if (surfaceImageWidth == void 0) {
-                        surfaceImageWidth = width;
-                    }
-                    if (surfaceImageHeight == void 0) {
-                        surfaceImageHeight = height;
-                    }
-                }
-                //console.log("drawImage::" + offsetX + " " + offsetY + " " + width + " " + height + " " + surfaceOffsetX + " " + surfaceOffsetY + " " + surfaceImageWidth + " " + surfaceImageHeight);
-                //console.log("drawImage::" + bitmapData);
-                this.$nativeContext.drawImage(bitmapData, offsetX, offsetY, width, height, surfaceOffsetX, surfaceOffsetY, surfaceImageWidth, surfaceImageHeight);
-            };
-            /**
-             * @private
-             * draw mesh
-             */
-            p.drawMesh = function (image, offsetX, offsetY, width, height, surfaceOffsetX, surfaceOffsetY, surfaceImageWidth, surfaceImageHeight, textureSourceWidth, textureSourceHeight, meshUVs, meshVertices, meshIndices) {
-                var bitmapData;
-                if (image.$nativeCanvas) {
-                    bitmapData = image.$nativeCanvas;
-                }
-                else {
-                    bitmapData = image;
-                }
-                if (!bitmapData) {
-                    return;
-                }
-                if (arguments.length == 3) {
-                    surfaceOffsetX = offsetX;
-                    surfaceOffsetY = offsetY;
-                    offsetX = 0;
-                    offsetY = 0;
-                    width = surfaceImageWidth = image.width;
-                    height = surfaceImageHeight = image.height;
-                }
-                else if (arguments.length == 5) {
-                    surfaceOffsetX = offsetX;
-                    surfaceOffsetY = offsetY;
-                    surfaceImageWidth = width;
-                    surfaceImageHeight = height;
-                    offsetX = 0;
-                    offsetY = 0;
-                    width = image.width;
-                    height = image.height;
-                }
-                else {
                     if (!width) {
                         width = image.width;
                     }
@@ -3481,66 +3272,9 @@ var egret;
                         surfaceImageHeight = height;
                     }
                 }
-                this.vertices = new Float32Array(meshVertices.length / 2 * 5);
-                this.indicesForMesh = new Uint32Array(meshIndices.length);
-                this.cacheArrays(this.$matrix, 1, offsetX, offsetY, width, height, surfaceOffsetX, surfaceOffsetY, surfaceImageWidth, surfaceImageHeight, textureSourceWidth, textureSourceHeight, meshUVs, meshVertices, meshIndices);
-                this.$nativeContext.drawMesh(bitmapData, this.vertices, this.indicesForMesh, this.vertices.length, this.indicesForMesh.length);
-            };
-            p.cacheArrays = function (transform, alpha, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, textureSourceWidth, textureSourceHeight, meshUVs, meshVertices, meshIndices) {
-                //计算出绘制矩阵，之后把矩阵还原回之前的
-                var locWorldTransform = transform;
-                var originalA = locWorldTransform.a;
-                var originalB = locWorldTransform.b;
-                var originalC = locWorldTransform.c;
-                var originalD = locWorldTransform.d;
-                var originalTx = locWorldTransform.tx;
-                var originalTy = locWorldTransform.ty;
-                if (destX != 0 || destY != 0) {
-                    locWorldTransform.append(1, 0, 0, 1, destX, destY);
-                }
-                if (sourceWidth / destWidth != 1 || sourceHeight / destHeight != 1) {
-                    locWorldTransform.append(destWidth / sourceWidth, 0, 0, destHeight / sourceHeight, 0, 0);
-                }
-                var a = locWorldTransform.a;
-                var b = locWorldTransform.b;
-                var c = locWorldTransform.c;
-                var d = locWorldTransform.d;
-                var tx = locWorldTransform.tx;
-                var ty = locWorldTransform.ty;
-                locWorldTransform.a = originalA;
-                locWorldTransform.b = originalB;
-                locWorldTransform.c = originalC;
-                locWorldTransform.d = originalD;
-                locWorldTransform.tx = originalTx;
-                locWorldTransform.ty = originalTy;
-                if (meshVertices) {
-                    // 计算索引位置与赋值
-                    var vertices = this.vertices;
-                    // 缓存顶点数组
-                    var i = 0, iD = 0, l = 0;
-                    var u = 0, v = 0, x = 0, y = 0;
-                    for (i = 0, l = meshUVs.length; i < l; i += 2) {
-                        iD = i * 5 / 2;
-                        x = meshVertices[i];
-                        y = meshVertices[i + 1];
-                        u = meshUVs[i];
-                        v = meshUVs[i + 1];
-                        // xy
-                        vertices[iD + 0] = a * x + c * y + tx;
-                        vertices[iD + 1] = b * x + d * y + ty;
-                        // uv
-                        vertices[iD + 2] = (sourceX + u * sourceWidth) / textureSourceWidth;
-                        vertices[iD + 3] = (sourceY + v * sourceHeight) / textureSourceHeight;
-                        // alpha
-                        vertices[iD + 4] = alpha;
-                    }
-                    for (i = 0; i < meshIndices.length; i++) {
-                        this.indicesForMesh[i] = meshIndices[i];
-                    }
-                }
-                else {
-                    console.log("meshVertices not exist");
-                }
+                //console.log("drawImage::" + offsetX + " " + offsetY + " " + width + " " + height + " " + surfaceOffsetX + " " + surfaceOffsetY + " " + surfaceImageWidth + " " + surfaceImageHeight);
+                //console.log("drawImage::" + bitmapData);
+                this.$nativeContext.drawImage(bitmapData, offsetX, offsetY, width, height, surfaceOffsetX, surfaceOffsetY, surfaceImageWidth, surfaceImageHeight);
             };
             /**
              * @private
@@ -3798,10 +3532,6 @@ var egret;
              * @param useMaxSize 若传入true，则将改变后的尺寸与已有尺寸对比，保留较大的尺寸。
              */
             p.resize = function (width, height, useMaxSize) {
-                //resize 之前要提交下绘制命令
-                if (native.$supportCmdBatch) {
-                    native.$cmdManager.flush();
-                }
                 var surface = this.surface;
                 surface.width = width;
                 surface.height = height;
@@ -3815,10 +3545,6 @@ var egret;
              * @param offsetY 原始图像数据在改变后缓冲区的绘制起始位置y
              */
             p.resizeTo = function (width, height, offsetX, offsetY) {
-                //resize 之前要提交下绘制命令
-                if (native.$supportCmdBatch) {
-                    native.$cmdManager.flush();
-                }
                 if (!sharedCanvas) {
                     sharedCanvas = createCanvas();
                 }
@@ -3866,12 +3592,10 @@ var egret;
                 this.context.restore();
             };
             /**
-             * 获取指定区域的像素
+             * 获取指定坐标的像素
              */
-            p.getPixels = function (x, y, width, height) {
-                if (width === void 0) { width = 1; }
-                if (height === void 0) { height = 1; }
-                return this.context.getImageData(x, y, width, height).data;
+            p.getPixel = function (x, y) {
+                return this.context.getImageData(x, y, 1, 1).data;
             };
             /**
              * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null
@@ -3993,14 +3717,9 @@ var egret;
             egret.$error(1035);
             return null;
         }
-        function getPixels(x, y, width, height) {
-            egret.$error(1035);
-            return null;
-        }
         egret.Texture.prototype.toDataURL = toDataURL;
         egret.Texture.prototype.saveToFile = saveToFile;
         egret.Texture.prototype.getPixel32 = getPixel32;
-        egret.Texture.prototype.getPixels = getPixels;
     })(native = egret.native || (egret.native = {}));
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
@@ -4183,7 +3902,7 @@ var egret;
                 /*
                  * 存储字符串的数组
                  */
-                this.strArray = [];
+                this.strArray = new Array();
             }
             var d = __define,c=CmdManager,p=c.prototype;
             /*
@@ -4508,96 +4227,6 @@ var egret;
                 }
                 this.uint32View[this.arrayBufferLen++] = 108;
             };
-            p.stroke = function () {
-                if (this.arrayBufferLen + 1 > this.maxArrayBufferLen) {
-                    this.flush();
-                }
-                this.uint32View[this.arrayBufferLen++] = 206;
-            };
-            p.arc = function (f1, f2, f3, f4, f5, i6) {
-                if (this.arrayBufferLen + 7 > this.maxArrayBufferLen) {
-                    this.flush();
-                }
-                var uint32View = this.uint32View;
-                var float32View = this.float32View;
-                var arrayBufferLen = this.arrayBufferLen;
-                uint32View[arrayBufferLen++] = 209;
-                float32View[arrayBufferLen++] = f1;
-                float32View[arrayBufferLen++] = f2;
-                float32View[arrayBufferLen++] = f3;
-                float32View[arrayBufferLen++] = f4;
-                float32View[arrayBufferLen++] = f5;
-                uint32View[arrayBufferLen++] = i6;
-                this.arrayBufferLen = arrayBufferLen;
-            };
-            p.quadraticCurveTo = function (f1, f2, f3, f4) {
-                if (this.arrayBufferLen + 5 > this.maxArrayBufferLen) {
-                    this.flush();
-                }
-                var uint32View = this.uint32View;
-                var float32View = this.float32View;
-                var arrayBufferLen = this.arrayBufferLen;
-                uint32View[arrayBufferLen++] = 211;
-                float32View[arrayBufferLen++] = f1;
-                float32View[arrayBufferLen++] = f2;
-                float32View[arrayBufferLen++] = f3;
-                float32View[arrayBufferLen++] = f4;
-                this.arrayBufferLen = arrayBufferLen;
-            };
-            p.fillRect = function (f1, f2, f3, f4) {
-                if (this.arrayBufferLen + 5 > this.maxArrayBufferLen) {
-                    this.flush();
-                }
-                var uint32View = this.uint32View;
-                var float32View = this.float32View;
-                var arrayBufferLen = this.arrayBufferLen;
-                uint32View[arrayBufferLen++] = 212;
-                float32View[arrayBufferLen++] = f1;
-                float32View[arrayBufferLen++] = f2;
-                float32View[arrayBufferLen++] = f3;
-                float32View[arrayBufferLen++] = f4;
-                this.arrayBufferLen = arrayBufferLen;
-            };
-            p.strokeRect = function (f1, f2, f3, f4) {
-                if (this.arrayBufferLen + 5 > this.maxArrayBufferLen) {
-                    this.flush();
-                }
-                var uint32View = this.uint32View;
-                var float32View = this.float32View;
-                var arrayBufferLen = this.arrayBufferLen;
-                uint32View[arrayBufferLen++] = 213;
-                float32View[arrayBufferLen++] = f1;
-                float32View[arrayBufferLen++] = f2;
-                float32View[arrayBufferLen++] = f3;
-                float32View[arrayBufferLen++] = f4;
-                this.arrayBufferLen = arrayBufferLen;
-            };
-            p.bezierCurveTo = function (f1, f2, f3, f4, f5, f6) {
-                if (this.arrayBufferLen + 7 > this.maxArrayBufferLen) {
-                    this.flush();
-                }
-                var uint32View = this.uint32View;
-                var float32View = this.float32View;
-                var arrayBufferLen = this.arrayBufferLen;
-                uint32View[arrayBufferLen++] = 215;
-                float32View[arrayBufferLen++] = f1;
-                float32View[arrayBufferLen++] = f2;
-                float32View[arrayBufferLen++] = f3;
-                float32View[arrayBufferLen++] = f4;
-                float32View[arrayBufferLen++] = f5;
-                float32View[arrayBufferLen++] = f6;
-                this.arrayBufferLen = arrayBufferLen;
-            };
-            p.setGlobalShader = function (i1) {
-                if (this.arrayBufferLen + 2 > this.maxArrayBufferLen) {
-                    this.flush();
-                }
-                var uint32View = this.uint32View;
-                var arrayBufferLen = this.arrayBufferLen;
-                uint32View[arrayBufferLen++] = 111;
-                uint32View[arrayBufferLen++] = i1;
-                this.arrayBufferLen = arrayBufferLen;
-            };
             return CmdManager;
         }());
         egret.registerClass(CmdManager,'CmdManager');
@@ -4698,9 +4327,9 @@ var egret;
         if (DEBUG) {
             egret.log = function () {
                 if (DEBUG) {
-                    var length_3 = arguments.length;
+                    var length = arguments.length;
                     var info = "";
-                    for (var i = 0; i < length_3; i++) {
+                    for (var i = 0; i < length; i++) {
                         info += arguments[i] + " ";
                     }
                     egret.sys.$logToFPS(info);
@@ -4756,7 +4385,6 @@ var egret;
             __extends(NativeFps, _super);
             function NativeFps(stage, showFPS, showLog, logFilter, styles) {
                 _super.call(this);
-                this.arrFps = [];
                 this.arrLog = [];
                 if (showFPS || showLog) {
                     this.panelX = styles["x"] === undefined ? 0 : parseInt(styles['x']);
@@ -4803,26 +4431,8 @@ var egret;
             };
             ;
             p.update = function (datas) {
-                this.arrFps.push(datas.fps);
-                var fpsTotal = 0;
-                var lenFps = this.arrFps.length;
-                if (lenFps > 101) {
-                    lenFps = 101;
-                    this.arrFps.shift();
-                }
-                var fpsMin = this.arrFps[0];
-                var fpsMax = this.arrFps[0];
-                for (var i = 0; i < lenFps; i++) {
-                    var num = this.arrFps[i];
-                    fpsTotal += num;
-                    if (num < fpsMin)
-                        fpsMin = num;
-                    else if (num > fpsMax)
-                        fpsMax = num;
-                }
                 this.textFps.textFlow = [
                     { text: datas.fps + " FPS " + egret.Capabilities.renderMode + "\n" },
-                    { text: "min" + fpsMin + " max" + fpsMax + " avg" + Math.floor(fpsTotal / lenFps) + "\n" },
                     { text: "Draw: " + datas.draw + "\nDirty: " + datas.dirty + "%\n" },
                     { text: "Cost: " },
                     { text: datas.costTicker + " ", style: { "textColor": 0x18fefe } },
@@ -5727,14 +5337,14 @@ var egret;
                 this.loading = true;
                 this.loaded = false;
                 if (cache && !egret_native.isFileExists(url)) {
-                    var self_1 = this;
+                    var self = this;
                     var promise = egret.PromiseObject.create();
                     promise.onSuccessFunc = function () {
-                        self_1.loadEnd();
+                        self.loadEnd();
                     };
                     promise.onErrorFunc = function () {
                         egret.$warn(1048);
-                        self_1.dispatchEventWith(egret.IOErrorEvent.IO_ERROR);
+                        self.dispatchEventWith(egret.IOErrorEvent.IO_ERROR);
                     };
                     egret_native.download(url, url, promise);
                 }
@@ -6973,8 +6583,6 @@ var egret;
              */
             p.$show = function () {
                 var self = this;
-                var textfield = this.$textfield;
-                var values = textfield.$TextField;
                 egret_native.TextInputOp.setKeybordOpen(false);
                 egret_native.EGT_getTextEditerContentText = function () {
                     return self.$getText();
@@ -6985,16 +6593,13 @@ var egret;
                     self.showScreenKeyboard();
                     egret_native.EGT_keyboardDidShow = function () {
                     };
-                    if (egret_native.TextInputOp.updateConfig) {
-                        egret_native.TextInputOp.updateConfig(JSON.stringify({
-                            "font_color": values[2 /* textColor */]
-                        }));
-                    }
                 };
                 egret_native.EGT_keyboardDidHide = function () {
                 };
                 egret_native.EGT_deleteBackward = function () {
                 };
+                var textfield = this.$textfield;
+                var values = textfield.$TextField;
                 var inputType = values[37 /* inputType */];
                 var inputMode = values[30 /* multiline */] ? 0 : 6;
                 var inputFlag = -1; //textfield.displayAsPassword ? 0 : -1;

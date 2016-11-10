@@ -6,6 +6,8 @@ class HeroPanel extends eui.Component implements  eui.UIComponent {
 	private desTf:eui.Label;
 	private nameTf:eui.Label;
 	private heroAnimaPlayer:gameAnima.HeroAnimaPlayer;
+	public skillList:eui.List;
+	public skillListData:eui.ArrayCollection
 	public constructor() {
 		super();
 		this.heroAnimaPlayer = new gameAnima.HeroAnimaPlayer();
@@ -13,6 +15,9 @@ class HeroPanel extends eui.Component implements  eui.UIComponent {
 	}
 	
 	private onComplete():void{
+		this.skillList.itemRenderer = SkillISlottem;
+		this.skillListData = new eui.ArrayCollection;
+
 		this.heroAnimaPlayer.x = this.width*0.5;
 		this.heroAnimaPlayer.y = this.height*0.5-35;
 		this.heroAnimaPlayer.scale = 3;
@@ -46,11 +51,14 @@ class HeroPanel extends eui.Component implements  eui.UIComponent {
 			this.newIcon.visible = false;
 		}
 		var info:gamevo.RoleBaseVO = gameMngers.roleInfoMnger.getVO(this._roleId);
-		this.heroAnimaPlayer.setHeroAnimaId(info.animaSource);
+		this.heroAnimaPlayer.resetAnimaSource(info.animaSource);
 		this.heroAnimaPlayer.playAnimaById(gamesystem.AnimaDownWalk)
 		this.nameTf.text = info.name;
 		this.desTf.text = info.des;
 		this.roleTagTf.text = info.tag.join('/');
+
+		this.skillListData.source  =info.skills;
+		this.skillList.dataProvider = this.skillListData;
 	}
 
 	

@@ -17,4 +17,14 @@
 	<e:Label text="人物背景" x="236" y="628" bold="true" fontFamily="黑体" size="22" width="160" textAlign="center"/>
 	<e:Image source="biography_icon2_png" x="358" y="931" width="238" height="86"/>
 	<e:Label id="desTf" text="哇啊啊啊啊" x="40" y="668" width="555" height="265" textColor="0x40372b" bold="true" fontFamily="黑体"/>
+	<e:List id="skillList" width="65" height="284" y="304" x="529" scaleX="1" scaleY="1" itemRendererSkinName="SkillISlottemSkin">
+		<e:ArrayCollection>
+			<e:Array>
+				<e:Object a="null"/>
+				<e:Object a="null"/>
+				<e:Object a="null"/>
+				<e:Object a="null"/>
+			</e:Array>
+		</e:ArrayCollection>
+	</e:List>
 </e:Skin>

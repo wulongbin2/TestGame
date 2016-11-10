@@ -142,11 +142,10 @@ var eui;
                 target[prop] = joinValues(templates);
             };
             var length = chainIndex.length;
-            var watcher;
             for (var i = 0; i < length; i++) {
                 var index = chainIndex[i];
                 var chain = templates[index].split(".");
-                watcher = eui.Watcher.watch(host, chain, null, null);
+                var watcher = eui.Watcher.watch(host, chain, null, null);
                 if (watcher) {
                     templates[index] = watcher;
                     watcher.setHandler(assign, null);
@@ -343,10 +342,10 @@ var eui;
             }
             var data = getPropertyDescriptor(host, property);
             if (data && data.set && data.get) {
-                var orgSet_1 = data.set;
+                var orgSet = data.set;
                 data.set = function (value) {
                     if (this[property] != value) {
-                        orgSet_1.call(this, value);
+                        orgSet.call(this, value);
                         if (isEventDispatcher) {
                             eui.PropertyEvent.dispatchPropertyEvent(this, eui.PropertyEvent.PROPERTY_CHANGE, property);
                         }
@@ -358,15 +357,15 @@ var eui;
             }
             else if (!data || (!data.get && !data.set)) {
                 bindableCount++;
-                var newProp_1 = "_" + bindableCount + property;
-                host[newProp_1] = data ? data.value : null;
+                var newProp = "_" + bindableCount + property;
+                host[newProp] = data ? data.value : null;
                 data = { enumerable: true, configurable: true };
                 data.get = function () {
-                    return this[newProp_1];
+                    return this[newProp];
                 };
                 data.set = function (value) {
-                    if (this[newProp_1] != value) {
-                        this[newProp_1] = value;
+                    if (this[newProp] != value) {
+                        this[newProp] = value;
                         if (isEventDispatcher) {
                             eui.PropertyEvent.dispatchPropertyEvent(this, eui.PropertyEvent.PROPERTY_CHANGE, property);
                         }
@@ -1089,7 +1088,7 @@ var eui;
             for (var i = newLength; i < oldLength; i++) {
                 this.removeItemAt(newLength);
             }
-            for (var i = 0; i < newLength; i++) {
+            for (i = 0; i < newLength; i++) {
                 if (i >= oldLength)
                     this.addItemAt(newSource[i], i);
                 else
@@ -1551,8 +1550,8 @@ var eui;
                         }
                         else if (egret.is(client, "egret.DisplayObjectContainer")) {
                             var items = bin.items;
-                            var length_1 = bin.length;
-                            for (var i = 0; i < length_1; i++) {
+                            var length = bin.length;
+                            for (var i = 0; i < length; i++) {
                                 var value = items[i];
                                 if (client.contains(value)) {
                                     bin.remove(value);
@@ -1595,8 +1594,8 @@ var eui;
                         }
                         else if (egret.is(client, "egret.DisplayObjectContainer")) {
                             var items = bin.items;
-                            var length_2 = bin.length;
-                            for (var i = 0; i < length_2; i++) {
+                            var length = bin.length;
+                            for (var i = 0; i < length; i++) {
                                 var value = items[i];
                                 if (client.contains(value)) {
                                     bin.remove(value);
@@ -2323,8 +2322,8 @@ var eui;
                 if (recursive) {
                     var children = this.$children;
                     if (children) {
-                        var length_3 = children.length;
-                        for (var i = 0; i < length_3; i++) {
+                        var length = children.length;
+                        for (var i = 0; i < length; i++) {
                             var child = children[i];
                             if (egret.is(child, UIComponentClass)) {
                                 child.validateSize(true);
@@ -2572,9 +2571,13 @@ var eui;
             };
             /**
              * @private
+             *
+             * @param bounds
+             * @param w
+             * @param h
              */
             p.applyMatrix = function (bounds, w, h) {
-                bounds.setTo(0, 0, w, h);
+                var bounds = bounds.setTo(0, 0, w, h);
                 var matrix = this.getAnchorMatrix();
                 if (isDeltaIdentity(matrix)) {
                     bounds.x += matrix.tx;
@@ -2921,7 +2924,7 @@ var eui;
         p.$parseFont = function () {
             this.$fontChanged = false;
             if (this.$font && typeof this.$font == "string") {
-                var adapter = egret.getImplementation("eui.IAssetAdapter");
+                var adapter = this.$stage.getImplementation("eui.IAssetAdapter");
                 if (!adapter) {
                     adapter = new eui.DefaultAssetAdapter();
                 }
@@ -3303,8 +3306,8 @@ var eui;
                 if (value) {
                     values[1 /* skinName */] = value;
                 }
-                else {
-                    var theme = egret.getImplementation("eui.Theme");
+                else if (this.$stage) {
+                    var theme = this.$stage.getImplementation("eui.Theme");
                     if (theme) {
                         var skinName = theme.getSkinName(this);
                         if (skinName) {
@@ -3327,7 +3330,7 @@ var eui;
                     skin = new skinName();
                 }
                 else if (typeof (skinName) == "string") {
-                    var clazz = void 0;
+                    var clazz;
                     var text = skinName.trim();
                     if (text.charAt(0) == "<") {
                         clazz = EXML.parse(text);
@@ -3403,8 +3406,8 @@ var eui;
             var oldSkin = values[8 /* skin */];
             if (oldSkin) {
                 var skinParts = oldSkin.skinParts;
-                var length_4 = skinParts.length;
-                for (var i = 0; i < length_4; i++) {
+                var length = skinParts.length;
+                for (var i = 0; i < length; i++) {
                     var partName = skinParts[i];
                     if (this[partName]) {
                         this.setSkinPart(partName, null);
@@ -3412,8 +3415,8 @@ var eui;
                 }
                 var children = oldSkin.$elementsContent;
                 if (children) {
-                    length_4 = children.length;
-                    for (var i = 0; i < length_4; i++) {
+                    length = children.length;
+                    for (var i = 0; i < length; i++) {
                         var child = children[i];
                         if (child.$parent == this) {
                             this.removeChild(child);
@@ -3425,17 +3428,17 @@ var eui;
             values[8 /* skin */] = skin;
             if (skin) {
                 var skinParts = skin.skinParts;
-                var length_5 = skinParts.length;
-                for (var i = 0; i < length_5; i++) {
+                var length = skinParts.length;
+                for (var i = 0; i < length; i++) {
                     var partName = skinParts[i];
                     var instance = skin[partName];
                     if (instance) {
                         this.setSkinPart(partName, instance);
                     }
                 }
-                var children = skin.$elementsContent;
+                children = skin.$elementsContent;
                 if (children) {
-                    for (var i = children.length - 1; i >= 0; i--) {
+                    for (i = children.length - 1; i >= 0; i--) {
                         this.addChildAt(children[i], 0);
                     }
                 }
@@ -3720,7 +3723,7 @@ var eui;
         p.createChildren = function () {
             var values = this.$Component;
             if (!values[1 /* skinName */]) {
-                var theme = egret.getImplementation("eui.Theme");
+                var theme = this.$stage.getImplementation("eui.Theme");
                 if (theme) {
                     var skinName = theme.getSkinName(this);
                     if (skinName) {
@@ -4707,17 +4710,17 @@ var eui;
                 var state = values.statesMap[values.oldState];
                 if (state) {
                     var overrides = state.overrides;
-                    var length_6 = overrides.length;
-                    for (var i = 0; i < length_6; i++) {
+                    var length = overrides.length;
+                    for (var i = 0; i < length; i++) {
                         overrides[i].remove(this, parent);
                     }
                 }
                 values.oldState = values.currentState;
                 state = values.statesMap[values.currentState];
                 if (state) {
-                    var overrides = state.overrides;
-                    var length_7 = overrides.length;
-                    for (var i = 0; i < length_7; i++) {
+                    overrides = state.overrides;
+                    length = overrides.length;
+                    for (i = 0; i < length; i++) {
                         overrides[i].apply(this, parent);
                     }
                 }
@@ -4908,8 +4911,8 @@ var eui;
              */
             ,function (value) {
                 if (value) {
-                    var length_8 = value.length;
-                    for (var i = 0; i < length_8; i++) {
+                    var length = value.length;
+                    for (var i = 0; i < length; i++) {
                         this.addChild(value[i]);
                     }
                 }
@@ -5867,8 +5870,8 @@ var eui;
                     if (this.$layout && this.$layout.$useVirtualLayout) {
                         var indexToRenderer = this.$indexToRenderer;
                         var keys = Object.keys(indexToRenderer);
-                        var length_9 = keys.length;
-                        for (var i = length_9 - 1; i >= 0; i--) {
+                        var length = keys.length;
+                        for (var i = length - 1; i >= 0; i--) {
                             var index = +keys[i];
                             this.freeRendererByIndex(index);
                         }
@@ -6000,15 +6003,15 @@ var eui;
                 return;
             if (this.$layout && this.$layout.$useVirtualLayout) {
                 var keys = Object.keys(indexToRenderer);
-                var length_10 = keys.length;
-                for (var i = 0; i < length_10; i++) {
+                var length = keys.length;
+                for (var i = 0; i < length; i++) {
                     var index = +keys[i];
                     this.resetRendererItemIndex(index);
                 }
             }
             else {
                 var indexToRendererLength = indexToRenderer.length;
-                for (var index = 0; index < indexToRendererLength; index++) {
+                for (index = 0; index < indexToRendererLength; index++) {
                     this.resetRendererItemIndex(index);
                 }
             }
@@ -6217,20 +6220,20 @@ var eui;
                 var skinName = values[13 /* itemRendererSkinName */];
                 var indexToRenderer = this.$indexToRenderer;
                 var keys = Object.keys(indexToRenderer);
-                var length_11 = keys.length;
-                for (var i = 0; i < length_11; i++) {
+                var length = keys.length;
+                for (var i = 0; i < length; i++) {
                     var index = keys[i];
                     this.setItemRenderSkinName(indexToRenderer[index], skinName);
                 }
                 var freeRenderers = values[3 /* freeRenderers */];
-                keys = Object.keys(freeRenderers);
-                length_11 = keys.length;
-                for (var i = 0; i < length_11; i++) {
+                var keys = Object.keys(freeRenderers);
+                var length = keys.length;
+                for (var i = 0; i < length; i++) {
                     var hashCode = keys[i];
                     var list = freeRenderers[hashCode];
-                    var length_12 = list.length;
-                    for (var i_1 = 0; i_1 < length_12; i_1++) {
-                        this.setItemRenderSkinName(list[i_1], skinName);
+                    var length = list.length;
+                    for (var i = 0; i < length; i++) {
+                        this.setItemRenderSkinName(list[i], skinName);
                     }
                 }
             }
@@ -6356,14 +6359,14 @@ var eui;
             var values = this.$DataGroup;
             if (values[10 /* cleanFreeRenderer */]) {
                 var freeRenderers = values[3 /* freeRenderers */];
-                var keys_1 = Object.keys(freeRenderers);
-                var length_13 = keys_1.length;
-                for (var i = 0; i < length_13; i++) {
-                    var hashCode = keys_1[i];
+                var keys = Object.keys(freeRenderers);
+                var length = keys.length;
+                for (var i = 0; i < length; i++) {
+                    var hashCode = keys[i];
                     var list = freeRenderers[hashCode];
-                    var length_14 = list.length;
-                    for (var i_2 = 0; i_2 < length_14; i_2++) {
-                        var renderer = list[i_2];
+                    var length = list.length;
+                    for (var i = 0; i < length; i++) {
+                        renderer = list[i];
                         this.rendererRemoved(renderer, renderer.itemIndex, renderer.data);
                         this.removeChild(renderer);
                     }
@@ -7280,7 +7283,7 @@ var eui;
                 thumb.setLayoutBoundsPosition(0, thumbY);
             }
             else if (hsp >= contentWidth - width) {
-                var scaleWidth = thumbWidth * (1 - (hsp - contentWidth + width) / (width * 0.5));
+                scaleWidth = thumbWidth * (1 - (hsp - contentWidth + width) / (width * 0.5));
                 scaleWidth = Math.max(5, Math.round(scaleWidth));
                 thumb.setLayoutBoundsSize(scaleWidth, NaN);
                 thumb.setLayoutBoundsPosition(unscaledWidth - scaleWidth, thumbY);
@@ -8834,7 +8837,7 @@ var eui;
             this.sourceChanged = false;
             var source = this._source;
             if (source && typeof source == "string") {
-                var adapter = egret.getImplementation("eui.IAssetAdapter");
+                var adapter = this.$stage.getImplementation("eui.IAssetAdapter");
                 if (!adapter) {
                     adapter = assetAdapter;
                 }
@@ -8904,7 +8907,7 @@ var eui;
                 return;
             }
             var values = this.$Bitmap;
-            egret.sys.BitmapNode.$updateTextureData(this.$renderNode, values[1 /* image */], values[2 /* bitmapX */], values[3 /* bitmapY */], values[4 /* bitmapWidth */], values[5 /* bitmapHeight */], values[6 /* offsetX */], values[7 /* offsetY */], values[8 /* textureWidth */], values[9 /* textureHeight */], width, height, values[13 /* sourceWidth */], values[14 /* sourceHeight */], this.scale9Grid || values[0 /* bitmapData */]["scale9Grid"], this.$fillMode, values[10 /* smoothing */]);
+            egret.sys.BitmapNode.$updateTextureData(this.$renderNode, values[1 /* image */], values[2 /* bitmapX */], values[3 /* bitmapY */], values[4 /* bitmapWidth */], values[5 /* bitmapHeight */], values[6 /* offsetX */], values[7 /* offsetY */], values[8 /* textureWidth */], values[9 /* textureHeight */], width, height, values[13 /* sourceWidth */], values[14 /* sourceHeight */], this.scale9Grid, this.$fillMode, values[10 /* smoothing */]);
         };
         /**
          * @copy eui.UIComponent#createChildren
@@ -9453,7 +9456,6 @@ var eui;
          */
         function Label(text) {
             _super.call(this);
-            this.$style = null;
             /**
              * @private
              */
@@ -9462,42 +9464,6 @@ var eui;
             this.text = text;
         }
         var d = __define,c=Label,p=c.prototype;
-        d(p, "style"
-            /**
-             * @language en_US
-             * Horizontal alignment of text.
-             * @default：egret.HorizontalAlign.LEFT
-             * @version Egret 2.4
-             * @platform Web,Native
-             */
-            /**
-             * @language zh_CN
-             * 文本的水平对齐方式。
-             * @default：egret.HorizontalAlign.LEFT
-             * @version Egret 2.4
-             * @platform Web,Native
-             */
-            ,function () {
-                return this.$style;
-            }
-            ,function (value) {
-                this.$setStyle(value);
-            }
-        );
-        p.$setStyle = function (value) {
-            if (this.$style == value) {
-                return;
-            }
-            var theme = egret.getImplementation("eui.Theme");
-            if (theme) {
-                var config = theme.$getStyleConfig(value);
-                if (config) {
-                    for (var key in config) {
-                        this[key] = config[key];
-                    }
-                }
-            }
-        };
         /**
          * @private
          *
@@ -10209,7 +10175,7 @@ var eui;
                 return false;
             }
             if (values[4 /* dispatchChangeAfterSelection */]) {
-                var result = this.dispatchEventWith(egret.Event.CHANGING, false, true, true);
+                var result = this.dispatchEventWith(egret.Event.CHANGING, false, true);
                 if (!result) {
                     this.itemSelected(values[2 /* proposedSelectedIndex */], false);
                     values[2 /* proposedSelectedIndex */] = ListBase.NO_PROPOSED_SELECTION;
@@ -11177,8 +11143,8 @@ var eui;
              */
             ,function (value) {
                 if (value) {
-                    var length_15 = value.length;
-                    for (var i = 0; i < length_15; i++) {
+                    var length = value.length;
+                    for (var i = 0; i < length; i++) {
                         this.addChild(value[i]);
                     }
                 }
@@ -12443,8 +12409,8 @@ var eui;
             if (instance) {
                 var foundInstance = false;
                 var buttons = this.radioButtons;
-                var length_16 = buttons.length;
-                for (var i = 0; i < length_16; i++) {
+                var length = buttons.length;
+                for (var i = 0; i < length; i++) {
                     var rb = buttons[i];
                     if (foundInstance) {
                         rb.$indexNumber = rb.$indexNumber - 1;
@@ -12459,7 +12425,7 @@ var eui;
                         this.radioButtons.splice(i, 1);
                         foundInstance = true;
                         i--;
-                        length_16--;
+                        length--;
                     }
                 }
             }
@@ -13391,16 +13357,14 @@ var eui;
             }
             var values = this.$Scroller;
             if (!values[5 /* touchMoved */]) {
-                var outX = void 0;
                 if (Math.abs(values[3 /* touchStartX */] - event.$stageX) < Scroller.scrollThreshold) {
-                    outX = false;
+                    var outX = false;
                 }
                 else {
                     outX = true;
                 }
-                var outY = void 0;
                 if (Math.abs(values[4 /* touchStartY */] - event.$stageY) < Scroller.scrollThreshold) {
-                    outY = false;
+                    var outY = false;
                 }
                 else {
                     outY = true;
@@ -13510,8 +13474,8 @@ var eui;
          * @param scrollPos
          */
         p.horizontalUpdateHandler = function (scrollPos) {
-            this.$Scroller[10 /* viewport */].scrollH = scrollPos;
             this.dispatchEventWith(egret.Event.CHANGE);
+            this.$Scroller[10 /* viewport */].scrollH = scrollPos;
         };
         /**
          * @private
@@ -13519,8 +13483,8 @@ var eui;
          * @param scrollPos
          */
         p.verticalUpdateHandler = function (scrollPos) {
-            this.$Scroller[10 /* viewport */].scrollV = scrollPos;
             this.dispatchEventWith(egret.Event.CHANGE);
+            this.$Scroller[10 /* viewport */].scrollV = scrollPos;
         };
         /**
          * @private
@@ -14200,6 +14164,7 @@ var eui;
              * @platform Web,Native
              */
             ,function () {
+                console.log('get inputType');
                 if (this.textDisplay) {
                     return this.textDisplay.inputType;
                 }
@@ -14213,6 +14178,7 @@ var eui;
              * @platform Web,Native
              */
             ,function (value) {
+                console.log('set inputType');
                 this.$TextInput[8 /* inputType */] = value;
                 if (this.textDisplay) {
                     this.textDisplay.inputType = value;
@@ -14795,7 +14761,7 @@ var eui;
                 thumb.setLayoutBoundsPosition(thumbX, 0);
             }
             else if (vsp >= contentHeight - height) {
-                var scaleHeight = thumbHeight * (1 - (vsp - contentHeight + height) / (height * 0.5));
+                scaleHeight = thumbHeight * (1 - (vsp - contentHeight + height) / (height * 0.5));
                 scaleHeight = Math.max(5, Math.round(scaleHeight));
                 thumb.setLayoutBoundsSize(NaN, scaleHeight);
                 thumb.setLayoutBoundsPosition(thumbX, unscaledHeight - scaleHeight);
@@ -15787,8 +15753,8 @@ var eui;
                     posTo = currentScrollPos;
                 }
                 if (this.target["$getThrowInfo"]) {
-                    var event_1 = this.target["$getThrowInfo"](currentScrollPos, posTo);
-                    posTo = event_1.toPos;
+                    var event = this.target["$getThrowInfo"](currentScrollPos, posTo);
+                    posTo = event.toPos;
                 }
                 if (duration > 0) {
                     //如果取消了回弹,保证动画之后不会超出边界
@@ -16290,8 +16256,8 @@ var eui;
          * Create an instance of Theme
          * @param configURL the external theme path. if null, you need to register the default skin name with
          * mapSkin() manually.
-         * @param stage current stage.
-         * If null, you need to register with egret.registerImplementation("eui.Theme",theme)
+         * @param stage current stage. The theme will register to the stage with this parameter.
+         * If null, you need to register with stage.registerImplementation("eui.Theme",theme)
          * manually.
          * @version Egret 2.4
          * @version eui 1.0
@@ -16302,8 +16268,8 @@ var eui;
          * 创建一个主题实例
          * @param configURL 要加载并解析的外部主题配置文件路径。若传入 null，将不进行配置文件加载，
          * 之后需要在外部以代码方式手动调用 mapSkin() 方法完成每条默认皮肤名的注册。
-         * @param stage 当前舞台引用。
-         * 若传入null，需要在外部手动调用 egret.registerImplementation("eui.Theme",theme) 来完成主题的注册。
+         * @param stage 当前舞台引用。传入此参数，主题会自动注册自身到舞台上。
+         * 若传入null，需要在外部手动调用 stage.registerImplementation("eui.Theme",theme) 来完成主题的注册。
          * @version Egret 2.4
          * @version eui 1.0
          * @platform Web,Native
@@ -16318,14 +16284,11 @@ var eui;
              * @private
              */
             this.skinMap = {};
-            /**
-             * @private
-             * styles 配置信息
-             */
-            this.$styles = {};
             this.initialized = !configURL;
             if (stage) {
-                egret.registerImplementation("eui.Theme", this);
+                this.$stage = stage;
+                EXML.$stage = stage;
+                stage.registerImplementation("eui.Theme", this);
             }
             this.$configURL = configURL;
             this.load(configURL);
@@ -16337,7 +16300,7 @@ var eui;
          * @param url
          */
         p.load = function (url) {
-            var adapter = egret.getImplementation("eui.IThemeAdapter");
+            var adapter = this.$stage ? this.$stage.getImplementation("eui.IThemeAdapter") : null;
             if (!adapter) {
                 adapter = new eui.DefaultThemeAdapter();
             }
@@ -16349,18 +16312,17 @@ var eui;
          * @param str
          */
         p.onConfigLoaded = function (str) {
-            var data;
             if (str) {
                 if (DEBUG) {
                     try {
-                        data = JSON.parse(str);
+                        var data = JSON.parse(str);
                     }
                     catch (e) {
                         egret.$error(3000);
                     }
                 }
                 else {
-                    data = JSON.parse(str);
+                    var data = JSON.parse(str);
                 }
             }
             else if (DEBUG) {
@@ -16370,16 +16332,13 @@ var eui;
                 var skinMap = this.skinMap;
                 var skins = data.skins;
                 var keys = Object.keys(skins);
-                var length_17 = keys.length;
-                for (var i = 0; i < length_17; i++) {
+                var length = keys.length;
+                for (var i = 0; i < length; i++) {
                     var key = keys[i];
                     if (!skinMap[key]) {
                         this.mapSkin(key, skins[key]);
                     }
                 }
-            }
-            if (data.styles) {
-                this.$styles = data.styles;
             }
             if (!data.exmls || data.exmls.length == 0) {
                 this.onLoaded();
@@ -16504,9 +16463,6 @@ var eui;
                 }
             }
             this.skinMap[hostComponentKey] = skinName;
-        };
-        p.$getStyleConfig = function (style) {
-            return this.$styles[style];
         };
         return Theme;
     }(egret.EventDispatcher));
@@ -17603,7 +17559,7 @@ var eui;
                 //打印变量列表
                 var variables = this.variableBlock;
                 length = variables.length;
-                for (var i = 0; i < length; i++) {
+                for (i = 0; i < length; i++) {
                     var variable = variables[i];
                     if (variable.defaultValue) {
                         returnStr += indent2Str + variable.toCode() + "\n";
@@ -17613,7 +17569,7 @@ var eui;
                 if (this.constructCode) {
                     var codes = this.constructCode.toCode().split("\n");
                     length = codes.length;
-                    for (var i = 0; i < length; i++) {
+                    for (i = 0; i < length; i++) {
                         var code = codes[i];
                         returnStr += indent2Str + code + "\n";
                     }
@@ -17623,7 +17579,7 @@ var eui;
                 //打印函数列表
                 var functions = this.functionBlock;
                 length = functions.length;
-                for (var i = 0; i < length; i++) {
+                for (i = 0; i < length; i++) {
                     var functionItem = functions[i];
                     functionItem.indent = indent + 1;
                     returnStr += functionItem.toCode() + "\n";
@@ -17824,8 +17780,8 @@ var eui;
                 }
                 if (this.codeBlock) {
                     var lines = this.codeBlock.toCode().split("\n");
-                    var length_18 = lines.length;
-                    for (var i = 0; i < length_18; i++) {
+                    var length = lines.length;
+                    for (var i = 0; i < length; i++) {
                         var line = lines[i];
                         returnStr += codeIndent + line + "\n";
                     }
@@ -17933,8 +17889,8 @@ var eui;
                         returnStr += ",\n";
                     var item = overrides[index];
                     var codes = item.toCode().split("\n");
-                    var length_19 = codes.length;
-                    for (var i = 0; i < length_19; i++) {
+                    var length = codes.length;
+                    for (var i = 0; i < length; i++) {
                         var code = codes[i];
                         codes[i] = indentStr + indentStr + code;
                     }
@@ -18158,13 +18114,13 @@ var eui;
                 if (hasClass && clazz) {
                     egret.registerClass(clazz, className);
                     var paths = className.split(".");
-                    var length_20 = paths.length;
+                    var length = paths.length;
                     var definition = __global;
-                    for (var i = 0; i < length_20 - 1; i++) {
+                    for (var i = 0; i < length - 1; i++) {
                         var path = paths[i];
                         definition = definition[path] || (definition[path] = {});
                     }
-                    if (definition[paths[length_20 - 1]]) {
+                    if (definition[paths[length - 1]]) {
                         if (DEBUG && !parsedClasses[className]) {
                             egret.$warn(2101, className, codeText);
                         }
@@ -18173,7 +18129,7 @@ var eui;
                         if (DEBUG) {
                             parsedClasses[className] = true;
                         }
-                        definition[paths[length_20 - 1]] = clazz;
+                        definition[paths[length - 1]] = clazz;
                     }
                 }
                 return clazz;
@@ -18190,17 +18146,16 @@ var eui;
                         egret.$error(1003, "text");
                     }
                 }
-                var xmlData = null;
                 if (DEBUG) {
                     try {
-                        xmlData = egret.XML.parse(text);
+                        var xmlData = egret.XML.parse(text);
                     }
                     catch (e) {
                         egret.$error(2002, text + "\n" + e.message);
                     }
                 }
                 else {
-                    xmlData = egret.XML.parse(text);
+                    var xmlData = egret.XML.parse(text);
                 }
                 var hasClass = false;
                 var className = "";
@@ -18214,10 +18169,9 @@ var eui;
                 }
                 var exClass = this.parseClass(xmlData, className);
                 var code = exClass.toCode();
-                var clazz = null;
                 if (DEBUG) {
                     try {
-                        clazz = eval(code);
+                        var clazz = eval(code);
                     }
                     catch (e) {
                         egret.log(code);
@@ -18225,18 +18179,18 @@ var eui;
                     }
                 }
                 else {
-                    clazz = eval(code);
+                    var clazz = eval(code);
                 }
                 if (hasClass && clazz) {
                     egret.registerClass(clazz, className);
                     var paths = className.split(".");
-                    var length_21 = paths.length;
+                    var length = paths.length;
                     var definition = __global;
-                    for (var i = 0; i < length_21 - 1; i++) {
+                    for (var i = 0; i < length - 1; i++) {
                         var path = paths[i];
                         definition = definition[path] || (definition[path] = {});
                     }
-                    if (definition[paths[length_21 - 1]]) {
+                    if (definition[paths[length - 1]]) {
                         if (DEBUG && !parsedClasses[className]) {
                             egret.$warn(2101, className, toXMLString(xmlData));
                         }
@@ -18245,7 +18199,7 @@ var eui;
                         if (DEBUG) {
                             parsedClasses[className] = true;
                         }
-                        definition[paths[length_21 - 1]] = clazz;
+                        definition[paths[length - 1]] = clazz;
                     }
                 }
                 return clazz;
@@ -18298,8 +18252,8 @@ var eui;
                 this.getStateNames();
                 var children = this.currentXML.children;
                 if (children) {
-                    var length_22 = children.length;
-                    for (var i = 0; i < length_22; i++) {
+                    var length = children.length;
+                    for (var i = 0; i < length; i++) {
                         var node = children[i];
                         if (node.nodeType === 1 && node.namespace == sys.NS_W &&
                             node.localName == DECLARATIONS) {
@@ -18399,21 +18353,20 @@ var eui;
                         result = false;
                     }
                     else {
-                        var prop = void 0;
-                        var parent_1 = node.parent;
-                        if (this.isProperty(parent_1)) {
-                            prop = parent_1.localName;
+                        var parent = node.parent;
+                        if (this.isProperty(parent)) {
+                            var prop = parent.localName;
                             var index = prop.indexOf(".");
                             if (index != -1) {
                                 var stateName = prop.substring(index + 1);
                                 prop = prop.substring(0, index);
                             }
-                            parent_1 = parent_1.parent;
+                            parent = parent.parent;
                         }
                         else {
-                            prop = sys.exmlConfig.getDefaultPropById(parent_1.localName, parent_1.namespace);
+                            prop = sys.exmlConfig.getDefaultPropById(parent.localName, parent.namespace);
                         }
-                        var className = sys.exmlConfig.getClassNameById(parent_1.localName, parent_1.namespace);
+                        var className = sys.exmlConfig.getClassNameById(parent.localName, parent.namespace);
                         result = (sys.exmlConfig.getPropertyType(prop, className) == TYPE_CLASS);
                     }
                 }
@@ -18432,8 +18385,8 @@ var eui;
                 var keys = Object.keys(attributes);
                 var length = keys.length;
                 for (var i = 0; i < length; i++) {
-                    var name_1 = keys[i];
-                    if (name_1.indexOf(".") != -1) {
+                    var name = keys[i];
+                    if (name.indexOf(".") != -1) {
                         return true;
                     }
                 }
@@ -18504,8 +18457,8 @@ var eui;
                 this.initlizeChildNode(node, cb, varName);
                 var delayAssignments = this.delayAssignmentDic[id];
                 if (delayAssignments) {
-                    var length_23 = delayAssignments.length;
-                    for (var i = 0; i < length_23; i++) {
+                    var length = delayAssignments.length;
+                    for (var i = 0; i < length; i++) {
                         var codeBlock = delayAssignments[i];
                         cb.concat(codeBlock);
                     }
@@ -18540,8 +18493,8 @@ var eui;
                     case TYPE_ARRAY:
                         var values = [];
                         if (children) {
-                            var length_24 = children.length;
-                            for (var i = 0; i < length_24; i++) {
+                            var length = children.length;
+                            for (var i = 0; i < length; i++) {
                                 var child = children[i];
                                 if (child.nodeType == 1) {
                                     values.push(this.createFuncForNode(child));
@@ -18576,12 +18529,6 @@ var eui;
                 var attributes = node.attributes;
                 var keyList = Object.keys(attributes);
                 keyList.sort(); //排序一下防止出现随机顺序
-                //对 style 属性先行赋值
-                var styleIndex = keyList.indexOf("style");
-                if (styleIndex > 0) {
-                    keyList.splice(styleIndex, 1);
-                    keyList.unshift("style");
-                }
                 var length = keyList.length;
                 for (var i = 0; i < length; i++) {
                     key = keyList[i];
@@ -18633,7 +18580,6 @@ var eui;
                 var directChild = [];
                 var length = children.length;
                 var propList = [];
-                var errorInfo;
                 for (var i = 0; i < length; i++) {
                     var child = children[i];
                     if (child.nodeType != 1 || child.namespace == sys.NS_W) {
@@ -18671,7 +18617,7 @@ var eui;
                             continue;
                         }
                         if (DEBUG) {
-                            errorInfo = getPropertyStr(child);
+                            var errorInfo = getPropertyStr(child);
                         }
                         this.addChildrenToProp(child.children, type, prop, cb, varName, errorInfo, propList, node);
                     }
@@ -18684,7 +18630,7 @@ var eui;
                 var defaultProp = sys.exmlConfig.getDefaultPropById(node.localName, node.namespace);
                 var defaultType = sys.exmlConfig.getPropertyType(defaultProp, className);
                 if (DEBUG) {
-                    errorInfo = getPropertyStr(directChild[0]);
+                    var errorInfo = getPropertyStr(directChild[0]);
                 }
                 if (!defaultProp || !defaultType) {
                     if (DEBUG) {
@@ -18740,16 +18686,16 @@ var eui;
                     var firstChild = children[0];
                     if (type == TYPE_ARRAY) {
                         if (firstChild.localName == TYPE_ARRAY) {
-                            var values = [];
+                            values = [];
                             if (firstChild.children) {
                                 var len = firstChild.children.length;
                                 for (var k = 0; k < len; k++) {
-                                    var item = firstChild.children[k];
+                                    item = firstChild.children[k];
                                     if (item.nodeType != 1) {
                                         continue;
                                     }
                                     childFunc = this.createFuncForNode(item);
-                                    var childClassName = this.getClassNameOfNode(item);
+                                    childClassName = this.getClassNameOfNode(item);
                                     if (!this.isStateNode(item))
                                         values.push(childFunc);
                                 }
@@ -18810,12 +18756,12 @@ var eui;
                     result = false;
                 }
                 else {
-                    var parent_2 = node.parent;
+                    var parent = node.parent;
                     var index = name.indexOf(".");
                     if (index != -1) {
                         name = name.substr(0, index);
                     }
-                    var className = sys.exmlConfig.getClassNameById(parent_2.localName, parent_2.namespace);
+                    var className = sys.exmlConfig.getClassNameById(parent.localName, parent.namespace);
                     result = !!sys.exmlConfig.getPropertyType(name, className);
                 }
                 node["isProperty"] = result;
@@ -18826,8 +18772,7 @@ var eui;
              * 是否是普通赋值的key
              */
             p.isNormalKey = function (key) {
-                if (!key || key.indexOf(".") != -1
-                    || key.indexOf(":") != -1 || wingKeys.indexOf(key) != -1)
+                if (!key || key.indexOf(".") != -1 || wingKeys.indexOf(key) != -1)
                     return false;
                 return true;
             };
@@ -18978,16 +18923,12 @@ var eui;
                 return { templates: templates, chainIndex: chainIndex };
             };
             p.parseTemplates = function (value) {
-                //仅仅是表达式相加 如:{a.b+c.d}
                 if (value.indexOf("'") == -1) {
                     return value.split("+");
                 }
-                //包含文本的需要提取文本并对文本进行处理
-                var isSingleQuoteLeak = false; //是否缺失单引号
                 var trimText = "";
                 value = value.split("\\\'").join("\v0\v");
                 while (value.length > 0) {
-                    //'成对出现 这是第一个
                     var index = value.indexOf("'");
                     if (index == -1) {
                         trimText += value;
@@ -18995,21 +18936,15 @@ var eui;
                     }
                     trimText += value.substring(0, index + 1);
                     value = value.substring(index + 1);
-                    //'成对出现 这是第二个
                     index = value.indexOf("'");
                     if (index == -1) {
                         index = value.length - 1;
-                        isSingleQuoteLeak = true;
                     }
                     var quote = value.substring(0, index + 1);
                     trimText += quote.split("+").join("\v1\v");
                     value = value.substring(index + 1);
                 }
                 value = trimText.split("\v0\v").join("\\\'");
-                //补全缺失的单引号
-                if (isSingleQuoteLeak) {
-                    value += "'";
-                }
                 var templates = value.split("+");
                 var length = templates.length;
                 for (var i = 0; i < length; i++) {
@@ -19046,8 +18981,8 @@ var eui;
                 if (this.declarations) {
                     var children = this.declarations.children;
                     if (children && children.length > 0) {
-                        var length_25 = children.length;
-                        for (var i = 0; i < length_25; i++) {
+                        var length = children.length;
+                        for (var i = 0; i < length; i++) {
                             var decl = children[i];
                             if (decl.nodeType != 1) {
                                 continue;
@@ -19061,7 +18996,6 @@ var eui;
                 }
                 this.initlizeChildNode(this.currentXML, cb, varName);
                 var id;
-                var length;
                 var stateIds = this.stateIds;
                 if (stateIds.length > 0) {
                     length = stateIds.length;
@@ -19075,7 +19009,7 @@ var eui;
                 var skinPartStr = "[]";
                 length = skinParts.length;
                 if (length > 0) {
-                    for (var i = 0; i < length; i++) {
+                    for (i = 0; i < length; i++) {
                         skinParts[i] = "\"" + skinParts[i] + "\"";
                     }
                     skinPartStr = "[" + skinParts.join(",") + "]";
@@ -19111,7 +19045,7 @@ var eui;
                         states = this.getStateByName(stateName, node);
                         var stateLength = states.length;
                         if (stateLength > 0) {
-                            for (var i = 0; i < stateLength; i++) {
+                            for (i = 0; i < stateLength; i++) {
                                 var state = states[i];
                                 state.addOverride(new sys.EXSetProperty("", key, itemValue));
                             }
@@ -19125,8 +19059,8 @@ var eui;
                     var indentStr = "	";
                     cb.addCodeLine("this.states = [");
                     var first = true;
-                    for (var i = 0; i < length; i++) {
-                        var state = stateCode[i];
+                    for (i = 0; i < length; i++) {
+                        state = stateCode[i];
                         if (first)
                             first = false;
                         else
@@ -19147,7 +19081,7 @@ var eui;
                 length = bindings.length;
                 if (length > 0) {
                     cb.addEmptyLine();
-                    for (var i = 0; i < length; i++) {
+                    for (i = 0; i < length; i++) {
                         var binding = bindings[i];
                         cb.addCodeLine(binding.toCode());
                     }
@@ -19180,11 +19114,10 @@ var eui;
                 var stateNames = this.stateNames;
                 var stateChildren;
                 var children = root.children;
-                var item;
                 if (children) {
-                    var length_26 = children.length;
-                    for (var i = 0; i < length_26; i++) {
-                        item = children[i];
+                    var length = children.length;
+                    for (var i = 0; i < length; i++) {
+                        var item = children[i];
                         if (item.nodeType == 1 &&
                             item.localName == "states") {
                             item.namespace = sys.NS_W;
@@ -19206,8 +19139,8 @@ var eui;
                 }
                 if (statesValue) {
                     var states = statesValue.split(",");
-                    var length_27 = states.length;
-                    for (var i = 0; i < length_27; i++) {
+                    length = states.length;
+                    for (var i = 0; i < length; i++) {
                         var stateName = states[i].trim();
                         if (!stateName) {
                             continue;
@@ -19219,8 +19152,8 @@ var eui;
                     }
                     return;
                 }
-                var length = stateChildren.length;
-                for (var i = 0; i < length; i++) {
+                length = stateChildren.length;
+                for (i = 0; i < length; i++) {
                     var state = stateChildren[i];
                     if (state.nodeType != 1) {
                         continue;
@@ -19240,7 +19173,7 @@ var eui;
                             }
                         }
                     }
-                    var stateName = attributes.name;
+                    stateName = attributes.name;
                     if (stateNames.indexOf(stateName) == -1) {
                         stateNames.push(stateName);
                     }
@@ -19286,7 +19219,7 @@ var eui;
                             }
                         }
                         var firstChild = children[0];
-                        var value = void 0;
+                        var value;
                         if (firstChild.nodeType == 1) {
                             this.createFuncForNode(firstChild);
                             this.checkIdForState(firstChild);
@@ -19295,11 +19228,11 @@ var eui;
                         else {
                             value = this.formatValue(prop, firstChild.text, parentNode);
                         }
-                        var states = this.getStateByName(stateName, node);
+                        states = this.getStateByName(stateName, node);
                         var l = states.length;
                         if (l > 0) {
                             for (var j = 0; j < l; j++) {
-                                var state = states[j];
+                                state = states[j];
                                 state.addOverride(new sys.EXSetProperty(parentNode.attributes.id, prop, value));
                             }
                         }
@@ -19309,21 +19242,21 @@ var eui;
                         var id = attributes.id;
                         var nodeClassName = this.getClassNameOfNode(node);
                         this.checkIdForState(node);
-                        var stateName = void 0;
-                        var states = void 0;
-                        var state = void 0;
+                        var stateName;
+                        var states;
+                        var state;
                         if (this.isStateNode(node)) {
                             var propertyName = "";
-                            var parent_3 = node.parent;
-                            if (parent_3.localName == TYPE_ARRAY)
-                                parent_3 = parent_3.parent;
-                            if (parent_3 && parent_3.parent) {
-                                if (this.isProperty(parent_3))
-                                    parent_3 = parent_3.parent;
+                            var parent = node.parent;
+                            if (parent.localName == TYPE_ARRAY)
+                                parent = parent.parent;
+                            if (parent && parent.parent) {
+                                if (this.isProperty(parent))
+                                    parent = parent.parent;
                             }
-                            if (parent_3 && parent_3 != this.currentXML) {
-                                propertyName = parent_3.attributes.id;
-                                this.checkIdForState(parent_3);
+                            if (parent && parent != this.currentXML) {
+                                propertyName = parent.attributes.id;
+                                this.checkIdForState(parent);
                             }
                             var positionObj = this.findNearNodeId(node);
                             var stateNames = [];
@@ -19334,11 +19267,11 @@ var eui;
                                 var excludeNames = attributes.excludeFrom.split(",");
                                 var stateLength = excludeNames.length;
                                 for (var j = 0; j < stateLength; j++) {
-                                    var name_2 = excludeNames[j];
-                                    this.getStateByName(name_2, node); //检查exlcudeFrom是否含有未定义的视图状态名
+                                    var name = excludeNames[j];
+                                    this.getStateByName(name, node); //检查exlcudeFrom是否含有未定义的视图状态名
                                 }
                                 stateLength = this.stateCode.length;
-                                for (var j = 0; j < stateLength; j++) {
+                                for (j = 0; j < stateLength; j++) {
                                     state = this.stateCode[j];
                                     if (excludeNames.indexOf(state.name) == -1) {
                                         stateNames.push(state.name);
@@ -19361,20 +19294,20 @@ var eui;
                         var names = Object.keys(attributes);
                         var namesLength = names.length;
                         for (var m = 0; m < namesLength; m++) {
-                            var name_3 = names[m];
-                            var value = attributes[name_3];
-                            var index = name_3.indexOf(".");
+                            name = names[m];
+                            var value = attributes[name];
+                            var index = name.indexOf(".");
                             if (index != -1) {
-                                var key = name_3.substring(0, index);
+                                var key = name.substring(0, index);
                                 key = this.formatKey(key, value);
                                 var bindingValue = this.formatBinding(key, value, node);
                                 if (!bindingValue) {
-                                    value = this.formatValue(key, value, node);
+                                    var value = this.formatValue(key, value, node);
                                     if (!value) {
                                         continue;
                                     }
                                 }
-                                stateName = name_3.substr(index + 1);
+                                stateName = name.substr(index + 1);
                                 states = this.getStateByName(stateName, node);
                                 var l = states.length;
                                 if (l > 0) {
@@ -19535,10 +19468,10 @@ var eui;
                 }
                 var children = xml.children;
                 if (children) {
-                    var length_28 = children.length;
-                    for (var i = 0; i < length_28; i++) {
+                    var length = children.length;
+                    for (var i = 0; i < length; i++) {
                         var node = children[i];
-                        if (node.nodeType !== 1 || this.isInnerClass(node)) {
+                        if (this.isInnerClass(node)) {
                             continue;
                         }
                         this.getIds(node, result);
@@ -19578,8 +19511,8 @@ var eui;
                 }
                 var children = declarations.children;
                 if (children) {
-                    var length_29 = children.length;
-                    for (var i = 0; i < length_29; i++) {
+                    var length = children.length;
+                    for (var i = 0; i < length; i++) {
                         var node = children[i];
                         if (node.nodeType != 1) {
                             continue;
@@ -19700,7 +19633,7 @@ var eui;
                     if (key == "constructor" || key.charAt(0) == "_" || key.charAt(0) == "$") {
                         continue;
                     }
-                    var resultType = void 0;
+                    var resultType;
                     if (meta && meta[key]) {
                         resultType = meta[key];
                     }
@@ -19833,10 +19766,9 @@ var eui;
             if (!clazz) {
                 return null;
             }
-            var instance;
             if (DEBUG) {
                 try {
-                    instance = new clazz();
+                    var instance = new clazz();
                 }
                 catch (e) {
                     egret.error(e);
@@ -19844,7 +19776,7 @@ var eui;
                 }
             }
             else {
-                instance = new clazz();
+                var instance = new clazz();
             }
             return instance;
         }
@@ -20021,16 +19953,15 @@ var EXML;
      * @param text
      */
     function $parseURLContentAsJs(url, text, className) {
-        var clazz = null;
         if (text) {
-            clazz = parser.$parseCode(text, className);
+            var clazz = parser.$parseCode(text, className);
         }
         if (url) {
             parsedClasses[url] = clazz;
             var list = callBackMap[url];
             delete callBackMap[url];
-            var length_30 = list ? list.length : 0;
-            for (var i = 0; i < length_30; i++) {
+            var length = list ? list.length : 0;
+            for (var i = 0; i < length; i++) {
                 var arr = list[i];
                 if (arr[0] && arr[1])
                     arr[0].call(arr[1], clazz, url);
@@ -20043,16 +19974,15 @@ var EXML;
      * @private
      */
     function $parseURLContent(url, text) {
-        var clazz = null;
         if (text) {
-            clazz = parse(text);
+            var clazz = parse(text);
         }
         if (url) {
             parsedClasses[url] = clazz;
             var list = callBackMap[url];
             delete callBackMap[url];
-            var length_31 = list ? list.length : 0;
-            for (var i = 0; i < length_31; i++) {
+            var length = list ? list.length : 0;
+            for (var i = 0; i < length; i++) {
                 var arr = list[i];
                 if (arr[0] && arr[1])
                     arr[0].call(arr[1], clazz, url);
@@ -20075,7 +20005,7 @@ var EXML;
             }
             callback(url, str);
         };
-        var adapter = egret.getImplementation("eui.IThemeAdapter");
+        var adapter = EXML.$stage ? EXML.$stage.getImplementation("eui.IThemeAdapter") : null;
         if (!adapter) {
             adapter = new eui.DefaultThemeAdapter();
         }
@@ -20745,10 +20675,10 @@ var eui;
                 var vCenter = +values[5 /* verticalCenter */];
                 var left = +values[0 /* left */];
                 var right = +values[1 /* right */];
-                var top_1 = +values[2 /* top */];
+                var top = +values[2 /* top */];
                 var bottom = +values[3 /* bottom */];
-                var extX = void 0;
-                var extY = void 0;
+                var extX;
+                var extY;
                 layoutElement.getPreferredBounds(bounds);
                 if (!isNaN(left) && !isNaN(right)) {
                     extX = left + right;
@@ -20763,14 +20693,14 @@ var eui;
                 else {
                     extX = bounds.x;
                 }
-                if (!isNaN(top_1) && !isNaN(bottom)) {
-                    extY = top_1 + bottom;
+                if (!isNaN(top) && !isNaN(bottom)) {
+                    extY = top + bottom;
                 }
                 else if (!isNaN(vCenter)) {
                     extY = Math.abs(vCenter) * 2;
                 }
-                else if (!isNaN(top_1) || !isNaN(bottom)) {
-                    extY = isNaN(top_1) ? 0 : top_1;
+                else if (!isNaN(top) || !isNaN(bottom)) {
+                    extY = isNaN(top) ? 0 : top;
                     extY += isNaN(bottom) ? 0 : bottom;
                 }
                 else {
@@ -20805,7 +20735,7 @@ var eui;
                 var vCenter = formatRelative(values[5 /* verticalCenter */], unscaledHeight * 0.5);
                 var left = formatRelative(values[0 /* left */], unscaledWidth);
                 var right = formatRelative(values[1 /* right */], unscaledWidth);
-                var top_2 = formatRelative(values[2 /* top */], unscaledHeight);
+                var top = formatRelative(values[2 /* top */], unscaledHeight);
                 var bottom = formatRelative(values[3 /* bottom */], unscaledHeight);
                 var percentWidth = values[6 /* percentWidth */];
                 var percentHeight = values[7 /* percentHeight */];
@@ -20817,8 +20747,8 @@ var eui;
                 else if (!isNaN(percentWidth)) {
                     childWidth = Math.round(unscaledWidth * Math.min(percentWidth * 0.01, 1));
                 }
-                if (!isNaN(top_2) && !isNaN(bottom)) {
-                    childHeight = unscaledHeight - bottom - top_2;
+                if (!isNaN(top) && !isNaN(bottom)) {
+                    childHeight = unscaledHeight - bottom - top;
                 }
                 else if (!isNaN(percentHeight)) {
                     childHeight = Math.round(unscaledHeight * Math.min(percentHeight * 0.01, 1));
@@ -20839,8 +20769,8 @@ var eui;
                     childX = bounds.x;
                 if (!isNaN(vCenter))
                     childY = Math.round((unscaledHeight - elementHeight) / 2 + vCenter);
-                else if (!isNaN(top_2))
-                    childY = top_2;
+                else if (!isNaN(top))
+                    childY = top;
                 else if (!isNaN(bottom))
                     childY = unscaledHeight - elementHeight - bottom;
                 else
@@ -21923,22 +21853,22 @@ var eui;
             var maxElementHeight = this.maxElementSize;
             var bounds = egret.$TempRectangle;
             for (i = 0; i < count; i++) {
-                var layoutElement_1 = (target.getElementAt(i));
-                if (!egret.is(layoutElement_1, UIComponentClass) || !layoutElement_1.$includeInLayout) {
+                var layoutElement = (target.getElementAt(i));
+                if (!egret.is(layoutElement, UIComponentClass) || !layoutElement.$includeInLayout) {
                     numElements--;
                     continue;
                 }
-                layoutElement_1.getPreferredBounds(bounds);
+                layoutElement.getPreferredBounds(bounds);
                 maxElementHeight = Math.max(maxElementHeight, bounds.height);
                 if (hJustify) {
                     totalPreferredWidth += bounds.width;
                 }
                 else {
-                    var values = layoutElement_1.$UIComponent;
+                    var values = layoutElement.$UIComponent;
                     if (!isNaN(values[6 /* percentWidth */])) {
                         totalPercentWidth += values[6 /* percentWidth */];
                         childInfo = new eui.sys.ChildInfo();
-                        childInfo.layoutElement = layoutElement_1;
+                        childInfo.layoutElement = layoutElement;
                         childInfo.percent = values[6 /* percentWidth */];
                         childInfo.min = values[12 /* minWidth */];
                         childInfo.max = values[13 /* maxWidth */];
@@ -21976,12 +21906,12 @@ var eui;
             else {
                 if (totalPercentWidth > 0) {
                     this.flexChildrenProportionally(targetWidth, widthToDistribute, totalPercentWidth, childInfoArray);
-                    var roundOff_1 = 0;
-                    var length_32 = childInfoArray.length;
-                    for (i = 0; i < length_32; i++) {
+                    var roundOff = 0;
+                    var length = childInfoArray.length;
+                    for (i = 0; i < length; i++) {
                         childInfo = childInfoArray[i];
-                        var childSize = Math.round(childInfo.size + roundOff_1);
-                        roundOff_1 += childInfo.size - childSize;
+                        var childSize = Math.round(childInfo.size + roundOff);
+                        roundOff += childInfo.size - childSize;
                         widthDic[childInfo.layoutElement.$hashCode] = childSize;
                         widthToDistribute -= childSize;
                     }
@@ -22001,7 +21931,7 @@ var eui;
             var justifyHeight = Math.ceil(targetHeight);
             if (this.$verticalAlign == eui.JustifyAlign.CONTENT_JUSTIFY)
                 justifyHeight = Math.ceil(Math.max(targetHeight, maxElementHeight));
-            var roundOff = 0;
+            roundOff = 0;
             var layoutElementWidth;
             var childWidth;
             for (i = 0; i < count; i++) {
@@ -23953,22 +23883,22 @@ var eui;
             var maxElementWidth = this.maxElementSize;
             var bounds = egret.$TempRectangle;
             for (i = 0; i < count; i++) {
-                var layoutElement_2 = (target.getElementAt(i));
-                if (!egret.is(layoutElement_2, UIComponentClass) || !layoutElement_2.$includeInLayout) {
+                var layoutElement = (target.getElementAt(i));
+                if (!egret.is(layoutElement, UIComponentClass) || !layoutElement.$includeInLayout) {
                     numElements--;
                     continue;
                 }
-                layoutElement_2.getPreferredBounds(bounds);
+                layoutElement.getPreferredBounds(bounds);
                 maxElementWidth = Math.max(maxElementWidth, bounds.width);
                 if (vJustify) {
                     totalPreferredHeight += bounds.height;
                 }
                 else {
-                    var values = layoutElement_2.$UIComponent;
+                    var values = layoutElement.$UIComponent;
                     if (!isNaN(values[7 /* percentHeight */])) {
                         totalPercentHeight += values[7 /* percentHeight */];
                         childInfo = new eui.sys.ChildInfo();
-                        childInfo.layoutElement = layoutElement_2;
+                        childInfo.layoutElement = layoutElement;
                         childInfo.percent = values[7 /* percentHeight */];
                         childInfo.min = values[14 /* minHeight */];
                         childInfo.max = values[15 /* maxHeight */];
@@ -24006,12 +23936,12 @@ var eui;
             else {
                 if (totalPercentHeight > 0) {
                     this.flexChildrenProportionally(targetHeight, heightToDistribute, totalPercentHeight, childInfoArray);
-                    var roundOff_2 = 0;
-                    var length_33 = childInfoArray.length;
-                    for (i = 0; i < length_33; i++) {
+                    var roundOff = 0;
+                    var length = childInfoArray.length;
+                    for (i = 0; i < length; i++) {
                         childInfo = childInfoArray[i];
-                        var childSize = Math.round(childInfo.size + roundOff_2);
-                        roundOff_2 += childInfo.size - childSize;
+                        var childSize = Math.round(childInfo.size + roundOff);
+                        roundOff += childInfo.size - childSize;
                         heightDic[childInfo.layoutElement.$hashCode] = childSize;
                         heightToDistribute -= childSize;
                     }
@@ -24031,7 +23961,7 @@ var eui;
             var justifyWidth = Math.ceil(targetWidth);
             if (this.$horizontalAlign == eui.JustifyAlign.CONTENT_JUSTIFY)
                 justifyWidth = Math.ceil(Math.max(targetWidth, maxElementWidth));
-            var roundOff = 0;
+            roundOff = 0;
             var layoutElementHeight;
             var childHeight;
             for (i = 0; i < count; i++) {
@@ -24820,7 +24750,7 @@ var eui;
                 if (!isNaN(width) && !isNaN(height)) {
                     actualSize = calcUBoundsToFitTBounds(width, height, matrix, newMinWidth, newMinHeight, newMaxWidth, newMaxHeight);
                     if (!actualSize) {
-                        var actualSize1 = void 0;
+                        var actualSize1;
                         actualSize1 = fitTBoundsWidth(width, matrix, explicitWidth, explicitHeight, preferredWidth, preferredHeight, newMinWidth, newMinHeight, newMaxWidth, newMaxHeight);
                         if (actualSize1) {
                             var fitHeight = transformSize(actualSize1.x, actualSize1.y, matrix).height;
@@ -24829,7 +24759,7 @@ var eui;
                                 actualSize1 = null;
                             }
                         }
-                        var actualSize2 = void 0;
+                        var actualSize2;
                         actualSize2 = fitTBoundsHeight(height, matrix, explicitWidth, explicitHeight, preferredWidth, preferredHeight, newMinWidth, newMinHeight, newMaxWidth, newMaxHeight);
                         if (actualSize2) {
                             var fitWidth = transformSize(actualSize2.x, actualSize2.y, matrix).width;

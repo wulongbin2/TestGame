@@ -61,7 +61,7 @@ module gameAnima {
 			var num:number = 0;
 			for(var i:number = 0;i < hn;i++)
 			{
-				for(var j:number = 0;j <hn;j++)
+				for(var j:number = 0;j <wn;j++)
 				{
 					if(num<this.totalFrame)
 					{
@@ -86,6 +86,7 @@ module gameAnima {
 		private _tickTime:number;
 		private _isRun:boolean = false;
 		private _isLoop:boolean = false;
+		public frameCoe:number = 1;
 		public constructor(){
 			super();
 			this.bitmap = new eui.Image();
@@ -97,7 +98,7 @@ module gameAnima {
 			this._animaInfo = info;
 			this._isLoop = isLoop ===void 0?this._animaInfo.isLoop:isLoop;
 			this._totalFrame = info.totalFrame;
-			this._tickTime = 1000/info.frameRate;
+			this._tickTime = 1000/info.frameRate*this.frameCoe;
 			this.currentFrame = 0;
 			this.isRun = true;
 		}
@@ -159,6 +160,32 @@ module gameAnima {
 		public stop():void{
 			this.isRun = false;
 		}
+		private _otherScale:number = 1;
+		public set otherScale(value:number){
+			this._otherScale = value;
+			this.scale = this.scale;
+		}
+
+		public get otherScale():number{
+			return this._otherScale;
+		}
+		public enabledOtherScale:boolean = false;
+
+		private _scale:number = 1;
+		public set scale(value:number){
+			this._scale = value;
+			if(this.enabledOtherScale)
+			{
+				this.scaleX = this.scaleY = value*this.otherScale;
+			}
+			else{
+				this.scaleX = this.scaleY = value;
+			}
+		}
+
+		public get scale():number{
+			return this._scale;
+		}
 	}
 
 	/**特性播放器 */
@@ -174,6 +201,7 @@ module gameAnima {
 	/**游戏英雄专用播放器 */
 	export class HeroAnimaPlayer extends AnimaPlayer
 	{
+		private _shadow:eui.Image = new eui.Image;
 		private _animaInfos:{[name:string]:AnimaInfo};
 		private _heroAnimaInfo:gamevo.HeroAnimaVO;
 
@@ -183,8 +211,21 @@ module gameAnima {
 			this.bitmap.smoothing = false;
 			this.addEventListener(egret.Event.REMOVED_FROM_STAGE,this.onRemoveFromStage,this);
 			this.addEventListener(egret.Event.ADDED_TO_STAGE,this.onAddStage,this)
+			this.addChildAt(this._shadow,0);
+			this._shadow.visible =false;
+			this._shadow.scaleY = 0.25;
+			this._shadow.scaleX = 0.5;
+			this._shadow.x = -12;
+			this._shadow.y = -6;
+			this._shadow.alpha = 0.5;
+			this._shadow.source = RES.getRes('round_bg_png');
 
 		}
+
+		public set isShowShadow(value:boolean){
+			this._shadow.visible = value;
+		}
+
 
 		private onRemoveFromStage():void{
 			this.isRun = false;
@@ -198,13 +239,14 @@ module gameAnima {
 			this._animaInfos[info.id] = info;
 		}
 
-		public setHeroAnimaId(value:string){
+		public resetAnimaSource(value:string){
 			this._animaInfos={};
 			this._heroAnimaInfo = gameMngers.heroAnimaInfoMnger.getVO(value);
 			if(this._heroAnimaInfo)
 			{
 				this.bitmap.x = -this._heroAnimaInfo.cellWidth*0.5;
-				this.bitmap.y = -this._heroAnimaInfo.cellHeight;
+				this.updateBitmapY();
+				this.otherScale = 32/this._heroAnimaInfo.cellHeight;
 				this._heroAnimaInfo.heroAnimas.forEach(item=>this.addAnimaInfo(item));
 				this.playAnimaById(gamesystem.AnimaDownStand);
 			}
@@ -217,8 +259,21 @@ module gameAnima {
 			this.play(this._animaInfos[id],isLoop);
 		}
 
-		public set scale(value:number){
-			this.scaleX = this.scaleY = value;
+		private _yy:number = 0;
+		public set yy(value:number){
+			this._yy = value;
+			this.updateBitmapY();
+		}
+
+		private updateBitmapY():void{
+			if(this._heroAnimaInfo)
+			{
+				this.bitmap.y = -this._heroAnimaInfo.cellHeight+this._yy;
+			}
+		}
+
+		public get yy():number{
+			return this._yy;
 		}
 	}
 }

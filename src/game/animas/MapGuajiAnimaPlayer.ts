@@ -14,10 +14,10 @@ module gameAnima
 		private _heroPlayers:SelfRole[] = [];
 		private _enemlyPlayers:EnemyRole[] = [];
 		private _enemlyPlayersInStage:EnemyRole[] = [];
-		private  selfHeroMO:gameCore.HeroMO[];
-		private  enemyHeroIds:string[];
+		private selfHeroMO:gameCore.HeroMO[];
+		private enemyHeroIds:string[];
 		private showSelfNum:number;
-		private  selfShowHeroMO:gameCore.HeroMO[] = [];
+		private selfShowHeroMO:gameCore.HeroMO[] = [];
 		private time:number = 0;
 		private effectPlayer:gameAnima.EffectAnimaPlayer;
 		public constructor() {
@@ -217,9 +217,10 @@ module gameAnima
 		public mo:gameCore.HeroMO
 		public initHero(mo:gameCore.HeroMO){
 			this.mo = mo;
-			this.setHeroAnimaId(mo.roleVo.animaSource);
+			this.resetAnimaSource(mo.roleVo.animaSource);
 			this.playAnimaById(gamesystem.AnimaRightWalk);
 			this.scale = 1;
+			this.isShowShadow = true;
 		}
 
 		private isReadyChange:boolean = false;
@@ -246,13 +247,15 @@ module gameAnima
 		public initHero(roleId:string){
 			this.isLeave = false;
 			this.needRemove = false;
-			this.setHeroAnimaId(gameMngers.roleInfoMnger.getVO(roleId).animaSource);
+			this.resetAnimaSource(gameMngers.roleInfoMnger.getVO(roleId).animaSource);
 			this.playAnimaById(gamesystem.AnimaLeftWalk);
 			this.scale = 1;
 			this.x = 270;
 			this.y = 105;
+			this.yy = 0;
 			this.speed  =1 + Math.floor(3*Math.random());
 			this.isChange = false;
+			this.isShowShadow = true;
 		}
 
 		public isChange:boolean;
@@ -260,7 +263,7 @@ module gameAnima
 			if(this.isLeave){
 				this.isChange = false;
 				this.x +=1;
-				this.y = 105 - 40*Math.sin((this.leaveTime%60)/60*Math.PI);
+				this.yy =  - 40*Math.sin((this.leaveTime%60)/60*Math.PI);
 				this.leaveTime++;
 				if(this.x>270)
 				{

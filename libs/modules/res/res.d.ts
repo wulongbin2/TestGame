@@ -1,4 +1,4 @@
-declare namespace RES {
+declare module RES {
     /**
      * @language en_US
      * Resource term. One of the resources arrays in resource.json.
@@ -229,7 +229,7 @@ declare namespace RES {
         toString(): string;
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @class RES.ResourceConfig
      * @classdesc
@@ -248,19 +248,19 @@ declare namespace RES {
          * 根据组名获取原始的组加载项列表
          * @method RES.ResourceConfig#getRawGroupByName
          * @param name {string} 组名
-         * @returns {any[]}
+         * @returns {Array<any>}
          */
-        getRawGroupByName(name: string): any[];
+        getRawGroupByName(name: string): Array<any>;
         /**
          * 创建自定义的加载资源组,注意：此方法仅在资源配置文件加载完成后执行才有效。
          * 可以监听ResourceEvent.CONFIG_COMPLETE事件来确认配置加载完成。
          * @method RES.ResourceConfig#createGroup
          * @param name {string} 要创建的加载资源组的组名
-         * @param keys {egret.string[]} 要包含的键名列表，key对应配置文件里的name属性或sbuKeys属性的一项或一个资源组名。
+         * @param keys {egret.Array<string>} 要包含的键名列表，key对应配置文件里的name属性或sbuKeys属性的一项或一个资源组名。
          * @param override {boolean} 是否覆盖已经存在的同名资源组,默认false。
          * @returns {boolean}
          */
-        createGroup(name: string, keys: string[], override?: boolean): boolean;
+        createGroup(name: string, keys: Array<string>, override?: boolean): boolean;
         /**
          * 一级键名字典
          */
@@ -315,7 +315,7 @@ declare namespace RES {
         private parseResourceItem(data);
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @class RES.ResourceLoader
      * @classdesc
@@ -420,7 +420,7 @@ declare namespace RES {
         private removeGroupName(groupName);
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @language en_US
      * The events of resource loading.
@@ -599,7 +599,7 @@ declare namespace RES {
         static dispatchResourceEvent(target: egret.IEventDispatcher, type: string, groupName?: string, resItem?: ResourceItem, itemsLoaded?: number, itemsTotal?: number): boolean;
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @classic
      * @private
@@ -643,7 +643,7 @@ declare namespace RES {
         static getStringTail(name: string): string;
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @private
      */
@@ -659,7 +659,7 @@ declare namespace RES {
         /**
          * 加载项字典
          */
-        resItemDic: any[];
+        resItemDic: Array<any>;
         /**
          * @inheritDoc
          */
@@ -696,7 +696,7 @@ declare namespace RES {
         protected onResourceDestroy(resource: any): void;
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @private
      */
@@ -712,7 +712,7 @@ declare namespace RES {
         /**
          * 加载项字典
          */
-        protected resItemDic: any[];
+        protected resItemDic: Array<any>;
         /**
          * @inheritDoc
          */
@@ -748,7 +748,7 @@ declare namespace RES {
         protected onResourceDestroy(texture: any): void;
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @private
      */
@@ -756,7 +756,7 @@ declare namespace RES {
         constructor();
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @private
      */
@@ -768,7 +768,7 @@ declare namespace RES {
         analyzeData(resItem: ResourceItem, data: any): void;
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * SpriteSheet解析器
      * @private
@@ -805,7 +805,7 @@ declare namespace RES {
         protected onResourceDestroy(texture: any): void;
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @private
      */
@@ -817,7 +817,7 @@ declare namespace RES {
         protected onResourceDestroy(font: egret.BitmapFont): void;
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @private
      */
@@ -833,7 +833,7 @@ declare namespace RES {
         /**
          * 加载项字典
          */
-        protected resItemDic: any[];
+        protected resItemDic: Array<any>;
         /**
          * @inheritDoc
          */
@@ -860,7 +860,7 @@ declare namespace RES {
         destroyRes(name: string): boolean;
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @private
      */
@@ -872,7 +872,7 @@ declare namespace RES {
         analyzeData(resItem: ResourceItem, data: any): void;
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @language en_US
      * Version control loading interface
@@ -969,7 +969,7 @@ declare namespace RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    let VersionController: {
+    var VersionController: {
         /**
          * @language en_US
          * Constructor initialization
@@ -981,7 +981,7 @@ declare namespace RES {
         new (): VersionController;
     };
 }
-declare namespace RES.web {
+declare module RES.web {
     /**
      * @private
      */
@@ -991,7 +991,7 @@ declare namespace RES.web {
         fetchVersion(callback: egret.AsyncCallback): void;
         /**
          * 获取所有有变化的文件
-         * @returns {any[]}
+         * @returns {Array<any>}
          */
         getChangeList(): Array<{
             url: string;
@@ -1000,7 +1000,7 @@ declare namespace RES.web {
         getVirtualUrl(url: string): string;
     }
 }
-declare namespace RES.native {
+declare module RES.native {
     /**
      * @private
      */
@@ -1013,7 +1013,7 @@ declare namespace RES.native {
         private getList(callback, type, root?);
         /**
          * 获取所有有变化的文件
-         * @returns {any[]}
+         * @returns {Array<any>}
          */
         getChangeList(): Array<{
             url: string;
@@ -1023,7 +1023,7 @@ declare namespace RES.native {
         private getLocalData(filePath);
     }
 }
-declare namespace RES {
+declare module RES {
     /**
      * @language en_US
      * Conduct mapping injection with class definition as the value.
@@ -1177,7 +1177,7 @@ declare namespace RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function createGroup(name: string, keys: string[], override?: boolean): boolean;
+    function createGroup(name: string, keys: Array<string>, override?: boolean): boolean;
     /**
      * @language en_US
      * Check whether the configuration file contains the specified resources.
@@ -1412,7 +1412,7 @@ declare namespace RES {
     function removeEventListener(type: string, listener: (event: egret.Event) => void, thisObject: any, useCapture?: boolean): void;
     function $getVirtualUrl(url: any): any;
 }
-declare namespace RES {
+declare module RES {
     /**
      * SpriteSheet解析器
      * @private
@@ -1446,7 +1446,7 @@ declare namespace RES {
         private getImageLoader();
     }
 }
-declare namespace egret {
+declare module egret {
 }
-declare namespace egret {
+declare module egret {
 }

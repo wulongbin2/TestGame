@@ -9,7 +9,8 @@ module gameviews {
 		private teamMemberPanel:TeamMemberPanel;
 		private heroPanel:HeroPanel;
 		public mapChoosePanel:MapChoosePanel;
-
+		private battleScene:BattleScene;
+		private alertPanel:AlertPanel;
 		public init():void{
 			this.mainPanel = new MainPanel();
 			this.bagPanel = new BagPanel();
@@ -19,6 +20,8 @@ module gameviews {
 			this.mapChoosePanel = new MapChoosePanel();
 			this.teamMemberPanel = new TeamMemberPanel();
 			this.heroPanel = new HeroPanel();
+			this.battleScene = new BattleScene();
+			this.alertPanel = new AlertPanel();
 
 			gameCore.eventDispatch.addEventListener(gameCore.Event_GetHero,this.onGetHero,this);
 		}
@@ -38,6 +41,7 @@ module gameviews {
 
 		public showBagPanel():void{
 			this.addChild(this.bagPanel);
+			this.bagPanel.show();
 		}
 
 		public showHeroPanel(roleId:string,checkNew:boolean = false):void{
@@ -75,6 +79,24 @@ module gameviews {
 
 		public hideCurrentPanel():void{
 			this.mainPanel.updateTabSelected();
+		}
+
+		public showBattleScene(name1:string,team1:gameCore.HeroMO[], name2:string,team2:gameCore.HeroMO[],bg:string):void{
+			this.addChild(this.battleScene);
+			this.battleScene.start(name1,team1,name2,team2,bg);
+		}
+
+		public showAlertMes(mes:string,title?:string){
+			this.addChild(this.alertPanel);
+			this.alertPanel.show(mes,title);
+		}
+
+		public hideBattleScene():void{
+			this.removeChild(this.battleScene);
+		}
+
+		public showBottomMes(mes:string){
+			this.mainPanel.startMessage(mes);
 		}
 
 	}

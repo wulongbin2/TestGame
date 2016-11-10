@@ -14,6 +14,12 @@ module gameCore {
 			this.goodsId = xml.attributes.goodsId;
 			this.goodsNum = xml.attributes.goodsNum;
 		}
+		public clone():GoodsItemMO{
+			var mo:GoodsItemMO = new GoodsItemMO;
+			mo.goodsId = this.goodsId;
+			mo.goodsNum = this.goodsNum;
+			return mo;
+		}
 	}
 
 	/**英雄数据对象 */
@@ -101,11 +107,11 @@ module gameCore {
 			this.ziyuanBag.initBag('ziyuanBag',10,40,this)
 
 			this.heroBag = new HeroBag();
-			this.heroBag.initBag('heroBag',50,100,this);
+			this.heroBag.initBag('heroBag',60,100,this);
 			this.allHeroBags.push(this.heroBag);
 
 			this.teamHeroBag = new HeroBag();
-			this.teamHeroBag.initBag('teamHeroBag',10,20,this);
+			this.teamHeroBag.initBag('teamHeroBag',20,20,this);
 			this.allHeroBags.push(this.heroBag);
 		}
 
@@ -139,7 +145,7 @@ module gameCore {
 
 		public getBagByGoodsId(goodsId:string):GoodsBag{
 			var goodsInfo:gamevo.GoodsItemVO = gameMngers.goodsInfoMnger.getVO(goodsId);
-			if(goodsInfo.tag === gamevo.GoodsItemVO.Tag_DAOJU)
+			if(goodsInfo.tag === gamesystem.GoodsTag_DAOJU)
 			{
 				return this.daojuBag;
 			}
@@ -149,7 +155,7 @@ module gameCore {
 		}
 
 		public getBagByTag(bagTag:string):GoodsBag{
-			if(bagTag === gamevo.GoodsItemVO.Tag_DAOJU)
+			if(bagTag ===gamesystem.GoodsTag_DAOJU)
 			{
 				return this.daojuBag;
 			}
@@ -181,6 +187,10 @@ module gameCore {
 			this.maxMapChild = 0;
 			this.maxMapLevel = 0;
 		}
+
+		public get mapVo():gamevo.MapVO{
+			return gameMngers.mapInfoMnger.getVO(this.id);
+		}
 	}
 
 	/**玩家数据对象 */
@@ -188,6 +198,8 @@ module gameCore {
 		public playerBagMnger:PlayerBagMnger = new PlayerBagMnger();
 		/**用户唯一id */
 		public id:string='';
+		/**用户名称 */
+		public name:string = '';
 		/**金币 */
 		public gold:number = 0;
 		/**经验 */
@@ -211,10 +223,13 @@ module gameCore {
 		private mapMOs:MapMO[] = [];
 		private _zdlChagneTag:boolean = true;
 		private _zdl:number = 0;
+		private _buffChangeTag:boolean = true;
+		private _buff:gamevo.BuffVO = new gamevo.BuffVO;
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
 			this.gold = parseFloat(xml.attributes.gold);
+			this.name = xml.attributes.name;
 			this.exp = parseFloat(xml.attributes.exp);
 			this.money = parseFloat(xml.attributes.money);
 			this.curMap = parseFloat(xml.attributes.curMap);
@@ -234,6 +249,7 @@ module gameCore {
 				goodsItem.analysis(item);
 				this.playerBagMnger.addGoods(goodsItem);
 			});
+
 			gameutils.XMLUtil.foreachChild(xml,'ziyuan',(item)=>{
 				var goodsItem:GoodsItemMO = new GoodsItemMO;
 				goodsItem.analysis(item);
@@ -276,26 +292,58 @@ module gameCore {
 		{
 			this.playerBagMnger.removeHeroFromAllBag(mo);
 		}
+
+		public createHeroId():string{
+			var i:number =1;
+			while(true){
+				if(!this.playerBagMnger.heroBag.hasItemById(i+'')){
+					break;
+				}
+				i++;
+			}
+			return i+'';
+		}
+
+		public createGoodsId():string{
+			var i:number =1;
+			while(true){
+				if(!this.playerBagMnger.daojuBag.hasItemById(i+'') && !this.playerBagMnger.ziyuanBag.hasItemById(i+'')){
+					break;
+				}
+				i++;
+			}
+			return i+'';
+		}
+
+
 		/**总战力 */
 		public get totalZDL():number{
 			if(this._zdlChagneTag)
 			{
-				this.resetZdl();
+				this._zdlChagneTag = false;
+				this._zdl =calculAllHeroZDL(this.getAllTeamHero());
 			}
 			return this._zdl;
 		}
 
-		private resetZdl():void{
-			this._zdlChagneTag = false;
-			this._zdl =0 ;
-			this.getAllTeamHero().forEach(item=>{
-				this._zdl+=item.zdl;
-			});
+		public get buff():gamevo.BuffVO{
+			if(this._buffChangeTag){
+				this._buffChangeTag = false;
+				calculAllHeroBuff(this.getAllTeamHero(),this.buff)
+			}
+			return this._buff;
 		}
+
 
 		public zdlChange():void{
 			this._zdlChagneTag = true;
 		}
+
+		public buffChange():void{
+			this._buffChangeTag = true;
+		}
+
+
 
 		public getMapMO(id:number):MapMO{
 			return this.mapMOs[id];

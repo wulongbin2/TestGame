@@ -8,6 +8,19 @@ module gameutils {
 			 return (<string>xml.attributes[attributeName]).split(',');
 		}
 
+			/**
+		 * 将xml指定属性转化成数字数组
+		 */
+		public static toNumberArray(xml:egret.XML,attributeName:string):number[]
+		{
+			 var strs:string[]= (<string>xml.attributes[attributeName]).split(',');
+			 var results:number [] = [];
+			 strs.forEach(str=>{
+				 results.push(parseFloat(str));
+			 })
+			 return results;
+		}
+
 		/**
 		 * 将xml指定名称的字节点遍历一遍
 		 */

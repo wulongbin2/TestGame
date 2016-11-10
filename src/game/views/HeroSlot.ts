@@ -13,7 +13,16 @@ module gameviews {
 			this.heroPlayer.x = 112*0.5;
 			this.heroPlayer.y = 90;
 			this.addChild(this.heroPlayer);
-			this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this); 
+			this.enabledPopInfo = true; 
+		}
+
+		public set enabledPopInfo(value:boolean){
+			if(value){
+				this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this); 
+			}
+			else{
+				this.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this); 
+			}
 		}
 
 		private onTap():void{
@@ -35,12 +44,12 @@ module gameviews {
 			if(this._roleInfo)
 			{
 				this.bg.source = RES.getRes(`herolist_bg${this._roleInfo.qualityNum}_png`);
-				this.heroPlayer.setHeroAnimaId(this._roleInfo.animaSource);
+				this.heroPlayer.resetAnimaSource(this._roleInfo.animaSource);
 			}
 			else
 			{
 				this.bg.source = null;
-				this.heroPlayer.setHeroAnimaId('');
+				this.heroPlayer.resetAnimaSource('');
 			}
 		}
 

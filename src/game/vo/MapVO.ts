@@ -20,6 +20,8 @@ module gamevo {
 		public expSpeed:number;
 		/**挂机需要多少时间（毫秒） */
 		public waitTime:number;
+		/**战斗背景 */
+		public battleBg:string;
 
 		public mapChilds:MapChildVO[] = [];
 		public analysis(config:any):void{
@@ -28,6 +30,7 @@ module gamevo {
 			this.mapId = parseInt(this.id);
 			this.name = xml.attributes.name;
 			this.cityIcon = xml.attributes.cityIcon;
+			this.battleBg = xml.attributes.battleBg;
 			this.listBg = xml.attributes.listBg;
 			this.guajiAnima = xml.attributes.guajiAnima;
 			this.kaiqiZdl = parseInt(xml.attributes.kaiqiZdl);
@@ -50,14 +53,20 @@ module gamevo {
 	/**地图子关卡 */
 	export class MapChildVO extends BaseVO{
 		public mapChildId:number;
+		public name:string;
 		public heros:gameCore.HeroMO[] = [];
 		public daojus:gameCore.GoodsItemMO[] = [];
 		public gold:number = 0;
 		public exp:number = 0;
 		public money:number = 0;
+		public daojuNum:number=0;
+		public ziyuanNum:number=0;
+		public mes:string;
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
+			this.name = xml.attributes.name;
+			this.mes = xml.attributes.mes;
 			this.mapChildId =  parseFloat(this.id);
 			this.gold = parseFloat(xml.attributes.gold);
 			this.exp = parseFloat(xml.attributes.exp);
@@ -71,6 +80,13 @@ module gamevo {
 			gameutils.XMLUtil.foreachChild(xml,'daoju',(item)=>{
 				var goodsItem:gameCore.GoodsItemMO = new gameCore.GoodsItemMO;
 				goodsItem.analysis(item);
+				if(gameMngers.goodsInfoMnger.getVO(goodsItem.goodsId).tag === gamesystem.GoodsTag_DAOJU)
+				{
+					this.daojuNum++;
+				}
+				else{
+					this.ziyuanNum++;
+				}
 				this.daojus.push(goodsItem);
 			});
 		} 

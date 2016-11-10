@@ -15,6 +15,11 @@ class FightBtn extends eui.Button implements  eui.UIComponent {
 		{
 			gameCore.nextMapChild();
 		}
+		else
+		if(gameCore.currentUserInfo.curMapStatus === gamesystem.MapStatus_ReadyFight)
+		{
+			gameCore.startbattleInCurMap();
+		}
 	}
 
 	private time:number = 0;

@@ -2,7 +2,7 @@ module gameCore {
 	/**当前地图改变 */
 	export const Event_MapChange:string = 'Event_MapChange';
 	/**当前地图关卡状态改变 */
-	export const Event_MapStatusChange:string = 'Event_MapStatusChange';
+	// export const Event_MapStatusChange:string = 'Event_MapStatusChange';
 	/**获得英雄事件 */
 	export const Event_GetHero:string = 'Event_GetHero';
 	/**背包物品改变 */
@@ -19,6 +19,7 @@ module gameCore {
 	/**事件派发 */
 	export var eventDispatch:egret.EventDispatcher = new egret.EventDispatcher;
 
+	/**改变当前地图 */
 	export function changeMap(mapId:number):void{
 		currentUserInfo.curMap = mapId;
 		if(currentUserInfo.currentMO === null)
@@ -30,11 +31,12 @@ module gameCore {
 		changeMapLevel(0);
 	}
 
+	/**改变当前地图难度 */
 	export function changeMapLevel(level:number):void{
 		currentUserInfo.curMapLevel = level
 		changeMapChild(currentUserInfo.currentMO.maxMapLevel ===level?currentUserInfo.currentMO.maxMapChild:0);
 	}
-
+	/**改变当前地图关卡 */
 	export function changeMapChild(id:number):void{
 		currentUserInfo.curMapChild = Math.min(id,gamesystem.MaxMapChild-1);
 		var mo:MapMO = currentUserInfo.currentMO;
@@ -45,9 +47,8 @@ module gameCore {
 		else{
 			changeMapChildStatus(gamesystem.MapStatus_Guaji);
 		}
-		eventDispatch.dispatchEventWith(Event_MapChange);
 	}
-
+	/**改变当前地图关卡状态*/
 	export function changeMapChildStatus(status:number):void{
 		currentUserInfo.curMapStatus = status;
 		if(status === gamesystem.MapStatus_FightEnd)
@@ -63,9 +64,37 @@ module gameCore {
 		{
 			currentUserInfo.curMapGuajiTime = gameutils.getTimer();
 		}
-		eventDispatch.dispatchEventWith(Event_MapStatusChange);
+		eventDispatch.dispatchEventWith(Event_MapChange);
 	}
 
+	export function finishMapChild():void{
+		var mapVO:gamevo.MapVO = currentUserInfo.currentMO.mapVo;
+		var mapChildVo:gamevo.MapChildVO = mapVO.mapChilds[currentUserInfo.curMapChild];
+		changeMapChildStatus(gamesystem.MapStatus_FightEnd);
+		if(mapChildVo.gold>0){
+			currentUserInfo.gold+=mapChildVo.gold;
+			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Gold,mapChildVo.gold);
+		}
+		if(mapChildVo.exp>0){
+			currentUserInfo.exp+=mapChildVo.exp;
+			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Exp,mapChildVo.exp);
+		}
+		if(mapChildVo.money>0){
+			currentUserInfo.money+=mapChildVo.money;
+			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Money,mapChildVo.money);
+		}
+		if(mapChildVo.daojus.length>0){
+			mapChildVo.daojus.forEach(item=>{
+				item = item.clone();
+				item.id = currentUserInfo.createGoodsId();
+				currentUserInfo.playerBagMnger.addGoods(item);
+				gameviews.goodsMessage.showGoodsItem(item);
+			});
+		}
+		
+	}
+
+	/**下一关卡 */
 	export function nextMapChild():void{
 		if(currentUserInfo.curMapChild<gamesystem.MaxMapChild-1)
 		{
@@ -75,7 +104,18 @@ module gameCore {
 			changeMap(currentUserInfo.curMap+1);
 		}
 	}
+	/**开始当前地图的战斗 */
+	export function startbattleInCurMap():void{
+		var mapVo:gamevo.MapVO = currentUserInfo.currentMO.mapVo;
+		var mapChildMap:gamevo.MapChildVO = mapVo.mapChilds[currentUserInfo.curMapChild];
+		if(mapChildMap.daojuNum>currentUserInfo.playerBagMnger.daojuBag.notusedGridNum){
+			gameviews.viewManager.showAlertMes('背包空间不足呀！')
+			return;
+		}
+		gameviews.viewManager.showBattleScene(currentUserInfo.name,currentUserInfo.getAllTeamHero(),mapChildMap.name,mapChildMap.heros,mapVo.battleBg);
+	}
 
+	/**升级英雄 */
 	export function levelHero(mo:HeroMO){
 		var needExp:number = calculHeroLevelUseExp(mo);
 		if(currentUserInfo.exp>=needExp){
@@ -85,7 +125,7 @@ module gameCore {
 			currentUserInfo.zdlChange();
 		}
 	}
-
+	/**随机获得英雄 */
 	export function randGetHero():void{
 		var i:number = Math.floor(Math.random()*gameMngers.roleInfoMnger.all.length);
 		var roleVo:gamevo.RoleBaseVO = gameMngers.roleInfoMnger.all[i];
@@ -102,7 +142,7 @@ module gameCore {
 		currentUserInfo.addHero(heroMo);
 		eventDispatch.dispatchEventWith(Event_GetHero,false,heroMo);
 	}
-
+	/**随机获得金币 */
 	export function randGetGold():void{
 		var mapVo:gamevo.MapVO =gameMngers.mapInfoMnger.getVO(currentUserInfo.currentMO.id);
 		var addGold:number = Math.floor(mapVo.goldSpeed*3600*(1+Math.random()));
@@ -124,6 +164,13 @@ module gameCore {
 		});
 		currentUserInfo.playerBagMnger.removeGoods(go);
 		eventDispatch.dispatchEventWith(Event_BagChange);
+	}
+
+	export function changeTeam(heros:HeroMO[]):void{
+		currentUserInfo.playerBagMnger.teamHeroBag.clearItem();
+		heros.forEach(item=>
+			currentUserInfo.playerBagMnger.teamHeroBag.pushItemByData(item)
+		);
 	}
 
 

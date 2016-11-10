@@ -13,7 +13,7 @@
      @des:技能描述
 
      @trigger触发条件
-     @trigger.item.compareValue1 比较值1 值可以是数值，也可以是简单的表达式[+-x/]，属性对象[self表示己方对象，enemy表示敌方对象][对象支持属性:curZDL,totalZDL]
+     @trigger.item.compareValue1 比较值1 值可以是数值，也可以是简单的表达式[+-x/]，属性对象[self表示己方对象，enemy表示敌方对象][对象支持属性:curZDL,totalZDL,LoseZDL,HurtZDL]
      @trigger.item.compareValue2 比较值2
      @trigger.item.compareType 比较方式[less,greater]
 
@@ -24,18 +24,22 @@
      @effect.item.operatorValue 运算数值 [值可以是数值，也可以是简单的表达式]
      
      -->
-     <item id='auto' skillAnima='' isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
+     <item id='auto' name='普通攻击' skillAnima='light001' icon='' isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
         <effect>
-            <item effectType='attack' targetPro='enemy.curZDL'  operatorType='sub' operatorValue='self.fightZDL'/>
+            <item type='attack' param='1'/>
         </effect>
     </item>
 
-    <item id='lvfengxian' skillAnima='' isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
-        <trigger>
-            <item compareValue1='self.curZDL/self.totalZDL' compareType='less' compareValue2='200'/>
-        </trigger>
+
+    <item id='lvfengxian' name='大夜场' des='大家一起跳舞，不如跳舞！噢噢噢噢。。。。' skillAnima='baoji001' icon='skill_14_png'  isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
         <effect>
-            <item effectType='' targetPro='enemy.totalZDL'  operatorType='add' operatorValue='self.fightZDL*1.3'/>
+            <item type='attack' param='0.5'/>
+           <item type='recovery' param='0.2,self.totalZDL'/>
+        </effect>
+    </item>
+    <item id='lvfengxian2' name='疯狂大夜场' des='大家一起High,疯狂大夜场就在今夜，一起跳，一起跳。。。。' skillAnima='daoguang001' icon='skill_13_png'  isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
+        <effect>
+            <item type='attack' param='2'/>
         </effect>
     </item>
 </skillBaseInfo>

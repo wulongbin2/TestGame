@@ -16,7 +16,7 @@
     @des：描述
     -->
   <item id="0" name="吕奉先" initZDL="100" potential="0.7" quality="white" animaSource="18000050" skills="lvfengxian" weapon="lvfengxian" buff="2,2,0,2" awakenTime="3" tag="人类,男,狂战士" des="武器是方天画戟，特长势战斗，弱点是天真"/>
-  <item id="1" name="吕奉先" initZDL="100" potential="0.7" quality="blue" animaSource="19000107" skills="lvfengxian" weapon="lvfengxian" buff="2,2,0,2" awakenTime="3" tag="人类,男,狂战士" des="武器是方天画戟，特长势战斗，弱点是天真"/>
+  <item id="1" name="我不是吕奉先" initZDL="100" potential="0.7" quality="blue" animaSource="19000107" skills="lvfengxian,lvfengxian2" weapon="lvfengxian" buff="2,2,0,2" awakenTime="3" tag="人类,男,狂战士" des="武器是方天画戟，特长势战斗，弱点是天真"/>
   <item id="2" name="吕奉先" initZDL="100" potential="0.7" quality="yellow" animaSource="18000005" skills="lvfengxian" weapon="lvfengxian" buff="2,2,0,2" awakenTime="3" tag="人类,男,狂战士" des="武器是方天画戟，特长势战斗，弱点是天真"/>
   <item id="3" name="吕奉先" initZDL="100" potential="0.7" quality="light" animaSource="18000052" skills="lvfengxian" weapon="lvfengxian" buff="2,2,0,2" awakenTime="3" tag="人类,男,狂战士" des="武器是方天画戟，特长势战斗，弱点是天真"/>
   <item id="4" name="吕奉先" initZDL="100" potential="0.7" quality="zi" animaSource="18000020" skills="lvfengxian" weapon="lvfengxian" buff="2,2,0,2" awakenTime="3" tag="人类,男,狂战士" des="武器是方天画戟，特长势战斗，弱点是天真"/>

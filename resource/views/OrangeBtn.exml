@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="OrangeBtnSkin" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+      <e:Image id="bg" alpha.disabled="0.5"
+            
+             scale9Grid="53,26,148,16"  left.down="5"  right.down="5" bottom.down="5" top.down="5" left="0" top="0" bottom="0" right="0" source="buttonbg_22_png"/>
+    <e:Label id="labelDisplay" top="8" bottom="8" left="11" right="11"
+             size="20"
+             verticalAlign="middle" textAlign="center" textColor="0x000000" bold="true" text="最佳掉落" fontFamily="黑体"/>
+	
+	<w:Config id="1584bfec39b" ></w:Config>
+</e:Skin>
