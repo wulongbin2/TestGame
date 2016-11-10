@@ -17,9 +17,9 @@ module gamesystem {
 	export const Url_BattleBg:string = 'resource/gameres/battleBG/';
 	export const Url_Font:string = 'resource/gameres/font/';
 
-	export const Font_Red:string = 'number1_fnt';
-	export const Font_Green:string = 'number2_fnt';
-	export const Font_Yellow:string = 'number3_fnt';
+	export var Font_Red:egret.BitmapFont;
+	export var Font_Green:egret.BitmapFont ;
+	export var Font_Yellow:egret.BitmapFont;
 
 	export const AnimaLeftWalk:string ='leftWalk';
 	export const AnimaRightWalk:string ='rightWalk';
@@ -59,8 +59,8 @@ module gamesystem {
 	export const SkillEffectType_Attack:string = 'attack';
 	export const SkillEffectType_Recovery:string = 'recovery';
 	export const SkillRecovery_Self_TotalZDL:string = 'self.totalZDL';
-	export const SkillRecovery_Self_CurZDL:string = 'selt.curZDL';
-	export const SkillRecovery_Self_LoseZDL:string = 'selt.loseZDL';
+	export const SkillRecovery_Self_CurZDL:string = 'self.curZDL';
+	export const SkillRecovery_Self_LoseZDL:string = 'self.loseZDL';
 	export const SkillRecovery_Enemy_TotalZDL:string = 'enemy.totalZDL';
 	export const SkillRecovery_Enemy_CurZDL:string = 'enemy.curZDL';
 	export const SkillRecovery_Enemy_LoseZDL:string = 'enemy.loseZDL';
@@ -85,6 +85,9 @@ module gamesystem {
 
 	export var indexToZhen:{[id:number]:{mapX:number,mapY:number}} = {};
 	export function initSystem():void{
+		Font_Red = RES.getRes('number1_fnt');
+		Font_Green = RES.getRes('number2_fnt');
+		Font_Yellow = RES.getRes('number3_fnt');
 		var i:number = 0;
 		var len:number = zhens.length;
 		for(;i <len;i++){

@@ -32,6 +32,9 @@
 
 
     <item id='lvfengxian' name='大夜场' des='大家一起跳舞，不如跳舞！噢噢噢噢。。。。' skillAnima='baoji001' icon='skill_14_png'  isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
+        <trigger>
+            <item compareValue1='self.curZDL,/,self.totalZDL' compareType='less' compareValue2='0.5'/>
+        </trigger>
         <effect>
             <item type='attack' param='0.5'/>
            <item type='recovery' param='0.2,self.totalZDL'/>

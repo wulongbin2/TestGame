@@ -232,16 +232,17 @@ module gamevo {
 	/**技能触发条件配置 */
 	export class SkillTriggerVO{
 		/** 比较值1 值可以是数值，也可以是简单的表达式[+-x/]，属性对象[self表示己方对象，enemy表示敌方对象][对象支持属性:curZDL,totalZDL] */
-		public compareValue1:string;
+		public compareValue1:string[];
 		/**比较方式[less,greater] */
 		public compareType:string;
 		/**比较值2 */
-		public compareValue2:string;
+		public compareValue2:string[];
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
-			this.compareValue1 = xml.attributes.compareValue1;
+			var str:string = '';
+			this.compareValue1 = gameutils.XMLUtil.toStringArray(xml,'compareValue1');
 			this.compareType = xml.attributes.compareType;
-			this.compareValue2 = xml.attributes.compareValue2;
+			this.compareValue2 =gameutils.XMLUtil.toStringArray(xml,'compareValue2');
 		}
 	}
 

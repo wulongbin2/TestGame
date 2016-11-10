@@ -1,14 +1,9 @@
 module gameviews {
 	export class BattleHurtText extends egret.Sprite{
-		public numTf:egret.TextField;
+		public numTf:egret.BitmapText;
 		public constructor(){
 			super();
-			this.numTf =  new egret.TextField();
-			this.numTf.x = 0;
-			this.numTf.y = -10;
-			this.numTf.size = 60;
-			this.numTf.bold = true;
-			this.numTf.fontFamily = '黑体';
+			this.numTf =  new egret.BitmapText();
 			this.addChild(this.numTf); 
 		}
 
@@ -18,11 +13,11 @@ module gameviews {
 			this.y = y;
 			if(num>0){
 				this.numTf.text = '+ '+num;
-				this.numTf.textColor = 0x44cc44;
+				this.numTf.font = gamesystem.Font_Green;
 			}
 			else{
 				this.numTf.text ='- '+Math.abs(num);
-				this.numTf.textColor = 0xcc4444;
+				this.numTf.font = gamesystem.Font_Red;
 			}
 
 			this.numTf.x = -this.numTf.textWidth*0.5;

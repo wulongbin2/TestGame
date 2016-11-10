@@ -58,6 +58,7 @@ module gameCore {
 		public self:BattleTeam;
 		public enemy:BattleTeam;
 		public round:number = 0;
+		private hurtNum:number;
 		public fight(pushOperator:(b:BatteOperator)=>void){
 			var operator:BatteOperator = new BatteOperator();
 			var selfSkill:gamevo.SkillBaseVO;
@@ -68,6 +69,32 @@ module gameCore {
 				for(var j:number = 0;j < roleSkillLength; j++)
 				{
 					var skillVo:gamevo.SkillBaseVO = gameMngers.skillInfoMnger.getVO(role.roleVo.skills[j]);
+					var triggerLen:number = skillVo.triggers.length;
+					if(triggerLen>0){
+						var conditionTag:boolean = true;
+						for(var k:number = 0;k <triggerLen;k++){
+							var trigger = skillVo.triggers[k];
+							var value1:number = this.simpleCalcul(trigger.compareValue1);
+							var value2:number = this.simpleCalcul(trigger.compareValue2);
+							if(trigger.compareType === 'less'){
+								if(value1 >=value2)
+								{
+									conditionTag = false;
+									break;
+								}
+							}
+							else{
+								if(value1 <=value2)
+								{
+									conditionTag = false;
+									break;
+								}
+							}
+						}
+						if(!conditionTag){
+							continue;
+						}
+					}
 					if(Math.random() < skillVo.rate*0.01){
 						selfSkill = skillVo;
 						break;
@@ -82,7 +109,7 @@ module gameCore {
 			};
 			var effectLength:number = selfSkill.effects.length;
 			pushOperator(BatteOperator.op_action(gamesystem.OPType_Forward,this.self.id));
-			var hurtNum:number = 0;
+			this.hurtNum= 0;
 			var hasPlaySkill:boolean = false;
 			for(i=0; i < effectLength; i++){
 				var effect:gamevo.SkillEffectVO = selfSkill.effects[i];
@@ -105,38 +132,14 @@ module gameCore {
 						offZDL*= parseFloat(effect.param[0]);//暴击倍率
 						offZDL = Math.round(offZDL);
 						this.enemy.curZDL-=offZDL;
-						hurtNum+=offZDL;
+						this.hurtNum+=offZDL;
 						pushOperator(BatteOperator.op_playSkill(this.enemy.id, selfSkill.id));
 						pushOperator(BatteOperator.op_showHurt(this.enemy.id,  -offZDL));
 						hasPlaySkill = true;
 					}
 				}
 				else if(effect.type == gamesystem.SkillEffectType_Recovery){
-					var baseNum:number;
-					switch(effect.param[1]){
-						case gamesystem.SkillRecovery_Self_CurZDL:
-						baseNum = this.self.curZDL;
-						break;
-						case gamesystem.SkillRecovery_Self_TotalZDL:
-						baseNum = this.self.totalZDL;
-						break;
-						case gamesystem.SkillRecovery_Self_LoseZDL:
-						baseNum = this.self.totalZDL - this.self.curZDL;
-						break;
-
-						case gamesystem.SkillRecovery_Enemy_CurZDL:
-						baseNum = this.enemy.curZDL;
-						break;
-						case gamesystem.SkillRecovery_Enemy_TotalZDL:
-						baseNum = this.enemy.totalZDL;
-						break;
-						case gamesystem.SkillRecovery_Enemy_LoseZDL:
-						baseNum = this.enemy.totalZDL - this.enemy.curZDL;
-						break;
-						case gamesystem.SkillRecovery_HurtZDL:
-						baseNum = hurtNum;
-						break;
-					}
+					var baseNum:number = this.getValue(effect.param[1])
 					offZDL= Math.round(baseNum*parseFloat(effect.param[0]));
 					this.self.curZDL+=offZDL;
 					if(!hasPlaySkill){
@@ -146,8 +149,57 @@ module gameCore {
 					pushOperator(BatteOperator.op_showHurt(this.self.id,  offZDL));
 				}
 			}
+
+		}
+
+		public simpleCalcul(value:string[]):number{
+			var value1:number = this.getValue(value[0]);
+			var index:number = 2;
+			var len:number = value.length;
+			while(index<len)
+			{
+				var value2:number = this.getValue(value[index]);
+				switch(value[index-1]){
+					case '+':
+					value1+=value2;
+					break;
+					case '-':
+					value1-=value2;
+					break;
+					case '/':
+					value1/=value2;
+					break;
+					case '*':
+					value1*=value2;
+					break;
+				}
+				index+=2;
+			}
+
+			return value1;
+		}
+
+		public getValue(type:string):number{
+			switch(type){
+				case gamesystem.SkillRecovery_Self_CurZDL:
+				return this.self.curZDL;
+				case gamesystem.SkillRecovery_Self_TotalZDL:
+				return this.self.totalZDL;
+				case gamesystem.SkillRecovery_Self_LoseZDL:
+				return this.self.totalZDL - this.self.curZDL;
+				case gamesystem.SkillRecovery_Enemy_CurZDL:
+				return this.enemy.curZDL;
+				case gamesystem.SkillRecovery_Enemy_TotalZDL:
+				return this.enemy.totalZDL;
+				case gamesystem.SkillRecovery_Enemy_LoseZDL:
+				return this.enemy.totalZDL - this.enemy.curZDL;
+				case gamesystem.SkillRecovery_HurtZDL:
+				return this.hurtNum;
+			}
+			return parseFloat(type);
 		}
 	}
+
 
 	export class BattleTeamInfo{
 		public curZDL:number;
