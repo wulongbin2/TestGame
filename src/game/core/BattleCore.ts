@@ -4,19 +4,19 @@ module gameCore {
 		private _curZDL:number;//当前HP
 		private _fightZDL:number;//战斗力攻击力
 		private _totalZDL:number;//总的HP
-		private _buff:gamevo.BuffVO = new gamevo.BuffVO;
+		private _buff:gamevo.BuffVO;
 		public allSkills:gamevo.SkillBaseVO[] = [];
 		public teams:HeroMO[];
 		public lastdodgeRound:number;
 
-		public initTeam(id:number,heros:HeroMO[]):void{
+		public initTeam(id:number,info:gameCore.BattleTeamInfo):void{
 			this.lastdodgeRound = 0;
 			this.id = id;
-			this.teams  = heros;
-			this._totalZDL = calculAllHeroZDL(this.teams);
+			this.teams  = info.heros;
+			this._totalZDL = info.totalZdl;
 			this._curZDL = this._totalZDL;
 			this._fightZDL = this._curZDL *0.3;
-			calculAllHeroBuff(this.teams,this._buff);
+			this._buff = info.buff;
 			this.teams.forEach(role=>{
 				role.roleVo.skills.forEach(skillId=>{
 					this.allSkills.push(gameMngers.skillInfoMnger.getVO(skillId));
@@ -45,8 +45,8 @@ module gameCore {
 			return this._totalZDL;
 		}
 
-		public createBattleInfo():BattleTeamInfo{
-			var info:BattleTeamInfo = new BattleTeamInfo();
+		public createBattleInfo():BattleTeamRecord{
+			var info:BattleTeamRecord = new BattleTeamRecord();
 			info.curZDL = this.curZDL;
 			info.totalZD = this.totalZDL;
 			info.buff = this.buff.clone();
@@ -200,8 +200,21 @@ module gameCore {
 		}
 	}
 
-
 	export class BattleTeamInfo{
+		public teamname:string;
+		public heros:HeroMO[];
+		public totalZdl:number;
+		public buff:gamevo.BuffVO;
+		public init(teamname:string,heros:HeroMO[],totalZdl:number,buff:gamevo.BuffVO):void{
+			this.teamname = teamname;
+			this.heros = heros;
+			this.totalZdl = totalZdl;
+			this.buff = buff;
+		}
+	}
+
+
+	export class BattleTeamRecord{
 		public curZDL:number;
 		public totalZD:number;
 		public buff:gamevo.BuffVO = new gamevo.BuffVO;
@@ -210,8 +223,8 @@ module gameCore {
 	export class BatteOperator{
 		public type:string='';
 		public round:number;
-		public teamInfo1:BattleTeamInfo;
-		public teamInfo2:BattleTeamInfo;
+		public teamInfo1:BattleTeamRecord;
+		public teamInfo2:BattleTeamRecord;
 		public targetteam:number;
 		public skillId:string;
 		public result:number;
@@ -255,6 +268,7 @@ module gameCore {
 		}
 	}
 
+
 	export class BattleCore {
 		public team1:BattleTeam = new BattleTeam;
 		public team2:BattleTeam = new BattleTeam;
@@ -266,9 +280,9 @@ module gameCore {
 			this.teams.push(this.team2);
 		}
 
-		public calculBattle(heros1:HeroMO[], heros2:HeroMO[]):BatteOperator []{
-			this.team1.initTeam(0,heros1);
-			this.team2.initTeam(1,heros2);
+		public calculBattle(team1:BattleTeamInfo, team2:BattleTeamInfo):BatteOperator []{
+			this.team1.initTeam(0,team1);
+			this.team2.initTeam(1,team2);
 			if(this.team1.buff.attckSpeed>this.team2.buff.attckSpeed){
 				this.fightIndex = 0;
 			}

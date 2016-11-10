@@ -112,7 +112,12 @@ module gameCore {
 			gameviews.viewManager.showAlertMes('背包空间不足呀！')
 			return;
 		}
-		gameviews.viewManager.showBattleScene(currentUserInfo.name,currentUserInfo.getAllTeamHero(),mapChildMap.name,mapChildMap.heros,mapVo.battleBg);
+		var team1:BattleTeamInfo = new BattleTeamInfo();
+		team1.init(currentUserInfo.name,currentUserInfo.getAllTeamHero(),currentUserInfo.totalZDL,currentUserInfo.buff.clone());
+		var team2:BattleTeamInfo = new BattleTeamInfo();
+		team2.init(mapChildMap.name,mapChildMap.heros,mapChildMap.zdl,mapChildMap.buff.clone())
+
+		gameviews.viewManager.showBattleScene(team1,team2,mapVo.battleBg);
 	}
 
 	/**升级英雄 */

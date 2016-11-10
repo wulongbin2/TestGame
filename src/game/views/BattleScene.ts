@@ -58,18 +58,16 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 	private ops:gameCore.BatteOperator[];
 	private opIndex:number = 0;
 	/**战斗开始 */
-	public start(name1:string,team1:gameCore.HeroMO[], name2:string,team2:gameCore.HeroMO[],bg:string):void{
+	public start(team1:gameCore.BattleTeamInfo,team2:gameCore.BattleTeamInfo,bg:string):void{
 		this.ops = this.battleCore.calculBattle(team1,team2);
-		this.battleteam1.resetHeros(team1);
-		this.battleteam2.resetHeros(team2);
+		this.battleteam1.resetHeros(team1.heros);
+		this.battleteam2.resetHeros(team2.heros);
 		this.battleteam1.x =this.battleteamPos[0][1];
 		this.battleteam2.x =this.battleteamPos[1][1];
 		this.battleteam2.y = this.battleteam1.y = BattleScene.BattleTeamY;
 		this.battleteam1.alpha = this.battleteam2.alpha = 1;
-		this.names[0] = name1;
-		this.names[1] = name2;
-		this.nameTf1.text = name1;
-		this.nameTf2.text = name2;
+		this.names[0] = this.nameTf1.text =team1.teamname;
+		this.names[1] = this.nameTf2.text = team2.teamname;
 		this.opIndex = 0;
 		this.logTf.text = '';
 		RES.getResByUrl(gamesystem.Url_BattleBg+bg+'.png',this.loadBg,this);

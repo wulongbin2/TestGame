@@ -81,9 +81,9 @@ module gameviews {
 			this.mainPanel.updateTabSelected();
 		}
 
-		public showBattleScene(name1:string,team1:gameCore.HeroMO[], name2:string,team2:gameCore.HeroMO[],bg:string):void{
+		public showBattleScene(team1:gameCore.BattleTeamInfo,team2:gameCore.BattleTeamInfo,bg:string):void{
 			this.addChild(this.battleScene);
-			this.battleScene.start(name1,team1,name2,team2,bg);
+			this.battleScene.start(team1,team2,bg);
 		}
 
 		public showAlertMes(mes:string,title?:string){

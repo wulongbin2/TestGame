@@ -52,6 +52,8 @@ module gamevo {
 
 	/**地图子关卡 */
 	export class MapChildVO extends BaseVO{
+		public zdl:number;
+		public buff:BuffVO;
 		public mapChildId:number;
 		public name:string;
 		public heros:gameCore.HeroMO[] = [];
@@ -71,6 +73,9 @@ module gamevo {
 			this.gold = parseFloat(xml.attributes.gold);
 			this.exp = parseFloat(xml.attributes.exp);
 			this.money = parseFloat(xml.attributes.money);
+			this.zdl = parseFloat(xml.attributes.zdl);
+			this.buff = new BuffVO();
+			this.buff.analysis(xml.attributes.buff);
 			gameutils.XMLUtil.foreachChild(xml,'heros',(item)=>{
 				var heroMO:gameCore.HeroMO = new gameCore.HeroMO;
 				heroMO.analysis(item);

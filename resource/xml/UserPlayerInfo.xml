@@ -16,24 +16,12 @@
     map:地图通关数据
 
     -->
-    <item id='user' name='绿毛虫' gold='100' exp='200' money='300' teamHeros='1,2,3' curMap='1' curMapLevel='0' curMapChild='2' curMapStatus='0' curMapGuajiTime='0' offlineTime='1478238884459'>
+    <item id='user' name='绿毛虫' gold='100' exp='200' money='300' teamHeros='1' curMap='0' curMapLevel='0' curMapChild='0' curMapStatus='0' curMapGuajiTime='0' offlineTime='1478238884459'>
         <heros>
             <item id='1' roleId='0' roleLevel='3' awakenLevel='1'/>
-            <item id='2' roleId='1' roleLevel='7' awakenLevel='2'/>
-            <item id='3' roleId='100' roleLevel='7' awakenLevel='2'/>
-            <item id='4' roleId='101' roleLevel='7' awakenLevel='2'/>
-            <item id='5' roleId='102' roleLevel='7' awakenLevel='2'/>
-            <item id='6' roleId='103' roleLevel='7' awakenLevel='2'/>
-            <item id='7' roleId='104' roleLevel='7' awakenLevel='2'/>
-            <item id='8' roleId='105' roleLevel='7' awakenLevel='2'/>
-            <item id='9' roleId='106' roleLevel='7' awakenLevel='2'/>
-            <item id='10' roleId='107' roleLevel='7' awakenLevel='2'/>
         </heros>
         <daoju>
             <item id='1' goodsId='randHero' goodsNum='1'/>
-            <item id='2' goodsId='randHero' goodsNum='1'/>
-            <item id='3' goodsId='randGold' goodsNum='1'/>
-            <item id='11' goodsId='randGold' goodsNum='1'/>
             <item id='12' goodsId='randGold' goodsNum='1'/>
             <item id='13' goodsId='randGold' goodsNum='1'/>
         </daoju>
@@ -41,8 +29,7 @@
             <item id='4' goodsId='golem' goodsNum='10'/>
         </ziyuan>
         <map>
-            <item id='0' maxMapLevel='1' maxMapChild='3'/>
-            <item id='1' maxMapLevel='0' maxMapChild='2'/>
+            <item id='0' maxMapLevel='0' maxMapChild='0'/>
         </map>
     </item>
 </UserPalyerInfo>
