@@ -18,6 +18,15 @@ module gamevo {
 		}
 	}
 
+	export class StringConstVO extends BaseVO{
+		public value:string;
+		public analysis(config:any):void{
+			var xml:egret.XML = config as egret.XML;
+			this.id = xml.attributes.id;
+			this.value = xml.attributes.value;
+		}
+	}
+
 	/**物品使用效果配置 */
 	export class GoodsUseEffect{
 		public type:string;
@@ -93,6 +102,13 @@ module gamevo {
 			this.defend+=vo.defend;
 			this.dodge+=vo.dodge;
 			this.king+=vo.king;
+		}
+
+		public sub(value:number){
+			this.attckSpeed*=value;
+			this.defend*=value;
+			this.dodge*=value;
+			this.king*=value;
 		}
 
 		public clear():void{

@@ -67,21 +67,23 @@ module gameCore {
 		eventDispatch.dispatchEventWith(Event_MapChange);
 	}
 
+	/**关卡完成 */
 	export function finishMapChild():void{
 		var mapVO:gamevo.MapVO = currentUserInfo.currentMO.mapVo;
 		var mapChildVo:gamevo.MapChildVO = mapVO.mapChilds[currentUserInfo.curMapChild];
 		changeMapChildStatus(gamesystem.MapStatus_FightEnd);
+		var levelCoe:number = currentUserInfo.curMapLevel+1;
 		if(mapChildVo.gold>0){
-			currentUserInfo.gold+=mapChildVo.gold;
-			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Gold,mapChildVo.gold);
+			currentUserInfo.gold+=mapChildVo.gold*levelCoe;
+			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Gold,mapChildVo.gold*levelCoe);
 		}
 		if(mapChildVo.exp>0){
-			currentUserInfo.exp+=mapChildVo.exp;
-			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Exp,mapChildVo.exp);
+			currentUserInfo.exp+=mapChildVo.exp*levelCoe;
+			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Exp,mapChildVo.exp*levelCoe);
 		}
 		if(mapChildVo.money>0){
-			currentUserInfo.money+=mapChildVo.money;
-			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Money,mapChildVo.money);
+			currentUserInfo.money+=mapChildVo.money*levelCoe;
+			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Money,mapChildVo.money*levelCoe);
 		}
 		if(mapChildVo.daojus.length>0){
 			mapChildVo.daojus.forEach(item=>{
@@ -116,7 +118,9 @@ module gameCore {
 		team1.init(currentUserInfo.name,currentUserInfo.getAllTeamHero(),currentUserInfo.totalZDL,currentUserInfo.buff.clone());
 		var team2:BattleTeamInfo = new BattleTeamInfo();
 		team2.init(mapChildMap.name,mapChildMap.heros,mapChildMap.zdl,mapChildMap.buff.clone())
-
+		var levelCoe:number = currentUserInfo.curMapLevel+1;
+		team2.totalZdl*=levelCoe;
+		team2.buff.sub(levelCoe);
 		gameviews.viewManager.showBattleScene(team1,team2,mapVo.battleBg);
 	}
 

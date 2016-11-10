@@ -26,7 +26,7 @@
      -->
      <item id='auto' name='普通攻击' skillAnima='light001' icon='' isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
         <effect>
-            <item type='attack' param='1'/>
+            <item  type='attack' param='1'/>
         </effect>
     </item>
 
@@ -36,8 +36,8 @@
             <item compareValue1='self.curZDL,/,self.totalZDL' compareType='less' compareValue2='0.5'/>
         </trigger>
         <effect>
-            <item type='attack' param='0.5'/>
-           <item type='recovery' param='0.2,self.totalZDL'/>
+            <item des='$effect.attack' type='attack' param='50'/>
+           <item des='$effect.recovery' type='recovery' param='20,self.totalZDL'/>
         </effect>
     </item>
     <item id='lvfengxian2' name='疯狂大夜场' des='大家一起High,疯狂大夜场就在今夜，一起跳，一起跳。。。。' skillAnima='daoguang001' icon='skill_13_png'  isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>

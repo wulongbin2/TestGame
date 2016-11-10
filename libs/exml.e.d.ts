@@ -104,6 +104,8 @@ declare class QianghuaListItemSkin extends eui.Skin{
 }
 declare class QianghuaPanelSkin extends eui.Skin{
 }
+declare class SkillBGSkin extends eui.Skin{
+}
 declare class SkillISlottemSkin extends eui.Skin{
 }
 declare class StartGameSkin extends eui.Skin{

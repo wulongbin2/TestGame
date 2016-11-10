@@ -41,4 +41,15 @@ module gameutils {
 			return s+'';
 		}
 	}
+
+	export function toStringConst(value:string):string{
+		if(value.length>1)
+		{
+			if(value.charAt(0) =='$')
+			{
+				return gameMngers.stringConstMnger.getConst(value.substr(1));
+			}
+		}
+		return value;
+	}
 }

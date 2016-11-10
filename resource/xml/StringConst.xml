@@ -1,0 +1,13 @@
+<StringConst>
+    <item id='self.totalZDL' value='自身总战力'/>
+    <item id='self.curZDL' value='自身当前战力'/>
+    <item id='self.loseZDL' value='自身损失战力'/>
+    <item id='self.loseZDLPer' value='自身战力损失率'/>
+    <item id='self.curZDLPer' value='自身当前战力率'/>
+    <item id='enemy.totalZDL' value='敌方总战力'/>
+    <item id='enemy.curZDL' value='敌方当前战力'/>
+    <item id='enemy.loseZDL' value='敌方损失战力'/>
+    <item id='hurtZDL' value='战斗伤害'/>
+    <item id='effect.attack' value='伤害为攻击力的{0}%'/>
+    <item id='effect.recovery' value='回复{1}的{0}%'/>
+</StringConst>

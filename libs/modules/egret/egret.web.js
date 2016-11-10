@@ -1311,10 +1311,12 @@ var egret;
                 if (DEBUG && !url) {
                     egret.$error(3002);
                 }
-                if (this.video && this.video.src == url)
+                if (this.video && this.video.src == url) {
                     return;
+                }
+                var video;
                 if (!this.video || egret.Capabilities.isMobile) {
-                    var video = document.createElement("video");
+                    video = document.createElement("video");
                     this.video = video;
                     video.controls = null;
                 }
@@ -1632,10 +1634,14 @@ var egret;
                 var height = this.getPlayHeight();
                 if ((!this.isPlayed || egret.Capabilities.isMobile) && posterData) {
                     node.image = posterData;
+                    node.imageWidth = width;
+                    node.imageHeight = height;
                     node.drawImage(0, 0, posterData.width, posterData.height, 0, 0, width, height);
                 }
                 else if (this.isPlayed && bitmapData) {
                     node.image = bitmapData;
+                    node.imageWidth = bitmapData.width;
+                    node.imageHeight = bitmapData.height;
                     egret.WebGLUtils.deleteWebGLTexture(bitmapData.webGLTexture);
                     bitmapData.webGLTexture = null;
                     node.drawImage(0, 0, bitmapData.width, bitmapData.height, 0, 0, width, height);
@@ -1896,18 +1902,18 @@ var egret;
             p.onReadyStateChange = function () {
                 var xhr = this._xhr;
                 if (xhr.readyState == 4) {
-                    var ioError = (xhr.status >= 400 || xhr.status == 0);
-                    var url = this._url;
-                    var self = this;
+                    var ioError_1 = (xhr.status >= 400 || xhr.status == 0);
+                    var url_1 = this._url;
+                    var self_1 = this;
                     window.setTimeout(function () {
-                        if (ioError) {
-                            if (DEBUG && !self.hasEventListener(egret.IOErrorEvent.IO_ERROR)) {
-                                egret.$error(1011, url);
+                        if (ioError_1) {
+                            if (DEBUG && !self_1.hasEventListener(egret.IOErrorEvent.IO_ERROR)) {
+                                egret.$error(1011, url_1);
                             }
-                            self.dispatchEventWith(egret.IOErrorEvent.IO_ERROR);
+                            self_1.dispatchEventWith(egret.IOErrorEvent.IO_ERROR);
                         }
                         else {
-                            self.dispatchEventWith(egret.Event.COMPLETE);
+                            self_1.dispatchEventWith(egret.Event.COMPLETE);
                         }
                     }, 0);
                 }
@@ -2246,9 +2252,9 @@ var egret;
                 var point = this.$textfield.localToGlobal(0, 0);
                 var x = point.x;
                 var y = point.y;
-                // var m = this.$textfield.$renderNode.renderMatrix;
-                // var cX = m.a;
-                // var cY = m.d;
+                // let m = this.$textfield.$renderNode.renderMatrix;
+                // let cX = m.a;
+                // let cY = m.d;
                 var scaleX = this.htmlInput.$scaleX;
                 var scaleY = this.htmlInput.$scaleY;
                 this.inputDiv.style.left = x * scaleX + "px";
@@ -2439,9 +2445,9 @@ var egret;
                         this.setElementStyle("height", (textheight + textfield.lineSpacing) * this._gscaleY + "px");
                         var rap = (textfield.height - textheight) * this._gscaleY;
                         var valign = egret.TextFieldUtils.$getValign(textfield);
-                        var top = rap * valign;
-                        var bottom = rap - top;
-                        this.setElementStyle("padding", top + "px 0px " + bottom + "px 0px");
+                        var top_1 = rap * valign;
+                        var bottom = rap - top_1;
+                        this.setElementStyle("padding", top_1 + "px 0px " + bottom + "px 0px");
                         this.setElementStyle("lineHeight", (textfield.size + textfield.lineSpacing) * this._gscaleY + "px");
                     }
                 }
@@ -2503,8 +2509,9 @@ var egret;
                     this.setElementStyle("textAlign", textfield.textAlign);
                     this.setElementStyle("fontSize", textfield.size * this._gscaleY + "px");
                     this.setElementStyle("color", egret.toColorString(textfield.textColor));
+                    var tw = void 0;
                     if (textfield.stage) {
-                        var tw = textfield.localToGlobal(0, 0).x;
+                        tw = textfield.localToGlobal(0, 0).x;
                         tw = Math.min(textfield.width, textfield.stage.stageWidth - tw);
                     }
                     else {
@@ -2526,12 +2533,12 @@ var egret;
                             this.setElementStyle("height", (textfield.size) * this._gscaleY + "px");
                             var rap = (textfield.height - textfield.size) * this._gscaleY;
                             var valign = egret.TextFieldUtils.$getValign(textfield);
-                            var top = rap * valign;
-                            var bottom = rap - top;
+                            var top_2 = rap * valign;
+                            var bottom = rap - top_2;
                             if (bottom < textfield.size / 2 * this._gscaleY) {
                                 bottom = textfield.size / 2 * this._gscaleY;
                             }
-                            this.setElementStyle("padding", top + "px 0px " + bottom + "px 0px");
+                            this.setElementStyle("padding", top_2 + "px 0px " + bottom + "px 0px");
                         }
                     }
                     this.inputDiv.style.clip = "rect(0px " + (textfield.width * this._gscaleX) + "px " + (textfield.height * this._gscaleY) + "px 0px)";
@@ -2734,7 +2741,7 @@ var egret;
                     self._inputElement.style.left = "0px";
                     self._inputElement.style.top = "0px";
                     self._inputElement.style.opacity = 0;
-                    var otherElement;
+                    var otherElement = void 0;
                     if (self._simpleElement == self._inputElement) {
                         otherElement = self._multiElement;
                     }
@@ -2882,16 +2889,8 @@ var egret;
                 font += "bold ";
             font += (fontSize || 12) + "px ";
             font += (fontFamily || "Arial");
-            var width = 0;
-            var cache = fontCache[font] || (fontCache[font] = {});
             context.font = font;
-            var length = text.length;
-            for (var i = 0; i < length; i++) {
-                var letter = text.charCodeAt(i);
-                var w = cache[letter] || (cache[letter] = context.measureText(text.charAt(i)).width);
-                width += w;
-            }
-            return width;
+            return context.measureText(text).width;
         }
         /**
          * @private
@@ -2948,24 +2947,25 @@ var egret;
             var context = canvas.getContext("2d");
             if (context["imageSmoothingEnabled"] === undefined) {
                 var keys = ["webkitImageSmoothingEnabled", "mozImageSmoothingEnabled", "msImageSmoothingEnabled"];
+                var key_1;
                 for (var i = keys.length - 1; i >= 0; i--) {
-                    var key = keys[i];
-                    if (context[key] !== void 0) {
+                    key_1 = keys[i];
+                    if (context[key_1] !== void 0) {
                         break;
                     }
                 }
                 try {
                     Object.defineProperty(context, "imageSmoothingEnabled", {
                         get: function () {
-                            return this[key];
+                            return this[key_1];
                         },
                         set: function (value) {
-                            this[key] = value;
+                            this[key_1] = value;
                         }
                     });
                 }
                 catch (e) {
-                    context["imageSmoothingEnabled"] = context[key];
+                    context["imageSmoothingEnabled"] = context[key_1];
                 }
             }
             return canvas;
@@ -3089,10 +3089,12 @@ var egret;
                 this.context.restore();
             };
             /**
-             * 获取指定坐标的像素
+             * 获取指定区域的像素
              */
-            p.getPixel = function (x, y) {
-                return this.context.getImageData(x, y, 1, 1).data;
+            p.getPixels = function (x, y, width, height) {
+                if (width === void 0) { width = 1; }
+                if (height === void 0) { height = 1; }
+                return this.context.getImageData(x, y, width, height).data;
             };
             /**
              * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null
@@ -3653,7 +3655,7 @@ var egret;
              */
             Html5Capatibility.getIOSVersion = function () {
                 var value = Html5Capatibility.ua.toLowerCase().match(/cpu [^\d]*\d.*like mac os x/)[0];
-                return parseInt(value.match(/\d(_\d)*/)[0]) || 0;
+                return parseInt(value.match(/\d+(_\d)*/)[0]) || 0;
             };
             /**
              * @private
@@ -3986,16 +3988,16 @@ var egret;
                         "End Function\r\n" + "<\/script>\r\n" +
                         "<!-- convertResponseBodyToText -->\r\n" +
                         "<script>\r\n" +
-                        "var convertResponseBodyToText = function (binary) {\r\n" +
-                        "   var byteMapping = {};\r\n" +
-                        "   for ( var i = 0; i < 256; i++ ) {\r\n" +
-                        "       for ( var j = 0; j < 256; j++ ) {\r\n" +
+                        "let convertResponseBodyToText = function (binary) {\r\n" +
+                        "   let byteMapping = {};\r\n" +
+                        "   for ( let i = 0; i < 256; i++ ) {\r\n" +
+                        "       for ( let j = 0; j < 256; j++ ) {\r\n" +
                         "           byteMapping[ String.fromCharCode( i + j * 256 ) ] =\r\n" +
                         "           String.fromCharCode(i) + String.fromCharCode(j);\r\n" +
                         "       }\r\n" +
                         "   }\r\n" +
-                        "   var rawBytes = IEBinaryToArray_ByteStr(binary);\r\n" +
-                        "   var lastChr = IEBinaryToArray_ByteStr_Last(binary);\r\n" +
+                        "   let rawBytes = IEBinaryToArray_ByteStr(binary);\r\n" +
+                        "   let lastChr = IEBinaryToArray_ByteStr_Last(binary);\r\n" +
                         "   return rawBytes.replace(/[\\s\\S]/g," +
                         "                           function( match ) { return byteMapping[match]; }) + lastChr;\r\n" +
                         "};\r\n" +
@@ -4134,12 +4136,12 @@ var egret;
                 this.divCost = cost;
                 cost.innerHTML = "<font  style=\"color:" + this.cost1Color + "\">0<font/> <font  style=\"color:" + this.cost2Color + "\">0<font/> <font  style=\"color:" + this.cost3Color + "\">0<font/>";
                 right.appendChild(cost);
-                var canvas = document.createElement('canvas');
+                canvas = document.createElement('canvas');
                 this.canvasCost = canvas;
                 this.containerFps.appendChild(canvas);
                 canvas.width = this.WIDTH;
                 canvas.height = this.HEIGHT;
-                var context = canvas.getContext('2d');
+                context = canvas.getContext('2d');
                 this.contextCost = context;
                 context.fillStyle = this.bgCanvasColor;
                 context.fillRect(0, 0, this.WIDTH, this.HEIGHT);
@@ -4157,11 +4159,15 @@ var egret;
             };
             p.update = function (datas, showLastData) {
                 if (showLastData === void 0) { showLastData = false; }
+                var numFps;
+                var numCostTicker;
+                var numCostDirty;
+                var numCostRender;
                 if (!showLastData) {
-                    var numFps = datas.fps;
-                    var numCostTicker = datas.costTicker;
-                    var numCostDirty = datas.costDirty;
-                    var numCostRender = datas.costRender;
+                    numFps = datas.fps;
+                    numCostTicker = datas.costTicker;
+                    numCostDirty = datas.costDirty;
+                    numCostRender = datas.costRender;
                     this.lastNumDraw = datas.draw;
                     this.lastNumDirty = datas.dirty;
                     this.arrFps.push(numFps);
@@ -4201,7 +4207,7 @@ var egret;
                 context.fillStyle = this.fpsFrontColor;
                 context.fillRect(WIDTH - 1, 20 - lastHeight, 1, lastHeight);
                 var WIDTH_COST = this.WIDTH_COST;
-                var context = this.contextCost;
+                context = this.contextCost;
                 context.drawImage(this.canvasCost, 1, 0, WIDTH_COST - 1, HEIGHT, 0, 0, WIDTH_COST - 1, HEIGHT);
                 context.drawImage(this.canvasCost, WIDTH_COST + 2, 0, WIDTH_COST - 1, HEIGHT, WIDTH_COST + 1, 0, WIDTH_COST - 1, HEIGHT);
                 context.drawImage(this.canvasCost, WIDTH_COST * 2 + 3, 0, WIDTH_COST - 1, HEIGHT, WIDTH_COST * 2 + 2, 0, WIDTH_COST - 1, HEIGHT);
@@ -4298,8 +4304,8 @@ var egret;
                 }
                 search = search.slice(1);
                 var searchArr = search.split("&");
-                var length = searchArr.length;
-                for (var i = 0; i < length; i++) {
+                var length_1 = searchArr.length;
+                for (var i = 0; i < length_1; i++) {
                     var str = searchArr[i];
                     var arr = str.split("=");
                     if (arr[0] == key) {
@@ -4586,13 +4592,37 @@ var egret;
             surface["style"]["height"] = iHeight + "px";
             sharedCanvas.width = iWidth;
             sharedCanvas.height = iHeight;
-            var bitmapData = texture;
-            var offsetX = Math.round(bitmapData._offsetX);
-            var offsetY = Math.round(bitmapData._offsetY);
-            var bitmapWidth = bitmapData._bitmapWidth;
-            var bitmapHeight = bitmapData._bitmapHeight;
-            sharedContext.drawImage(bitmapData._bitmapData.source, bitmapData._bitmapX + rect.x / egret.$TextureScaleFactor, bitmapData._bitmapY + rect.y / egret.$TextureScaleFactor, bitmapWidth * rect.width / w, bitmapHeight * rect.height / h, offsetX, offsetY, rect.width, rect.height);
-            return surface;
+            if (egret.Capabilities.$renderMode == "webgl") {
+                var renderTexture = void 0;
+                //webgl下非RenderTexture纹理先画到RenderTexture
+                if (!texture.$renderBuffer) {
+                    renderTexture = new egret.RenderTexture();
+                    renderTexture.drawToTexture(new egret.Bitmap(texture));
+                }
+                else {
+                    renderTexture = texture;
+                }
+                //从RenderTexture中读取像素数据，填入canvas
+                var pixels = renderTexture.$renderBuffer.getPixels(rect.x, rect.y, iWidth, iHeight);
+                var imageData = new ImageData(iWidth, iHeight);
+                for (var i = 0; i < pixels.length; i++) {
+                    imageData.data[i] = pixels[i];
+                }
+                sharedContext.putImageData(imageData, 0, 0);
+                if (!texture.$renderBuffer) {
+                    renderTexture.dispose();
+                }
+                return surface;
+            }
+            else {
+                var bitmapData = texture;
+                var offsetX = Math.round(bitmapData._offsetX);
+                var offsetY = Math.round(bitmapData._offsetY);
+                var bitmapWidth = bitmapData._bitmapWidth;
+                var bitmapHeight = bitmapData._bitmapHeight;
+                sharedContext.drawImage(bitmapData._bitmapData.source, bitmapData._bitmapX + rect.x / egret.$TextureScaleFactor, bitmapData._bitmapY + rect.y / egret.$TextureScaleFactor, bitmapWidth * rect.width / w, bitmapHeight * rect.height / h, offsetX, offsetY, rect.width, rect.height);
+                return surface;
+            }
         }
         /**
          * @private
@@ -4622,26 +4652,25 @@ var egret;
             aLink.dispatchEvent(evt);
         }
         function getPixel32(x, y) {
-            var buffer = egret.sys.canvasHitTestBuffer;
-            buffer.resize(3, 3);
-            var context = buffer.context;
-            context.translate(1 - x, 1 - y);
-            var width = this._bitmapWidth;
-            var height = this._bitmapHeight;
-            var scale = egret.$TextureScaleFactor;
-            context.drawImage(this._bitmapData.source, this._bitmapX, this._bitmapY, width, this._bitmapHeight, this._offsetX, this._offsetY, width * scale, height * scale);
+            egret.$warn(1041, "getPixel32", "getPixels");
+            return this.getPixels(x, y);
+        }
+        function getPixels(x, y, width, height) {
+            if (width === void 0) { width = 1; }
+            if (height === void 0) { height = 1; }
             try {
-                var data = buffer.getPixel(1, 1);
+                var surface = convertImageToCanvas(this);
+                var result = sharedContext.getImageData(x, y, width, height).data;
+                return result;
             }
             catch (e) {
-                console.log(this);
-                throw new Error(egret.sys.tr(1039));
+                egret.$error(1039);
             }
-            return data;
         }
         egret.Texture.prototype.toDataURL = toDataURL;
         egret.Texture.prototype.saveToFile = saveToFile;
         egret.Texture.prototype.getPixel32 = getPixel32;
+        egret.Texture.prototype.getPixels = getPixels;
     })(web = egret.web || (egret.web = {}));
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
@@ -4773,17 +4802,17 @@ var egret;
             var length = nodeAttributes.length;
             for (var i = 0; i < length; i++) {
                 var attributeNode = nodeAttributes[i];
-                var name = attributeNode.name;
-                if (name.indexOf("xmlns:") == 0) {
+                var name_1 = attributeNode.name;
+                if (name_1.indexOf("xmlns:") == 0) {
                     continue;
                 }
-                attributes[name] = attributeNode.value;
-                xml["$" + name] = attributeNode.value;
+                attributes[name_1] = attributeNode.value;
+                xml["$" + name_1] = attributeNode.value;
             }
             var childNodes = node.childNodes;
             length = childNodes.length;
             var children = xml.children;
-            for (i = 0; i < length; i++) {
+            for (var i = 0; i < length; i++) {
                 var childNode = childNodes[i];
                 var nodeType = childNode.nodeType;
                 var childXML = null;
@@ -5019,10 +5048,10 @@ var egret;
     var web;
     (function (web) {
         if (DEBUG) {
-            var logFuncs;
+            var logFuncs_1;
             function setLogLevel(logType) {
-                if (logFuncs == null) {
-                    logFuncs = {
+                if (logFuncs_1 == null) {
+                    logFuncs_1 = {
                         "error": console.error,
                         "debug": console.debug,
                         "warn": console.warn,
@@ -5051,14 +5080,14 @@ var egret;
                 switch (logType) {
                     case egret.Logger.ALL:
                     case egret.Logger.DEBUG:
-                        console.debug = logFuncs["debug"];
+                        console.debug = logFuncs_1["debug"];
                     case egret.Logger.INFO:
-                        console.log = logFuncs["log"];
-                        console.info = logFuncs["info"];
+                        console.log = logFuncs_1["log"];
+                        console.info = logFuncs_1["info"];
                     case egret.Logger.WARN:
-                        console.warn = logFuncs["warn"];
+                        console.warn = logFuncs_1["warn"];
                     case egret.Logger.ERROR:
-                        console.error = logFuncs["error"];
+                        console.error = logFuncs_1["error"];
                     default:
                         break;
                 }
@@ -6288,8 +6317,8 @@ var egret;
                     }
                     // 缓存索引数组
                     if (this.hasMesh) {
-                        for (var i = 0, l = meshIndices.length; i < l; ++i) {
-                            this.indicesForMesh[this.indexIndex + i] = meshIndices[i] + this.vertexIndex;
+                        for (var i_1 = 0, l_1 = meshIndices.length; i_1 < l_1; ++i_1) {
+                            this.indicesForMesh[this.indexIndex + i_1] = meshIndices[i_1] + this.vertexIndex;
                         }
                     }
                     this.vertexIndex += meshUVs.length / 2;
@@ -6634,8 +6663,8 @@ var egret;
                 this.surface.width = this.surface.height = 0;
             };
             p.onResize = function (width, height) {
-                var width = width || this.surface.width;
-                var height = height || this.surface.height;
+                width = width || this.surface.width;
+                height = height || this.surface.height;
                 this.projectionX = width / 2;
                 this.projectionY = -height / 2;
                 if (this.context) {
@@ -6690,7 +6719,7 @@ var egret;
                 };
                 var gl;
                 //todo 是否使用chrome源码names
-                //var contextNames = ["moz-webgl", "webkit-3d", "experimental-webgl", "webgl", "3d"];
+                //let contextNames = ["moz-webgl", "webkit-3d", "experimental-webgl", "webgl", "3d"];
                 var names = ["webgl", "experimental-webgl"];
                 for (var i = 0; i < names.length; i++) {
                     try {
@@ -7051,10 +7080,10 @@ var egret;
                 if (!data) {
                     return;
                 }
+                var shader;
                 switch (data.type) {
                     case 0 /* TEXTURE */:
                         var filter = data.filter;
-                        var shader;
                         if (filter) {
                             if (filter.type == "colorTransform") {
                                 shader = this.shaderManager.colorTransformShader;
@@ -7089,21 +7118,21 @@ var egret;
                         offset += this.drawTextureElements(data, offset);
                         break;
                     case 1 /* RECT */:
-                        var shader = this.shaderManager.primitiveShader;
+                        shader = this.shaderManager.primitiveShader;
                         shader.setProjection(this.projectionX, this.projectionY);
                         this.shaderManager.activateShader(shader, this.vertSize * 4);
                         shader.syncUniforms();
                         offset += this.drawRectElements(data, offset);
                         break;
                     case 2 /* PUSH_MASK */:
-                        var shader = this.shaderManager.primitiveShader;
+                        shader = this.shaderManager.primitiveShader;
                         shader.setProjection(this.projectionX, this.projectionY);
                         this.shaderManager.activateShader(shader, this.vertSize * 4);
                         shader.syncUniforms();
                         offset += this.drawPushMaskElements(data, offset);
                         break;
                     case 3 /* POP_MASK */:
-                        var shader = this.shaderManager.primitiveShader;
+                        shader = this.shaderManager.primitiveShader;
                         shader.setProjection(this.projectionX, this.projectionY);
                         this.shaderManager.activateShader(shader, this.vertSize * 4);
                         shader.syncUniforms();
@@ -7134,7 +7163,7 @@ var egret;
                         }
                         break;
                     case 9 /* DISABLE_SCISSOR */:
-                        var buffer = this.activatedBuffer;
+                        buffer = this.activatedBuffer;
                         if (buffer) {
                             buffer.disableScissor();
                         }
@@ -7235,13 +7264,13 @@ var egret;
                 // 应用前面的滤镜
                 if (filtersLen > 1) {
                     for (var i = 0; i < filtersLen - 1; i++) {
-                        var filter = filters[i];
+                        var filter_1 = filters[i];
                         var width = input.rootRenderTarget.width;
                         var height = input.rootRenderTarget.height;
                         output = web.WebGLRenderBuffer.create(width, height);
                         output.setTransform(1, 0, 0, 1, 0, 0);
                         output.globalAlpha = 1;
-                        this.drawToRenderTarget(filter, input, output);
+                        this.drawToRenderTarget(filter_1, input, output);
                         if (input != originInput) {
                             web.WebGLRenderBuffer.release(input);
                         }
@@ -7620,17 +7649,29 @@ var egret;
                 }
             };
             /**
-             * 获取指定坐标的像素
+             * 获取指定区域的像素
              */
-            p.getPixel = function (x, y) {
-                var pixels = new Uint8Array(4);
+            p.getPixels = function (x, y, width, height) {
+                if (width === void 0) { width = 1; }
+                if (height === void 0) { height = 1; }
+                var pixels = new Uint8Array(4 * width * height);
                 var useFrameBuffer = this.rootRenderTarget.useFrameBuffer;
                 this.rootRenderTarget.useFrameBuffer = true;
                 this.rootRenderTarget.activate();
-                this.context.getPixels(x, y, 1, 1, pixels);
+                this.context.getPixels(x, y, width, height, pixels);
                 this.rootRenderTarget.useFrameBuffer = useFrameBuffer;
                 this.rootRenderTarget.activate();
-                return pixels;
+                //图像反转
+                var result = new Uint8Array(4 * width * height);
+                for (var i = 0; i < height; i++) {
+                    for (var j = 0; j < width; j++) {
+                        result[(width * (height - i - 1) + j) * 4] = pixels[(width * i + j) * 4];
+                        result[(width * (height - i - 1) + j) * 4 + 1] = pixels[(width * i + j) * 4 + 1];
+                        result[(width * (height - i - 1) + j) * 4 + 2] = pixels[(width * i + j) * 4 + 2];
+                        result[(width * (height - i - 1) + j) * 4 + 3] = pixels[(width * i + j) * 4 + 3];
+                    }
+                }
+                return result;
             };
             /**
              * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null
@@ -7865,8 +7906,8 @@ var egret;
                     if (renderBufferPool.length > 6) {
                         renderBufferPool.length = 6;
                     }
-                    var length = renderBufferPool.length;
-                    for (var i = 0; i < length; i++) {
+                    var length_2 = renderBufferPool.length;
+                    for (var i = 0; i < length_2; i++) {
                         renderBufferPool[i].resize(0, 0);
                     }
                 }
@@ -7910,8 +7951,8 @@ var egret;
                     }
                     if (node.needRedraw) {
                         drawCalls++;
-                        var renderAlpha;
-                        var m;
+                        var renderAlpha = void 0;
+                        var m = void 0;
                         if (root) {
                             renderAlpha = displayObject.$getConcatenatedAlphaAt(root, displayObject.$getConcatenatedAlpha());
                             m = egret.Matrix.create().copyFrom(displayObject.$getConcatenatedMatrix());
@@ -7935,8 +7976,8 @@ var egret;
                 }
                 var children = displayObject.$children;
                 if (children) {
-                    var length = children.length;
-                    for (var i = 0; i < length; i++) {
+                    var length_3 = children.length;
+                    for (var i = 0; i < length_3; i++) {
                         var child = children[i];
                         if (!child.$visible || child.$alpha <= 0 || child.$maskedObject) {
                             continue;
@@ -7975,8 +8016,9 @@ var egret;
                 var drawCalls = 0;
                 var filters = displayObject.$getFilters();
                 var hasBlendMode = (displayObject.$blendMode !== 0);
+                var compositeOp;
                 if (hasBlendMode) {
-                    var compositeOp = blendModes[displayObject.$blendMode];
+                    compositeOp = blendModes[displayObject.$blendMode];
                     if (!compositeOp) {
                         compositeOp = defaultCompositeOp;
                     }
@@ -7986,7 +8028,15 @@ var egret;
                         buffer.context.setGlobalCompositeOperation(compositeOp);
                     }
                     buffer.context.$filter = filters[0];
-                    drawCalls += this.drawDisplayObject(displayObject, buffer, dirtyList, matrix, displayObject.$displayList, clipRegion, root);
+                    if ((displayObject.$mask && (displayObject.$mask.$parentDisplayList || root))) {
+                        drawCalls += this.drawWithClip(displayObject, buffer, dirtyList, matrix, clipRegion, root);
+                    }
+                    else if (displayObject.$scrollRect || displayObject.$maskRect) {
+                        drawCalls += this.drawWithScrollRect(displayObject, buffer, dirtyList, matrix, clipRegion, root);
+                    }
+                    else {
+                        drawCalls += this.drawDisplayObject(displayObject, buffer, dirtyList, matrix, displayObject.$displayList, clipRegion, root);
+                    }
                     buffer.context.$filter = null;
                     if (hasBlendMode) {
                         buffer.context.setGlobalCompositeOperation(defaultCompositeOp);
@@ -8007,7 +8057,16 @@ var egret;
                 displayBuffer.context.pushBuffer(displayBuffer);
                 displayBuffer.setTransform(1, 0, 0, 1, -region.minX, -region.minY);
                 var offsetM = egret.Matrix.create().setTo(1, 0, 0, 1, -region.minX, -region.minY);
-                drawCalls += this.drawDisplayObject(displayObject, displayBuffer, dirtyList, offsetM, displayObject.$displayList, region, root);
+                //todo 可以优化减少draw次数
+                if ((displayObject.$mask && (displayObject.$mask.$parentDisplayList || root))) {
+                    drawCalls += this.drawWithClip(displayObject, displayBuffer, dirtyList, offsetM, region, root);
+                }
+                else if (displayObject.$scrollRect || displayObject.$maskRect) {
+                    drawCalls += this.drawWithScrollRect(displayObject, displayBuffer, dirtyList, offsetM, region, root);
+                }
+                else {
+                    drawCalls += this.drawDisplayObject(displayObject, displayBuffer, dirtyList, offsetM, displayObject.$displayList, region, root);
+                }
                 egret.Matrix.release(offsetM);
                 displayBuffer.context.popBuffer();
                 //绘制结果到屏幕
@@ -8035,14 +8094,14 @@ var egret;
             p.drawWithClip = function (displayObject, buffer, dirtyList, matrix, clipRegion, root) {
                 var drawCalls = 0;
                 var hasBlendMode = (displayObject.$blendMode !== 0);
+                var compositeOp;
                 if (hasBlendMode) {
-                    var compositeOp = blendModes[displayObject.$blendMode];
+                    compositeOp = blendModes[displayObject.$blendMode];
                     if (!compositeOp) {
                         compositeOp = defaultCompositeOp;
                     }
                 }
                 var scrollRect = displayObject.$scrollRect ? displayObject.$scrollRect : displayObject.$maskRect;
-                var mask = displayObject.$mask;
                 var mask = displayObject.$mask;
                 if (mask) {
                     var maskRenderNode = mask.$getRenderNode();
@@ -8063,19 +8122,16 @@ var egret;
                 displayMatrix.copyFrom(displayObject.$getConcatenatedMatrix());
                 if (displayObject.$parentDisplayList) {
                     var displayRoot = displayObject.$parentDisplayList.root;
-                    var invertedMatrix;
                     if (displayRoot !== displayObject.$stage) {
                         displayObject.$getConcatenatedMatrixAt(displayRoot, displayMatrix);
                     }
                 }
+                var bounds;
                 if (mask) {
-                    var bounds = mask.$getOriginalBounds();
+                    bounds = mask.$getOriginalBounds();
                     maskRegion = egret.sys.Region.create();
                     var m = egret.Matrix.create();
                     m.copyFrom(mask.$getConcatenatedMatrix());
-                    if (invertedMatrix) {
-                        invertedMatrix.$preMultiplyInto(m, m);
-                    }
                     maskRegion.updateRegion(bounds, m);
                     egret.Matrix.release(m);
                 }
@@ -8128,21 +8184,11 @@ var egret;
                         buffer.setTransform(m.a, m.b, m.c, m.d, m.tx - region.minX, m.ty - region.minY);
                         buffer.context.pushMask(scrollRect);
                     }
-                    var offsetM = egret.Matrix.create().setTo(1, 0, 0, 1, 0, 0);
                     //绘制显示对象
                     if (hasBlendMode) {
                         buffer.context.setGlobalCompositeOperation(compositeOp);
                     }
-                    if (scrollRect) {
-                        var m = displayMatrix;
-                        buffer.setTransform(m.a, m.b, m.c, m.d, m.tx - region.minX, m.ty - region.minY);
-                        buffer.context.pushMask(scrollRect);
-                    }
-                    drawCalls += this.drawDisplayObject(displayObject, buffer, dirtyList, offsetM, displayObject.$displayList, region, null);
-                    egret.Matrix.release(offsetM);
-                    if (scrollRect) {
-                        buffer.context.popMask();
-                    }
+                    drawCalls += this.drawDisplayObject(displayObject, buffer, dirtyList, matrix, displayObject.$displayList, clipRegion, root);
                     if (hasBlendMode) {
                         buffer.context.setGlobalCompositeOperation(defaultCompositeOp);
                     }
@@ -8156,7 +8202,7 @@ var egret;
                 else {
                     //绘制显示对象自身，若有scrollRect，应用clip
                     var displayBuffer = this.createRenderBuffer(region.width, region.height);
-                    // var displayContext = displayBuffer.context;
+                    // let displayContext = displayBuffer.context;
                     displayBuffer.context.pushBuffer(displayBuffer);
                     displayBuffer.setTransform(1, 0, 0, 1, -region.minX, -region.minY);
                     var offsetM = egret.Matrix.create().setTo(1, 0, 0, 1, -region.minX, -region.minY);
@@ -8165,7 +8211,7 @@ var egret;
                     if (mask) {
                         //如果只有一次绘制或是已经被cache直接绘制到displayContext
                         //webgl暂时无法添加,因为会有边界像素没有被擦除
-                        //var maskRenderNode = mask.$getRenderNode();
+                        //let maskRenderNode = mask.$getRenderNode();
                         //if (maskRenderNode && maskRenderNode.$getRenderCount() == 1 || mask.$displayList) {
                         //    displayBuffer.context.setGlobalCompositeOperation("destination-in");
                         //    drawCalls += this.drawDisplayObject(mask, displayBuffer, dirtyList, offsetM,
@@ -8176,18 +8222,15 @@ var egret;
                         maskBuffer.context.pushBuffer(maskBuffer);
                         maskBuffer.setTransform(1, 0, 0, 1, -region.minX, -region.minY);
                         offsetM = egret.Matrix.create().setTo(1, 0, 0, 1, -region.minX, -region.minY);
-                        var calls = this.drawDisplayObject(mask, maskBuffer, dirtyList, offsetM, mask.$displayList, region, root);
+                        drawCalls += this.drawDisplayObject(mask, maskBuffer, dirtyList, offsetM, mask.$displayList, region, root);
                         maskBuffer.context.popBuffer();
-                        if (calls > 0) {
-                            drawCalls += calls;
-                            displayBuffer.context.setGlobalCompositeOperation("destination-in");
-                            displayBuffer.setTransform(1, 0, 0, -1, 0, maskBuffer.height);
-                            displayBuffer.globalAlpha = 1;
-                            var maskBufferWidth = maskBuffer.rootRenderTarget.width;
-                            var maskBufferHeight = maskBuffer.rootRenderTarget.height;
-                            displayBuffer.context.drawTexture(maskBuffer.rootRenderTarget.texture, 0, 0, maskBufferWidth, maskBufferHeight, 0, 0, maskBufferWidth, maskBufferHeight, maskBufferWidth, maskBufferHeight);
-                            displayBuffer.context.setGlobalCompositeOperation("source-over");
-                        }
+                        displayBuffer.context.setGlobalCompositeOperation("destination-in");
+                        displayBuffer.setTransform(1, 0, 0, -1, 0, maskBuffer.height);
+                        displayBuffer.globalAlpha = 1;
+                        var maskBufferWidth = maskBuffer.rootRenderTarget.width;
+                        var maskBufferHeight = maskBuffer.rootRenderTarget.height;
+                        displayBuffer.context.drawTexture(maskBuffer.rootRenderTarget.texture, 0, 0, maskBufferWidth, maskBufferHeight, 0, 0, maskBufferWidth, maskBufferHeight, maskBufferWidth, maskBufferHeight);
+                        displayBuffer.context.setGlobalCompositeOperation("source-over");
                         renderBufferPool.push(maskBuffer);
                     }
                     egret.Matrix.release(offsetM);
@@ -8348,24 +8391,46 @@ var egret;
              */
             p.renderBitmap = function (node, buffer) {
                 var image = node.image;
+                if (!image) {
+                    return;
+                }
                 //buffer.imageSmoothingEnabled = node.smoothing;
                 var data = node.drawData;
                 var length = data.length;
                 var pos = 0;
                 var m = node.matrix;
                 var blendMode = node.blendMode;
+                var alpha = node.alpha;
                 if (m) {
                     buffer.saveTransform();
                     buffer.transform(m.a, m.b, m.c, m.d, m.tx, m.ty);
                 }
+                //这里不考虑嵌套
                 if (blendMode) {
                     buffer.context.setGlobalCompositeOperation(blendModes[blendMode]);
                 }
-                while (pos < length) {
-                    buffer.context.drawImage(image, data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], node.imageWidth, node.imageHeight);
+                var originAlpha;
+                if (alpha == alpha) {
+                    originAlpha = buffer.globalAlpha;
+                    buffer.globalAlpha *= alpha;
+                }
+                if (node.filter) {
+                    buffer.context.$filter = node.filter;
+                    while (pos < length) {
+                        buffer.context.drawImage(image, data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], node.imageWidth, node.imageHeight);
+                    }
+                    buffer.context.$filter = null;
+                }
+                else {
+                    while (pos < length) {
+                        buffer.context.drawImage(image, data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], node.imageWidth, node.imageHeight);
+                    }
                 }
                 if (blendMode) {
                     buffer.context.setGlobalCompositeOperation(defaultCompositeOp);
+                }
+                if (alpha == alpha) {
+                    buffer.globalAlpha = originAlpha;
                 }
                 if (m) {
                     buffer.restoreTransform();

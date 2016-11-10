@@ -52,7 +52,8 @@
     "HPBar": "resource/views/HPBar.exml",
     "OrangeBtn": "resource/views/OrangeBtn.exml",
     "ChooseRole": "resource/views/ChooseRole.exml",
-    "ChooseRoleSkillInfo": "resource/views/ChooseRoleSkillInfo.exml"
+    "ChooseRoleSkillInfo": "resource/views/ChooseRoleSkillInfo.exml",
+    "SkillBG": "resource/views/SkillBG.exml"
   },
   "autoGenerateExmlsList": true,
   "exmls": [
@@ -96,6 +97,7 @@
     "resource/views/OrangeBtn.exml",
     "resource/views/QianghuaListItem.exml",
     "resource/views/QianghuaPanel.exml",
+    "resource/views/SkillBG.exml",
     "resource/views/SkillISlottem.exml",
     "resource/views/StartGame.exml",
     "resource/views/StartGameBtn.exml",

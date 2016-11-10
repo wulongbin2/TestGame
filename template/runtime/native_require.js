@@ -37,6 +37,7 @@ var game_file_list = [
 	"bin-debug/game/views/BattleHurtText.js",
 	"bin-debug/game/views/BattleResult.js",
 	"bin-debug/game/views/BattleScene.js",
+	"bin-debug/game/views/BattleSkillText.js",
 	"bin-debug/game/views/BattleTeam.js",
 	"bin-debug/game/views/ChooseRole.js",
 	"bin-debug/game/views/ChooseRoleSkillInfo.js",

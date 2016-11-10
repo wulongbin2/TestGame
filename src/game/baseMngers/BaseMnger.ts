@@ -43,6 +43,17 @@ module gameMngers {
 			return this.lib[id];
 		}
 	}
+
+	class StringConstMnger extends BaseMnger<gamevo.StringConstVO>{
+		protected createVO():gamevo.StringConstVO
+		{
+			return new gamevo.StringConstVO;
+		}
+
+		public getConst(id:string):string{
+			return this.getVO(id).value;
+		}
+	}
 	 
 	class RoleInfoMnger extends BaseMnger<gamevo.RoleBaseVO>{
 		protected createVO():gamevo.RoleBaseVO
@@ -127,6 +138,8 @@ module gameMngers {
 		return lib[id];
 	}
 
+	/**角色配置管理器 */
+	export var stringConstMnger:StringConstMnger = new StringConstMnger('stringConst');
 	/**角色配置管理器 */
 	export var roleInfoMnger:RoleInfoMnger = new RoleInfoMnger('roleInfo');
 	/**武器配置管理器 */

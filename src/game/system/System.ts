@@ -61,15 +61,21 @@ module gamesystem {
 	export const SkillRecovery_Self_TotalZDL:string = 'self.totalZDL';
 	export const SkillRecovery_Self_CurZDL:string = 'self.curZDL';
 	export const SkillRecovery_Self_LoseZDL:string = 'self.loseZDL';
+	export const SkillRecovery_Self_LoseZDLPer:string = 'self.loseZDLPer';
+	export const SkillRecovery_Self_CurZDLPer:string = 'self.curZDLPer';
+
 	export const SkillRecovery_Enemy_TotalZDL:string = 'enemy.totalZDL';
 	export const SkillRecovery_Enemy_CurZDL:string = 'enemy.curZDL';
 	export const SkillRecovery_Enemy_LoseZDL:string = 'enemy.loseZDL';
+	export const SkillRecovery_Enemy_LoseZDLPer:string = 'Enemy.loseZDLPer';
+	export const SkillRecovery_Enemy_CurZDLPer:string = 'Enemy.curZDLPer'
 	export const SkillRecovery_HurtZDL:string = 'hurtZDL';
 
 
 	export const OPType_InitRound:string = 'initRound';
 	export const OPType_MaskHide:string = 'maskHide';
-	export const OPType_PlaySkill:string = 'playSkill';
+	export const OPType_PlayEffect:string = 'playEffect';
+	export const OPType_PlaySkillName:string = 'playSkillName';
 	export const OPType_Forward:string = 'forward';
 	export const OPType_BackOut:string = 'backOut';
 	export const OPType_BackIn:string = 'backIn';

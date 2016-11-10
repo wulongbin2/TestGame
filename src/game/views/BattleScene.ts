@@ -24,6 +24,7 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 	public battleCore:gameCore.BattleCore = new gameCore.BattleCore;
 	public battleteam1:gameviews.BattleTeam = new gameviews.BattleTeam();
 	public battleteam2:gameviews.BattleTeam = new gameviews.BattleTeam();
+	public battleSkillText:gameviews.BattleSkillText = new gameviews.BattleSkillText();
 	public battleteams:gameviews.BattleTeam[] = [];
 	public battleResult:gameviews.BattleResult = new gameviews.BattleResult;
 	public battleteamPos:number[][] = [];
@@ -109,8 +110,12 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 				this.action_showHurt(this.nextOP.bind(this),this.currentOp.targetteam,this.currentOp.result);
 				break;
 
-			case gamesystem.OPType_PlaySkill:
-				this.action_playSkill(this.nextOP.bind(this),this.currentOp.targetteam,this.currentOp.skillId);
+			case gamesystem.OPType_PlaySkillName:
+				this.action_playSkillName(this.nextOP.bind(this),this.currentOp.targetteam,this.currentOp.EffectId);
+				break;
+
+			case gamesystem.OPType_PlayEffect:
+				this.action_playEffect(this.nextOP.bind(this),this.currentOp.targetteam,this.currentOp.EffectId);
 				// this.taskPromise.call();
 				// var skillVo:gamevo.SkillBaseVO = gameMngers.skillInfoMnger.getVO(this.currentOp.skillId);
 				// this.logTf.appendText(`【${this.names[this.currentOp.attckteam]}】对【${this.names[this.currentOp.targetteam]}】'释放【${skillVo.name}】技能:【${this.names[this.currentOp.targetteam]}】 战力下降${this.currentOp.result}`);
@@ -265,11 +270,16 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 		new gameutils.Shock().start(this.bg,5,600,60);
 	}
 
-	private action_playSkill(success:()=>void,teamId:number,skillId:string):void{
+	private action_playSkillName(success:()=>void,teamId:number,skillId:string):void{
+		var pos:number[] = this.battleteamPos[teamId];
+		this.battleSkillText.show(this,pos[1]-(teamId==0?100:0),BattleScene.BattleTeamY - 100,gameMngers.skillInfoMnger.getVO(skillId).name);
+		gameutils.asynMnger.addOnceCB(500,success,this);
+	}
+
+	private action_playEffect(success:()=>void,teamId:number,skillId:string):void{
 		this.action_shock();
 		this.action_sceneColor(0xff0000);
 		this._playSkillCb = success;
-		var skillVo:gamevo.SkillBaseVO = gameMngers.skillInfoMnger.getVO(skillId);
 		var pos:number[] = this.battleteamPos[teamId];
 		if(teamId ===0)
 		{
@@ -281,7 +291,7 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 			this.effectPlayer.scaleX = -3;
 			this.effectPlayer.x =pos[1] + 60;
 		}
-		this.effectPlayer.playAnimaByEffectId(skillVo.skillAnima);
+		this.effectPlayer.playAnimaByEffectId(skillId);
 		this.roleGroup.addChild(this.effectPlayer);
 	}
 	private _playSkillCb:()=>void;

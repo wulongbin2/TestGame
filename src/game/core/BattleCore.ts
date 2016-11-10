@@ -121,7 +121,8 @@ module gameCore {
 					if(Math.random()<shanbiPer){
 						this.enemy.lastdodgeRound = this.round;
 						pushOperator(BatteOperator.op_action(gamesystem.OPType_BackOut,this.enemy.id));
-						pushOperator(BatteOperator.op_playSkill(this.enemy.id, selfSkill.id));
+						pushOperator(BatteOperator.op_playSkillName(this.self.id, selfSkill.id));
+						pushOperator(BatteOperator.op_playEffect(this.enemy.id, selfSkill.skillAnima));
 						pushOperator(BatteOperator.op_action(gamesystem.OPType_BackIn,this.enemy.id));
 					}
 					else{
@@ -133,7 +134,8 @@ module gameCore {
 						offZDL = Math.round(offZDL);
 						this.enemy.curZDL-=offZDL;
 						this.hurtNum+=offZDL;
-						pushOperator(BatteOperator.op_playSkill(this.enemy.id, selfSkill.id));
+						pushOperator(BatteOperator.op_playSkillName(this.self.id, selfSkill.id));
+						pushOperator(BatteOperator.op_playEffect(this.enemy.id,selfSkill.skillAnima));
 						pushOperator(BatteOperator.op_showHurt(this.enemy.id,  -offZDL));
 						hasPlaySkill = true;
 					}
@@ -144,7 +146,8 @@ module gameCore {
 					this.self.curZDL+=offZDL;
 					if(!hasPlaySkill){
 						hasPlaySkill = true;
-						pushOperator(BatteOperator.op_playSkill(this.enemy.id, selfSkill.id));
+						pushOperator(BatteOperator.op_playSkillName(this.self.id, selfSkill.id));
+						pushOperator(BatteOperator.op_playEffect(this.enemy.id, selfSkill.skillAnima));
 					}
 					pushOperator(BatteOperator.op_showHurt(this.self.id,  offZDL));
 				}
@@ -226,7 +229,7 @@ module gameCore {
 		public teamInfo1:BattleTeamRecord;
 		public teamInfo2:BattleTeamRecord;
 		public targetteam:number;
-		public skillId:string;
+		public EffectId:string;
 		public result:number;
 		public static op_initInfo(round:number):BatteOperator{
 			var o:BatteOperator = new BatteOperator();
@@ -235,11 +238,19 @@ module gameCore {
 			return o;
 		}
 
-		public static  op_playSkill(targetTeam:number,skillId:string):BatteOperator{
+		public static  op_playEffect(targetTeam:number,skillId:string):BatteOperator{
 			var o:BatteOperator = new BatteOperator();
-			o.type = gamesystem.OPType_PlaySkill;
+			o.type = gamesystem.OPType_PlayEffect;
 			o.targetteam = targetTeam;
-			o.skillId = skillId;
+			o.EffectId = skillId;
+			return o;
+		}
+
+		public static  op_playSkillName(targetTeam:number,skillId:string):BatteOperator{
+			var o:BatteOperator = new BatteOperator();
+			o.type = gamesystem.OPType_PlaySkillName
+			o.targetteam = targetTeam;
+			o.EffectId = skillId;
 			return o;
 		}
 
