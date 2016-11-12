@@ -14,9 +14,9 @@
 			<e:HorizontalLayout gap="4"/>
 			</e:layout>
 		</e:List>
-		<e:Label id="skillDesTf" text="难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！" x="18" y="45" size="24" fontFamily="黑体" textColor="0xdddddd" width="616" height="65" scaleX="1" scaleY="1"/>
-		<e:Label id="skillEnabledTf" text="未发动" x="18" y="112" size="18" fontFamily="黑体" width="66" height="24" textColor="0xd56620" bold="true" scaleX="1" scaleY="1"/>
-		<e:Label id="skillRolesTf" text="查看合作名单" x="515" y="112" size="18" fontFamily="黑体" width="115" height="24" bold="true" textColor="0xc3ac71" scaleX="1" scaleY="1"/>
+		<e:Label id="skillDesTf" text="难忘今宵今宵今宵今宵今宵今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！" x="18" y="45" size="24" fontFamily="黑体" textColor="0xdddddd" width="616" height="88" scaleX="1" scaleY="1" anchorOffsetY="0"/>
+		<e:Label id="skillEnabledTf" text="未发动" x="18" y="122" size="18" fontFamily="黑体" width="66" height="24" textColor="0xd56620" bold="true" scaleX="1" scaleY="1"/>
+		<e:Label id="skillRolesTf" text="查看合作名单" x="515" y="122" size="18" fontFamily="黑体" width="115" height="24" bold="true" textColor="0xc3ac71" scaleX="1" scaleY="1"/>
 	</e:Group>
 	<e:Image source="red_bg_png" y="42" height="66" scaleX="1" scaleY="1" left="0" right="0" x="0" locked="true"/>
 	<e:Label id="nameTf" text="绿毛虫" x="13" y="69" size="20" fontFamily="黑体" scaleX="1" scaleY="1"/>

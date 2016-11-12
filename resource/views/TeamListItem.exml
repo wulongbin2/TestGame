@@ -3,4 +3,5 @@
 	<e:Image id="bg" source="heroformation_bgempty_d_png" left="0" top="0" right="0" bottom="0" width="112" height="112"/>
 	<e:Label id="stateTf" text="可上阵" size="20" bold="true" fontFamily="黑体" textColor="0xc3ac71" horizontalCenter="0" bottom="10"/>
 	<e:Image id="selectedIcon" source="skill_choose2_png" x="-24" y="-24" anchorOffsetX="0" width="160" anchorOffsetY="0" height="160"/>
+	<e:Label id="zdlTf" text="11k" x="10" y="83" anchorOffsetX="0" width="91" anchorOffsetY="0" height="27" textAlign="center" size="20" visible="false"/>
 </e:Skin>

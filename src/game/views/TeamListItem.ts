@@ -4,6 +4,7 @@ class TeamListItem extends eui.ItemRenderer implements  eui.UIComponent {
 	public selectedIcon:eui.Image;
 	public stateTf:eui.Label;
 	public bg:eui.Image;
+	public zdlTf:eui.Label;
 	public constructor() {
 		super();
 		this.addEventListener( eui.UIEvent.COMPLETE, this.onComplete, this );
@@ -14,6 +15,7 @@ class TeamListItem extends eui.ItemRenderer implements  eui.UIComponent {
 		this.selectedIcon.visible = false;
 		this.slot.enabledPopInfo = false;
 		this.addChild(this.slot);
+		this.addChild(this.zdlTf);
 	}
 
 
@@ -32,10 +34,13 @@ class TeamListItem extends eui.ItemRenderer implements  eui.UIComponent {
 		var mo:gameCore.HeroMO = this.data;
 		if(mo)
 		{
+			this.zdlTf.visible = true;
+			this.zdlTf.text = gameutils.zdlToString(mo.zdl);
 			this.slot.roleId = mo.roleId;
 			this.slot.visible = true;
 		}
 		else{
+			this.zdlTf.visible = false;
 			this.slot.visible = false;
 			this.slot.roleId = '';
 		}

@@ -1,13 +1,20 @@
 <StringConst>
-    <item id='self.totalZDL' value='自身总战力'/>
-    <item id='self.curZDL' value='自身当前战力'/>
-    <item id='self.loseZDL' value='自身损失战力'/>
-    <item id='self.loseZDLPer' value='自身战力损失率'/>
-    <item id='self.curZDLPer' value='自身当前战力率'/>
+    <item id='triggerDes' value='{0}{1}{2}'/>
+    <item id='less' value='小于'/>
+    <item id='greater' value='大于'/>
+    <item id='self' value='已方'/>
+    <item id='enemy' value='敌方'/>
+    <item id='self.totalZDL' value='己方总战力'/>
+    <item id='self.curZDL' value='己方当前战力'/>
+    <item id='self.loseZDL' value='己方损失战力'/>
+    <item id='self.loseZDLPer' value='己方战力损失率'/>
+    <item id='self.curZDLPer' value='己方当前战力率'/>
     <item id='enemy.totalZDL' value='敌方总战力'/>
     <item id='enemy.curZDL' value='敌方当前战力'/>
     <item id='enemy.loseZDL' value='敌方损失战力'/>
     <item id='hurtZDL' value='战斗伤害'/>
-    <item id='effect.attack' value='伤害为攻击力的{0}%'/>
-    <item id='effect.recovery' value='回复{1}的{0}%'/>
+    <item id='effect.buff' value='{0}'/>
+    <item id='effect.attack' value='造成{0}的通常攻击伤害'/>
+    <item id='effect.baoji' value='造成{0}的{1}伤害'/>
+    <item id='effect.recovery' value='回复{0}的{1}'/>
 </StringConst>

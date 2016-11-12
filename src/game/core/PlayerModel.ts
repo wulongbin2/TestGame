@@ -22,7 +22,7 @@ module gameCore {
 	/**改变当前地图 */
 	export function changeMap(mapId:number):void{
 		currentUserInfo.curMap = mapId;
-		if(currentUserInfo.currentMO === null)
+		if(!currentUserInfo.currentMO )
 		{
 			var newMo:MapMO = new MapMO();
 			newMo.init(mapId);
@@ -180,6 +180,7 @@ module gameCore {
 		heros.forEach(item=>
 			currentUserInfo.playerBagMnger.teamHeroBag.pushItemByData(item)
 		);
+		currentUserInfo.zdlChange();
 	}
 
 

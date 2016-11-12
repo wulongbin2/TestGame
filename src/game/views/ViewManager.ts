@@ -82,6 +82,7 @@ module gameviews {
 		}
 
 		public showBattleScene(team1:gameCore.BattleTeamInfo,team2:gameCore.BattleTeamInfo,bg:string):void{
+			this.mainPanel.visible =false;
 			this.addChild(this.battleScene);
 			this.battleScene.start(team1,team2,bg);
 		}
@@ -92,6 +93,7 @@ module gameviews {
 		}
 
 		public hideBattleScene():void{
+			this.mainPanel.visible =true;
 			this.removeChild(this.battleScene);
 		}
 

@@ -42,6 +42,15 @@ module gameutils {
 		}
 	}
 
+	export function replaceStringConst(s:string,params:string[]):string{
+		var i:number = 0;
+		var len:number = params.length;
+		for(;i <len;i++){
+			s = s.replace('{'+i+'}',gameMngers.stringConstMnger.getConst(params[i]));
+		}
+		return s;
+	}
+
 	export function toStringConst(value:string):string{
 		if(value.length>1)
 		{

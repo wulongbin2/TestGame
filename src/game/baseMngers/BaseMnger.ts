@@ -51,7 +51,8 @@ module gameMngers {
 		}
 
 		public getConst(id:string):string{
-			return this.getVO(id).value;
+			var vo = this.getVO(id);
+			return vo?this.getVO(id).value:id;
 		}
 	}
 	 

@@ -88,13 +88,48 @@ module gamevo {
 		public dodge:number =0;
 		/*王者值 */
 		public king:number = 0;
-
+		public des:string = '';
 		public analysis(config:any):void{
-			var arr:string[] = (<string>config).split(',');
-			this.attckSpeed = parseFloat(arr[0]);
-			this.defend = parseFloat(arr[1]);
-			this.dodge = parseFloat(arr[2]);
-			this.king = parseFloat(arr[3]);
+			if(config){
+				var arr:string[] = (<string>config).split(',');
+				this.attckSpeed = parseFloat(arr[0]);
+				this.defend = parseFloat(arr[1]);
+				this.dodge = parseFloat(arr[2]);
+				this.king = parseFloat(arr[3]);
+			}
+
+			var  tempArr:string[] = [];
+			if(this.attckSpeed!=0)
+			{
+				tempArr.push('先攻'+this.numToStr( this.attckSpeed));
+			}
+			if(this.defend!=0)
+			{
+				tempArr.push('防御'+this.numToStr( this.defend));
+			}
+			if(this.dodge!=0)
+			{
+				tempArr.push('闪避'+this.numToStr( this.dodge));
+			}
+			if(this.king!=0)
+			{
+				tempArr.push('王者'+this.numToStr( this.king));
+			}
+			if(tempArr.length>0)
+			{
+				this.des += tempArr.join(',')+'。';
+			}
+
+		}
+
+		private numToStr(num:number):string{
+			if(num>=0)
+			{
+				return '+'+num;
+			}
+			else{
+				return num+'';
+			}
 		}
 
 		public addBuff(vo:BuffVO){
@@ -146,8 +181,6 @@ module gamevo {
 		public awakenTime:number;
 		/** 宝具id*/
 		public weapon:string;
-		/**基础加成 */
-		public buff:BuffVO = new BuffVO;
 		/**标签[物种，性别，职业] */
 		public tag:string[];
 		/**描述 */
@@ -163,7 +196,6 @@ module gamevo {
 			this.animaSource = xml.attributes.animaSource;
 			this.skills =gameutils.XMLUtil.toStringArray(xml,'skills');
 			this.weapon = xml.attributes.weapon;
-			this.buff.analysis(xml.attributes.buff);
 			this.tag = gameutils.XMLUtil.toStringArray(xml,'tag');
 			this.des = xml.attributes.des;
 		}
@@ -192,8 +224,6 @@ module gamevo {
 	export class SkillBaseVO extends BaseVO{
 		/**名称 */
 		public name:string;
-		/**技能动画 */
-		public skillAnima:string;
 		/**是否是合体技能 */
 		public isGroupSkill:boolean;
 		/**合体技能需要的角色 */
@@ -208,13 +238,17 @@ module gamevo {
 		public tag:string[];
 		/**技能描述 */
 		public des:string;
+		// public desDetail:string;
 		/**图标 */
 		public icon:string;
+
+		public oneTime:boolean = false;
 
 			/**是否是主动型技能 */
 		public isActivie:Boolean;
 		/**技能类型，attack，shanbi,huixue, */
 		public skillType:string;
+		public buff:BuffVO = new BuffVO;
 
 		public triggers:SkillTriggerVO[] = [];
 		public effects:SkillEffectVO[] = [];
@@ -223,23 +257,55 @@ module gamevo {
 			this.id = xml.attributes.id;
 			this.icon = xml.attributes.icon;
 			this.name = xml.attributes.name;
-			this.skillAnima = xml.attributes.skillAnima;
+			this.buff.analysis(xml.attributes.buff);
+			this.oneTime = xml.attributes.oneTime ==='true';
 			this.isGroupSkill = xml.attributes.isGroupSkill==='true';
 			this.rate =	parseFloat(xml.attributes.rate);
 			this.timeLimit =parseFloat(xml.attributes.timeLimit);
 			this.canAvoid = xml.attributes.canAvoid==='true';
 			this.tag =  (<string>xml.attributes.tag).split(',');
 			this.des = xml.attributes.des;
+			if(this.des)
+			{
+				this.des +='!';
+			}
+			var tempArr:string[] = [];
+			this.des += this.buff.des;
+			this.des += this.rate+'%触发。';
+			tempArr.length = 0;
 			gameutils.XMLUtil.foreachChild(xml, 'trigger',(item)=>{
 						var trigVO:SkillTriggerVO = new SkillTriggerVO;
 						trigVO.analysis(item);
 						this.triggers.push(trigVO);
+						tempArr.push(trigVO.des);
 					});
+			if(tempArr.length>0)
+			{
+				this.des+='当'+tempArr.join(',且')+'时触发，';
+			}
+
+			tempArr.length = 0;
 			gameutils.XMLUtil.foreachChild(xml, 'effect',(item)=>{
 					var effectVo:SkillEffectVO = new SkillEffectVO;
 						effectVo.analysis(item);
 						this.effects.push(effectVo);
+						tempArr.push(effectVo.des);
 					});
+			if(tempArr.length>0)
+			{
+				this.des+=tempArr.join(',')+'。';
+			}
+
+		}
+
+		private numToStr(num:number):string{
+			if(num>=0)
+			{
+				return '+'+num;
+			}
+			else{
+				return num+'';
+			}
 		}
 
 
@@ -253,12 +319,15 @@ module gamevo {
 		public compareType:string;
 		/**比较值2 */
 		public compareValue2:string[];
+		public des:string;
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			var str:string = '';
 			this.compareValue1 = gameutils.XMLUtil.toStringArray(xml,'compareValue1');
 			this.compareType = xml.attributes.compareType;
 			this.compareValue2 =gameutils.XMLUtil.toStringArray(xml,'compareValue2');
+			this.des = gameutils.toStringConst(xml.attributes.des);
+			this.des = gameutils.replaceStringConst(this.des,[this.compareValue1[0],this.compareType,this.compareValue2[0]]);
 		}
 	}
 
@@ -266,10 +335,27 @@ module gamevo {
 	export class SkillEffectVO{
 		public type:string;
 		public param:string[];
+		public des:string;
+		public time:number;
+		public skillAnima:string;
+		public buff:BuffVO = new BuffVO;
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.type = xml.attributes.type;
+			this.skillAnima = xml.attributes.skillAnima;
+			this.buff.analysis(xml.attributes.buff);
+			this.time = xml.attributes.time?Math.max(1,parseInt(xml.attributes.time)):1;
 			this.param = gameutils.XMLUtil.toStringArray(xml,'param');
+			this.des = gameutils.toStringConst(xml.attributes.des);
+			this.des = gameutils.replaceStringConst(this.des,this.param);
+			if(this.time>1){
+				this.des+=this.time+'次。';
+			}
+			var tempArr:string;
+			if(this.buff.des)
+			{
+				this.des='命中后'+this.des+this.buff.des+'。'
+			}
 		}
 	}
 }

@@ -50,6 +50,7 @@ class TeamPanel extends eui.Component implements  eui.UIComponent {
 		this._chooseRole.showData(this,allTeams,(result)=>{
 				this._dragTeam.replaceSelectedItem(result);
 				this.updateBuffInfo();
+				this.updateToModel();
 			}
 		);
 	}
@@ -57,6 +58,7 @@ class TeamPanel extends eui.Component implements  eui.UIComponent {
 	private onRemove():void{
 		this._dragTeam.removeCurrent();
 		this.updateBuffInfo();
+		this.updateToModel();
 	}
 
 	private onTiaoZheng():void{
@@ -130,6 +132,10 @@ class TeamPanel extends eui.Component implements  eui.UIComponent {
 	public hide():void{
 		this._chooseRole.hide();
 		this.dragEnabled = false;
+		this.updateToModel();
+	}
+
+	private updateToModel():void{
 		gameCore.changeTeam(this._dragTeam.getDataAfterSort());
 	}
 

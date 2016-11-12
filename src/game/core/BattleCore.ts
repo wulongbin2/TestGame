@@ -8,7 +8,7 @@ module gameCore {
 		public allSkills:gamevo.SkillBaseVO[] = [];
 		public teams:HeroMO[];
 		public lastdodgeRound:number;
-
+		public skillUseTime:{[name:string]:boolean} = {};
 		public initTeam(id:number,info:gameCore.BattleTeamInfo):void{
 			this.lastdodgeRound = 0;
 			this.id = id;
@@ -59,48 +59,50 @@ module gameCore {
 		public enemy:BattleTeam;
 		public round:number = 0;
 		private hurtNum:number;
+		public pushOperator:(b:BatteOperator)=>void;
+		private hasAttack:boolean = true;
 		public fight(pushOperator:(b:BatteOperator)=>void){
+			this.pushOperator = pushOperator;
 			var operator:BatteOperator = new BatteOperator();
 			var selfSkill:gamevo.SkillBaseVO;
-			var  selfTeamLength:number = this.self.teams.length;
+			var  selfTeamLength:number = this.self.allSkills.length;
 			for(var i:number=0;i < selfTeamLength; i ++){
-				var role:HeroMO = this.self.teams[i];
-				var roleSkillLength:number = role.roleVo.skills.length; 
-				for(var j:number = 0;j < roleSkillLength; j++)
-				{
-					var skillVo:gamevo.SkillBaseVO = gameMngers.skillInfoMnger.getVO(role.roleVo.skills[j]);
-					var triggerLen:number = skillVo.triggers.length;
-					if(triggerLen>0){
-						var conditionTag:boolean = true;
-						for(var k:number = 0;k <triggerLen;k++){
-							var trigger = skillVo.triggers[k];
-							var value1:number = this.simpleCalcul(trigger.compareValue1);
-							var value2:number = this.simpleCalcul(trigger.compareValue2);
-							if(trigger.compareType === 'less'){
-								if(value1 >=value2)
-								{
-									conditionTag = false;
-									break;
-								}
-							}
-							else{
-								if(value1 <=value2)
-								{
-									conditionTag = false;
-									break;
-								}
+				var skillVo:gamevo.SkillBaseVO = this.self.allSkills[i];
+				if(skillVo.oneTime){
+					if(this.self.skillUseTime[skillVo.id])
+					{
+						continue;
+					}
+				}
+				var triggerLen:number = skillVo.triggers.length;
+				if(triggerLen>0){
+					var conditionTag:boolean = true;
+					for(var k:number = 0;k <triggerLen;k++){
+						var trigger = skillVo.triggers[k];
+						var value1:number = this.simpleCalcul(trigger.compareValue1);
+						var value2:number = this.simpleCalcul(trigger.compareValue2);
+						if(trigger.compareType === 'less'){
+							if(value1 >=value2)
+							{
+								conditionTag = false;
+								break;
 							}
 						}
-						if(!conditionTag){
-							continue;
+						else{
+							if(value1 <=value2)
+							{
+								conditionTag = false;
+								break;
+							}
 						}
 					}
-					if(Math.random() < skillVo.rate*0.01){
-						selfSkill = skillVo;
-						break;
+					if(!conditionTag){
+						continue;
 					}
-				};
-				if(selfSkill){
+				}
+				if(Math.random() < skillVo.rate*0.01){
+					this.self.skillUseTime[skillVo.id] = true;
+					selfSkill = skillVo;
 					break;
 				}
 			};
@@ -108,58 +110,107 @@ module gameCore {
 				selfSkill = gameMngers.skillInfoMnger.getVO('auto');
 			};
 			var effectLength:number = selfSkill.effects.length;
-			pushOperator(BatteOperator.op_action(gamesystem.OPType_Forward,this.self.id));
 			this.hurtNum= 0;
-			var hasPlaySkill:boolean = false;
+			this.hasAttack = false;
 			for(i=0; i < effectLength; i++){
 				var effect:gamevo.SkillEffectVO = selfSkill.effects[i];
-				if(effect.type ==gamesystem.SkillEffectType_Attack){
-					//是否闪避
-					var offRound:number = this.round -this.enemy.lastdodgeRound;
-					var shanbiPer:number = Math.sin(this.enemy.buff.dodge/100*Math.PI/2);
-					shanbiPer = shanbiPer*(shanbiPer+(1-shanbiPer)*(offRound/5 ));
-					if(Math.random()<shanbiPer){
-						this.enemy.lastdodgeRound = this.round;
-						pushOperator(BatteOperator.op_action(gamesystem.OPType_BackOut,this.enemy.id));
-						pushOperator(BatteOperator.op_playSkillName(this.self.id, selfSkill.id));
-						pushOperator(BatteOperator.op_playEffect(this.enemy.id, selfSkill.skillAnima));
-						pushOperator(BatteOperator.op_action(gamesystem.OPType_BackIn,this.enemy.id));
+				var j:number = 0;
+				for(; j < effect.time;j++)
+				{
+					if(effect.type == gamesystem.SkillEffectType_Recovery){
+						this.recovery(selfSkill,effect,j);
+					}
+					else if(effect.type == gamesystem.SkillEffectType_Buff)
+					{
+						this.buffChange(selfSkill,effect,j);
 					}
 					else{
-						var offZDL:number = Math.max(this.self.fightZDL*0.1,(this.self.fightZDL - this.enemy.fightZDL*0.3));
-						offZDL*=(1+Math.random()*0.1);//增加10%的偏差
-						var offDef:number = this.self.buff.attckSpeed - this.enemy.buff.defend;
-						offZDL*=(1+offDef*0.01);
-						offZDL*= parseFloat(effect.param[0]);//暴击倍率
-						offZDL = Math.round(offZDL);
-						this.enemy.curZDL-=offZDL;
-						this.hurtNum+=offZDL;
-						pushOperator(BatteOperator.op_playSkillName(this.self.id, selfSkill.id));
-						pushOperator(BatteOperator.op_playEffect(this.enemy.id,selfSkill.skillAnima));
-						pushOperator(BatteOperator.op_showHurt(this.enemy.id,  -offZDL));
-						hasPlaySkill = true;
+						this.attack(selfSkill,effect,j);
 					}
-				}
-				else if(effect.type == gamesystem.SkillEffectType_Recovery){
-					var baseNum:number = this.getValue(effect.param[1])
-					offZDL= Math.round(baseNum*parseFloat(effect.param[0]));
-					this.self.curZDL+=offZDL;
-					if(!hasPlaySkill){
-						hasPlaySkill = true;
-						pushOperator(BatteOperator.op_playSkillName(this.self.id, selfSkill.id));
-						pushOperator(BatteOperator.op_playEffect(this.enemy.id, selfSkill.skillAnima));
-					}
-					pushOperator(BatteOperator.op_showHurt(this.self.id,  offZDL));
 				}
 			}
 
+		}
+
+		private numtohan:string='一二三四五六七八九十';
+		public playSkill(selfSkill:gamevo.SkillBaseVO,effectInfo:gamevo.SkillEffectVO,targetteam:number,timeInex:number = 0):void{
+			if(effectInfo.skillAnima)
+			{
+				if(effectInfo.time>1)
+				{
+					var str:string = this.numtohan.charAt(timeInex)+'式'
+				}
+				else{
+					str='';
+				}
+				this.pushOperator(BatteOperator.op_action(gamesystem.OPType_Forward,this.self.id));
+				this.pushOperator(BatteOperator.op_playSkillName(this.self.id, selfSkill.name+str));
+				this.pushOperator(BatteOperator.op_playEffect(targetteam, effectInfo.skillAnima));
+			}
+		}
+
+		public buffChange(selfSkill:gamevo.SkillBaseVO,effect:gamevo.SkillEffectVO ,timeInex:number = 0):void{
+			if(this.hasAttack)//如果之前有命中，则必需要击中才有效
+			{
+				if(this.hurtNum==0){
+					return;
+				}
+			}
+			this.playSkill(selfSkill,effect,this.enemy.id,timeInex);
+			if(effect.param[0] ==gamesystem.Skill_Enemy){
+				this.enemy.buff.addBuff(effect.buff);
+			}
+			else{
+				this.self.buff.addBuff(effect.buff);
+			}
+		}
+
+		public attack(selfSkill:gamevo.SkillBaseVO,effect:gamevo.SkillEffectVO ,timeInex:number = 0):void{
+			var offRound:number = this.round -this.enemy.lastdodgeRound;
+			var shanbiPer:number = Math.sin(this.enemy.buff.dodge/100*Math.PI/2);
+			shanbiPer = shanbiPer*(shanbiPer+(1-shanbiPer)*(offRound/5 ));
+			if(selfSkill.canAvoid && Math.random()<shanbiPer){
+				this.enemy.lastdodgeRound = this.round;
+				this.pushOperator(BatteOperator.op_action(gamesystem.OPType_BackOut,this.enemy.id));
+				this.playSkill(selfSkill,effect,this.enemy.id,timeInex);
+				this.pushOperator(BatteOperator.op_action(gamesystem.OPType_BackIn,this.enemy.id));
+			}
+			else{
+				var offZDL:number;
+				if(effect.type ===gamesystem.SkillEffectType_Attack)
+				{
+					offZDL =  Math.max(this.self.fightZDL);
+					offZDL*=(1+Math.random()*0.1);//增加10%的偏差
+					var offDef:number = this.self.buff.attckSpeed - this.enemy.buff.defend;
+					offZDL*=(1+offDef*0.01);
+					offZDL*=this.getValue(effect.param[0]);//暴击倍率
+				}
+				else if(effect.type === gamesystem.SkillEffectType_Baoji){
+					offZDL =  this.getValue(effect.param[0])*this.getValue(effect.param[1]);
+				}
+				offZDL *=1+this.self.buff.king*0.01;
+				offZDL = Math.round(offZDL);
+				this.enemy.curZDL-=offZDL;
+				this.hurtNum+=offZDL;
+				this.playSkill(selfSkill,effect,this.enemy.id,timeInex);
+				this.pushOperator(BatteOperator.op_showHurt(this.enemy.id,  -offZDL));
+			}
+			this.hasAttack = true;
+		}
+
+		public recovery(selfSkill:gamevo.SkillBaseVO, effect:gamevo.SkillEffectVO  ,timeInex:number = 0):void{
+			var baseNum:number = this.getValue(effect.param[1])
+			var offZDL= Math.round(baseNum*this.getValue(effect.param[0])*(1+this.self.buff.defend*0.005));
+			this.self.curZDL+=offZDL;
+			this.playSkill(selfSkill,effect,this.self.id,timeInex);
+			this.pushOperator(BatteOperator.op_showHurt(this.self.id,  offZDL));
 		}
 
 		public simpleCalcul(value:string[]):number{
 			var value1:number = this.getValue(value[0]);
 			var index:number = 2;
 			var len:number = value.length;
-			while(index<len)
+			while(index <len)
 			{
 				var value2:number = this.getValue(value[index]);
 				switch(value[index-1]){
@@ -190,6 +241,10 @@ module gameCore {
 				return this.self.totalZDL;
 				case gamesystem.SkillRecovery_Self_LoseZDL:
 				return this.self.totalZDL - this.self.curZDL;
+				case gamesystem.SkillRecovery_Self_CurZDLPer:
+				return this.self.curZDL/this.self.totalZDL;
+				case gamesystem.SkillRecovery_Self_LoseZDL:
+				return 1-this.self.curZDL/this.self.totalZDL;
 				case gamesystem.SkillRecovery_Enemy_CurZDL:
 				return this.enemy.curZDL;
 				case gamesystem.SkillRecovery_Enemy_TotalZDL:
@@ -198,6 +253,14 @@ module gameCore {
 				return this.enemy.totalZDL - this.enemy.curZDL;
 				case gamesystem.SkillRecovery_HurtZDL:
 				return this.hurtNum;
+				case gamesystem.SkillRecovery_Enemy_CurZDLPer:
+				return this.enemy.curZDL/this.enemy.totalZDL;
+				case gamesystem.SkillRecovery_Enemy_LoseZDL:
+				return 1-this.enemy.curZDL/this.enemy.totalZDL;
+			}
+			var i:number = type.indexOf('%'); 
+			if(i>=0){
+				return parseFloat(type.substr(0,i))*0.01;
 			}
 			return parseFloat(type);
 		}

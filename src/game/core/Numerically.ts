@@ -10,7 +10,7 @@ module gameCore {
 	}
 
 	function _calculHeroZDL(vo:HeroMO, roleLevel:number):number{
-		return Math.round((roleLevel*(vo.awakenLevel+1)+vo.awakenLevel*gamesystem.AwakenLevel)*100*vo.roleVo.potential*(1+0.01*roleLevel));
+		return vo.roleVo.initZDL*(vo.awakenLevel+1)+Math.round((roleLevel*(vo.awakenLevel+1)+vo.awakenLevel*gamesystem.AwakenLevel)*100*vo.roleVo.potential*(1+0.05*roleLevel));
 	}
 	/**计算角色下一集战力增加 */
 	export function calculHeroNextLevelOffZDL(vo:HeroMO):number{
@@ -19,7 +19,7 @@ module gameCore {
 
 	/**计算角色升级消耗经验 */
 	export function calculHeroLevelUseExp(vo:HeroMO):number{
-		return (vo.roleLevel*(vo.awakenLevel*vo.awakenLevel*10+1)+vo.awakenLevel*gamesystem.AwakenLevel)*10;
+		return ((vo.roleLevel+1)*(vo.awakenLevel*vo.awakenLevel*10+1)+vo.awakenLevel*gamesystem.AwakenLevel)*30*(vo.roleVo.qualityNum+1);
 	}
 
 	/**计算角色离线增加经验 */
@@ -58,7 +58,9 @@ module gameCore {
 	export function calculAllHeroBuff(heros:HeroMO[],buff:gamevo.BuffVO):void{
 		buff.clear();
 		heros.forEach(item=>{
-				buff.addBuff(item.roleVo.buff);
+			item.roleVo.skills.forEach(skillId=>{
+				buff.addBuff(gameMngers.skillInfoMnger.getVO(skillId).buff);
+			})
 		});
 	}
 }

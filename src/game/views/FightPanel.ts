@@ -112,6 +112,7 @@ class FightPanel extends eui.Component implements  eui.UIComponent {
 	}
 
 	public show():void{
+		this.oldMap = -1;
 		gameCore.eventDispatch.addEventListener(gameCore.Event_MapChange, this.updateMap,this);
 
 		this.updateMap();

@@ -3,6 +3,7 @@
     @id：xml配置在res中关键码
     @mngerType:解析xml的管理器id
     -->
+    <item id='StringConst_xml' mngerType='stringConst'/>
     <item id='RoleBaseInfo_xml' mngerType='roleInfo'/>
     <item id='WeaponInfo_xml' mngerType='weaponInfo'/>
     <item id='SkillBaseInfo_xml' mngerType='skillInfo'/>

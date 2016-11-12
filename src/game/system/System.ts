@@ -57,7 +57,13 @@ module gamesystem {
 
 	/**攻击性技能：伤害敌方的节能类型*/
 	export const SkillEffectType_Attack:string = 'attack';
+	export const SkillEffectType_Baoji:string = 'baoji';
 	export const SkillEffectType_Recovery:string = 'recovery';
+	export const SkillEffectType_Buff:string = 'buff';
+
+	export const Skill_Self:string = 'self';
+	export const Skill_Enemy:string = 'enemy';
+
 	export const SkillRecovery_Self_TotalZDL:string = 'self.totalZDL';
 	export const SkillRecovery_Self_CurZDL:string = 'self.curZDL';
 	export const SkillRecovery_Self_LoseZDL:string = 'self.loseZDL';

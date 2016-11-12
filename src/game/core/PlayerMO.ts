@@ -237,7 +237,8 @@ module gameCore {
 			this.curMapChild = parseFloat(xml.attributes.curMapChild);
 			this.curMapStatus = parseFloat(xml.attributes.curMapStatus);
 			this.curMapGuajiTime = parseFloat(xml.attributes.curMapGuajiTime);
-			this.offlineTime = parseFloat(xml.attributes.offlineTime);
+			// this.offlineTime = parseFloat(xml.attributes.offlineTime);
+			this.offlineTime = gameutils.getTimer();
 			gameutils.XMLUtil.foreachChild(xml,'heros',(item)=>{
 				var heroMO:HeroMO = new HeroMO;
 				heroMO.analysis(item);

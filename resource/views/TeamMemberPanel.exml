@@ -15,9 +15,9 @@
 				<e:VerticalLayout/>
 			</e:layout>
 		</e:List>
-		<e:Label id="skillDesTf" text="难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！" x="18" y="45" size="24" fontFamily="黑体" textColor="0xdddddd" width="616" height="65" scaleX="1" scaleY="1"/>
-		<e:Label id="skillEnabledTf" text="未发动" x="18" y="112" size="18" fontFamily="黑体" width="66" height="24" textColor="0xd56620" bold="true" scaleX="1" scaleY="1"/>
-		<e:Label id="skillRolesTf" text="查看合作名单" x="515" y="112" size="18" fontFamily="黑体" width="115" height="24" bold="true" textColor="0xc3ac71" scaleX="1" scaleY="1"/>
+		<e:Label id="skillDesTf" text="难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！难忘今宵！" x="18" y="45" size="24" fontFamily="黑体" textColor="0xdddddd" width="616" height="80" scaleX="1" scaleY="1" anchorOffsetY="0"/>
+		<e:Label id="skillEnabledTf" text="未发动" x="18" y="122" size="18" fontFamily="黑体" width="66" height="24" textColor="0xd56620" bold="true" scaleX="1" scaleY="1"/>
+		<e:Label id="skillRolesTf" text="查看合作名单" x="515" y="122" size="18" fontFamily="黑体" width="115" height="24" bold="true" textColor="0xc3ac71" scaleX="1" scaleY="1"/>
 	</e:Group>
 	<e:Scroller width="642" height="630" x="4" y="309" scaleX="1" scaleY="1" anchorOffsetX="0" anchorOffsetY="0">
 		<e:viewport x="10" y="10">

@@ -24,25 +24,100 @@
      @effect.item.operatorValue 运算数值 [值可以是数值，也可以是简单的表达式]
      
      -->
-     <item id='auto' name='普通攻击' skillAnima='light001' icon='' isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
+     <item id='auto' name='普通攻击'  icon='' isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
         <effect>
-            <item  type='attack' param='1'/>
+            <item  des='$effect.attack' skillAnima='circle001' type='attack' param='100%'/>
+        </effect>
+    </item>
+
+    <item id='lvfengxian' name='懒成狗' des=''  buff='0,2,0,0' icon='skill_3_png' isGroupSkill='false' groupRoles='' rate='5' canAvoid='true' timeLimit='-1' tag=''>
+        <effect>
+            <item  des='$effect.attack' skillAnima='circle001' type='attack' param='110%'/>
+        </effect>
+    </item>
+
+    <item id='dashushili' name='大叔攻略' buff="2,0,0,2" des=''  icon='skill_3_png'  isGroupSkill='false' groupRoles='' rate='30' canAvoid='false' timeLimit='-1' tag=''>
+        <effect>
+            <item des='$effect.attack' skillAnima='circle001' type='attack' param='200%'/>
+        </effect>
+    </item>
+
+    <item id='lanlanmiji' name='真.兰兰秘技' des='' icon='skill_3_png'  isGroupSkill='false' groupRoles='' rate='40' canAvoid='false' timeLimit='-1' tag=''>
+        <effect>
+            <item des='$effect.attack' skillAnima='circle001'  type='attack' param='110%'/>
+        </effect>
+    </item>
+
+    <item id='waixingjishuA' name='外星技术A' rate='30' canAvoid='false' des=''   icon='skill_3_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+        <effect>
+            <item des='$effect.attack' skillAnima='circle001' type='attack' param='170%'/>
+        </effect>
+    </item>
+
+    <item id='waixingjishuB' name='外星技术B' buff="0,2,3,0" rate='50' canAvoid='false' des=''   icon='skill_3_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+        <effect>
+            <item des='$effect.attack' skillAnima='circle001' type='attack' param='140%'/>
         </effect>
     </item>
 
 
-    <item id='lvfengxian' name='大夜场' des='大家一起跳舞，不如跳舞！噢噢噢噢。。。。' skillAnima='baoji001' icon='skill_14_png'  isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
+    <item id='liwangkuanglan' name='力挽狂澜' des='这才是我真正的实力吗?'  buff="5,0,0,0" icon='skill_2_png'  isGroupSkill='false' groupRoles='' rate='10' canAvoid='true' timeLimit='-1' tag=''>
         <trigger>
-            <item compareValue1='self.curZDL,/,self.totalZDL' compareType='less' compareValue2='0.5'/>
+            <item des='$triggerDes' compareValue1='self.curZDLPer' compareType='less' compareValue2='20%'/>
         </trigger>
         <effect>
-            <item des='$effect.attack' type='attack' param='50'/>
-           <item des='$effect.recovery' type='recovery' param='20,self.totalZDL'/>
+            <item des='$effect.baoji' time='2' skillAnima='baoji001' type='baoji' param='20%,enemy.totalZDL'/>
         </effect>
     </item>
-    <item id='lvfengxian2' name='疯狂大夜场' des='大家一起High,疯狂大夜场就在今夜，一起跳，一起跳。。。。' skillAnima='daoguang001' icon='skill_13_png'  isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
+     <item id='waixingjishuC' name='外星技术C' rate='30' canAvoid='true' des='' icon='skill_2_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+        <trigger>
+            <item des='$triggerDes' compareValue1='enemy.curZDLPer' compareType='less' compareValue2='20%'/>
+        </trigger>
         <effect>
-            <item type='attack' param='2'/>
+            <item des='$effect.baoji'  skillAnima='baoji001' type='baoji' param='50%,enemy.totalZDL'/>
         </effect>
     </item>
+
+     <item id='jiangjunling' name='将军令'  buff="0,0,2,0" rate='10' canAvoid='true' des='杀啊！'  icon='skill_2_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+        <trigger>
+            <item des='$triggerDes' compareValue1='enemy.curZDLPer' compareType='greater' compareValue2='40%'/>
+        </trigger>
+        <effect>
+            <item des='$effect.baoji' skillAnima='baoji001' type='baoji' param='50%,enemy.totalZDL'/>
+        </effect>
+    </item>
+
+     <item id='zhanwubuduan' name='斩无不断'  buff="0,0,0,2" rate='30' canAvoid='false' des=''  icon='skill_2_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+        <effect>
+            <item des='$effect.baoji' skillAnima='baoji001' type='baoji' param='20%,enemy.totalZDL'/>
+        </effect>
+    </item>
+
+
+    <item id='lingboweibo' name='凌波微步' des='逃！'  icon='skill_8_png'  isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
+        <trigger>
+            <item des='$triggerDes' compareValue1='self.curZDLPer' compareType='less' compareValue2='30%'/>
+        </trigger>
+        <effect>
+            <item des='$effect.recovery' skillAnima='light001' type='recovery' param='50%,self.totalZDL'/>
+        </effect>
+    </item>
+
+    <item id='chihaohehao' name='吃吃吃' buff="0,2,0,0" des=''  icon='skill_8_png'  isGroupSkill='false' groupRoles='' rate='10' canAvoid='true' timeLimit='-1' tag=''>
+        <effect>
+            <item des='$effect.recovery' skillAnima='light001' type='recovery' param='70%,self.curZDL'/>
+        </effect>
+    </item>
+
+
+    <item id='rumo' name='入魔'  oneTime='true' des='让在下赐予你恐惧'  icon='skill_17_png'  isGroupSkill='false' groupRoles='' rate='50' canAvoid='true' timeLimit='-1' tag=''>
+         <trigger>
+            <item des='$triggerDes' compareValue1='self.curZDLPer' compareType='less' compareValue2='50%'/>
+        </trigger>
+        <effect>
+            <item des='$effect.recovery' skillAnima='light001' type='recovery' param='50%,enemy.totalZDL'/>
+            <item des='$effect.buff' type='buff' buff='10,-10,0,10' param='self'/>
+        </effect>
+    </item>
+
 </skillBaseInfo>

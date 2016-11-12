@@ -272,7 +272,7 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 
 	private action_playSkillName(success:()=>void,teamId:number,skillId:string):void{
 		var pos:number[] = this.battleteamPos[teamId];
-		this.battleSkillText.show(this,pos[1]-(teamId==0?100:0),BattleScene.BattleTeamY - 100,gameMngers.skillInfoMnger.getVO(skillId).name);
+		this.battleSkillText.show(this,pos[1]-(teamId==0?100:0),BattleScene.BattleTeamY - 100,skillId);
 		gameutils.asynMnger.addOnceCB(500,success,this);
 	}
 
