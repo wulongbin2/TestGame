@@ -6,6 +6,10 @@ module gamesystem {
 	/**道具 */
 	export const GoodsTag_DAOJU:string = 'daoju';
 
+	export var stageWidth:number;
+	export var stageHeight:number;
+	export var stage:egret.Stage;
+
 	export const Auto_EffectFrameRate:number = 24;
 	export const Auto_FrameWidth:number = 96;
 	export const Auto_FrameHeight:number = 96;
@@ -80,6 +84,7 @@ module gamesystem {
 
 	export const OPType_InitRound:string = 'initRound';
 	export const OPType_MaskHide:string = 'maskHide';
+	export const OPType_Dialog:string = 'dialog';
 	export const OPType_PlayEffect:string = 'playEffect';
 	export const OPType_PlaySkillName:string = 'playSkillName';
 	export const OPType_Forward:string = 'forward';
@@ -96,7 +101,10 @@ module gamesystem {
 	]
 
 	export var indexToZhen:{[id:number]:{mapX:number,mapY:number}} = {};
-	export function initSystem():void{
+	export function initSystem(s:egret.Stage):void{
+		stage = s;
+		stageWidth =stage.stageWidth;
+		stageHeight =stage.stageHeight;
 		Font_Red = RES.getRes('number1_fnt');
 		Font_Green = RES.getRes('number2_fnt');
 		Font_Yellow = RES.getRes('number3_fnt');

@@ -1,0 +1,8 @@
+<Dialog>
+    <item id='test'>
+        <item teamId='1' word='哈哈哈哈哈哈哈！'/>
+        <item teamId='0' word='哈哈哈哈哈哈哈！'/>
+        <item teamId='1' word='为什么学我？'/>
+        <item teamId='0' word='？？？'/>
+    </item>
+</Dialog>

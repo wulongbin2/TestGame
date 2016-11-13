@@ -292,12 +292,21 @@ module gameCore {
 		public teamInfo1:BattleTeamRecord;
 		public teamInfo2:BattleTeamRecord;
 		public targetteam:number;
+		public mes:string;
 		public EffectId:string;
 		public result:number;
 		public static op_initInfo(round:number):BatteOperator{
 			var o:BatteOperator = new BatteOperator();
 			o.type =gamesystem.OPType_InitRound;
 			o.round = round;
+			return o;
+		}
+
+		public static op_dialog(targetTeam:number,mes:string):BatteOperator{
+			var o:BatteOperator = new BatteOperator();
+			o.type =gamesystem.OPType_Dialog;
+			o.targetteam = targetTeam;
+			o.mes = mes;
 			return o;
 		}
 
@@ -349,14 +358,17 @@ module gameCore {
 		public teams:BattleTeam[] = [];
 		public scene:BattleSceneInfo = new BattleSceneInfo;
 		public fightIndex:number = 0;
+		public mapChildVo:gamevo.MapChildVO;
+		public dialogLib:{[name:string]:boolean} = {};
 		public constructor() {
 			this.teams.push(this.team1);
 			this.teams.push(this.team2);
 		}
 
-		public calculBattle(team1:BattleTeamInfo, team2:BattleTeamInfo):BatteOperator []{
+		public calculBattle(team1:BattleTeamInfo, team2:BattleTeamInfo,mapChildVo?:gamevo.MapChildVO):BatteOperator []{
 			this.team1.initTeam(0,team1);
 			this.team2.initTeam(1,team2);
+			this.mapChildVo = mapChildVo;
 			if(this.team1.buff.attckSpeed>this.team2.buff.attckSpeed){
 				this.fightIndex = 0;
 			}
@@ -378,6 +390,7 @@ module gameCore {
 		private pushOpeartor(op:BatteOperator):void{
 			op.teamInfo1 = this.team1.createBattleInfo();
 			op.teamInfo2 = this.team2.createBattleInfo();
+			op.round = this.scene.round;
 			this.operators.push(op);
 		}
 		public fight():BatteOperator []{
@@ -389,6 +402,16 @@ module gameCore {
 				if(first){
 					first =false;
 					this.pushOpeartor(BatteOperator.op_action(gamesystem.OPType_MaskHide));
+					if(this.mapChildVo && this.mapChildVo.dialogId){
+						var  dialogInfo:gamevo.DialogVO = gameMngers.dialogMnger.getVO(this.mapChildVo.dialogId);
+						if(dialogInfo && !this.dialogLib[dialogInfo.id]){
+							this.dialogLib[dialogInfo.id] = true;
+							dialogInfo.actions.forEach(item=>{
+								this.pushOpeartor(BatteOperator.op_dialog(item.teamId,item.word));
+							});
+							this.pushOpeartor(BatteOperator.op_dialog(0,''));
+						}
+					}
 				}
 				this.scene.self = this.teams[this.fightIndex%2];
 				this.scene.enemy = this.teams[(this.fightIndex+1)%2];

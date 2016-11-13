@@ -140,7 +140,7 @@ class Main extends eui.UILayer {
          var data:egret.XML  = RES.getRes('GameConfig_xml');
         gameMngers.analysisByxml(data);
         gameCore.resetUserInfo(gameMngers.playerInfoMnger.getVO('user'));
-        gamesystem.initSystem();
+        gamesystem.initSystem(this.stage);
         //显示视图
         egret.Bitmap.defaultSmoothing = false;
         this.addChild( gameviews.viewManager);

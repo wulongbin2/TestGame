@@ -223,5 +223,10 @@
         "path": "..\\resource\\views\\SkillBG.ts",
         "class": "SkillBG",
         "parentPath": ""
+    },
+    "1585918b52c": {
+        "path": "..\\resource\\views\\DialogBG.ts",
+        "class": "DialogBG",
+        "parentPath": ""
     }
 }

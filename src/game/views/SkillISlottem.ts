@@ -16,6 +16,7 @@ class SkillISlottem extends eui.ItemRenderer implements  eui.UIComponent {
 	}
 
 	private onCompelate():void{
+		this.selectedIcon.touchEnabled = false;
 		this.addChildAt(this.slot,1);
 		this.selectedIcon.visible = this.selected;
 	}

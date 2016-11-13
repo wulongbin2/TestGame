@@ -64,6 +64,7 @@ var game_file_list = [
 	"bin-debug/game/views/OrangeBtn.js",
 	"bin-debug/game/views/QianghuaListItem.js",
 	"bin-debug/game/views/QianghuaPanel.js",
+	"bin-debug/game/views/SkillBG.js",
 	"bin-debug/game/views/SkillISlottem.js",
 	"bin-debug/game/views/SkillSlot.js",
 	"bin-debug/game/views/StarIcon.js",
@@ -80,11 +81,13 @@ var game_file_list = [
 	"bin-debug/game/views/YellowLeftBtn.js",
 	"bin-debug/game/views/YongbinMenuItem.js",
 	"bin-debug/game/views/YongbinPanel.js",
+	"bin-debug/game/vo/DialogVO.js",
 	"bin-debug/game/vo/HeroAnimaVO.js",
 	"bin-debug/game/vo/MapVO.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",
+	"bin-debug/game/views/DialogBG.js",
 	//----auto game_file_list end----
 ];
 

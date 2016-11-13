@@ -55,6 +55,14 @@ module gameMngers {
 			return vo?this.getVO(id).value:id;
 		}
 	}
+
+	 
+	class DialogMnger extends BaseMnger<gamevo.DialogVO>{
+		protected createVO():gamevo.DialogVO
+		{
+			return new gamevo.DialogVO;
+		}
+	}
 	 
 	class RoleInfoMnger extends BaseMnger<gamevo.RoleBaseVO>{
 		protected createVO():gamevo.RoleBaseVO
@@ -158,7 +166,9 @@ module gameMngers {
 	/**地图背景动画配置管理 */
 	export var mapGuajiAnimaMnger:MapGuajiAnimaMnger = new MapGuajiAnimaMnger('mapGuajiAnima');
 	/**特性资源配置 */
-	export var effectAnimaMnger:EffectAnimaMnger = new EffectAnimaMnger('effectAnima');        
+	export var effectAnimaMnger:EffectAnimaMnger = new EffectAnimaMnger('effectAnima');
+	/**对话配置 */
+	export var dialogMnger:DialogMnger = new DialogMnger('dialogInfo');          
 
 
 	/**根据xml批量解析管理器配置*/

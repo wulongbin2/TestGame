@@ -121,7 +121,7 @@ module gameCore {
 		var levelCoe:number = currentUserInfo.curMapLevel+1;
 		team2.totalZdl*=levelCoe;
 		team2.buff.sub(levelCoe);
-		gameviews.viewManager.showBattleScene(team1,team2,mapVo.battleBg);
+		gameviews.viewManager.showBattleScene(team1,team2,mapVo.battleBg,mapChildMap);
 	}
 
 	/**升级英雄 */

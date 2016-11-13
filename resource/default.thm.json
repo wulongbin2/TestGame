@@ -53,7 +53,8 @@
     "OrangeBtn": "resource/views/OrangeBtn.exml",
     "ChooseRole": "resource/views/ChooseRole.exml",
     "ChooseRoleSkillInfo": "resource/views/ChooseRoleSkillInfo.exml",
-    "SkillBG": "resource/views/SkillBG.exml"
+    "SkillBG": "resource/views/SkillBG.exml",
+    "DialogBG": "resource/views/DialogBG.exml"
   },
   "autoGenerateExmlsList": true,
   "exmls": [
@@ -79,6 +80,7 @@
     "resource/views/BattleScene.exml",
     "resource/views/ChooseRole.exml",
     "resource/views/ChooseRoleSkillInfo.exml",
+    "resource/views/DialogBG.exml",
     "resource/views/FightBtn.exml",
     "resource/views/FightPanel.exml",
     "resource/views/FightWaitBar.exml",

@@ -59,8 +59,8 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 	private ops:gameCore.BatteOperator[];
 	private opIndex:number = 0;
 	/**战斗开始 */
-	public start(team1:gameCore.BattleTeamInfo,team2:gameCore.BattleTeamInfo,bg:string):void{
-		this.ops = this.battleCore.calculBattle(team1,team2);
+	public start(team1:gameCore.BattleTeamInfo,team2:gameCore.BattleTeamInfo,bg:string,mapChild?:gamevo.MapChildVO):void{
+		this.ops = this.battleCore.calculBattle(team1,team2,mapChild);
 		this.battleteam1.resetHeros(team1.heros);
 		this.battleteam2.resetHeros(team2.heros);
 		this.battleteam1.x =this.battleteamPos[0][1];
@@ -92,8 +92,6 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 		switch(this.currentOp.type){
 			case gamesystem.OPType_InitRound:
 				this.action_initInfo();
-				this.roundTf.text = this.currentOp.round+'';
-				// this.logTf.appendText('第'+this.currentOp.round+'回');
 				nextBool = true;
 			break;
 			case gamesystem.OPType_Forward:
@@ -122,6 +120,9 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 				break;
 			case gamesystem.OPType_MaskHide:
 				this.action_maskHide(this.nextOP.bind(this))
+				break;
+			case gamesystem.OPType_Dialog:
+				this.action_dialog(this.nextOP.bind(this));
 				break;
 			case gamesystem.OPType_End:
 				this.action_maskShow(()=>{
@@ -200,6 +201,7 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 		this.pro2.maximum = this.currentOp.teamInfo2.totalZD;
 		this.pro2.value= this.currentOp.teamInfo2.curZDL;
 		this.hpTf2.text = this.currentOp.teamInfo2.curZDL+'';
+		this.roundTf.text = this.currentOp.round+'';
 		if(success)
 		{
 			success();
@@ -274,6 +276,20 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 		var pos:number[] = this.battleteamPos[teamId];
 		this.battleSkillText.show(this,pos[1]-(teamId==0?100:0),BattleScene.BattleTeamY - 100,skillId);
 		gameutils.asynMnger.addOnceCB(500,success,this);
+	}
+
+	private action_dialog(success:()=>void):void{
+		if(this.currentOp.mes)
+		{
+			var pos:number[] = this.battleteamPos[this.currentOp.targetteam];
+			gameviews.viewManager.showDialogByXY(pos[1],BattleScene.BattleTeamY,this.currentOp.mes);
+			gameutils.asynMnger.addOnceCB(2000,success,this);
+		}
+		else{
+			gameviews.viewManager.hideDialog();
+			gameutils.asynMnger.addOnceCB(30,success,this);
+
+		}
 	}
 
 	private action_playEffect(success:()=>void,teamId:number,skillId:string):void{

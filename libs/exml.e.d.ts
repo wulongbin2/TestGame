@@ -68,6 +68,8 @@ declare class ChooseRoleSkin extends eui.Skin{
 }
 declare class ChooseRoleSkillInfoSkin extends eui.Skin{
 }
+declare class DialogBGSkin extends eui.Skin{
+}
 declare class FightBtnSkin extends eui.Skin{
 }
 declare class FightPanelSkin extends eui.Skin{

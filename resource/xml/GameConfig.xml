@@ -4,6 +4,7 @@
     @mngerType:解析xml的管理器id
     -->
     <item id='StringConst_xml' mngerType='stringConst'/>
+    <item id='Dialog_xml' mngerType='dialogInfo'/>
     <item id='RoleBaseInfo_xml' mngerType='roleInfo'/>
     <item id='WeaponInfo_xml' mngerType='weaponInfo'/>
     <item id='SkillBaseInfo_xml' mngerType='skillInfo'/>

@@ -11,6 +11,8 @@ module gameviews {
 		public mapChoosePanel:MapChoosePanel;
 		private battleScene:BattleScene;
 		private alertPanel:AlertPanel;
+		private tip:SkillBG;
+		private dialog:DialogBG;
 		public init():void{
 			this.mainPanel = new MainPanel();
 			this.bagPanel = new BagPanel();
@@ -22,7 +24,8 @@ module gameviews {
 			this.heroPanel = new HeroPanel();
 			this.battleScene = new BattleScene();
 			this.alertPanel = new AlertPanel();
-
+			this.tip = new SkillBG();
+			this.dialog = new DialogBG();
 			gameCore.eventDispatch.addEventListener(gameCore.Event_GetHero,this.onGetHero,this);
 		}
 
@@ -81,10 +84,10 @@ module gameviews {
 			this.mainPanel.updateTabSelected();
 		}
 
-		public showBattleScene(team1:gameCore.BattleTeamInfo,team2:gameCore.BattleTeamInfo,bg:string):void{
+		public showBattleScene(team1:gameCore.BattleTeamInfo,team2:gameCore.BattleTeamInfo,bg:string,mapChild?:gamevo.MapChildVO):void{
 			this.mainPanel.visible =false;
 			this.addChild(this.battleScene);
-			this.battleScene.start(team1,team2,bg);
+			this.battleScene.start(team1,team2,bg, mapChild);
 		}
 
 		public showAlertMes(mes:string,title?:string){
@@ -99,6 +102,28 @@ module gameviews {
 
 		public showBottomMes(mes:string){
 			this.mainPanel.startMessage(mes);
+		}
+
+		private tempP:egret.Point = new egret.Point();
+		public showTip(dis:egret.DisplayObject,mes:string):void{
+			dis.localToGlobal(0,0, this.tempP);
+			this.tip.showText(this,this.tempP.x,this.tempP.y,mes);
+		}
+
+		public showDialog(dis:egret.DisplayObject,mes:string):void{
+			dis.localToGlobal(0,0, this.tempP);
+			this.dialog.showText(this,this.tempP.x,this.tempP.y,mes);
+		}
+
+		public showDialogByXY(x:number,y:number,mes:string):void{
+			this.dialog.showText(this,x,y,mes);
+		}
+
+		public hideDialog():void{
+			if(this.dialog.parent)
+			{
+				this.dialog.parent.removeChild(this.dialog);
+			}
 		}
 
 	}

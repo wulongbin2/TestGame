@@ -64,9 +64,11 @@ module gamevo {
 		public daojuNum:number=0;
 		public ziyuanNum:number=0;
 		public mes:string;
+		public dialogId:string;
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
+			this.dialogId = xml.attributes.dialogId;
 			this.name = xml.attributes.name;
 			this.mes = xml.attributes.mes;
 			this.mapChildId =  parseFloat(this.id);
