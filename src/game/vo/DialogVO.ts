@@ -14,10 +14,12 @@ module gamevo {
 
 	export class DialogActionVO{
 		public word:string;
+		public roleId:string;
 		public teamId:number;
 		public analysis(xml:egret.XML){
 			this.teamId = parseInt( xml.attributes.teamId);
 			this.word = xml.attributes.word;
+			this.roleId = xml.attributes.roleId;
 		}
 	}
 }

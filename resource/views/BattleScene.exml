@@ -13,7 +13,7 @@
 	<e:Image source="paper_bg12_png" x="378" y="78" scale9Grid="69,20,147,32" anchorOffsetX="0" width="286" anchorOffsetY="0" height="79"/>
 	<e:Label id="nameTf1" text="绿毛虫" x="14" y="97" textColor="0x000000" bold="true" fontFamily="黑体" anchorOffsetX="0" width="209" textAlign="center"/>
 	<e:Label id="nameTf2" text="铁甲蛹" x="422" y="97" textColor="0x000000" bold="true" fontFamily="黑体" anchorOffsetX="0" width="209" textAlign="center"/>
-	<e:Label id="roundTf" text="1" x="265" y="144" size="80" anchorOffsetX="0" width="110" textAlign="center" textColor="0xf6d91b"/>
+	<e:Label id="roundTf" text="1" x="159" y="144" size="80" anchorOffsetX="0" width="320" textAlign="center" textColor="0xf6d91b"/>
 	<e:Group x="21" y="167" locked="true">
 		<e:Image source="battle_fightnumber_bg_png" x="154" y="67" scaleX="1" scaleY="1"/>
 		<e:Image source="battle_fightnumber_bg_png" x="103" y="67" scaleX="1" scaleY="1"/>
@@ -34,14 +34,14 @@
 		<e:Image source="fightnumber_3_png" x="455" y="45"/>
 		<e:Image source="fightnumber_4_png" x="404" y="45"/>
 	</e:Group>
-	<e:Label id="atkTf1" text="1" x="28" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
-	<e:Label id="defTf1" text="1" x="79.5" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
-	<e:Label id="avoidTf1" text="1" x="130.5" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
-	<e:Label id="kingTf1" text="1" x="181" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
-	<e:Label id="atkTf2" text="1" x="425" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
-	<e:Label id="defTf2" text="1" x="476.5" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
-	<e:Label id="avoidTf2" text="1" x="528.5" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
-	<e:Label id="kingTf2" text="1" x="580" y="246" anchorOffsetX="0" width="35" textAlign="center" size="26"/>
+	<e:Label id="atkTf1" text="1" x="25" y="246" anchorOffsetX="0" width="43" textAlign="center" size="26"/>
+	<e:Label id="defTf1" text="1" x="77.5" y="246" anchorOffsetX="0" width="42" textAlign="center" size="26"/>
+	<e:Label id="avoidTf1" text="1" x="126.5" y="246" anchorOffsetX="0" width="47" textAlign="center" size="26"/>
+	<e:Label id="kingTf1" text="1" x="177" y="246" anchorOffsetX="0" width="45" textAlign="center" size="26"/>
+	<e:Label id="atkTf2" text="1" x="417" y="246" anchorOffsetX="0" width="52" textAlign="center" size="26"/>
+	<e:Label id="defTf2" text="1" x="468.5" y="246" anchorOffsetX="0" width="53" textAlign="center" size="26"/>
+	<e:Label id="avoidTf2" text="1" x="516.5" y="246" anchorOffsetX="0" width="59" textAlign="center" size="26"/>
+	<e:Label id="kingTf2" text="1" x="568" y="246" anchorOffsetX="0" width="57" textAlign="center" size="26"/>
 	<e:Group id="logGroup" x="4" y="943" scaleX="1">
 		<e:Image source="paper_bg6_d_png" x="0" y="0" anchorOffsetX="0" width="630" anchorOffsetY="0" height="184" scale9Grid="38,12,235,24" scaleX="1" scaleY="1"/>
 		<e:Label id="logTf" text="" x="13" y="9" anchorOffsetX="0" width="603" anchorOffsetY="0" height="164" size="20" textColor="0x40372b" bold="true" fontFamily="黑体"/>

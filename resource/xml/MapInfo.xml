@@ -4,46 +4,49 @@
     @name:地图名称
 
     -->
-    <item id='0' name='湿人世界' goldSpeed='5' expSpeed='50' waitTime='5000' listBg='mapbg_aircity_png' battleBg='relic' cityIcon='aircity_big_png' guajiAnima='test' kaiqiZdl='0' useRoleIds='0,1,2,3,4,5,6,7,8,9'>
+    <item id='0' name='外星科技' goldSpeed='5' expSpeed='50' waitTime='5000' listBg='mapbg_aircity_png' battleBg='relic' cityIcon='aircity_big_png' guajiAnima='test' kaiqiZdl='0' useRoleIds='0,1,2,3,4,5,6,7,8,9'>
         <mapChild>
-            <item id='0' name='李太白金星' zdl='1000' buff='0,0,0,0' gold='100' exp='5000' money='300' dialogId='test' mes='背着手 在亚热带的酒馆 门前吹风 晚了就坐下 看柔和的闪电 背着城市 亚热带季风的河岸 淹没还不醉的桥 不醉的建筑 用静默解酒'>
+            <item id='0' name='外星老司机' zdl='1000' buff='0,0,0,0' gold='100' exp='5000' money='300' dialogId='0_0' mes='背着手 在亚热带的酒馆 门前吹风 晚了就坐下 看柔和的闪电 背着城市 亚热带季风的河岸 淹没还不醉的桥 不醉的建筑 用静默解酒'>
                 <heros>
-                    <item id='1' roleId='2' roleLevel='3' awakenLevel='1'/>
+                    <item id='1' roleId='4'/>
                 </heros>
                 <daoju>
                     <item id='1' goodsId='randHero' goodsNum='1'/>
                 </daoju>
             </item>
-            <item id='1' name='杜甫很忙' zdl='1300' buff='0,0,0,0' gold='100' exp='6000' money='300' mes='没有了音乐就退化耳朵 没有了戒律就灭掉烛火 像回到 误解照相术的年代 你摄取我的灵魂 没有了剃刀就封锁语言 没有了心脏却活了九年'>
+            <item id='1' name='外星狗' zdl='1500' buff='0,0,0,0' gold='100' exp='6000' money='300' dialogId='0_1'  mes='没有了音乐就退化耳朵 没有了戒律就灭掉烛火 像回到 误解照相术的年代 你摄取我的灵魂 没有了剃刀就封锁语言 没有了心脏却活了九年'>
                 <heros>
-                    <item id='2' roleId='3' roleLevel='7' awakenLevel='2'/>
-                </heros>
-                <daoju>
-                    <item id='1' goodsId='randHero' goodsNum='1'/>
-                </daoju>
-            </item>
-
-            <item id='2' name='六一醉翁' zdl='1500' buff='0,0,0,0' gold='100' exp='7000' money='300' mes='山 是山的影子 狗 懒得进化 夏天 人的酶很固执 灵魂的酶像荷花'>
-                <heros>
-                    <item id='2' roleId='4' roleLevel='7' awakenLevel='2'/>
+                     <item id='1' roleId='6'/>
+                    <item id='2' roleId='4'/>
                 </heros>
                 <daoju>
                     <item id='1' goodsId='randHero' goodsNum='1'/>
                 </daoju>
             </item>
 
-            <item id='3' name='仲淹天下' zdl='2000' buff='0,0,0,0' gold='100' exp='8000' money='300' mes='许多夜晚重叠 悄然形成黑暗 玫瑰吸收光芒 大地按捺清香 为了寻找你 我搬进鸟的眼睛 经常盯着路过的风'>
+            <item id='2' name='外星兄弟' zdl='2000' buff='0,0,0,0' gold='100' exp='7000' money='300' dialogId='0_2' mes='山 是山的影子 狗 懒得进化 夏天 人的酶很固执 灵魂的酶像荷花'>
                 <heros>
-                    <item id='2' roleId='5' roleLevel='7' awakenLevel='2'/>
+                     <item id='1' roleId='6'/>
+                     <item id='1' roleId='5'/>
+                    <item id='2' roleId='4'/>
                 </heros>
                 <daoju>
                     <item id='1' goodsId='randHero' goodsNum='1'/>
                 </daoju>
             </item>
 
-            <item id='4' name='屈原很强大' zdl='2500' buff='0,0,0,0'  gold='100' exp='10000' money='300' mes='命运布光的手 为我支起了四十二架风车 源源不断的自然 宇宙来自于平衡 附近的星球来自于回声 沼泽来自于地面的失眠 褶皱来自于海 冰来自于酒 通往岁月楼层的应急灯 通往我写诗的石缝 一定有人离开了会回来 腾空的竹篮装满爱 一定有某种破碎像泥土 某个谷底像手一'>
+            <item id='3' name='外星将军' zdl='3000' buff='10,0,0,0' gold='100' exp='8000' money='300' dialogId='0_3' mes='许多夜晚重叠 悄然形成黑暗 玫瑰吸收光芒 大地按捺清香 为了寻找你 我搬进鸟的眼睛 经常盯着路过的风'>
                 <heros>
-                    <item id='1' roleId='6' roleLevel='3' awakenLevel='1'/>
+                    <item id='2' roleId='7'/>
+                </heros>
+                <daoju>
+                    <item id='1' goodsId='randHero' goodsNum='1'/>
+                </daoju>
+            </item>
+
+            <item id='4' name='红毛' zdl='4000' buff='0,10,0,0'  gold='100' exp='10000' money='300' dialogId='0_4' mes='命运布光的手 为我支起了四十二架风车 源源不断的自然 宇宙来自于平衡 附近的星球来自于回声 沼泽来自于地面的失眠 褶皱来自于海 冰来自于酒 通往岁月楼层的应急灯 通往我写诗的石缝 一定有人离开了会回来 腾空的竹篮装满爱 一定有某种破碎像泥土 某个谷底像手一'>
+                <heros>
+                   <item id='2' roleId='8'/>
                 </heros>
                 <daoju>
                     <item id='1' goodsId='randHero' goodsNum='1'/>
@@ -52,7 +55,7 @@
 
         </mapChild>
     </item>
-
+    <!--
     <item id='1' name='九歌世界'  goldSpeed='8' expSpeed='100' waitTime='5000' listBg='mapbg_aircity_png' battleBg='plain' cityIcon='aircity_big_png' guajiAnima='test' kaiqiZdl='3000' useRoleIds='0,1,2,3,4,5,6,7,8,9'>
         <mapChild>
              <item id='0' name='旁白BOSS' zdl='3000' buff='10,0,0,0' gold='100' exp='12000' money='300' mes='血色染红了天空 厄夜即将降临 亡者的意志剥离粉碎 你只不过是一个颗棋子'>
@@ -192,6 +195,6 @@
             </item>
         </mapChild>
     </item>
-
+    -->
     
 </mapInfo>

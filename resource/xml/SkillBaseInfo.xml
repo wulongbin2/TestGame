@@ -26,7 +26,7 @@
      -->
      <item id='auto' name='普通攻击'  icon='' isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
         <effect>
-            <item  des='$effect.attack' skillAnima='circle001' type='attack' param='100%'/>
+            <item  des='$effect.attack' skillAnima='zhua001' type='attack' param='100%'/>
         </effect>
     </item>
 
@@ -89,9 +89,17 @@
 
      <item id='zhanwubuduan' name='斩无不断'  buff="0,0,0,2" rate='30' canAvoid='false' des=''  icon='skill_2_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
         <effect>
-            <item des='$effect.baoji' skillAnima='baoji001' type='baoji' param='20%,enemy.totalZDL'/>
+            <item des='$effect.baoji' skillAnima='baoji001' type='baoji' param='40%,enemy.totalZDL'/>
         </effect>
     </item>
+
+    <item id='bingtianxuedi' name='冰天雪地'  buff="0,20,20,-10" rate='100' canAvoid='true' des=''  icon='skill_2_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+        <effect>
+            <item des='$effect.baoji' skillAnima='blue001' type='baoji' param='50%,enemy.totalZDL'/>
+        </effect>
+    </item>
+
+
 
 
     <item id='lingboweibo' name='凌波微步' des='逃！'  icon='skill_8_png'  isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
@@ -108,6 +116,12 @@
             <item des='$effect.recovery' skillAnima='light001' type='recovery' param='70%,self.curZDL'/>
         </effect>
     </item>
+    <item id='jingjing' name='让我们静静'  buff="-10,-10,15,0" rate='100' canAvoid='true' des=''  icon='skill_2_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+       <effect>
+            <item des='$effect.baoji' skillAnima='zi001' type='baoji' param='3%,enemy.totalZDL'/>
+            <item des='$effect.recovery' skillAnima='' type='recovery' param='49%,self.totalZDL'/>
+        </effect>
+    </item>
 
 
     <item id='rumo' name='入魔'  oneTime='true' des='让在下赐予你恐惧'  icon='skill_17_png'  isGroupSkill='false' groupRoles='' rate='50' canAvoid='true' timeLimit='-1' tag=''>
@@ -119,5 +133,7 @@
             <item des='$effect.buff' type='buff' buff='10,-10,0,10' param='self'/>
         </effect>
     </item>
+
+    
 
 </skillBaseInfo>

@@ -19,11 +19,14 @@
   <item id="1" name="吃货魔女" initZDL="500" potential="0.7" quality="zi" animaSource="10000003" skills="chihaohehao" weapon="lvfengxian"  awakenTime="3" tag="人类,女,魔法师" des="今天的午餐就是熊孩子！"/>
   <item id="2" name="任性大叔" initZDL="100" potential="1" quality="yellow" animaSource="10000004" skills="dashushili" weapon="lvfengxian" awakenTime="3" tag="人类,男,狂战士" des="放开那个姑娘！"/>
   <item id="3" name="兰兰" initZDL="2000" potential="0.1" quality="white" animaSource="10000005" skills="lanlanmiji" weapon="lvfengxian" awakenTime="3" tag="人类,男,战士" des="呵呵，重要的话我不会说三遍！"/>
-  <item id="4" name="外星人A" initZDL="170" potential="0.6" quality="blue" animaSource="10000006" skills="waixingjishuA" weapon="lvfengxian"  awakenTime="3" tag="外星人,？,驾驶员" des="how do you do!"/>
+  <item id="4" name="外星人A" initZDL="170" potential="0.6" quality="blue" animaSource="10000006" skills="waixingjishuA" weapon="lvfengxian"  awakenTime="3" tag="外星人,？,老司机" des="how do you do!"/>
   <item id="5" name="外星人B" initZDL="666" potential="0.7" quality="zi" animaSource="10000007" skills="waixingjishuB" weapon="lvfengxian"  awakenTime="3" tag="外星人,？,战士" des="与地球人保持和平关系是我的梦想！"/>
   <item id="6" name="外星人C" initZDL="1100" potential="0.3" quality="green" animaSource="10000008" skills="waixingjishuC" weapon="lvfengxian" awakenTime="3" tag="外星人,雌,外星生物" des="爱好是吃人"/>
-  <item id="7" name="腹黑将军" initZDL="2000" potential="0.35" quality="green" animaSource="11000001" skills="lvfengxian" weapon="lvfengxian" awakenTime="3" tag="人类,男,将军" des="将在外，军令有所不受！"/>
+  <item id="7" name="外星将军" initZDL="2000" potential="0.85" quality="yellow" animaSource="11000001" skills="jiangjunling" weapon="lvfengxian" awakenTime="3" tag="人类,男,将军" des="将在外，军令有所不受！"/>
   <item id="8" name="红毛.主角" initZDL="500" potential="0.9" quality="yellow" animaSource="11000002" skills="zhanwubuduan,rumo" weapon="lvfengxian" awakenTime="3" tag="人类,男,狂战士" des="哼，在我眼里，你们都是渣渣！"/>
+
+  <item id="1001" name="蓝毛.主角" initZDL="1" potential="2" quality="blue" animaSource="17000008" skills="bingtianxuedi" weapon="bingtianxuedi" awakenTime="3" tag="人类,男,战士" des="我想静静，不要问我静静是谁！"/>
+  <item id="1002" name="静静" initZDL="10000" potential="0.66" quality="zi" animaSource="17000032" skills="jingjing" weapon="lvfengxian" awakenTime="3" tag="人类,女,战士" des="打是情，骂是爱！"/>
 
   <item id="9" name="吕奉先" initZDL="100" potential="0.7" quality="white" animaSource="19000049" skills="lvfengxian" weapon="lvfengxian" buff="2,2,0,2" awakenTime="3" tag="人类,男,狂战士" des="武器是方天画戟，特长势战斗，弱点是天真"/>
   <item id="10" name="吕奉先" initZDL="100" potential="0.7" quality="zi" animaSource="19000015" skills="lvfengxian" weapon="lvfengxian" buff="2,2,0,2" awakenTime="3" tag="人类,男,狂战士" des="武器是方天画戟，特长势战���，弱点是天真"/>

@@ -41,12 +41,14 @@ var game_file_list = [
 	"bin-debug/game/views/BattleTeam.js",
 	"bin-debug/game/views/ChooseRole.js",
 	"bin-debug/game/views/ChooseRoleSkillInfo.js",
+	"bin-debug/game/views/DialogBG.js",
 	"bin-debug/game/views/TeamListItem.js",
 	"bin-debug/game/views/DragRoleSlot.js",
 	"bin-debug/game/views/DragTeam.js",
 	"bin-debug/game/views/FightBtn.js",
 	"bin-debug/game/views/FightPanel.js",
 	"bin-debug/game/views/FightWaitBar.js",
+	"bin-debug/game/views/GameOverScene.js",
 	"bin-debug/game/views/GoodsMessage.js",
 	"bin-debug/game/views/GreenBtn.js",
 	"bin-debug/game/views/HeroPanel.js",
@@ -87,7 +89,6 @@ var game_file_list = [
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",
-	"bin-debug/game/views/DialogBG.js",
 	//----auto game_file_list end----
 ];
 

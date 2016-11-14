@@ -84,15 +84,18 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 		this.bg.height = 1146;
 	}
 
-	private  currentOp:gameCore.BatteOperator;
-	private nextOP():void{
+	protected  currentOp:gameCore.BatteOperator;
+	protected test():boolean{
+		return true
+	};
+	protected nextOP():void{
 		this.currentOp = this.ops[this.opIndex];
 		var nextBool:boolean =false;
 		this.taskPromise.clear();
 		switch(this.currentOp.type){
 			case gamesystem.OPType_InitRound:
 				this.action_initInfo();
-				nextBool = true;
+				nextBool = this.test();
 			break;
 			case gamesystem.OPType_Forward:
 				this.action_forward(this.nextOP.bind(this),this.currentOp.targetteam);
@@ -176,7 +179,7 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 		}
 	}
 
-	private onExit():void{
+	protected onExit():void{
 		if(this.battleResult.parent)
 		{
 			this.battleResult.parent.removeChild(this.battleResult);
@@ -185,7 +188,7 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 	}
 
 
-	private action_initInfo(success?:()=>void){
+	protected action_initInfo(success?:()=>void){
 		this.atkTf1.text = this.currentOp.teamInfo1.buff.attckSpeed+'';
 		this.defTf1.text = this.currentOp.teamInfo1.buff.defend+'';
 		this.avoidTf1.text = this.currentOp.teamInfo1.buff.dodge+'';
@@ -278,11 +281,11 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 		gameutils.asynMnger.addOnceCB(500,success,this);
 	}
 
-	private action_dialog(success:()=>void):void{
+	protected action_dialog(success:()=>void):void{
 		if(this.currentOp.mes)
 		{
 			var pos:number[] = this.battleteamPos[this.currentOp.targetteam];
-			gameviews.viewManager.showDialogByXY(pos[1],BattleScene.BattleTeamY,this.currentOp.mes);
+			gameviews.viewManager.showDialogByXY(pos[1],BattleScene.BattleTeamY,this.currentOp.dialogRoleId,this.currentOp.mes,this.currentOp.targetteam === 0);
 			gameutils.asynMnger.addOnceCB(2000,success,this);
 		}
 		else{

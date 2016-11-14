@@ -1,5 +1,5 @@
 module gameCore {
-	export class BattleTeam{
+export class BattleTeam{
 		public id:number;
 		private _curZDL:number;//当前HP
 		private _fightZDL:number;//战斗力攻击力
@@ -17,6 +17,7 @@ module gameCore {
 			this._curZDL = this._totalZDL;
 			this._fightZDL = this._curZDL *0.3;
 			this._buff = info.buff;
+			this.allSkills.length = 0;
 			this.teams.forEach(role=>{
 				role.roleVo.skills.forEach(skillId=>{
 					this.allSkills.push(gameMngers.skillInfoMnger.getVO(skillId));
@@ -199,6 +200,12 @@ module gameCore {
 		}
 
 		public recovery(selfSkill:gamevo.SkillBaseVO, effect:gamevo.SkillEffectVO  ,timeInex:number = 0):void{
+			if(this.hasAttack)//如果之前有命中，则必需要击中才有效
+			{
+				if(this.hurtNum==0){
+					return;
+				}
+			}
 			var baseNum:number = this.getValue(effect.param[1])
 			var offZDL= Math.round(baseNum*this.getValue(effect.param[0])*(1+this.self.buff.defend*0.005));
 			this.self.curZDL+=offZDL;
@@ -277,6 +284,7 @@ module gameCore {
 			this.totalZdl = totalZdl;
 			this.buff = buff;
 		}
+
 	}
 
 
@@ -292,6 +300,7 @@ module gameCore {
 		public teamInfo1:BattleTeamRecord;
 		public teamInfo2:BattleTeamRecord;
 		public targetteam:number;
+		public dialogRoleId:string;
 		public mes:string;
 		public EffectId:string;
 		public result:number;
@@ -302,9 +311,10 @@ module gameCore {
 			return o;
 		}
 
-		public static op_dialog(targetTeam:number,mes:string):BatteOperator{
+		public static op_dialog(targetTeam:number,dialogRoleId:string,mes:string):BatteOperator{
 			var o:BatteOperator = new BatteOperator();
 			o.type =gamesystem.OPType_Dialog;
+			o.dialogRoleId = dialogRoleId;
 			o.targetteam = targetTeam;
 			o.mes = mes;
 			return o;
@@ -386,31 +396,37 @@ module gameCore {
 			return this.fight();
 		}
 
-		private operators:BatteOperator []  = [];
-		private pushOpeartor(op:BatteOperator):void{
+		protected operators:BatteOperator []  = [];
+		protected pushOpeartor(op:BatteOperator):void{
 			op.teamInfo1 = this.team1.createBattleInfo();
 			op.teamInfo2 = this.team2.createBattleInfo();
 			op.round = this.scene.round;
 			this.operators.push(op);
+		}
+
+		protected pushDialog(dialogId:string):void{
+			var  dialogInfo:gamevo.DialogVO = gameMngers.dialogMnger.getVO(dialogId);
+			if(dialogInfo && !this.dialogLib[dialogId]){
+				this.dialogLib[dialogId] = true;
+				dialogInfo.actions.forEach(item=>{
+					this.pushOpeartor(BatteOperator.op_dialog(item.teamId,item.roleId,item.word));
+				});
+				this.pushOpeartor(BatteOperator.op_dialog(0,'',''));
+			}
 		}
 		public fight():BatteOperator []{
 			this.operators.length = 0;
 			this.scene.round = 1;
 			var first:boolean = true;
 			while(true){
+				//初始信息
 				this.pushOpeartor(BatteOperator.op_initInfo(this.scene.round));
 				if(first){
 					first =false;
 					this.pushOpeartor(BatteOperator.op_action(gamesystem.OPType_MaskHide));
-					if(this.mapChildVo && this.mapChildVo.dialogId){
-						var  dialogInfo:gamevo.DialogVO = gameMngers.dialogMnger.getVO(this.mapChildVo.dialogId);
-						if(dialogInfo && !this.dialogLib[dialogInfo.id]){
-							this.dialogLib[dialogInfo.id] = true;
-							dialogInfo.actions.forEach(item=>{
-								this.pushOpeartor(BatteOperator.op_dialog(item.teamId,item.word));
-							});
-							this.pushOpeartor(BatteOperator.op_dialog(0,''));
-						}
+					//开始动画
+					if(this.mapChildVo){
+						this.pushDialog('start'+this.mapChildVo.dialogId);
 					}
 				}
 				this.scene.self = this.teams[this.fightIndex%2];
@@ -418,6 +434,16 @@ module gameCore {
 				this.scene.fight(this.pushOpeartor.bind(this));
 				this.fightIndex++;
 				if(this.team1.curZDL <=0 || this.team2.curZDL <=0){
+					//胜利对话
+					if(  this.mapChildVo){
+						if(this.team2.curZDL <=0)
+						{
+							this.pushDialog('win'+this.mapChildVo.dialogId);
+						}
+						else{
+							this.pushDialog('fail'+this.mapChildVo.dialogId);
+						}
+					}
 					if(this.team1.curZDL<=0)
 					{
 						this.pushOpeartor(BatteOperator.op_end(this.team2.id));

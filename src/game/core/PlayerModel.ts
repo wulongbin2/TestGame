@@ -21,14 +21,19 @@ module gameCore {
 
 	/**改变当前地图 */
 	export function changeMap(mapId:number):void{
-		currentUserInfo.curMap = mapId;
-		if(!currentUserInfo.currentMO )
-		{
-			var newMo:MapMO = new MapMO();
-			newMo.init(mapId);
-			currentUserInfo.pushMapMo(newMo);
+		if(mapId>=gameMngers.mapInfoMnger.all.length){
+			gameviews.viewManager.gameOver();
 		}
-		changeMapLevel(0);
+		else{
+			currentUserInfo.curMap = mapId;
+			if(!currentUserInfo.currentMO )
+			{
+				var newMo:MapMO = new MapMO();
+				newMo.init(mapId);
+				currentUserInfo.pushMapMo(newMo);
+			}
+			changeMapLevel(0);
+		}
 	}
 
 	/**改变当前地图难度 */
@@ -58,6 +63,7 @@ module gameCore {
 			if(mo.maxMapChild === gamesystem.MaxMapChild)
 			{
 				mo.maxMapLevel = Math.min(gamesystem.MaxMapLevel, Math.max(currentUserInfo.curMapLevel+1,mo.maxMapLevel));
+				mo.maxMapChild = 0;
 			}
 		}
 		else if(status === gamesystem.MapStatus_Guaji)

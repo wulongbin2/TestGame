@@ -13,6 +13,7 @@ module gameviews {
 		private alertPanel:AlertPanel;
 		private tip:SkillBG;
 		private dialog:DialogBG;
+		private gameOverScene:GameOverScene;
 		public init():void{
 			this.mainPanel = new MainPanel();
 			this.bagPanel = new BagPanel();
@@ -26,6 +27,7 @@ module gameviews {
 			this.alertPanel = new AlertPanel();
 			this.tip = new SkillBG();
 			this.dialog = new DialogBG();
+			this.gameOverScene = new GameOverScene();
 			gameCore.eventDispatch.addEventListener(gameCore.Event_GetHero,this.onGetHero,this);
 		}
 
@@ -110,13 +112,13 @@ module gameviews {
 			this.tip.showText(this,this.tempP.x,this.tempP.y,mes);
 		}
 
-		public showDialog(dis:egret.DisplayObject,mes:string):void{
-			dis.localToGlobal(0,0, this.tempP);
-			this.dialog.showText(this,this.tempP.x,this.tempP.y,mes);
-		}
+		// public showDialog(dis:egret.DisplayObject,mes:string,isLeftBg:boolean = true):void{
+		// 	dis.localToGlobal(0,0, this.tempP);
+		// 	this.dialog.showText(this,this.tempP.x,this.tempP.y,mes,isLeftBg);
+		// }
 
-		public showDialogByXY(x:number,y:number,mes:string):void{
-			this.dialog.showText(this,x,y,mes);
+		public showDialogByXY(x:number,y:number,roleId:string,mes:string,isLeftBg:boolean = true):void{
+			this.dialog.showText(this,x,y,roleId,mes,isLeftBg);
 		}
 
 		public hideDialog():void{
@@ -124,6 +126,12 @@ module gameviews {
 			{
 				this.dialog.parent.removeChild(this.dialog);
 			}
+		}
+
+		public gameOver():void{
+			this.mainPanel.visible =false;
+			this.addChild(this.gameOverScene);
+			this.gameOverScene.gameOver();
 		}
 
 	}

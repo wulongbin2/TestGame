@@ -16,7 +16,7 @@
     map:地图通关数据
 
     -->
-    <item id='user' name='绿毛虫' gold='0' exp='0' money='0' teamHeros='1' curMap='0' curMapLevel='0' curMapChild='0' curMapStatus='0' curMapGuajiTime='0' offlineTime='1478238884459'>
+    <item id='user' name='黄毛' gold='0' exp='0' money='0' teamHeros='1' curMap='0' curMapLevel='0' curMapChild='0' curMapStatus='0' curMapGuajiTime='0' offlineTime='1478238884459'>
         <heros>
             <item id='1' roleId='0' roleLevel='0' awakenLevel='0'/>
         </heros>
