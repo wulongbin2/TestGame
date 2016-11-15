@@ -11,7 +11,7 @@ class TujianPanel extends eui.Component implements  eui.UIComponent {
 	private onComplete():void{
 		this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onClose,this)
 		this.roleList.itemRenderer = TujianListItem;
-		this.roleListData.source = gameMngers.roleInfoMnger.all;
+		this.roleListData.source = gameMngers.roleInfoMnger.tujians;
 		this.roleList.dataProvider = this.roleListData;
 	}
 

@@ -10,6 +10,7 @@ module gamesystem {
 	export var stageHeight:number;
 	export var stage:egret.Stage;
 
+	//默认特效动画配置
 	export const Auto_EffectFrameRate:number = 24;
 	export const Auto_FrameWidth:number = 96;
 	export const Auto_FrameHeight:number = 96;
@@ -21,10 +22,12 @@ module gamesystem {
 	export const Url_BattleBg:string = 'resource/gameres/battleBG/';
 	export const Url_Font:string = 'resource/gameres/font/';
 
+	//常用位图字体
 	export var Font_Red:egret.BitmapFont;
 	export var Font_Green:egret.BitmapFont ;
 	export var Font_Yellow:egret.BitmapFont;
 
+	//常用动作名称
 	export const AnimaLeftWalk:string ='leftWalk';
 	export const AnimaRightWalk:string ='rightWalk';
 	export const AnimaUpWalk:string ='upWalk';
@@ -36,17 +39,19 @@ module gamesystem {
 	export const AnimaDownStand:string ='downStand';
 
 	export const AnimaLeftTurn:string ='leftTurn';
-	export const AnimaRightTurn:string ='leftTurn';
+	export const AnimaRightTurn:string ='rightTurn';
 
 	export const RoleQuality2Number:{[anme:string]:number} = {'white':1,'green':2,'blue':3,'zi':4,'yellow':5,'light':6};
 
 	export const MaxMapLevel:number = 3;
 	export const MaxMapChild:number = 5;
 
+	//挂机状态
 	export const MapStatus_Guaji:number = 0;
 	export const MapStatus_ReadyFight:number = 1;
 	export const MapStatus_FightEnd:number = 2;
 
+	//常用图标
 	export const Icon_Gold:string ='mission_icon_gold_png';
 	export const Icon_Exp:string ='mission_icon_exp_png';
 	export const Icon_Money:string ='blood_diamond_header_png';
@@ -67,7 +72,7 @@ module gamesystem {
 
 	export const Skill_Self:string = 'self';
 	export const Skill_Enemy:string = 'enemy';
-
+	//战斗相关属性变量
 	export const SkillRecovery_Self_TotalZDL:string = 'self.totalZDL';
 	export const SkillRecovery_Self_CurZDL:string = 'self.curZDL';
 	export const SkillRecovery_Self_LoseZDL:string = 'self.loseZDL';
@@ -81,7 +86,7 @@ module gamesystem {
 	export const SkillRecovery_Enemy_CurZDLPer:string = 'Enemy.curZDLPer'
 	export const SkillRecovery_HurtZDL:string = 'hurtZDL';
 
-
+	//战斗动画动作类型
 	export const OPType_InitRound:string = 'initRound';
 	export const OPType_MaskHide:string = 'maskHide';
 	export const OPType_Dialog:string = 'dialog';

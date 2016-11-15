@@ -16,20 +16,19 @@
     map:地图通关数据
 
     -->
-    <item id='user' name='黄毛' gold='0' exp='0' money='0' teamHeros='1' curMap='0' curMapLevel='0' curMapChild='0' curMapStatus='0' curMapGuajiTime='0' offlineTime='1478238884459'>
+    <item id='user' name='黄毛' gold='0' exp='1000' money='0' teamHeros='1' curMap='1' curMapLevel='0' curMapChild='0' curMapStatus='0' curMapGuajiTime='0' offlineTime='1478238884459'>
         <heros>
-            <item id='1' roleId='0' roleLevel='0' awakenLevel='0'/>
+            <item id='1' roleId='0' roleLevel='10' awakenLevel='0'/>
         </heros>
         <daoju>
-            <item id='1' goodsId='randHero' goodsNum='1'/>
-            <item id='12' goodsId='randGold' goodsNum='1'/>
             <item id='13' goodsId='randGold' goodsNum='1'/>
         </daoju>
         <ziyuan>
             <item id='4' goodsId='golem' goodsNum='10'/>
         </ziyuan>
         <map>
-            <item id='0' maxMapLevel='0' maxMapChild='0'/>
+            <item id='0' maxMapLevel='1' maxMapChild='4'/>
+            <item id='1' maxMapLevel='0' maxMapChild='0'/>
         </map>
     </item>
 </UserPalyerInfo>

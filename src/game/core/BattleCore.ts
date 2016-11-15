@@ -1,4 +1,5 @@
 module gameCore {
+	/*战斗队伍数据 */
 export class BattleTeam{
 		public id:number;
 		private _curZDL:number;//当前HP
@@ -7,6 +8,7 @@ export class BattleTeam{
 		private _buff:gamevo.BuffVO;
 		public allSkills:gamevo.SkillBaseVO[] = [];
 		public teams:HeroMO[];
+		public teamById:{[name:string]:HeroMO};
 		public lastdodgeRound:number;
 		public skillUseTime:{[name:string]:boolean} = {};
 		public initTeam(id:number,info:gameCore.BattleTeamInfo):void{
@@ -18,8 +20,15 @@ export class BattleTeam{
 			this._fightZDL = this._curZDL *0.3;
 			this._buff = info.buff;
 			this.allSkills.length = 0;
+			var skillIdLab:any = {};
+			this.teamById = {};
+			this.teams.forEach(item=>{
+				this.teamById[item.roleId] = item;
+			})
 			this.teams.forEach(role=>{
 				role.roleVo.skills.forEach(skillId=>{
+					if(skillIdLab[skillId]) return;
+					skillIdLab[skillId] = true;
 					this.allSkills.push(gameMngers.skillInfoMnger.getVO(skillId));
 				})
 			})
@@ -54,7 +63,7 @@ export class BattleTeam{
 			return info;
 		}
 	}
-
+	/**战斗场景信息 */
 	export class BattleSceneInfo{
 		public self:BattleTeam;
 		public enemy:BattleTeam;
@@ -65,16 +74,31 @@ export class BattleTeam{
 		public fight(pushOperator:(b:BatteOperator)=>void){
 			this.pushOperator = pushOperator;
 			var operator:BatteOperator = new BatteOperator();
+			//技能赛选
 			var selfSkill:gamevo.SkillBaseVO;
 			var  selfTeamLength:number = this.self.allSkills.length;
 			for(var i:number=0;i < selfTeamLength; i ++){
 				var skillVo:gamevo.SkillBaseVO = this.self.allSkills[i];
+				//只能使用一次的技能
 				if(skillVo.oneTime){
 					if(this.self.skillUseTime[skillVo.id])
 					{
 						continue;
 					}
 				}
+				if(skillVo.isGroupSkill){
+					var ok:boolean = true;
+					skillVo.groupRoles.forEach(roleId=>{
+						if(!this.self.teamById[roleId])
+						{
+							ok = false;
+						}
+					});
+					if(!ok){
+						continue;
+					}
+				}
+				//如果有触发条件，则判断条件
 				var triggerLen:number = skillVo.triggers.length;
 				if(triggerLen>0){
 					var conditionTag:boolean = true;
@@ -107,6 +131,7 @@ export class BattleTeam{
 					break;
 				}
 			};
+			//如果没有，即使通常技能
 			if(!selfSkill){
 				selfSkill = gameMngers.skillInfoMnger.getVO('auto');
 			};
@@ -133,6 +158,7 @@ export class BattleTeam{
 
 		}
 
+		/**播放技能 */
 		private numtohan:string='一二三四五六七八九十';
 		public playSkill(selfSkill:gamevo.SkillBaseVO,effectInfo:gamevo.SkillEffectVO,targetteam:number,timeInex:number = 0):void{
 			if(effectInfo.skillAnima)
@@ -150,6 +176,7 @@ export class BattleTeam{
 			}
 		}
 
+		/**buff改变效果 */
 		public buffChange(selfSkill:gamevo.SkillBaseVO,effect:gamevo.SkillEffectVO ,timeInex:number = 0):void{
 			if(this.hasAttack)//如果之前有命中，则必需要击中才有效
 			{
@@ -165,7 +192,7 @@ export class BattleTeam{
 				this.self.buff.addBuff(effect.buff);
 			}
 		}
-
+		/**攻击效果 */
 		public attack(selfSkill:gamevo.SkillBaseVO,effect:gamevo.SkillEffectVO ,timeInex:number = 0):void{
 			var offRound:number = this.round -this.enemy.lastdodgeRound;
 			var shanbiPer:number = Math.sin(this.enemy.buff.dodge/100*Math.PI/2);
@@ -199,6 +226,7 @@ export class BattleTeam{
 			this.hasAttack = true;
 		}
 
+		/**恢复效果 */
 		public recovery(selfSkill:gamevo.SkillBaseVO, effect:gamevo.SkillEffectVO  ,timeInex:number = 0):void{
 			if(this.hasAttack)//如果之前有命中，则必需要击中才有效
 			{

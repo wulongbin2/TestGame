@@ -1,19 +1,19 @@
 module gameviews {
 	/**视图管理 */
 	class ViewManager extends egret.Sprite{
-		private mainPanel:MainPanel;
-		private bagPanel:BagPanel;
-		private qianghuaPanel:QianghuaPanel;
-		private teamPanel:TeamPanel;
-		private tujianPanel:TujianPanel;
-		private teamMemberPanel:TeamMemberPanel;
-		private heroPanel:HeroPanel;
-		public mapChoosePanel:MapChoosePanel;
-		private battleScene:BattleScene;
-		private alertPanel:AlertPanel;
-		private tip:SkillBG;
-		private dialog:DialogBG;
-		private gameOverScene:GameOverScene;
+		private mainPanel:MainPanel;//主界面
+		private bagPanel:BagPanel;//背包界面
+		private qianghuaPanel:QianghuaPanel;//升级界面
+		private teamPanel:TeamPanel;//队伍布阵界面
+		private tujianPanel:TujianPanel;//图鉴界面
+		private teamMemberPanel:TeamMemberPanel;//佣兵界面
+		private heroPanel:HeroPanel;//英雄展示界面
+		public mapChoosePanel:MapChoosePanel;//地图选择界面
+		private battleScene:BattleScene;//战斗场景界面
+		private alertPanel:AlertPanel;//警告界面
+		private tip:SkillBG;//提示框
+		private dialog:DialogBG;//对话框
+		private gameOverScene:GameOverScene;//游戏结束场景
 		public init():void{
 			this.mainPanel = new MainPanel();
 			this.bagPanel = new BagPanel();

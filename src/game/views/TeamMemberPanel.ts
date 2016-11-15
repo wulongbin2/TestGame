@@ -7,6 +7,7 @@ class TeamMemberPanel extends eui.Component implements  eui.UIComponent {
 	public skillList:eui.List;
 	public skillListData:eui.ArrayCollection
 	public skillNameTf:eui.Label;
+	public skillRolesTf:eui.Label;
 	public skillPerTf:eui.Label;
 	public skillEnabledTf:eui.Label;
 	public attTf:eui.Label;
@@ -50,10 +51,12 @@ class TeamMemberPanel extends eui.Component implements  eui.UIComponent {
 			var vo:gamevo.SkillBaseVO = gameMngers.skillInfoMnger.getVO(this._currentSkill);
 			this.skillNameTf.text ='技能：'+ vo.name;
 			this.skillDesTf.text = vo.des;
+			this.skillRolesTf.visible = vo.isGroupSkill;
 		}
 		else{
 			this.skillNameTf.text ='';
 			this.skillDesTf.text = '';
+			this.skillRolesTf.visible = false;
 		}
 		this.skillEnabledTf.visible = false;
 	}

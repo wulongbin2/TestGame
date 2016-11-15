@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="TestSkin" width="640" height="838" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image id="frame_big" source="frame_big_png" x="0" y="0"/>
-	<e:Button id="button_close" label="" x="574" y="0">
-		<e:skinName>
-			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="button_close_png"/>
-			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
-			</e:Skin>
-		</e:skinName>
-	</e:Button>
-	<e:Image id="sign_txt" x="287" y="30" source="welfare_txt_png"/>
-	<e:Image source="sign_popup_bg_png" x="17" y="70" height="155"/>
-	<e:Image source="sign_bar_bg_png" x="1" y="67"/>
-	<e:Image source="sign_day_png" x="53" y="88"/>
-	<e:ProgressBar id="sing_day" x="131" y="125" width="444" value="100"/>
-	<e:Image id="sign_box0" source="sign_box_close_png" x="208" y="88"/>
-	<e:Image id="sign_box1" source="sign_box_close_png" x="362" y="88"/>
-	<e:Image id="sign_box2" source="sign_box_close_png" x="513" y="88"/>
-	<e:Image source="sign_popup_txt_bg_png" x="40" y="173"/>
-	<e:Image source="sign_popup_txt_bg_png" x="197" y="173"/>
-	<e:EditableText width="72" height="20" text="当前累计" textColor="0xffe88d" fontFamily="微软雅黑" size="18" y="179" x="55"/>
-	<e:EditableText width="65" height="20" text="累计3天" textColor="0xFFE88D" fontFamily="微软雅黑" size="18" y="179" x="216"/>
-	<e:Image source="sign_popup_txt_bg_png" x="353" y="173"/>
-	<e:EditableText width="65" height="20" text="累计5天" textColor="0xFFE88D" fontFamily="微软雅黑" size="18" y="179" x="372"/>
-	<e:Image source="sign_popup_txt_bg_png" x="499" y="173"/>
-	<e:EditableText width="65" height="20" text="累计7天" textColor="0xFFE88D" fontFamily="微软雅黑" size="18" y="179" x="518"/>
-	<e:Image source="frame_small_png" scale9Grid="14,14,41,41" x="30" y="234" width="579" height="568"/>
-	<e:Scroller id="sign_reward_scroller" width="555" height="546" x="42" y="245">
-		<e:List id="rewardList"/>
-	</e:Scroller>
+	<w:Config id="158674aec34"/>
+	<e:Image source="bag_emtpybg_png" x="502" y="230"/>
+	<e:Image source="bottom_bg_png" x="419" y="488"/>
+	<e:Image source="box_bg2_png" x="387" y="93"/>
 </e:Skin>

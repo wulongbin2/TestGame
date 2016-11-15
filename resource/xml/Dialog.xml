@@ -109,6 +109,100 @@
          <item teamId='1' roleId='8' word='可惜这样的实力还不是我的对手！'/>
     </item>
 
+    <item id='start1_0'>
+        <item teamId='0' roleId='0' word='兔小姐!请您离开地球！'/>
+        <item teamId='1' roleId='9' word='哪来的黄毛小子回哪去！'/>
+        <item teamId='0' roleId='0' word='地球是文明世界！'/>
+        <item teamId='0' roleId='0' word='站街这样的行为有辱文明世界！'/>
+        <item teamId='1' roleId='9' word='小屁孩，滚开！'/>
+        <item teamId='0' roleId='0' word='看来必须动用正义的力量了！'/>
+    </item>
+    <item id='win1_0'>
+        <item teamId='1' roleId='9' word='（心思）可恶的黄毛小子！'/>
+        <item teamId='1' roleId='9' word='难道他看出了我们月球的计划了吗？'/>
+        <item teamId='0' roleId='0' word='为了地球与月球人的友好！'/>
+        <item teamId='0' roleId='0' word='兔小姐不要再让我看到有下次！'/>
+        <item teamId='1' roleId='9' word='切！'/>
+    </item>
+    <item id='fail1_0'>
+        <item teamId='1' roleId='9' word='小子，快回家找妈妈去吧！'/>
+        <item teamId='0' roleId='0' word='我竟然流鼻血了！'/>
+        <item teamId='0' roleId='0' word='一定是昨天吃了太多烧烤了'/>
+    </item>
+     <item id='start1_1'>
+        <item teamId='0' roleId='0' word='兔小姐！'/>
+        <item teamId='0' roleId='0' word='虽然你换了个假发！'/>
+        <item teamId='0' roleId='0' word='但我依然认得你！'/>
+        <item teamId='1' roleId='10' word='少年，要不要进来做做！'/>
+        <item teamId='0' roleId='0' word='没想到你依旧不改本性！'/>
+        <item teamId='0' roleId='0' word='正义是不会抛弃你的！'/>
+    </item>
+    <item id='win1_1'>
+        <item teamId='0' roleId='0' word='咦，这不是假发！！'/>
+        <item teamId='1' roleId='10' word='给我记住！'/>
+    </item>
+    <item id='fail1_1'>
+        <item teamId='1' roleId='10' word='月球人可不是好惹的！'/>
+        <item teamId='0' roleId='0' word='好厉害！'/>
+        <item teamId='0' roleId='0' word='上次用的可不是这一招！'/>
+    </item>
+
+     <item id='start1_2'>
+        <item teamId='1' roleId='11' word='喂！'/>
+        <item teamId='0' roleId='0' word='你在和我打招呼吗？'/>
+        <item teamId='1' roleId='11' word='没错！'/>
+        <item teamId='0' roleId='0' word='找我有什么事吗？'/>
+        <item teamId='1' roleId='11' word='小子，我看你骨骼惊奇！'/>
+        <item teamId='1' roleId='11' word='让我教你如何站街！'/>
+        <item teamId='0' roleId='0' word='不。。。不用了！'/>
+    </item>
+    <item id='win1_2'>
+        <item teamId='0' roleId='0' word='领教了！大妈！'/>
+        <item teamId='1' roleId='11' word='可恶的小子！'/>
+        <item teamId='1' roleId='11' word='下次可不会这么好运！'/>
+    </item>
+    <item id='fail1_2'>
+        <item teamId='1' roleId='11' word='抬头，挺胸，收腹！'/>
+        <item teamId='0' roleId='0' word='是~_~'/>
+    </item>
+
+     <item id='start1_3'>
+        <item teamId='1' roleId='12' word='你好！'/>
+        <item teamId='0' roleId='0' word='你好~'/>
+        <item teamId='1' roleId='12' word='是你打败了我的妹妹们吗？'/>
+        <item teamId='0' roleId='0' word='不，我只是教育了一下！'/>
+        <item teamId='1' roleId='12' word='作为答谢，请到我们月球来做客！'/>
+        <item teamId='0' roleId='0' word='不，我要守护地球的和平！'/>
+        <item teamId='1' roleId='12' word='地球会由我们替你守护！'/>
+    </item>
+    <item id='win1_3'>
+        <item teamId='1' roleId='12' word='地球的和平暂时还是让你守护！'/>
+        <item teamId='0' roleId='0' word='姐姐慢走！'/>
+    </item>
+    <item id='fail1_3'>
+        <item teamId='1' roleId='12' word='走吧！'/>
+        <item teamId='0' roleId='0' word='再见了，地球！555！'/>
+    </item>
+
+    <item id='start1_4'>
+        <item teamId='1' roleId='12' word='黄毛，你终于出现了！'/>
+        <item teamId='0' roleId='0' word='原来你们是四姐妹！'/>
+        <item teamId='1' roleId='11' word='臭小子！'/>
+        <item teamId='1' roleId='10' word='姐姐，就是他'/>
+        <item teamId='1' roleId='9' word='他一定已经知道了我们的计划！！'/>
+        <item teamId='0' roleId='0' word='啥，啥计划？'/>
+    </item>
+    <item id='win1_4'>
+        <item teamId='0' roleId='0' word='哈哈！'/>
+        <item teamId='0' roleId='0' word='原来你们是月球使者！'/>
+        <item teamId='0' roleId='0' word='难怪，哪有武功这么厉害的街女！'/>
+        <item teamId='0' roleId='0' word='是我搞错了！'/>
+    </item>
+    <item id='fail1_4'>
+        <item teamId='0' roleId='0' word='我错了，姐姐们！'/>
+        <item teamId='0' roleId='0' word='手下留情！'/>
+        <item teamId='0' roleId='0' word='啊啊啊！！！！'/>
+    </item>
 
      <item id='gameOver'>
         <item teamId='0' roleId='1001' word='恭喜你！通关游戏！'/>

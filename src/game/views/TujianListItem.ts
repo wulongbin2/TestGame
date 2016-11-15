@@ -16,6 +16,7 @@ class TujianListItem extends eui.ItemRenderer implements  eui.UIComponent {
 		if(this.data)
 		{
 				this.slot.roleId = this.data.id;
+				this.filters = gameCore.currentUserInfo.playerBagMnger.heroBag.hasItemByConfigId(this.data.id)?null:gameutils.FilterUtls.Dark_Fiter;
 		}
 		else{
 			this.slot.roleId = '';

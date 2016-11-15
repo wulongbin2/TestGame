@@ -10,7 +10,7 @@ module gameviews {
 
 		private onTap():void{
 			if(this._skill){
-				gameviews.viewManager.showTip(this,this._skill.des);
+				gameviews.viewManager.showTip(this,`[${this._skill.name}]`+this._skill.des);
 
 			}
 		}

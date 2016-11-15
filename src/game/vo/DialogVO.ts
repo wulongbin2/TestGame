@@ -1,4 +1,5 @@
 module gamevo {
+	/**对话数据 */
 	export class DialogVO extends BaseVO{
 		public actions:DialogActionVO[] = [];
 		public analysis(config:any):void{

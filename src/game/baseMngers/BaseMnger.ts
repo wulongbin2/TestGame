@@ -65,9 +65,38 @@ module gameMngers {
 	}
 	 
 	class RoleInfoMnger extends BaseMnger<gamevo.RoleBaseVO>{
+
+		public libByQuality:{[index:number]:gamevo.RoleBaseVO[]}={};
+		protected _tujians:gamevo.RoleBaseVO[];
+		constructor(str:string){
+			super(str);
+			for(var i:number =0;i <7;i++){
+				this.libByQuality[i] = [];
+			}
+		}
 		protected createVO():gamevo.RoleBaseVO
 		{
 			return new gamevo.RoleBaseVO;
+		}
+
+		public registerVO(vo:gamevo.RoleBaseVO):void{
+			super.registerVO(vo);
+			this.libByQuality[vo.qualityNum].push(vo);
+
+		}
+
+		public get tujians():gamevo.RoleBaseVO[]{
+			if(!this._tujians){
+				this._tujians = [];
+				for(var i:number =6;i >=1; i--){
+					this.libByQuality[i].forEach(item=>{
+						if(!item.noShow){
+							this._tujians.push(item);
+						}
+					})
+				}
+			}
+			return this._tujians;
 		}
 	}
 

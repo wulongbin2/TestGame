@@ -7,9 +7,10 @@ class ChooseRoleSkillInfo extends eui.Component implements  eui.UIComponent {
 	public skillNameTf:eui.Label;
 	public skillEnabledTf:eui.Label;
 	public skillDesTf:eui.Label;
+	
 	private _currentSkill:string;
 	private  _currentRole:gameCore.HeroMO;
-
+	public skillRolesTf:eui.Label;
 	public constructor() {
 		super();
 		 this.addEventListener( eui.UIEvent.COMPLETE, this.onComplete, this );
@@ -58,10 +59,12 @@ class ChooseRoleSkillInfo extends eui.Component implements  eui.UIComponent {
 			var vo:gamevo.SkillBaseVO = gameMngers.skillInfoMnger.getVO(this._currentSkill);
 			this.skillNameTf.text ='技能：'+ vo.name;
 			this.skillDesTf.text = vo.des;
+			this.skillRolesTf.visible = vo.isGroupSkill;
 		}
 		else{
 			this.skillNameTf.text ='';
 			this.skillDesTf.text = '';
+			this.skillRolesTf.visible = false;
 		}
 		this.skillEnabledTf.visible = false;
 	}

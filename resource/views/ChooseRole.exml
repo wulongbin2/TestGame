@@ -10,7 +10,7 @@
 <e:Image source="backbtn_icon2_png" x="16" y="953" touchEnabled="false"/>
 	<e:Scroller width="634" height="752" x="5" y="134">
 		<e:viewport>
-			<e:List id="roleList" width="610" height="760" x="0" y="20" itemRendererSkinName="TujianListItemSkin" anchorOffsetY="0">
+			<e:List id="roleList" width="610" height="760" x="1" y="20" itemRendererSkinName="TujianListItemSkin" anchorOffsetY="0">
 				<e:layout>
 					<e:TileLayout horizontalGap="12" verticalGap="12" paddingLeft="10" paddingRight="10" paddingTop="10"/>
 				</e:layout>

@@ -71,6 +71,7 @@ module gameAnima
 		}
 
 		public resetGuajiAnima(id:string):void{
+			//更换挂机动画背景
 			if(this._id !== id){
 				var guajiAnimaVo:gamevo.MapGuajiAnimaVO = gameMngers.mapGuajiAnimaMnger.getVO(id);
 				guajiAnimaVo.bgs.forEach((info:gamevo.MapGuajiBgVO)=>{
@@ -91,6 +92,7 @@ module gameAnima
 				}
 			}
 			this._id = id;
+			//重置角色
 			this.resetRoles();
 			this.time = 0;
 		}

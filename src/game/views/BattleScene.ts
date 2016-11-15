@@ -49,8 +49,8 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 		this.roleGroup.addChild(this.battleteam2);
 		this.battleteams.push(this.battleteam1);
 		this.battleteams.push(this.battleteam2);
-		this.battleteamPos.push([BattleScene.HalfWidth-140,BattleScene.HalfWidth-100,BattleScene.HalfWidth-60,BattleScene.HalfWidth-40]);
-		this.battleteamPos.push([BattleScene.HalfWidth+140,BattleScene.HalfWidth+100,BattleScene.HalfWidth+60,BattleScene.HalfWidth+40]);
+		this.battleteamPos.push([BattleScene.HalfWidth-170,BattleScene.HalfWidth-100,BattleScene.HalfWidth-60,BattleScene.HalfWidth-40]);
+		this.battleteamPos.push([BattleScene.HalfWidth+170,BattleScene.HalfWidth+100,BattleScene.HalfWidth+60,BattleScene.HalfWidth+40]);
 		this.logGroup.visible = false;
 		this.effectPlayer.addEventListener(egret.Event.COMPLETE, this.onEffectComplete,this)
 	}

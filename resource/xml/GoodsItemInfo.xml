@@ -11,12 +11,49 @@
      @useEffect.item.type 效果类型
      @useEffect.item.param 使用参数
     -->
-    <item id='randHero' name='宝箱' merge='false' mergeMax='1' tag='daoju' source='herobag_bg_png' des='随机开启英雄'>
+    <item id='randHero' name='万能英雄袋' merge='false' mergeMax='1' tag='daoju' source='ladder_mercenary_6_png' des='随机开启任意英雄'>
         <useEffect>
-            <item type='randHero' param=''/>
+            <item type='randHero' param='7'/>
         </useEffect>
     </item>
-    <item id='randGold' name='钱袋' merge='false' mergeMax='1' tag='daoju' source='3000004_png' des='随机给一定数量的金币'>
+
+    <item id='randWhiteHero' name='白色英雄袋' merge='false' mergeMax='1' tag='daoju' source='ladder_mercenary_1_png' des='随机白色品质英雄'>
+        <useEffect>
+            <item type='randHero' param='1'/>
+        </useEffect>
+    </item>
+
+    <item id='randGreenHero' name='绿色英雄袋' merge='false' mergeMax='1' tag='daoju' source='ladder_mercenary_2_png' des='随机绿色品质英雄'>
+        <useEffect>
+            <item type='randHero' param='2'/>
+        </useEffect>
+    </item>
+
+    <item id='randBlueHero' name='蓝色英雄袋' merge='false' mergeMax='1' tag='daoju' source='ladder_mercenary_3_png' des='随机蓝色品质英雄'>
+        <useEffect>
+            <item type='randHero' param='3'/>
+        </useEffect>
+    </item>
+
+     <item id='randZiHero' name='紫色英雄袋' merge='false' mergeMax='1' tag='daoju' source='ladder_mercenary_4_png' des='随机紫色品质英雄'>
+        <useEffect>
+            <item type='randHero' param='4'/>
+        </useEffect>
+    </item>
+
+     <item id='randYellowHero' name='金色英雄袋' merge='false' mergeMax='1' tag='daoju' source='ladder_mercenary_5_png' des='随机金色品质英雄'>
+        <useEffect>
+            <item type='randHero' param='5'/>
+        </useEffect>
+    </item>
+
+     <item id='randLightHero' name='闪金英雄袋' merge='false' mergeMax='1' tag='daoju' source='ladder_mercenary_6_png' des='随机闪金品质英雄'>
+        <useEffect>
+            <item type='randHero' param='6'/>
+        </useEffect>
+    </item>
+
+    <item id='randGold' name='钱袋' merge='false' mergeMax='1' tag='daoju' source='3000004_png' des='金钱不是万能的'>
         <useEffect>
             <item type='randGold' param=''/>
         </useEffect>

@@ -183,12 +183,16 @@ module gamevo {
 		public weapon:string;
 		/**标签[物种，性别，职业] */
 		public tag:string[];
+		/**是否在图鉴栏中显示 */
+		public noShow:boolean = false;
 		/**描述 */
 		public des:string;
+
 		public analysis(config:any):void{
 			var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
 			this.name = xml.attributes.name;
+			this.noShow = xml.attributes.noShow==='true';
 			this.initZDL = parseFloat(xml.attributes.initZDL);
 			this.potential =  parseFloat(xml.attributes.potential);
 			this.awakenTime =  parseFloat(xml.attributes.awakenTime);
@@ -198,7 +202,23 @@ module gamevo {
 			this.weapon = xml.attributes.weapon;
 			this.tag = gameutils.XMLUtil.toStringArray(xml,'tag');
 			this.des = xml.attributes.des;
+
+			if(this.name=='懒得写'){
+				this.name = RoleBaseVO.getRandName()+'.'+RoleBaseVO.getRandName();
+				this.des ='作者很懒，他什么也没留下！'
+			}
 		}
+
+		private static getRandName():string{
+			if(!RoleBaseVO.nameArr){
+				RoleBaseVO.nameArr = RoleBaseVO.nameStr.split(',');
+			}
+			var i:number = Math.ceil(Math.random()*RoleBaseVO.nameArr.length);
+			return RoleBaseVO.nameArr[i];
+		}
+
+		private static nameArr:string[];
+		private static nameStr:string= '赵,钱,孙,李,周,吴,郑,王,冯,陈,楮,卫,蒋,沈,韩,杨,朱,秦,尤,许,何,吕,施,张,孔,曹,严,华,金,魏,陶,姜,戚,谢,邹,喻,柏,水,窦,章,云,苏,潘,葛,奚,范,彭,郎,鲁,韦,昌,马,苗,凤,花,方,俞,任,袁,柳,酆,鲍,史,唐,费,廉,岑,薛,雷,贺,倪,汤,滕,殷,罗,毕,郝,邬,安,常,乐,于,时,傅,皮,卞,齐,康,伍,余,元,卜,顾,孟,平,黄,和,穆,萧,尹,姚,邵,湛,汪,祁,毛,禹,狄,米,贝,明,臧,计,伏,成,戴,谈,宋,茅,庞,熊,纪,舒,屈,项,祝,董,梁,杜,阮,蓝,闽,席,季,麻,强,贾,路,娄,危,江,童,颜,郭,梅,盛,林,刁,锺,徐,丘,骆,高,夏,蔡,田,樊,胡,凌,霍,虞,万,支,柯,昝,管,卢,莫,经,房,裘,缪,干,解,应,宗,丁,宣,贲,邓,郁,单,杭,洪,包,诸,左,石,崔,吉,钮,龚,程,嵇,邢,滑,裴,陆,荣,荀羊,於,惠,甄,麹,家,封,芮,羿,储,靳,汲,邴,糜,松,井,段,富,巫,乌,焦,巴,弓,牧,隗,山,谷,车,侯,宓,蓬,全,郗,班,仰,秋,仲,伊,宫,宁,仇,栾,暴,甘,斜,厉,戎,祖,武,符,刘,景,詹,束,龙,叶,幸,司,韶,郜,黎,蓟,薄,印,宿,白,怀,蒲,邰,从,鄂,索,咸,籍,赖,卓,蔺,屠,蒙,池,乔,阴,郁,胥,能,苍,双,闻,莘,党,翟,谭,贡,劳,逄,姬,申,扶,堵,冉,宰,郦,雍,郤,璩,桑桂,濮,牛,寿,通,边,扈,燕,冀,郏,浦,尚,农,温,别,庄,晏,柴,瞿,阎,充,慕,连,茹,习,宦,艾,鱼,容,向,古,易,慎,戈,廖,庾,终,暨,居,衡,步,都,耿,满,弘,匡,国,文,寇,广,禄,阙,东,欧,殳,沃,利,蔚,越,夔,隆,师,巩,厍,聂,晁,勾,敖,融,冷,訾,辛,阚,那,简,饶,空,曾,毋,沙,乜,养,鞠,须,丰,巢,关,蒯,相,查,后,荆,红,游,竺,权,逑,盖,益,桓,公,万俟,司马,上官,欧阳,夏侯,诸葛,闻人,东方,赫连,皇甫,尉迟,公羊,澹台,公冶,宗政,濮阳,淳于,单于,太叔,申屠,公孙,仲孙,轩辕,令狐,锺离,宇文,长孙,慕容,鲜于,闾丘,司徒,司空,丌官,司寇,仉,督,子车,颛孙,端木,巫马,公西,漆雕,乐正,壤驷,公良,拓拔,夹谷,宰父,谷梁,晋,楚,阎,法,汝,鄢,涂,钦,段干,百里,东郭,南门,呼延,归,海,羊舌,微生,岳,帅,缑,亢,况,后,有,琴,梁丘,丘,东门,西门,商,牟,佘,佴,伯,赏,南宫,墨,哈,谯,笪,年,爱,阳,佟';
 
 		public get qualityNum():number{
 			return gamesystem.RoleQuality2Number[this.quality];
@@ -218,144 +238,6 @@ module gamevo {
 			this.name = xml.attributes.name;
 			this.des = xml.attributes.des;
 			this.buff.analysis(xml.attributes.buff);
-		}
-	}
-
-	export class SkillBaseVO extends BaseVO{
-		/**名称 */
-		public name:string;
-		/**是否是合体技能 */
-		public isGroupSkill:boolean;
-		/**合体技能需要的角色 */
-		public groupRoles:string[];
-		/**触发几率 */
-		public rate:number;
-		/**触发次数*/
-		public timeLimit:number;
-		/**是否可回避 */
-		public canAvoid:boolean;
-		/**技能标签，用于分组派系 */
-		public tag:string[];
-		/**技能描述 */
-		public des:string;
-		// public desDetail:string;
-		/**图标 */
-		public icon:string;
-
-		public oneTime:boolean = false;
-
-			/**是否是主动型技能 */
-		public isActivie:Boolean;
-		/**技能类型，attack，shanbi,huixue, */
-		public skillType:string;
-		public buff:BuffVO = new BuffVO;
-
-		public triggers:SkillTriggerVO[] = [];
-		public effects:SkillEffectVO[] = [];
-		public analysis(config:any):void{
-			var xml:egret.XML = config as egret.XML;
-			this.id = xml.attributes.id;
-			this.icon = xml.attributes.icon;
-			this.name = xml.attributes.name;
-			this.buff.analysis(xml.attributes.buff);
-			this.oneTime = xml.attributes.oneTime ==='true';
-			this.isGroupSkill = xml.attributes.isGroupSkill==='true';
-			this.rate =	parseFloat(xml.attributes.rate);
-			this.timeLimit =parseFloat(xml.attributes.timeLimit);
-			this.canAvoid = xml.attributes.canAvoid==='true';
-			this.tag =  (<string>xml.attributes.tag).split(',');
-			this.des = xml.attributes.des;
-			if(this.des)
-			{
-				this.des +='!';
-			}
-			var tempArr:string[] = [];
-			this.des += this.buff.des;
-			this.des += this.rate+'%触发。';
-			tempArr.length = 0;
-			gameutils.XMLUtil.foreachChild(xml, 'trigger',(item)=>{
-						var trigVO:SkillTriggerVO = new SkillTriggerVO;
-						trigVO.analysis(item);
-						this.triggers.push(trigVO);
-						tempArr.push(trigVO.des);
-					});
-			if(tempArr.length>0)
-			{
-				this.des+='当'+tempArr.join(',且')+'时触发，';
-			}
-
-			tempArr.length = 0;
-			gameutils.XMLUtil.foreachChild(xml, 'effect',(item)=>{
-					var effectVo:SkillEffectVO = new SkillEffectVO;
-						effectVo.analysis(item);
-						this.effects.push(effectVo);
-						tempArr.push(effectVo.des);
-					});
-			if(tempArr.length>0)
-			{
-				this.des+=tempArr.join(',')+'。';
-			}
-
-		}
-
-		private numToStr(num:number):string{
-			if(num>=0)
-			{
-				return '+'+num;
-			}
-			else{
-				return num+'';
-			}
-		}
-
-
-	}
-
-	/**技能触发条件配置 */
-	export class SkillTriggerVO{
-		/** 比较值1 值可以是数值，也可以是简单的表达式[+-x/]，属性对象[self表示己方对象，enemy表示敌方对象][对象支持属性:curZDL,totalZDL] */
-		public compareValue1:string[];
-		/**比较方式[less,greater] */
-		public compareType:string;
-		/**比较值2 */
-		public compareValue2:string[];
-		public des:string;
-		public analysis(config:any):void{
-			var xml:egret.XML = config as egret.XML;
-			var str:string = '';
-			this.compareValue1 = gameutils.XMLUtil.toStringArray(xml,'compareValue1');
-			this.compareType = xml.attributes.compareType;
-			this.compareValue2 =gameutils.XMLUtil.toStringArray(xml,'compareValue2');
-			this.des = gameutils.toStringConst(xml.attributes.des);
-			this.des = gameutils.replaceStringConst(this.des,[this.compareValue1[0],this.compareType,this.compareValue2[0]]);
-		}
-	}
-
-	/**技能触发效果配置 */
-	export class SkillEffectVO{
-		public type:string;
-		public param:string[];
-		public des:string;
-		public time:number;
-		public skillAnima:string;
-		public buff:BuffVO = new BuffVO;
-		public analysis(config:any):void{
-			var xml:egret.XML = config as egret.XML;
-			this.type = xml.attributes.type;
-			this.skillAnima = xml.attributes.skillAnima;
-			this.buff.analysis(xml.attributes.buff);
-			this.time = xml.attributes.time?Math.max(1,parseInt(xml.attributes.time)):1;
-			this.param = gameutils.XMLUtil.toStringArray(xml,'param');
-			this.des = gameutils.toStringConst(xml.attributes.des);
-			this.des = gameutils.replaceStringConst(this.des,this.param);
-			if(this.time>1){
-				this.des+=this.time+'次。';
-			}
-			var tempArr:string;
-			if(this.buff.des)
-			{
-				this.des='命中后'+this.des+this.buff.des+'。'
-			}
 		}
 	}
 }

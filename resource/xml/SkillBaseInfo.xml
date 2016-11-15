@@ -26,7 +26,7 @@
      -->
      <item id='auto' name='普通攻击'  icon='' isGroupSkill='false' groupRoles='' rate='30' canAvoid='true' timeLimit='-1' tag=''>
         <effect>
-            <item  des='$effect.attack' skillAnima='zhua001' type='attack' param='100%'/>
+            <item  des='$effect.attack' skillAnima='zhua001' type='attack' param='50%'/>
         </effect>
     </item>
 
@@ -59,6 +59,34 @@
             <item des='$effect.attack' skillAnima='circle001' type='attack' param='140%'/>
         </effect>
     </item>
+
+     <item id='baituzhua' name='九阴白兔抓' buff="10,0,0,0" rate='20' canAvoid='true' des=''   icon='skill_2_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+       <effect>
+            <item des='$effect.attack' time='9' skillAnima='zhua001'  type='attack' param='20%'/>
+        </effect>
+    </item>
+
+    <item id='henhuanghenbaoli' name='很黄很暴力' buff="0,0,0,10" rate='30' canAvoid='true' des=''   icon='skill_2_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+       <effect>
+            <item des='$effect.attack' skillAnima='zhua001'  type='attack' param='200%'/>
+        </effect>
+    </item>
+
+    <item id='meiliyouhuo' name='魅力暴增' buff="0,40,-40,10" rate='10' canAvoid='false' des=''   icon='skill_2_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+       <effect>
+            <item des='$effect.buff' type='buff' buff='10,10,0,10' param='self'/>
+        </effect>
+    </item>
+
+    <item id='situheli' name='四兔连击' buff="0,0,0,0" rate='50' canAvoid='true' des=''   icon='skill_2_png'  isGroupSkill='true' groupRoles='9,10,11,12'  timeLimit='-1' tag=''>
+       <effect>
+            <item des='$effect.baoji' skillAnima='baoji001' type='baoji' param='20%,enemy.totalZDL'/>
+            <item des='$effect.attack' skillAnima='zhua001'  type='attack' param='130%'/>
+            <item des='$effect.recovery'  type='recovery' param='50%,self.loseZDL'/>
+            <item des='$effect.buff' type='buff' buff='10,10,10,10' param='self'/>
+        </effect>
+    </item>
+
 
 
     <item id='liwangkuanglan' name='力挽狂澜' des='这才是我真正的实力吗?'  buff="5,0,0,0" icon='skill_2_png'  isGroupSkill='false' groupRoles='' rate='10' canAvoid='true' timeLimit='-1' tag=''>
@@ -98,6 +126,13 @@
             <item des='$effect.baoji' skillAnima='blue001' type='baoji' param='50%,enemy.totalZDL'/>
         </effect>
     </item>
+
+     <item id='chituma' name='召唤赤兔马' buff="0,0,10,0" rate='30' canAvoid='true' des=''   icon='skill_2_png'  isGroupSkill='false' groupRoles=''  timeLimit='-1' tag=''>
+       <effect>
+            <item des='$effect.baoji' skillAnima='baoji001' type='baoji' param='60%,self.loseZDL'/>
+        </effect>
+    </item>
+
 
 
 

@@ -86,6 +86,7 @@ var game_file_list = [
 	"bin-debug/game/vo/DialogVO.js",
 	"bin-debug/game/vo/HeroAnimaVO.js",
 	"bin-debug/game/vo/MapVO.js",
+	"bin-debug/game/vo/SkillBaseVO.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",

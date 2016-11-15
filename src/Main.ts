@@ -35,7 +35,7 @@ class Main extends eui.UILayer {
     private loadingView: LoadingUI;
     protected createChildren(): void {
         super.createChildren();
-        gamesystem.version = '2016.11.11-18:14';
+        gamesystem.version = '2016.11.15-11:24';
         RES.registerVersionController(new gameutils.VersionCtrl());
         //inject the custom material parser
         //注入自定义的素材解析器
@@ -141,10 +141,10 @@ class Main extends eui.UILayer {
         gameMngers.analysisByxml(data);
         gameCore.resetUserInfo(gameMngers.playerInfoMnger.getVO('user'));
         gamesystem.initSystem(this.stage);
-        //显示视图
-        egret.Bitmap.defaultSmoothing = false;
-        this.addChild( gameviews.viewManager);
-        this.addChild(gameviews.goodsMessage);
+        egret.Bitmap.defaultSmoothing = false;//像素风格，无需平滑处理
+        //初始化显示视图
+        this.addChild( gameviews.viewManager);//界面视图
+        this.addChild(gameviews.goodsMessage);//这是消息层视图
         gameviews.viewManager.init(); 
         gameviews.viewManager.showMainPanel();
         

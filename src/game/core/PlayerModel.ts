@@ -9,7 +9,7 @@ module gameCore {
 	export const Event_BagChange:string = 'Event_BagChange';
 
 
-	/**约定currentUserInfo内部属性只访问，不修改，若要修改请调用专用方法*/
+	/**约定currentUserInfo内部属性只访问，不修改，若要修改，请调用PlayerModel内专用方法，便于维护*/
 	export var currentUserInfo:PlayerMO;
 	export function resetUserInfo(mo:PlayerMO):void{
 		currentUserInfo = mo;
@@ -73,26 +73,26 @@ module gameCore {
 		eventDispatch.dispatchEventWith(Event_MapChange);
 	}
 
-	/**关卡完成 */
+	/**关卡完成，获得道具，经验 */
 	export function finishMapChild():void{
 		var mapVO:gamevo.MapVO = currentUserInfo.currentMO.mapVo;
 		var mapChildVo:gamevo.MapChildVO = mapVO.mapChilds[currentUserInfo.curMapChild];
 		changeMapChildStatus(gamesystem.MapStatus_FightEnd);
 		var levelCoe:number = currentUserInfo.curMapLevel+1;
-		if(mapChildVo.gold>0){
+		if(mapChildVo.gold >0){
 			currentUserInfo.gold+=mapChildVo.gold*levelCoe;
 			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Gold,mapChildVo.gold*levelCoe);
 		}
-		if(mapChildVo.exp>0){
+		if(mapChildVo.exp >0){
 			currentUserInfo.exp+=mapChildVo.exp*levelCoe;
 			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Exp,mapChildVo.exp*levelCoe);
 		}
-		if(mapChildVo.money>0){
+		if(mapChildVo.money >0){
 			currentUserInfo.money+=mapChildVo.money*levelCoe;
 			gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Money,mapChildVo.money*levelCoe);
 		}
-		if(mapChildVo.daojus.length>0){
-			mapChildVo.daojus.forEach(item=>{
+		if(mapChildVo.daojus.length >0){
+			mapChildVo.daojus.forEach(item =>{
 				item = item.clone();
 				item.id = currentUserInfo.createGoodsId();
 				currentUserInfo.playerBagMnger.addGoods(item);
@@ -141,9 +141,17 @@ module gameCore {
 		}
 	}
 	/**随机获得英雄 */
-	export function randGetHero():void{
-		var i:number = Math.floor(Math.random()*gameMngers.roleInfoMnger.all.length);
-		var roleVo:gamevo.RoleBaseVO = gameMngers.roleInfoMnger.all[i];
+	export function randGetHero(param:number):void{
+		var arr:gamevo.RoleBaseVO[];
+		if(param >=1&&param <7){
+			arr = gameMngers.roleInfoMnger.libByQuality[param];
+		}
+		else{
+			arr = gameMngers.roleInfoMnger.all;
+		}
+
+		var i:number = Math.floor(Math.random()*arr.length);
+		var roleVo:gamevo.RoleBaseVO = arr[i];
 		var heroMo:HeroMO = new HeroMO();
 		var i:number =1;
 		while(true){
@@ -165,12 +173,13 @@ module gameCore {
 		gameviews.goodsMessage.showGoodsMes(gamesystem.Icon_Gold,addGold);
 	}
 
+	/**使用物品 */
 	export function useGoodsItem(go:GoodsItemMO):void{
 		var gvo:gamevo.GoodsItemVO = gameMngers.goodsInfoMnger.getVO(go.goodsId);
 		gvo.useEffects.forEach(item=>{
 			switch(item.type){
 				case 'randHero':
-				randGetHero();
+				randGetHero(parseFloat(item.param[0]));
 				break;
 				case 'randGold':
 				randGetGold();
@@ -181,6 +190,7 @@ module gameCore {
 		eventDispatch.dispatchEventWith(Event_BagChange);
 	}
 
+	/**更新出战队伍列表 */
 	export function changeTeam(heros:HeroMO[]):void{
 		currentUserInfo.playerBagMnger.teamHeroBag.clearItem();
 		heros.forEach(item=>

@@ -26,7 +26,7 @@
 //  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //////////////////////////////////////////////////////////////////////////////////////
-
+/**加载进度动画 */
 class LoadingUI extends egret.Sprite {
 
     public constructor() {
