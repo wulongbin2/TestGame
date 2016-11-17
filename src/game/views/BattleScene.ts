@@ -248,6 +248,7 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 	}
 
 	private action_backOut(success:()=>void,teamId:number){
+		this.action_playSkillName(()=>{},teamId,'闪');
 		var attackBattleTeam:gameviews.BattleTeam = this.battleteams[teamId];
 		var pos:number[] = this.battleteamPos[teamId];
 		egret.Tween.get(attackBattleTeam).
@@ -291,7 +292,7 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 		{
 			var pos:number[] = this.battleteamPos[this.currentOp.targetteam];
 			gameviews.viewManager.showDialogByXY(pos[1],BattleScene.BattleTeamY,this.currentOp.dialogRoleId,this.currentOp.mes,this.currentOp.targetteam === 0);
-			gameutils.asynMnger.addOnceCB(2000,success,this);
+			gameutils.asynMnger.addOnceCB(3000,success,this);
 		}
 		else{
 			gameviews.viewManager.hideDialog();

@@ -13,6 +13,7 @@
 		</e:skinName>
 	</e:Button>
 	<ns1:BaseBtn id="okBtn" label="确 定" y="476" anchorOffsetX="0" width="137" anchorOffsetY="0" height="56" horizontalCenter="0"/>
-	<e:Label id="titleTf" text="标签" x="65.12" y="325.4" anchorOffsetX="1.12" width="517" anchorOffsetY="-0.6" height="31" size="30" textAlign="center" textColor="0xffffff"/>
+	<e:Image source="paper_bg12_png" y="253" scale9Grid="72,27,114,17" anchorOffsetX="0" width="297" horizontalCenter="0"/>
+	<e:Label id="titleTf" text="标签" x="65.12" y="270.4" anchorOffsetX="1.12" width="517" anchorOffsetY="-0.6" height="31" size="30" textAlign="center" textColor="0x000000" bold="true" fontFamily="黑体"/>
 	<e:Label id="desTf" text="标签" x="67.12" y="362" anchorOffsetX="1.12" width="517" anchorOffsetY="-2" height="103" size="24" textAlign="center" textColor="0xc3ac71"/>
 </e:Skin>

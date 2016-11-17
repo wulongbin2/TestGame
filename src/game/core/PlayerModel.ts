@@ -166,6 +166,7 @@ module gameCore {
 		if(currentUserInfo.playerBagMnger.teamHeroBag.availgridsNum>0){
 			currentUserInfo.teamHeros.push(heroMo.id);
 			currentUserInfo.resetTeamHeros(currentUserInfo.teamHeros);
+			currentUserInfo.zdlChange();
 		}
 		eventDispatch.dispatchEventWith(Event_GetHero,false,heroMo);
 	}

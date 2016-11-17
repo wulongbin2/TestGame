@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="StartGameSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*" >
 	<w:Config id="157e1792b06" ></w:Config>
-	<e:Image id="cankaotu" source="开始界面_png" left="0" top="0" right="0" bottom="0" locked="true"/>
+	<e:Image id="cankaotu" left="0" top="0" right="0" bottom="0" source="aircity_png"/>
+	<e:Image source="listicon_arena_png" x="390.67" y="332.33" scaleX="2" scaleY="2.43" anchorOffsetX="0" width="104.33" anchorOffsetY="0" height="81.9"/>
 	<ns1:StartGameBtn id="startgameBtn" label="按钮" y="886" horizontalCenter="0"/>
+	<e:Image source="hero_png" y="345" anchorOffsetX="0" width="479" anchorOffsetY="0" height="149" horizontalCenter="0"/>
 </e:Skin>

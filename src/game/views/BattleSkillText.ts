@@ -26,6 +26,7 @@ module gameviews {
 			this.scaleX = 2;
 			this.scaleY = 10;
 			this.alpha = 0;
+			egret.Tween.removeTweens(this);
 			egret.Tween.get(this).to({scaleY:1,alpha:1},100).
 			call(()=>{
 				this.scaleX = 4;
@@ -34,7 +35,9 @@ module gameviews {
 			to({scaleX:2,scaleY:2},150).
 			wait(1000).
 			to({scaleY:4,scaleX:4,alpha:0},300).call(()=>{
-				this.parent.removeChild(this);
+				if(this.parent){
+					this.parent.removeChild(this);
+				}
 			});
 		}
 	}

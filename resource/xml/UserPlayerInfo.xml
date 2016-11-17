@@ -31,35 +31,4 @@
             <item id='0' maxMapLevel='0' maxMapChild='0'/>
         </map>
     </item>
-
-  <item id='user2' name='黄毛' gold='79992' exp='9061' money='4200' teamHeros='1,2,3,4,5,6,7,8,9,10,11,12,13,14,15' curMap='2' curMapLevel='0' curMapChild='4' curMapStatus='1' curMapGuajiTime='0' offlineTime='1478238884459'>
-		<heros>
-		<item id='1' roleId='0' roleLevel='8' awakenLevel='0' />
-<item id='2' roleId='29' roleLevel='205' awakenLevel='0' />
-<item id='3' roleId='197' roleLevel='202' awakenLevel='0' />
-<item id='4' roleId='79' roleLevel='170' awakenLevel='0' />
-<item id='5' roleId='228' roleLevel='12' awakenLevel='0' />
-<item id='6' roleId='234' roleLevel='16' awakenLevel='0' />
-<item id='7' roleId='114' roleLevel='16' awakenLevel='0' />
-<item id='8' roleId='3' roleLevel='31' awakenLevel='0' />
-<item id='9' roleId='125' roleLevel='13' awakenLevel='0' />
-<item id='10' roleId='217' roleLevel='21' awakenLevel='0' />
-<item id='11' roleId='147' roleLevel='19' awakenLevel='0' />
-<item id='12' roleId='185' roleLevel='44' awakenLevel='0' />
-<item id='13' roleId='140' roleLevel='27' awakenLevel='0' />
-<item id='14' roleId='150' roleLevel='15' awakenLevel='0' />
-<item id='15' roleId='7' roleLevel='25' awakenLevel='0' />
-</heros>
-		<daoju>
-		
-		</daoju>
-		<ziyuan>
-		<item id='4' goodsId='golem' goodsNum='10'/>
-		</ziyuan>
-		<map>
-		<item id='0' maxMapChild='0' maxMapLevel='1'/>
-<item id='1' maxMapChild='0' maxMapLevel='1'/>
-<item id='2' maxMapChild='4' maxMapLevel='0'/>
-		</map>
-</item> 
 </UserPalyerInfo>

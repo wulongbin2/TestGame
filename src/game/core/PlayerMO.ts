@@ -389,12 +389,8 @@ module gameCore {
 
 		public zdlChange():void{
 			this._zdlChagneTag = true;
-		}
-
-		public buffChange():void{
 			this._buffChangeTag = true;
 		}
-
 
 
 		public getMapMO(id:number):MapMO{

@@ -1,40 +1,40 @@
 <Dialog>
     <item id='start0_0'>
-        <item teamId='1' roleId='4' word='地球人!'/>
-        <item teamId='1' roleId='4' word='你是谁？'/>
+        <item teamId='1' roleId='4' word='地丘人!'/>
+        <item teamId='1' roleId='4' word='尼是噻？'/>
         <item teamId='0' roleId='0' word='我就是主角，姓黄名毛！'/>
         <item teamId='0' roleId='0' word='地球由我来保护！'/>
-        <item teamId='1' roleId='4' word='冷静点，少年！'/>
-        <item teamId='1' roleId='4' word='我是外星来的老司机，是和平的代表~！'/>
-        <item teamId='0' roleId='0' word='少废话，动手吧！'/>
+        <item teamId='1' roleId='4' word='冷静嘀，少年！'/>
+        <item teamId='1' roleId='4' word='听喔拱！'/>
+        <item teamId='1' roleId='4' word='喔是外星来的老司机，系和平的代表！'/>
+        <item teamId='0' roleId='0' word='听口音就知道！'/>
+        <item teamId='0' roleId='0' word='你是邪恶势力，动手吧！'/>
     </item>
     <item id='win0_0'>
-        <item teamId='1' roleId='4' word='少侠，饶命！'/>
-        <item teamId='0' roleId='0' word='现在你知道地球人不是好惹的吧？'/>
-        <item teamId='1' roleId='4' word='我明明什么也没惹你啊！'/>
-        <item teamId='0' roleId='0' word='（犀利的眼神）是吗？！'/>
-        <item teamId='1' roleId='4' word='是，大侠！小的可以走了吗？'/>
-        <item teamId='0' roleId='0' word='念你初犯，外星人你走吧！'/>
+        <item teamId='1' roleId='4' word='饶命！不拱了！不拱了！'/>
+        <item teamId='0' roleId='0' word='地球人可不是好惹的！'/>
+        <item teamId='1' roleId='4' word='喔么有惹你啊！'/>
+        <item teamId='0' roleId='0' word='外星人，你滚吧！'/>
     </item>
     <item id='fail0_0'>
         <item teamId='0' roleId='0' word='外星人，你等着！'/>
         <item teamId='0' roleId='0' word='我变强了会再来找你！'/>
-        <item teamId='1' roleId='4' word='我明明什么也没惹你啊！'/>
+        <item teamId='1' roleId='4' word='喔么有惹你啊！'/>
     </item>
 
     <item id='start0_1'>
-        <item teamId='1' roleId='4' word='地球人!'/>
+        <item teamId='1' roleId='4' word='地丘人!伊站住'/>
         <item teamId='0' roleId='0' word='又是你！'/>
-        <item teamId='1' roleId='4' word='不错，是我！'/>
-        <item teamId='1' roleId='4' word='现在道歉，还来得急！'/>
-        <item teamId='0' roleId='0' word='正义是不需要道歉的！'/>
-        <item teamId='1' roleId='4' word='小黄，上！'/>
+        <item teamId='1' roleId='4' word='是喔！'/>
+        <item teamId='1' roleId='4' word='供老子道歉，还来得急！'/>
+        <item teamId='0' roleId='0' word='地球人是不会屈服于外星人的威胁的！'/>
+        <item teamId='1' roleId='4' word='啊黄，攻！'/>
         <item teamId='1' roleId='6' word='旺旺！'/>
     </item>
     <item id='win0_1'>
-        <item teamId='1' roleId='4' word='可恶，连小黄也不是他对手！'/>
-        <item teamId='0' roleId='0' word='外星人，你还是太年轻了！！'/>
-        <item teamId='1' roleId='4' word='等着瞧，我还会在回来的！'/>
+        <item teamId='1' roleId='4' word='好噶子，连啊黄也怕伊！'/>
+        <item teamId='0' roleId='0' word='外星人，怕了吗？！！'/>
+        <item teamId='1' roleId='4' word='伊等着，喔还会再过来的！'/>
     </item>
     <item id='fail0_1'>
         <item teamId='0' roleId='0' word='太大意了！'/>
@@ -44,30 +44,32 @@
 
     
     <item id='start0_2'>
-        <item teamId='1' roleId='4' word='地球人!'/>
-        <item teamId='0' roleId='0' word='都第三回了，难道还记不住我的名字吗！'/>
-        <item teamId='1' roleId='4' word='这我我兄弟B！'/>
-        <item teamId='1' roleId='4' word='求饶还来得及！'/>
-        <item teamId='0' roleId='0' word='正义是不会求饶的！'/>
+        <item teamId='1' roleId='4' word='地丘人!'/>
+        <item teamId='0' roleId='0' word='都第三回了，难道还记不住我的大名吗！'/>
+        <item teamId='1' roleId='4' word='这系喔兄弟，B！'/>
+        <item teamId='1' roleId='4' word='求饶还过得及！'/>
+        <item teamId='0' roleId='0' word='地球人是不会求饶的！'/>
         <item teamId='1' roleId='5' word='和平万岁！和平万岁！和平万岁！'/>
         <item teamId='1' roleId='6' word='旺！旺！旺！'/>
     </item>
     <item id='win0_2'>
         <item teamId='1' roleId='5' word='（逃跑）和平万岁！和平万岁！和平万岁！'/>
-        <item teamId='1' roleId='4' word='2B，你怎么逃了！'/>
+        <item teamId='1' roleId='4' word='2B，伊不要逃！'/>
         <item teamId='1' roleId='6' word='（逃跑）旺！旺！旺！'/>
-        <item teamId='1' roleId='4' word='小黄，你也逃了！'/>
-        <item teamId='1' roleId='4' word='外星人之间的信任在哪里？555！'/>
-        <item teamId='0' roleId='0' word='哎，这就是邪恶势利的下场'/>
+        <item teamId='1' roleId='4' word='啊黄，回来！'/>
+        <item teamId='1' roleId='4' word='外星农之间噶信任在哪里？！'/>
+        <item teamId='0' roleId='0' word='邪恶势利在正义面前'/>
+        <item teamId='0' roleId='0' word='土崩瓦解！'/>
     </item>
     <item id='fail0_2'>
         <item teamId='0' roleId='0' word='以多欺少，卑鄙！'/>
-        <item teamId='1' roleId='4' word='偶弥陀佛，少年，回头是岸！！'/>
+        <item teamId='1' roleId='4' word='少年，喔要带伊去劳改！！'/>
+        <item teamId='0' roleId='0' word='不。。。'/>
     </item>
 
     <item id='start0_3'>
         <item teamId='1' roleId='7' word='地球人，我等你多时!'/>
-        <item teamId='0' roleId='0' word='你是谁？'/>
+        <item teamId='0' roleId='0' word='好威武,你是谁？'/>
         <item teamId='1' roleId='7' word='我是外星将军！'/>
         <item teamId='0' roleId='0' word='终于打算侵略地球了吗？'/>
         <item teamId='1' roleId='7' word='少年，你打伤了我的司机！'/>
@@ -82,31 +84,34 @@
     <item id='fail0_3'>
         <item teamId='0' roleId='0' word='高，高手！！'/>
         <item teamId='1' roleId='7' word='少年，你很有天分！'/>
-        <item teamId='1' roleId='7' word='加入外星科技，他日飞黄腾达便指日可待！'/>
+        <item teamId='1' roleId='7' word='加入外星科技'/>
+        <item teamId='1' roleId='7' word='飞黄腾达,指日可待！'/>
         <item teamId='0' roleId='0' word='嗯，让我考虑考虑！'/>
     </item>
 
      <item id='start0_4'>
-        <item teamId='0' roleId='0' word='这个熟悉的气息，难道是？'/>
-        <item teamId='0' roleId='0' word='红毛大哥！'/>
+        <item teamId='0' roleId='0' word='这个炽热的杀意，难道是？'/>
+        <item teamId='0' roleId='0' word='红毛！'/>
         <item teamId='1' roleId='8' word='能够与将军一教高下又叫黄毛的人'/>
         <item teamId='1' roleId='8' word='除了你不会有第二个！'/>
         <item teamId='0' roleId='0' word='这么多年未有你的消息'/>
         <item teamId='0' roleId='0' word='原来你加入了外星科技！'/>
-        <item teamId='1' roleId='8' word='不错！男子汉，大丈夫'/>
-        <item teamId='1' roleId='8' word='必须要干一番事业！'/>
-        <item teamId='0' roleId='0' word='看来你我今日一战不可避免！'/>
-        <item teamId='1' roleId='8' word='不错，动手！'/>
+        <item teamId='1' roleId='8' word='地球支撑不起我的野心！'/>
+        <item teamId='0' roleId='0' word='所以你背叛地球吗？'/>
+        <item teamId='1' roleId='8' word='黄毛，你还这么幼稚！'/>
+        <item teamId='0' roleId='0' word='不必废话，动手！'/>
     </item>
     <item id='win0_4'>
         <item teamId='1' roleId='8' word='你变强了！'/>
-        <item teamId='0' roleId='0' word='大哥也很厉害啊！'/>
+        <item teamId='0' roleId='0' word='你也很厉害！'/>
         <item teamId='1' roleId='8' word='可惜这样的实力还不是将军的对手！'/>
+        <item teamId='1' roleId='8' word='你好自为之！'/>
     </item>
     <item id='fail0_4'>
         <item teamId='1' roleId='8' word='你变强了！'/>
-        <item teamId='0' roleId='0' word='大哥也很厉害啊！'/>
-         <item teamId='1' roleId='8' word='可惜这样的实力还不是我的对手！'/>
+        <item teamId='0' roleId='0' word='你也很厉害！'/>
+        <item teamId='1' roleId='8' word='可惜这样的实力还不是我的对手！'/>
+        <item teamId='1' roleId='8' word='你好自为之！'/>
     </item>
 
     <item id='start1_0'>
@@ -115,14 +120,13 @@
         <item teamId='0' roleId='0' word='地球是文明世界！'/>
         <item teamId='0' roleId='0' word='站街这样的行为有辱文明世界！'/>
         <item teamId='1' roleId='9' word='小屁孩，滚开！'/>
-        <item teamId='0' roleId='0' word='看来必须动用正义的力量了！'/>
+        <item teamId='0' roleId='0' word='我已经很久不放屁了！'/>
     </item>
     <item id='win1_0'>
-        <item teamId='1' roleId='9' word='（心思）可恶的黄毛小子！'/>
-        <item teamId='1' roleId='9' word='难道他看出了我们月球的计划了吗？'/>
-        <item teamId='0' roleId='0' word='为了地球与月球人的友好！'/>
-        <item teamId='0' roleId='0' word='兔小姐不要再让我看到有下次！'/>
-        <item teamId='1' roleId='9' word='切！'/>
+        <item teamId='1' roleId='9' word='可恶的地球人！'/>
+        <item teamId='1' roleId='9' word='这起恶劣的事件'/>
+        <item teamId='1' roleId='9' word='我一定会向地球政府控告！'/>
+        <item teamId='0' roleId='0' word='我代表地球人欢迎你再来！！'/>
     </item>
     <item id='fail1_0'>
         <item teamId='1' roleId='9' word='小子，快回家找妈妈去吧！'/>
@@ -135,11 +139,11 @@
         <item teamId='0' roleId='0' word='但我依然认得你！'/>
         <item teamId='1' roleId='10' word='少年，要不要进来做做！'/>
         <item teamId='0' roleId='0' word='没想到你依旧不改本性！'/>
-        <item teamId='0' roleId='0' word='正义是不会抛弃你的！'/>
+        <item teamId='0' roleId='0' word='文明的步伐是无人可当的！'/>
     </item>
     <item id='win1_1'>
         <item teamId='0' roleId='0' word='咦，这不是假发！！'/>
-        <item teamId='1' roleId='10' word='给我记住！'/>
+        <item teamId='1' roleId='10' word='臭小子，给我记住！'/>
     </item>
     <item id='fail1_1'>
         <item teamId='1' roleId='10' word='月球人可不是好惹的！'/>
@@ -158,12 +162,13 @@
     </item>
     <item id='win1_2'>
         <item teamId='0' roleId='0' word='领教了！大妈！'/>
-        <item teamId='1' roleId='11' word='可恶的小子！'/>
-        <item teamId='1' roleId='11' word='下次可不会这么好运！'/>
+        <item teamId='1' roleId='11' word='黄毛的小子！'/>
+        <item teamId='1' roleId='11' word='你等着！'/>
     </item>
     <item id='fail1_2'>
+        <item teamId='1' roleId='11' word='黄毛的小子！'/>
         <item teamId='1' roleId='11' word='抬头，挺胸，收腹！'/>
-        <item teamId='0' roleId='0' word='是~_~'/>
+        <item teamId='0' roleId='0' word='是。。。。'/>
     </item>
 
      <item id='start1_3'>
@@ -193,10 +198,10 @@
         <item teamId='0' roleId='0' word='啥，啥计划？'/>
     </item>
     <item id='win1_4'>
-        <item teamId='0' roleId='0' word='哈哈！'/>
         <item teamId='0' roleId='0' word='原来你们是月球使者！'/>
-        <item teamId='0' roleId='0' word='难怪，哪有武功这么厉害的街女！'/>
         <item teamId='0' roleId='0' word='是我搞错了！'/>
+        <item teamId='1' roleId='12' word='你无礼的行为已经伤害了月球人的心！'/>
+        <item teamId='1' roleId='12' word='你们会为此付出代价！'/>
     </item>
     <item id='fail1_4'>
         <item teamId='0' roleId='0' word='我错了，姐姐们！'/>
@@ -230,9 +235,9 @@
         <item teamId='0' roleId='0' word='不过我接受你的挑战！'/>
     </item>
     <item id='win2_0'>
-        <item teamId='0' roleId='0' word='是吗?'/>
+        <item teamId='0' roleId='0' word='不好！'/>
         <item teamId='0' roleId='0' word='月球人和外星人联合起来侵略地球了'/>
-        <item teamId='0' roleId='0' word='终于到了我出人头地的一天了！'/>
+        <item teamId='0' roleId='0' word='地球危险了！！'/>
     </item>
     <item id='fail2_0'>
         <item teamId='0' roleId='0' word='小黄，有句话我一直想告诉你！'/>
@@ -247,7 +252,8 @@
         <item teamId='0' roleId='0' word='你是传说中曾经统治地球的'/>
         <item teamId='0' roleId='0' word='恐龙！'/>
         <item teamId='1' roleId='15' word='啊噢！啊噢！啊噢！'/>
-        <item teamId='0' roleId='0' word='看来恐龙灭绝是不可避免了！'/>
+        <item teamId='0' roleId='0' word='这样的智商！'/>
+        <item teamId='0' roleId='0' word='恐龙灭绝是在所难免的！'/>
     </item>
     <item id='win2_1'>
         <item teamId='1' roleId='15' word='噢~'/>
@@ -257,7 +263,7 @@
     <item id='fail2_1'>
         <item teamId='0' roleId='0' word='这块头，这怒火！'/>
         <item teamId='0' roleId='0' word='和想象中的恐龙不一样！'/>
-        <item teamId='0' roleId='0' word='对不起，是我认错龙了'/>
+        <item teamId='0' roleId='0' word='是我认错龙了吗？'/>
     </item>
 
     <item id='start2_2'>
@@ -267,7 +273,7 @@
         <item teamId='0' roleId='0' word='你们还没有改行？'/>
         <item teamId='1' roleId='11' word='臭小子！'/>
         <item teamId='1' roleId='11' word='我们真实的身份是'/>
-        <item teamId='1' roleId='11' word='月球兔暗杀部队！'/>
+        <item teamId='1' roleId='11' word='月球暗杀部队！'/>
         <item teamId='1' roleId='9' word='今日不是你死'/>
         <item teamId='1' roleId='10' word='就是你亡！'/>
     </item>
@@ -279,9 +285,8 @@
         <item teamId='0' roleId='0' word='为何如此刺眼！'/>
     </item>
     <item id='fail2_2'>
-        <item teamId='1' roleId='12' word='黄毛，跪下来求饶，我们就。。。'/>
-        <item teamId='0' roleId='0' word='妹妹，姐姐，女神,大妈！'/>
-        <item teamId='0' roleId='0' word='一切都是误会啊！'/>
+        <item teamId='1' roleId='12' word='黄毛，你的死期到了。。。'/>
+        <item teamId='0' roleId='0' word='一切都是误会！'/>
     </item>
 
 
@@ -315,14 +320,14 @@
         <item teamId='1' roleId='16' word='我代表外星科技'/>
         <item teamId='1' roleId='16' word='正式对你提出聘用'/>
         <item teamId='1' roleId='16' word='年薪百万'/>
-        <item teamId='1' roleId='16' word='在月球买房指日可待！'/>
+        <item teamId='1' roleId='16' word='在外星买房指日可待！'/>
         <item teamId='0' roleId='0' word='。。。。'/>
         <item teamId='1' roleId='16' word='机会难得，少年！'/>
-        <item teamId='0' roleId='0' word='月球吗？'/>
+        <item teamId='0' roleId='0' word='外星吗？'/>
         <item teamId='0' roleId='0' word='虽然是个不错的地方'/>
         <item teamId='0' roleId='0' word='不过地球村是我的故乡'/>
         <item teamId='0' roleId='0' word='将军的美意'/>
-        <item teamId='0' roleId='0' word='还得由将军的战舰载回！'/>
+        <item teamId='0' roleId='0' word='还是连同将军的战舰一起收回！'/>
         <item teamId='1' roleId='16' word='真是可惜！'/>
         <item teamId='1' roleId='16' word='拒绝我的美意是需要实力的！'/>
     </item>
