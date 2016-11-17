@@ -9,4 +9,16 @@
         <item bg='layer4_grass_png' type='moveBg'/>
         <item bg='layer3_tree_png' type='moveBg'/>
     </item>
+
+    <item id='yueqiu'>
+        <item bg='layer4_street_png' type='moveBg'/>
+        <item bg='layer3_city_png' type='moveBg'/>
+        <item bg='layer1_city_png' type='moveBg'/>
+    </item>
+
+    <item id='time'>
+        <item bg='layer5_time_png' type='staticBg'/>
+        <item bg='layer3_bridge_png' type='moveBg'/>
+        <item bg='layer1_rock_png' type='moveBg'/>
+    </item>
 </MapGuajiAnima>

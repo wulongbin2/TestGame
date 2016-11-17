@@ -39,7 +39,7 @@ module gameCore {
 	/**改变当前地图难度 */
 	export function changeMapLevel(level:number):void{
 		currentUserInfo.curMapLevel = level
-		changeMapChild(currentUserInfo.currentMO.maxMapLevel ===level?currentUserInfo.currentMO.maxMapChild:0);
+		changeMapChild(currentUserInfo.currentMO.maxMapLevel ===level?currentUserInfo.currentMO.maxMapChild:gamesystem.MaxMapChild);
 	}
 	/**改变当前地图关卡 */
 	export function changeMapChild(id:number):void{
@@ -163,6 +163,10 @@ module gameCore {
 		heroMo.id = i+'';
 		heroMo.initHero(roleVo.id);
 		currentUserInfo.addHero(heroMo);
+		if(currentUserInfo.playerBagMnger.teamHeroBag.availgridsNum>0){
+			currentUserInfo.teamHeros.push(heroMo.id);
+			currentUserInfo.resetTeamHeros(currentUserInfo.teamHeros);
+		}
 		eventDispatch.dispatchEventWith(Event_GetHero,false,heroMo);
 	}
 	/**随机获得金币 */

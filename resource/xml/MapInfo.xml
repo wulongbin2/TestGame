@@ -35,7 +35,7 @@
                 </daoju>
             </item>
 
-            <item id='3' name='外星将军' zdl='3000' buff='10,0,0,0' gold='100' exp='8000' money='300' dialogId='0_3' mes='许多夜晚重叠 悄然形成黑暗 玫瑰吸收光芒 大地按捺清香 为了寻找你 我搬进鸟的眼睛 经常盯着路过的风'>
+            <item id='3' name='外星将军' zdl='4000' buff='10,0,0,0' gold='100' exp='8000' money='300' dialogId='0_3' mes='许多夜晚重叠 悄然形成黑暗 玫瑰吸收光芒 大地按捺清香 为了寻找你 我搬进鸟的眼睛 经常盯着路过的风'>
                 <heros>
                     <item id='2' roleId='7'/>
                 </heros>
@@ -44,7 +44,7 @@
                 </daoju>
             </item>
 
-            <item id='4' name='红毛' zdl='4000' buff='0,10,0,0'  gold='100' exp='10000' money='300' dialogId='0_4' mes='命运布光的手 为我支起了四十二架风车 源源不断的自然 宇宙来自于平衡 附近的星球来自于回声 沼泽来自于地面的失眠 褶皱来自于海 冰来自于酒 通往岁月楼层的应急灯 通往我写诗的石缝 一定有人离开了会回来 腾空的竹篮装满爱 一定有某种破碎像泥土 某个谷底像手一'>
+            <item id='4' name='红毛' zdl='5000' buff='0,10,0,0'  gold='100' exp='10000' money='300' dialogId='0_4' mes='命运布光的手 为我支起了四十二架风车 源源不断的自然 宇宙来自于平衡 附近的星球来自于回声 沼泽来自于地面的失眠 褶皱来自于海 冰来自于酒 通往岁月楼层的应急灯 通往我写诗的石缝 一定有人离开了会回来 腾空的竹篮装满爱 一定有某种破碎像泥土 某个谷底像手一'>
                 <heros>
                    <item id='2' roleId='8'/>
                 </heros>
@@ -56,9 +56,9 @@
         </mapChild>
     </item>
     
-    <item id='1' name='月球使者'  goldSpeed='8' expSpeed='100' waitTime='10000' listBg='mapbg_aircity_png' battleBg='plain' cityIcon='aircity_big_png' guajiAnima='test' kaiqiZdl='3000' useRoleIds='9,10,11,12'>
+    <item id='1' name='月球使者'  goldSpeed='8' expSpeed='100' waitTime='10000' listBg='mapbg_aircity_png' battleBg='angel' cityIcon='city_big_png' guajiAnima='yueqiu' kaiqiZdl='3000' useRoleIds='9,10,11,12'>
         <mapChild>
-             <item id='0' name='赤兔' zdl='3000' buff='0,0,10,0' gold='100' exp='12000' money='300' dialogId='1_0' mes='血色染红了天空 厄夜即将降临 亡者的意志剥离粉碎 你只不过是一个颗棋子'>
+             <item id='0' name='赤兔' zdl='10000' buff='0,0,10,0' gold='100' exp='12000' money='300' dialogId='1_0' mes='血色染红了天空 厄夜即将降临 亡者的意志剥离粉碎 你只不过是一个颗棋子'>
                 <heros>
                     <item id='1' roleId='9'/>
                 </heros>
@@ -66,7 +66,7 @@
                     <item id='1' goodsId='randZiHero' goodsNum='1'/>
                 </daoju>
             </item>
-            <item id='1' name='白兔' zdl='4000' buff='10,0,0,0' gold='100' exp='13000' money='300' dialogId='1_1' mes='剑是凶器 罗网也是凶器 你也是凶器 除了战斗没有第二种选择'>
+            <item id='1' name='白兔' zdl='12000' buff='10,0,0,0' gold='100' exp='13000' money='300' dialogId='1_1' mes='剑是凶器 罗网也是凶器 你也是凶器 除了战斗没有第二种选择'>
                 <heros>
                     <item id='1' roleId='10'/>
                 </heros>
@@ -75,7 +75,7 @@
                 </daoju>
             </item>
 
-            <item id='2' name='黄兔' zdl='5000' buff='0,0,0,10' gold='100' exp='15000' money='300' dialogId='1_2' mes='灵衣玉佩 一阴一阳 罗生堂下 秋兰长生'>
+            <item id='2' name='黄兔' zdl='15000' buff='0,0,0,10' gold='100' exp='15000' money='300' dialogId='1_2' mes='灵衣玉佩 一阴一阳 罗生堂下 秋兰长生'>
                 <heros>
                     <item id='1' roleId='11'/>
                 </heros>
@@ -84,114 +84,123 @@
                 </daoju>
             </item>
 
-            <item id='3' name='蓝兔' zdl='6000' buff='0,10,0,0' gold='100' exp='20000' money='300' dialogId='1_3' mes='硝烟飘到了遥远的尽头 战场已被风沙掩埋 呐喊在空寂里沉默 古剑在残风中腐锈 为战斗而生的灵魂 开始为生存而战斗 没有号角的年代里 生存是唯一的长路'>
+            <item id='3' name='蓝兔' zdl='17000' buff='0,10,0,0' gold='100' exp='20000' money='300' dialogId='1_3' mes='硝烟飘到了遥远的尽头 战场已被风沙掩埋 呐喊在空寂里沉默 古剑在残风中腐锈 为战斗而生的灵魂 开始为生存而战斗 没有号角的年代里 生存是唯一的长路'>
                 <heros>
                     <item id='1' roleId='12'/>
                 </heros>
                 <daoju>
-                    <item id='1' goodsId='randHero' goodsNum='1'/>
+                    <item id='1' goodsId='randBlueHero' goodsNum='1'/>
                 </daoju>
             </item>
 
-            <item id='4' name='四兔齐心' zdl='8000' buff='10,10,10,10' gold='0' exp='30000' money='300' dialogId='1_4' mes='生命短暂犹若露珠消散 人们在奔波中探寻答案 运数仿佛大海起伏不定 掌上迷离脉纹回路漫漫 长剑在黑夜吟唱悲歌 岁月如斑驳铜镜经年 天际流火叩响大地之门 岁月星辰刻画沧桑年轮 纵横交错兮天下之局 谁能参悟兮世事如棋'>
+            <item id='4' name='四兔齐心' zdl='20000' buff='10,10,10,10' gold='0' exp='30000' money='300' dialogId='1_4' mes='生命短暂犹若露珠消散 人们在奔波中探寻答案 运数仿佛大海起伏不定 掌上迷离脉纹回路漫漫 长剑在黑夜吟唱悲歌 岁月如斑驳铜镜经年 天际流火叩响大地之门 岁月星辰刻画沧桑年轮 纵横交错兮天下之局 谁能参悟兮世事如棋'>
                 <heros>
                    <item id='1' roleId='12'/>
-                   <item id='1' roleId='11'/>
-                   <item id='1' roleId='10'/>
-                   <item id='1' roleId='9'/>
+                   <item id='2' roleId='11'/>
+                   <item id='3' roleId='10'/>
+                   <item id='4' roleId='9'/>
                 </heros>
                 <daoju>
-                    <item id='1' goodsId='randHero' goodsNum='1'/>
+                    <item id='1' goodsId='randLightHero' goodsNum='1'/>
                 </daoju>
             </item>
         </mapChild>
     </item>
 
-<!--
-     <item id='2' name='歌霸世界'  goldSpeed='10' expSpeed='150' waitTime='5000' listBg='mapbg_aircity_png' battleBg='ether' cityIcon='aircity_big_png' guajiAnima='test' kaiqiZdl='10000' useRoleIds='0,1,2,3,4,5,6,7,8,9'>
+
+     <item id='2' name='末日对决'  goldSpeed='10' expSpeed='150' waitTime='15000' listBg='mapbg_volcano_png' battleBg='time' cityIcon='time_big_png' guajiAnima='time' kaiqiZdl='10000' useRoleIds='7,8,9,10,11,12,13,14,15,16'>
         <mapChild>
-             <item id='0' name='《欢喜就好》' zdl='10000' buff='15,15,0,0' gold='100' exp='50000' money='300' mes=
+             <item id='0' name='末日杂兵' zdl='22000' buff='15,10,15,15' dialogId='2_0'  gold='100' exp='50000' money='300' mes=
              '人生海海 敢需要拢了解 有时仔清醒 有时凊彩 有人讲好 一定有人讲䆀 若莫想遐济 咱生活较自在 规工嫌车无够奅 嫌厝无够大 嫌菜煮了无好吃 嫌某伤歹看 驶著好车惊人偷　大厝歹拚扫 食甲伤好惊血压高　媠某会缀人走 人生短短　好亲像咧辶日迌 有时仔烦恼 可问我到底 腹内有啥法宝 其实无撇步 欢喜就好'>
                 <heros>
-                    <item id='1' roleId='1' roleLevel='3' awakenLevel='1'/>
-                    <item id='2' roleId='2' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='1' roleLevel='3' awakenLevel='1'/>
-                    <item id='2' roleId='2' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='1' roleLevel='3' awakenLevel='1'/>
-                    <item id='2' roleId='2' roleLevel='7' awakenLevel='2'/>
-
+                    <item id='0' roleId='6'/>
+                    <item id='1' roleId='13'/>
+                    <item id='2' roleId='14'/>
+                    <item id='3' roleId='13'/>
+                    <item id='4' roleId='14'/>
+                    <item id='5' roleId='13'/>
+                    <item id='6' roleId='14'/>
+                    <item id='7' roleId='13'/>
+                    <item id='8' roleId='14'/>
+                    <item id='9' roleId='13'/>
+                    <item id='10' roleId='14'/>
+                    <item id='11' roleId='13'/>
+                    <item id='12' roleId='14'/>
+                    <item id='13' roleId='13'/>
+                    <item id='14' roleId='14'/>
+                    <item id='15' roleId='13'/>
+                    <item id='16' roleId='14'/>
+                    <item id='17' roleId='13'/>
+                    <item id='18' roleId='14'/>
+                    <item id='18' roleId='13'/>
                 </heros>
                 <daoju>
-                    <item id='1' goodsId='randHero' goodsNum='1'/>
-                    <item id='2' goodsId='randHero' goodsNum='1'/>
+                    <item id='1' goodsId='randWhiteHero' goodsNum='1'/>
                 </daoju>
             </item>
-            <item id='1' name='《乱世桃花》'  zdl='12000' buff='0,0,15,15' gold='100' exp='50000' money='300' mes=
+            <item id='1' name='黑龙怒火'  zdl='30000' buff='10,50,-20,10'  dialogId='2_1'  gold='100' exp='50000' money='300' mes=
             '桃 花 飘 梦 魂 断  情 不 死 心 更 乱  几 许 不 想 说 而 终 须 讲   难 遂 我 难 遂 你 心 里 愿   桃 花 岛 欢 笑 短   人 在 愁 风 雨 乱  苦 苦 苍 生 已 忘 心 中 恋  明 日 我 宝 剑 为 谁 断'>
                 <heros>
-                    <item id='2' roleId='5' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='2' roleLevel='3' awakenLevel='1'/>
-                    <item id='2' roleId='2' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='3' roleLevel='3' awakenLevel='1'/>
-                    <item id='2' roleId='3' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='3' roleLevel='3' awakenLevel='1'/>
+                    <item id='0' roleId='15'/>
+                    <item id='1' roleId='13'/>
+                    <item id='2' roleId='14'/>
+                    <item id='3' roleId='13'/>
+                    <item id='4' roleId='14'/>
+                    <item id='5' roleId='13'/>
+                    <item id='6' roleId='14'/>
+                    <item id='7' roleId='13'/>
+                    <item id='8' roleId='14'/>
+                    <item id='9' roleId='13'/>
+                    <item id='10' roleId='14'/>
+                    <item id='11' roleId='13'/>
+                    <item id='12' roleId='14'/>
+                    <item id='13' roleId='13'/>
+                    <item id='14' roleId='14'/>
+                    <item id='15' roleId='13'/>
+                    <item id='16' roleId='14'/>
+                    <item id='17' roleId='13'/>
+                    <item id='18' roleId='14'/>
+                    <item id='18' roleId='13'/>
                 </heros>
                 <daoju>
-                    <item id='1' goodsId='randHero' goodsNum='1'/>
-                    <item id='2' goodsId='randHero' goodsNum='1'/>
+                    <item id='2' goodsId='randYellowHero' goodsNum='1'/>
                 </daoju>
             </item>
 
-            <item id='2' name='《寒潭渡鹤》'  zdl='16000' buff='15,0,0,15' gold='100' exp='50000' money='300' mes=
+            <item id='2' name='逆袭姐妹'  zdl='30000' buff='30,30,20,30' dialogId='2_2' gold='100' exp='50000' money='300' mes=
             '雁渡寒潭 雁去潭不留影 惊鸿一瞥 潮来潮去 洗去多少足迹 一切都是缘 多少人曾经轻轻掠过我的眼帘 多少人曾经闯入我的内心世界 多少人曾经用思念将我撕裂 多少智慧才能忍下我的离别泪'>
                 <heros>
-                    <item id='2' roleId='8' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='9' roleLevel='3' awakenLevel='1'/>
-                    <item id='2' roleId='9' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='9' roleLevel='3' awakenLevel='1'/>
+                    <item id='1' roleId='12'/>
+                   <item id='2' roleId='11'/>
+                   <item id='3' roleId='10'/>
+                   <item id='4' roleId='9'/>
                 </heros>
                 <daoju>
-                    <item id='1' goodsId='randHero' goodsNum='1'/>
-                    <item id='2' goodsId='randHero' goodsNum='1'/>
+                    <item id='1' goodsId='randLightHero' goodsNum='1'/>
                 </daoju>
             </item>
 
-            <item id='3' name='《灵魂出走》'  zdl='20000' buff='15,15,0,15' gold='100' exp='50000' money='300' mes=
+            <item id='3' name='宿敌红毛'  zdl='35000' buff='40,40,20,40' dialogId='2_3'  gold='100' exp='50000' money='300' mes=
             '一个人不要怕跟我飞 广袤无边的森林漂浮飞天 回旋钟声从教堂到塔尖 飞越笼罩迷雾的山峦之巅 禁锢的灵魂暂时的逃脱危险 雨滴落下的美回忆在倾泻 蒙上灰的梦想再度被发现 梦摇醒了从前 Wu Wu Wu Wu Wu'>
                 <heros>
-                     <item id='1' roleId='9' roleLevel='3' awakenLevel='1'/>
-                    <item id='2' roleId='10' roleLevel='7' awakenLevel='2'/>
-                    <item id='2' roleId='9' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='9' roleLevel='3' awakenLevel='1'/>
+                     <item id='1' roleId='8'/>
                 </heros>
                 <daoju>
-                    <item id='1' goodsId='randHero' goodsNum='1'/>
-                    <item id='2' goodsId='randHero' goodsNum='1'/>
+                    <item id='1' goodsId='randYellowHero' goodsNum='1'/>
                 </daoju>
             </item>
 
-            <item id='4' name='《明日计划》' gold='100' exp='20000' zdl='100000' buff='15,15,15,15' money='300' mes='如果我们今天分别 请别把我留在世界 让我飞去别的星球 看地球毁灭 如果宇宙还在旋转 相信我会再次回来'>
+            <item id='4' name='大将军' gold='100' exp='30000' zdl='33000' dialogId='2_4' buff='50,50,30,50' money='300' mes='如果我们今天分别 请别把我留在世界 让我飞去别的星球 看地球毁灭 如果宇宙还在旋转 相信我会再次回来'>
                 <heros>
-                     <item id='1' roleId='8' roleLevel='3' awakenLevel='1'/>
-                    <item id='2' roleId='8' roleLevel='7' awakenLevel='2'/>
-                    <item id='2' roleId='8' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='8' roleLevel='3' awakenLevel='1'/>
-                      <item id='1' roleId='8' roleLevel='3' awakenLevel='1'/>
-                    <item id='2' roleId='8' roleLevel='7' awakenLevel='2'/>
-                    <item id='2' roleId='8' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='8' roleLevel='3' awakenLevel='1'/>
-                      <item id='1' roleId='8' roleLevel='3' awakenLevel='1'/>
-                    <item id='2' roleId='8' roleLevel='7' awakenLevel='2'/>
-                    <item id='2' roleId='8' roleLevel='7' awakenLevel='2'/>
-                     <item id='1' roleId='8' roleLevel='3' awakenLevel='1'/>
+                     <item id='1' roleId='16'/>
+                     <item id='2' roleId='15'/>
+                     <item id='3' roleId='15'/>
+                     <item id='4' roleId='15'/>
                 </heros>
                 <daoju>
-                    <item id='1' goodsId='randHero' goodsNum='1'/>
-                    <item id='2' goodsId='randHero' goodsNum='1'/>
                 </daoju>
             </item>
         </mapChild>
     </item>
-    -->
     
 </mapInfo>

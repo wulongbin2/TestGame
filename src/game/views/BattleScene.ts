@@ -135,6 +135,7 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 							gameCore.finishMapChild();
 						}
 						this.isRunning = false;
+						this.gameEnd();
 					})
 				});
 				var win:gameviews.BattleTeam;
@@ -167,6 +168,10 @@ class BattleScene extends eui.Component implements  eui.UIComponent {
 		if(nextBool){
 			this.nextOP();
 		}
+	}
+
+	protected gameEnd():void{
+
 	}
 
 	private set isRunning(value:boolean){

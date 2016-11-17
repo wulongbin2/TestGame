@@ -8,6 +8,10 @@ module gameCore {
 			return this.goodsId;
 		}
 
+		public toXMLString():string{
+			return `<item id='${this.id}' goodsId='${this.goodsId}' goodsNum='${this.goodsNum}'/>`
+		}
+
 		public analysis(config:any):void{
 				var xml:egret.XML = config as egret.XML;
 			this.id = xml.attributes.id;
@@ -42,6 +46,10 @@ module gameCore {
 			this.awakenLevel = 0;
 			this._zdlChagneTag = true;
 			this.roleVo = gameMngers.roleInfoMnger.getVO(this.roleId);
+		}
+
+		public toXMLString():string{
+			return `<item id='${this.id}' roleId='${this.roleId}' roleLevel='${this.roleLevel}' awakenLevel='${this.awakenLevel}' />`;
 		}
 
 		public get zdl():number
@@ -181,6 +189,10 @@ module gameCore {
 
 		}
 
+		public toXMLString():string{
+			return `<item id='${this.mapId}' maxMapChild='${this.maxMapChild}' maxMapLevel='${this.maxMapLevel}'/>`
+		}
+
 		public init(mapId:number):void{
 			this.id = mapId+'';
 			this.mapId = mapId;
@@ -264,6 +276,45 @@ module gameCore {
 			});
 
 			this.resetTeamHeros( gameutils.XMLUtil.toStringArray(xml,'teamHeros'));
+		}
+
+		public toXMLString():string{
+			var allHeros:string =``;
+			this.getAllHero(false).forEach(item=>{
+				allHeros+=item.toXMLString()+'\n';
+			})
+
+			var allDaoju:string =``;
+			this.playerBagMnger.daojuBag.allItems.forEach(item=>{
+				allDaoju+=item.toXMLString()+'\n';
+			})
+
+			var allZiyuan:string =``;
+			this.playerBagMnger.ziyuanBag.allItems.forEach(item=>{
+				allZiyuan+=item.toXMLString()+'\n';
+			})
+
+			var allMap:string =``;
+			this.mapMOs.forEach(item=>{
+				allMap+=item.toXMLString()+'\n';
+			})
+			var str:string =
+`<item id='${this.id}' name='${this.name}' gold='${this.gold}' exp='${this.exp}' money='${this.money}' teamHeros='${this.teamHeros.join(',')}' curMap='${this.curMap}' curMapLevel='${this.curMapLevel}' curMapChild='${this.curMapChild}' curMapStatus='${this.curMapStatus}' curMapGuajiTime='0' offlineTime='1478238884459'>
+		<heros>
+		${allHeros}
+		</heros>
+		<daoju>
+		${allDaoju}
+		</daoju>
+		<ziyuan>
+		${allZiyuan}
+		</ziyuan>
+		<map>
+		${allMap}
+		</map>
+</item>`
+
+			return str;
 		}
 
 		public resetTeamHeros(ids:string[]):void{

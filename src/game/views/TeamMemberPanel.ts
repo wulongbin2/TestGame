@@ -77,6 +77,7 @@ class TeamMemberPanel extends eui.Component implements  eui.UIComponent {
 		this.roleListData.source = gameCore.currentUserInfo.getAllHero();
 		this.roleList.dataProvider = this.roleListData;
 		this.roleList.selectedIndex = 0;
+		this.onSelectedRole();
 	}
 
 	private onClose():void{

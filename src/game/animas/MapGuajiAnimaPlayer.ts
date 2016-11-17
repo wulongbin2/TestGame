@@ -73,6 +73,7 @@ module gameAnima
 		public resetGuajiAnima(id:string):void{
 			//更换挂机动画背景
 			if(this._id !== id){
+				this.clear();
 				var guajiAnimaVo:gamevo.MapGuajiAnimaVO = gameMngers.mapGuajiAnimaMnger.getVO(id);
 				guajiAnimaVo.bgs.forEach((info:gamevo.MapGuajiBgVO)=>{
 					if(info.type ===MapGuajiAnimaPlayer.BG_Role)

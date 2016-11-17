@@ -208,14 +208,139 @@
         <item teamId='0' roleId='1001' word='恭喜你！通关游戏！'/>
         <item teamId='1' roleId='1002' word='告诉我，游戏的作者叫啥？'/>
         <item teamId='0' roleId='1001' word='一个自称鬼月雨路的男人！'/>
-        <item teamId='1' roleId='1002' word='这是个有故事的称号！'/>
+        <item teamId='1' roleId='1002' word='是个有故事的称号！'/>
         <item teamId='0' roleId='1001' word='这说来话长。。'/>
-        <item teamId='1' roleId='1002' word='我想联系他，他的QQ号是多少？'/>
-        <item teamId='0' roleId='1001' word='742057152'/>
-        <item teamId='1' roleId='1002' word='再说一遍'/>
-        <item teamId='0' roleId='1001' word='742057152'/>
-        <item teamId='1' roleId='1002' word='再说一遍'/>
-        <item teamId='0' roleId='1001' word='742057152'/>
-        <item teamId='1' roleId='1002' word='谢谢，接下来就让我们继续相爱相杀吧！'/>
+        <item teamId='1' roleId='1002' word='我好崇拜他，告诉我他的微信号是什么？'/>
+        <item teamId='0' roleId='1001' word='wulongbin2'/>
+        <item teamId='1' roleId='1002' word='再说一遍,我记下!'/>
+        <item teamId='0' roleId='1001' word='wulongbin2'/>
+        <item teamId='1' roleId='1002' word='谢谢！'/>
+        <item teamId='0' roleId='1001' word='相爱相杀的战斗结束后，有作者的画作欣赏！'/>
+        <item teamId='1' roleId='1002' word='真的吗？'/>
+        <item teamId='0' roleId='1001' word='不要抱有期望，作者是个画渣！'/>
+        <item teamId='1' roleId='1002' word='还是好期待啊！'/>
+        <item teamId='0' roleId='1001' word='那我们就快结束这场战斗吧！'/>
+    </item>
+
+    <item id='start2_0'>
+        <item teamId='0' roleId='0' word='这么大的阵势！'/>
+        <item teamId='0' roleId='0' word='莫非是要和我决战！'/>
+        <item teamId='1' roleId='6' word='汪汪~~'/>
+        <item teamId='0' roleId='0' word='虽然听不懂你说什么'/>
+        <item teamId='0' roleId='0' word='不过我接受你的挑战！'/>
+    </item>
+    <item id='win2_0'>
+        <item teamId='0' roleId='0' word='是吗?'/>
+        <item teamId='0' roleId='0' word='月球人和外星人联合起来侵略地球了'/>
+        <item teamId='0' roleId='0' word='终于到了我出人头地的一天了！'/>
+    </item>
+    <item id='fail2_0'>
+        <item teamId='0' roleId='0' word='小黄，有句话我一直想告诉你！'/>
+        <item teamId='1' roleId='6' word='汪汪？'/>
+        <item teamId='0' roleId='0' word='好狗不挡道！'/>
+        <item teamId='1' roleId='6' word='汪汪汪汪汪汪汪汪汪汪汪汪汪汪'/>
+        <item teamId='0' roleId='0' word='啊啊啊啊啊啊啊！'/>
+    </item>
+
+    <item id='start2_1'>
+        <item teamId='1' roleId='15' word='啊噢！啊噢！啊噢！'/>
+        <item teamId='0' roleId='0' word='你是传说中曾经统治地球的'/>
+        <item teamId='0' roleId='0' word='恐龙！'/>
+        <item teamId='1' roleId='15' word='啊噢！啊噢！啊噢！'/>
+        <item teamId='0' roleId='0' word='看来恐龙灭绝是不可避免了！'/>
+    </item>
+    <item id='win2_1'>
+        <item teamId='1' roleId='15' word='噢~'/>
+        <item teamId='0' roleId='0' word='安息吧！恐龙！'/>
+        <item teamId='0' roleId='0' word='地球已经走向文明了！'/>
+    </item>
+    <item id='fail2_1'>
+        <item teamId='0' roleId='0' word='这块头，这怒火！'/>
+        <item teamId='0' roleId='0' word='和想象中的恐龙不一样！'/>
+        <item teamId='0' roleId='0' word='对不起，是我认错龙了'/>
+    </item>
+
+    <item id='start2_2'>
+        <item teamId='0' roleId='0' word='这四种味道不一的气息'/>
+        <item teamId='0' roleId='0' word='难道是。。。'/>
+        <item teamId='1' roleId='12' word='黄毛，又见面了！'/>
+        <item teamId='0' roleId='0' word='你们还没有改行？'/>
+        <item teamId='1' roleId='11' word='臭小子！'/>
+        <item teamId='1' roleId='11' word='我们真实的身份是'/>
+        <item teamId='1' roleId='11' word='月球兔暗杀部队！'/>
+        <item teamId='1' roleId='9' word='今日不是你死'/>
+        <item teamId='1' roleId='10' word='就是你亡！'/>
+    </item>
+    <item id='win2_2'>
+        <item teamId='1' roleId='12' word='为。。为什么'/>
+        <item teamId='1' roleId='12' word='明明得到了强化'/>
+        <item teamId='1' roleId='12' word='为什么。。我们还是输了'/>
+        <item teamId='0' roleId='0' word='今天的月亮'/>
+        <item teamId='0' roleId='0' word='为何如此刺眼！'/>
+    </item>
+    <item id='fail2_2'>
+        <item teamId='1' roleId='12' word='黄毛，跪下来求饶，我们就。。。'/>
+        <item teamId='0' roleId='0' word='妹妹，姐姐，女神,大妈！'/>
+        <item teamId='0' roleId='0' word='一切都是误会啊！'/>
+    </item>
+
+
+     <item id='start2_3'>
+        <item teamId='1' roleId='8' word='看来四姐妹失败了！'/>
+        <item teamId='0' roleId='0' word='现在的你还是继续打算'/>
+        <item teamId='0' roleId='0' word='替外星科技卖命吗？'/>
+        <item teamId='1' roleId='8' word='不！'/>
+        <item teamId='1' roleId='8' word='现在的我只想与你一教高下！'/>
+        <item teamId='0' roleId='0' word='也好，你我之间'/>
+        <item teamId='0' roleId='0' word='也该分个高低了！'/>
+    </item>
+    <item id='win2_3'>
+        <item teamId='1' roleId='8' word='必须承认'/>
+        <item teamId='1' roleId='8' word='你的确变强了！'/>
+        <item teamId='1' roleId='8' word='但是你改变不了结局'/>
+        <item teamId='1' roleId='8' word='外星战舰就要来了！'/>
+        <item teamId='0' roleId='0' word='放心，我有主角光环！'/>
+        <item teamId='1' roleId='8' word='哼。。。'/>
+    </item>
+    <item id='fail2_3'>
+        <item teamId='1' roleId='8' word='黄毛，如果只有这点实力'/>
+        <item teamId='1' roleId='8' word='你是伤不到将军的！'/>
+        <item teamId='0' roleId='0' word='。。。！'/>
+    </item>
+
+     <item id='start2_4'>
+        <item teamId='1' roleId='16' word='少年！'/>
+        <item teamId='1' roleId='16' word='能到达这儿，你很不错！'/>
+        <item teamId='0' roleId='0' word='嗯，我也才发现！'/>
+        <item teamId='1' roleId='16' word='我代表外星科技'/>
+        <item teamId='1' roleId='16' word='正式对你提出聘用'/>
+        <item teamId='1' roleId='16' word='年薪百万'/>
+        <item teamId='1' roleId='16' word='在月球买房指日可待！'/>
+        <item teamId='0' roleId='0' word='。。。。'/>
+        <item teamId='1' roleId='16' word='机会难得，少年！'/>
+        <item teamId='0' roleId='0' word='月球吗？'/>
+        <item teamId='0' roleId='0' word='虽然是个不错的地方'/>
+        <item teamId='0' roleId='0' word='不过地球村是我的故乡'/>
+        <item teamId='0' roleId='0' word='将军的美意'/>
+        <item teamId='0' roleId='0' word='还得由将军的战舰载回！'/>
+        <item teamId='1' roleId='16' word='真是可惜！'/>
+        <item teamId='1' roleId='16' word='拒绝我的美意是需要实力的！'/>
+    </item>
+    <item id='win2_4'>
+        <item teamId='1' roleId='16' word='少年，今日一战'/>
+        <item teamId='1' roleId='16' word='很痛快！'/>
+        <item teamId='1' roleId='16' word='然而。。凭你是无法对抗'/>
+        <item teamId='1' roleId='16' word='外星科技的！'/>
+        <item teamId='1' roleId='16' word='打败我'/>
+        <item teamId='1' roleId='16' word='四魔将是不会放过你的。。'/>
+        <item teamId='0' roleId='0' word='。。。'/>
+        <item teamId='0' roleId='0' word='传说中杀人不眨眼的四魔将'/>
+        <item teamId='0' roleId='0' word='我等着！'/>
+    </item>
+    <item id='fail2_4'>
+        <item teamId='0' roleId='0' word='将军'/>
+        <item teamId='0' roleId='0' word='我想通了'/>
+        <item teamId='0' roleId='0' word='我加入外星科技！！'/>
+        <item teamId='1' roleId='16' word='很好！！'/>
     </item>
 </Dialog>

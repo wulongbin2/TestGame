@@ -1,14 +1,29 @@
 module gameviews {
 	export class GameOverScene extends BattleScene{
 		public dialogVO:gamevo.DialogVO;
+		public fuli:eui.Image =new eui.Image();
 		constructor(){
 		super();	
 		this.dialogVO = gameMngers.dialogMnger.getVO('gameOver');
 		this.skinName ='BattleSceneSkin';
 		}
 
+		private loadImageEnd(sourceBit:egret.Texture):void{
+			this.fuli.source = sourceBit;
+			this.fuli.top = 0;
+			this.fuli.bottom =0;
+			this.fuli.left = this.fuli.right = 0;
+		}
+
+		protected gameEnd():void{
+			this.fuli.alpha =0;
+			this.addChild(this.fuli);
+			egret.Tween.get(this.fuli).to({alpha:1},5000);
+		}
+
 
 		public gameOver():void{
+			RES.getResByUrl(gamesystem.Url_BattleBg+'fuli.png',this.loadImageEnd,this);
 			var team1:gameCore.BattleTeamInfo = new gameCore.BattleTeamInfo();
 			var tempHero:gameCore.HeroMO = new gameCore.HeroMO();
 			tempHero.id='1';

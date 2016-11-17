@@ -49,7 +49,7 @@ module gamevo {
 				this.des +='!';
 			}
 			var tempArr:string[] = [];
-			if(!this.isGroupSkill){
+			if(this.isGroupSkill){
 				this.des += '【组合技】';
 			}
 			this.des += this.buff.des;

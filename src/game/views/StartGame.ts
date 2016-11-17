@@ -18,6 +18,7 @@ class StartGame extends eui.Component implements  eui.UIComponent {
 	}
 
 	private onStartGame():void{
+		console.log(gameCore.currentUserInfo.toXMLString());
 		this.dispatchEvent(new egret.Event('startGame'));
 	}
 }
