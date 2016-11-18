@@ -35,7 +35,7 @@ class Main extends eui.UILayer {
     private loadingView: LoadingUI;
     protected createChildren(): void {
         super.createChildren();
-        gamesystem.version = '2016.11.17-18:33';
+        gamesystem.version = '2016.11.18-16:33';
         RES.registerVersionController(new gameutils.VersionCtrl());
         //inject the custom material parser
         //注入自定义的素材解析器

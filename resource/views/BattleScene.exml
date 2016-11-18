@@ -47,6 +47,6 @@
 		<e:Label id="logTf" text="" x="13" y="9" anchorOffsetX="0" width="603" anchorOffsetY="0" height="164" size="20" textColor="0x40372b" bold="true" fontFamily="黑体"/>
 	</e:Group>
 	<e:Label id="exitTf" text="点击屏幕退出" y="697" size="26" textAlign="center" bold="true" fontFamily="黑体" horizontalCenter="0" textColor="0x40372b"/>
-	<e:Label id="hpTf1" text="111" x="37" y="173" anchorOffsetX="0" width="174" size="24"/>
-	<e:Label id="hpTf2" text="111" x="445" y="173" anchorOffsetX="0" width="174" textAlign="right" size="24"/>
+	<e:Label id="hpTf1" text="111" x="37" y="173" anchorOffsetX="0" width="174" size="24" textColor="0x000000"/>
+	<e:Label id="hpTf2" text="111" x="445" y="173" anchorOffsetX="0" width="174" textAlign="right" size="24" textColor="0x000000"/>
 </e:Skin>

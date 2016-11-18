@@ -17,7 +17,7 @@ export class BattleTeam{
 			this.teams  = info.heros;
 			this._totalZDL = info.totalZdl;
 			this._curZDL = this._totalZDL;
-			this._fightZDL = this._curZDL *0.3;
+			this._fightZDL = this._curZDL *0.2;
 			this._buff = info.buff;
 			this.allSkills.length = 0;
 			var skillIdLab:any = {};
@@ -208,10 +208,10 @@ export class BattleTeam{
 				if(effect.type ===gamesystem.SkillEffectType_Attack)
 				{
 					offZDL =  Math.max(this.self.fightZDL);
-					offZDL*=(1+Math.random()*0.1);//增加10%的偏差
+					offZDL*=(1+Math.random()*0.05);//增加10%的偏差
 					var offDef:number = this.self.buff.attckSpeed - this.enemy.buff.defend;
-					offZDL*=(1+offDef*0.01);
 					offZDL*=this.getValue(effect.param[0]);//暴击倍率
+					offZDL*=(1+offDef*0.01);
 				}
 				else if(effect.type === gamesystem.SkillEffectType_Baoji){
 					offZDL =  this.getValue(effect.param[0])*this.getValue(effect.param[1]);
