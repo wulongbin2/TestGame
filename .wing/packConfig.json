@@ -1,6 +1,6 @@
 {
-    "maxImageWidth": 1024,
-    "maxImageHeight": 1024,
+    "maxImageWidth": 2048,
+    "maxImageHeight": 2048,
     "defaultResPath": "c:\\Users\\wulongbin\\Documents\\TestGame\\trunk\\resource\\default.res.json",
     "packGroups": {
         "preload": true,
